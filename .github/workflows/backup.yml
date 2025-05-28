@@ -1,0 +1,44 @@
+name: Scheduled Backup
+
+on:
+  schedule:
+    # Runs at 12:00 PM (noon) UTC every day
+    - cron: '0 12 * * *'
+  # Allow manual triggers
+  workflow_dispatch:
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Fetch all history for all branches and tags
+    
+    - name: Set up Git user
+      run: |
+        git config --global user.name 'GitHub Actions'
+        git config --global user.email 'actions@github.com'
+    
+    - name: Check for changes
+      id: git-check
+      run: |
+        git add .
+        if ! git diff-index --quiet HEAD --; then
+          echo "changes_detected=true" >> $GITHUB_OUTPUT
+        else
+          echo "changes_detected=false" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Commit and push changes
+      if: steps.git-check.outputs.changes_detected == 'true'
+      run: |
+        git add .
+        git commit -m "chore: automated backup $(date -u +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+        git push
+    
+    - name: No changes to commit
+      if: steps.git-check.outputs.changes_detected == 'false'
+      run: echo "No changes detected in the repository. Skipping commit."
