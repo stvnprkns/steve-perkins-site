@@ -1,103 +1,113 @@
-import Image from "next/image";
+import Link from 'next/link';
+import PageHero from '@/components/PageHero';
+import Section from '@/components/layout/Section';
+import { projects, Project } from '@/lib/projects';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  // Get featured projects (first 3 for the home page)
+  const featuredProjects: Project[] = projects.slice(0, 3);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <div className="w-full">
+      <PageHero
+        title="Steve Perkins"
+        subtitle="Product Design Leader"
+        variant="narrow"
+        padding="lg"
+      />
+
+      {/* Selected Work Section */}
+      <Section variant="narrow" className="py-16" noDivider>
+        <div className="mb-12">
+          <h2 className="text-2xl font-medium mb-2">Selected Work</h2>
+          <p className="text-muted-foreground max-w-2xl">
+            A selection of projects I've led or contributed to, focusing on user-centered design and impactful outcomes.
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        <div className="grid gap-12">
+          {featuredProjects.map((project) => (
+            <Link 
+              key={project.slug} 
+              href={`/projects/${project.slug}`}
+              className="group block"
+            >
+              <div className="grid md:grid-cols-3 gap-6 items-center">
+                <div className="md:col-span-2">
+                  <h3 className="text-xl font-medium mb-2 group-hover:text-foreground/80 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-4">
+                    {project.summary}
+                  </p>
+                  <div className="text-sm text-muted-foreground">
+                    {project.timeframe} • {project.role}
+                  </div>
+                </div>
+                <div className="relative aspect-video bg-muted/20 rounded-lg overflow-hidden">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <Link 
+            href="/projects" 
+            className="inline-flex items-center px-6 py-3 border border-foreground/20 rounded-md hover:bg-foreground/5 transition-colors"
+          >
+            View All Projects
+          </Link>
+        </div>
+      </Section>
+
+      {/* Latest Notes Section */}
+      <Section variant="narrow" className="py-16 bg-muted/10" noDivider>
+        <div className="mb-8">
+          <h2 className="text-2xl font-medium mb-2">Latest Notes</h2>
+          <p className="text-muted-foreground max-w-2xl">
+            Thoughts, ideas, and insights on design, leadership, and product development.
+          </p>
+        </div>
+
+        <div className="grid gap-6">
+          {/* Replace with your actual notes data */}
+          <Link href="/notes/example-note" className="block group">
+            <div className="p-6 rounded-lg hover:bg-foreground/5 transition-colors border">
+              <h3 className="text-lg font-medium mb-2 group-hover:text-foreground/80">
+                Example Note Title
+              </h3>
+              <p className="text-muted-foreground mb-4">
+                A brief description of the note content goes here. This is a preview of the note that gives readers an idea of what to expect.
+              </p>
+              <div className="flex items-center text-sm text-muted-foreground">
+                <span>May 28, 2025</span>
+                <span className="mx-2">•</span>
+                <span>3 min read</span>
+              </div>
+            </div>
+          </Link>
+          
+          {/* Add more note previews as needed */}
+          
+          <div className="mt-6 text-center">
+            <Link 
+              href="/notes" 
+              className="inline-flex items-center text-foreground/80 hover:text-foreground transition-colors"
+            >
+              View All Notes
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </Section>
     </div>
   );
 }
