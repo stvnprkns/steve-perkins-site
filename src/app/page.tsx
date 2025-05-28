@@ -16,54 +16,62 @@ export default function Home() {
         padding="lg"
       />
 
-      {/* Selected Work Section */}
+      {/* Case Studies Section */}
       <Section variant="narrow" className="py-16" noDivider>
         <div className="mb-12">
-          <h2 className="text-2xl font-medium mb-2">Selected Work</h2>
-          <p className="text-muted-foreground max-w-2xl">
-            A selection of projects I've led or contributed to, focusing on user-centered design and impactful outcomes.
-          </p>
+          <h2 className="text-2xl font-medium">Case Studies</h2>
         </div>
 
-        <div className="grid gap-12">
+        <div className="space-y-16 w-full">
           {featuredProjects.map((project) => (
-            <Link 
-              key={project.slug} 
-              href={`/projects/${project.slug}`}
-              className="group block"
-            >
-              <div className="grid md:grid-cols-3 gap-6 items-center">
-                <div className="md:col-span-2">
-                  <h3 className="text-xl font-medium mb-2 group-hover:text-foreground/80 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-4">
-                    {project.summary}
-                  </p>
-                  <div className="text-sm text-muted-foreground">
-                    {project.timeframe} • {project.role}
+            <article key={project.slug} className="w-full group">
+              {/* Text Content - Constrained to 640px */}
+              <div className="max-w-[640px] mx-auto">
+                <Link href={`/projects/${project.slug}`} className="block">
+                  <div className="space-y-3">
+                    <h3 className="text-xl font-medium group-hover:text-foreground/80 transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-muted-foreground">
+                      {project.summary}
+                    </p>
+                    <div className="text-sm text-muted-foreground">
+                      {project.timeframe} • {project.role}
+                    </div>
                   </div>
-                </div>
-                <div className="relative aspect-video bg-muted/20 rounded-lg overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
+                </Link>
               </div>
-            </Link>
+              
+              {/* Project Images - Full width container */}
+              <div className="w-full mt-8 -mx-4 sm:-mx-6 md:mx-0">
+                <Link href={`/projects/${project.slug}`} className="block w-full">
+                  {Array.isArray(project.images) ? (
+                    <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 px-4 sm:px-6 md:px-0">
+                      {project.images.slice(0, 2).map((img, index) => (
+                        <div key={index} className="relative aspect-video bg-muted/20 rounded-lg overflow-hidden w-full">
+                          <img 
+                            src={img} 
+                            alt={`${project.title} ${index + 1}`}
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="relative aspect-video bg-muted/20 rounded-lg overflow-hidden w-full">
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      />
+                    </div>
+                  )}
+                </Link>
+              </div>
+            </article>
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <Link 
-            href="/projects" 
-            className="inline-flex items-center px-6 py-3 border border-foreground/20 rounded-md hover:bg-foreground/5 transition-colors"
-          >
-            View All Projects
-          </Link>
-        </div>
       </Section>
 
       {/* Latest Notes Section */}
