@@ -12,76 +12,11 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "quickbooks-cpa-match",
-    title: "Making Small Business Connections with CPAs",
-    role: "Product Designer",
-    timeframe: "2015–2017",
-    summary: "How Intuit QuickBooks matched small businesses with CPAs to improve survival rates, using user research, lean product experimentation, and measurable impact.",
-    tags: ["Product Design", "User Research", "Team Leadership"],
-    image: "/images/quickbooks-preview.webp",
-    images: [
-      "/images/coworkers/amy-ng.jpg",
-      "/images/coworkers/anne-sommer.jpg",
-      "/images/coworkers/chris-hodge.jpg",
-      "/images/coworkers/edward-won.jpg",
-      "/images/coworkers/julianne-vinh.jpg",
-      "/images/coworkers/kristin-landgraf.jpg",
-      "/images/coworkers/lisa-collins.jpg",
-      "/images/coworkers/majaliwa-bass.jpg",
-      "/images/coworkers/sagan-schultz.jpg",
-      "/images/coworkers/suhani-harish.jpg",
-      "/images/coworkers/stephen-perkins.jpg"
-    ],
-    body: `
-**Company**  
-[Intuit — QuickBooks ↗](https://quickbooks.intuit.com)
-
-**Product Team**  
-Stephen Perkins, Chris Hodge, Majaliwa Bass
-
----
-
-## Talking Shop
-Overview of the Intuit Labs project. The team interviewed 100+ small business owners in Dallas to understand how CPA relationships impact business survival. Key insight: CPAs helped offload financial stress so owners could focus on growth.
-
-![Photos featuring various small business owners we talked to across Dallas.](/images/qb-cpa-owners.png)
-*Fig. 1: Photos featuring various small business owners we talked to across Dallas.*
-
-## Creating the Experiment
-Prototype features:
-- Match with a CPA
-- In-product messaging
-- Invoicing and payments
-
-Included dashboard ad targeting users without CPAs. Iterated messaging/ad copy to improve engagement. Used a limited CPA pool and randomized matches. Built custom messaging flow to support real-world communication and disengagement logic.
-
-![Workflow diagram](/images/qb-cpa-workflow.png)
-*Fig. 2: Workflow of how users enter the experiment, select a CPA, and engage with them.*
-
-![QuickBooks dashboard ad](/images/qb-cpa-dashboard-ad.png)
-*Fig. 3: Experiment Ad on the QuickBooks dashboard.*
-
-![CPA match carousel](/images/qb-cpa-carousel.png)
-*Fig. 4: Matchmaker page, showing a carousel of the CPAs in our beta group.*
-
-![Messaging tool with task manager](/images/qb-cpa-messaging.png)
-*Fig. 5: The messaging tool with the task manager.*
-
-## What We Learned
-Immediate value surfaced: tax savings, time saved, and more business focus. Over a year:
-
-- **+2000** Connections between CPAs and entrepreneurs in the first year.
-- **15%** Higher 5-year survival rate for businesses connected on our platform.
-
-> Running a business is already hard, but doing so while being the bookkeeper makes it nearly impossible to be successful. After the experiment launched, the response was surprising. Customer feedback highlighted immediate benefits: they were saving money on their taxes, finding more time and energy to devote to their businesses, and realizing how valuable tax professionals were in making daily financial decisions.
-`
-  },
-  {
     slug: "rudderstack-team",
     title: "Founding a Design Team and Growing a Culture",
     role: "Head of Design",
     timeframe: "2021–2023",
-    summary: "Brought design out of the margins and into the strategy room. I built RudderStack’s first design team — not as a service org, but as a cross-functional partner that shaped product direction, improved process, and earned its seat at the table.",
+    summary: "Brought design out of the margins and into the strategy room. I built RudderStack's first design team — not as a service org, but as a cross-functional partner that shaped product direction, improved process, and earned its seat at the table.",
     image: "/images/rudderstack-preview.webp",
     images: [
       "/images/rudderstack-preview.webp",
@@ -292,6 +227,50 @@ Led all product design, worked closely with founders, and set up design systems 
 - Won first 10 paying customers
 `,
   },
+  {
+    slug: "quickbooks-cpa-match",
+    title: "Making Small Business Connections with CPAs",
+    role: "Product Designer",
+    timeframe: "2018–2019",
+    summary: "Led design for a 0→1 product at Intuit Labs that matched small businesses with CPAs, improving business success rates.",
+    image: "/images/projects/quickbooks-cpa-match/quickbooks-hero.webp",
+    images: [
+      "/images/projects/quickbooks-cpa-match/quickbooks-hero.webp"
+    ],
+    body: `
+**Company**  
+[Intuit — QuickBooks ↗](https://quickbooks.intuit.com/)
+
+**Team**  
+Stephen Perkins, Chris Hodge, Majaliwa Bass
+
+---
+
+## The Challenge
+
+Running a business is a team sport. Working at Intuit was pivotal in shaping who I am as a designer and leader. On the Intuit Labs team, I worked on 0→1 concepts. Working on these projects taught me that building products is more like starting a company than pushing a roadmap.
+
+Starting with a data point: 50% of small businesses fail within 5 years. We set out to improve the survival rate of businesses. A key insight was that businesses with a CPA were more successful than those without.
+
+## Our Approach
+
+### Understanding the Problem
+We conducted extensive research to understand the challenges small businesses face when looking for CPAs. We discovered that many business owners didn't know what to look for in a CPA or how to evaluate if they were a good fit.
+
+### Designing the Solution
+We designed a matching system that helped small businesses find CPAs based on their specific needs and business type. The system took into account factors like industry, business size, and specific accounting needs to make personalized recommendations.
+
+### Testing and Iteration
+We ran multiple rounds of user testing with small business owners to refine our matching algorithm and user interface. The feedback was overwhelmingly positive, with users reporting that the system helped them find CPAs they wouldn't have found otherwise.
+
+## Impact
+
+- **Increased CPA Adoption**: More small businesses connected with CPAs through our platform.
+- **Improved Business Outcomes**: Businesses that used our matching service reported better financial management and planning.
+- **Positive Feedback**: Both small business owners and CPAs praised the system for its ease of use and effectiveness.
+
+This project was a great example of how user-centered design can have a real impact on business success.`
+  }
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
