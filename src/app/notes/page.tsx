@@ -52,7 +52,7 @@ export default function NotesPage({
           <div className="flex flex-wrap gap-2">
             <Link
               href="/notes"
-              className={`px-3 py-1.5 text-sm rounded-full border transition-colors duration-150 outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background
+              className={`px-3 py-1.5 text-sm rounded-full border transition-colors duration-150 outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background no-underline
                 ${
                   !selectedCategory
                     ? 'bg-zinc-900 text-white border-zinc-900 hover:bg-zinc-800 active:bg-zinc-700'
@@ -66,7 +66,7 @@ export default function NotesPage({
               <Link
                 key={category}
                 href={`/notes?category=${encodeURIComponent(category)}`}
-                className={`px-3 py-1.5 text-sm rounded-full border flex items-center gap-1.5 transition-colors duration-150 outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background
+                className={`px-3 py-1.5 text-sm rounded-full border flex items-center gap-1.5 transition-colors duration-150 outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background no-underline
                   ${
                     selectedCategory === category
                       ? 'bg-zinc-900 text-white border-zinc-900 hover:bg-zinc-800 active:bg-zinc-700'
@@ -106,24 +106,24 @@ export default function NotesPage({
                 <Link
                   key={note.slug}
                   href={`/notes/${note.slug}`}
-                  className="group block"
+                  className="group block no-underline"
                 >
-                  <div className="h-full border rounded-lg p-6 hover:bg-muted/30 transition-colors">
+                  <div className="h-full border rounded-lg p-6 transition-all duration-200 hover:shadow-md hover:border-muted-foreground/20 bg-background hover:bg-muted/50">
                     <div className="flex justify-between items-start mb-3">
                       <span className="text-2xl">{note.emoji || note.icon}</span>
                       {category && (
-                        <span className="text-xs px-2 py-1 bg-muted rounded-full">
+                        <span className="text-xs px-2 py-1 bg-muted rounded-full no-underline">
                           {category.emoji} {category.title}
                         </span>
                       )}
                     </div>
-                    <h3 className="text-lg font-semibold mb-4 group-hover:underline">
+                    <h3 className="text-lg font-semibold mb-4 text-foreground group-hover:text-foreground">
                       {note.title}
                     </h3>
                     <div className="mt-2 flex items-center justify-between text-xs text-muted-foreground">
-                      <span>{note.date}</span>
+                      <span className="no-underline">{note.date}</span>
                       {note.status && (
-                        <span className="px-2 py-0.5 bg-muted rounded-full">
+                        <span className="px-2 py-0.5 bg-muted rounded-full no-underline">
                           {note.status}
                         </span>
                       )}
