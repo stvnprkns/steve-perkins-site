@@ -28,48 +28,48 @@ export default function Home() {
             <article key={project.slug} className="w-full group">
               {/* Text Content - Constrained to 640px */}
               <div className="max-w-[640px] mx-auto">
-                <Link href={`/projects/${project.slug}`} className="block">
-                  <div className="space-y-3">
-                    <UnderlineLink href={`/projects/${project.slug}`}>
-                      <h3 className="text-xl font-medium">
-                        {project.title}
-                      </h3>
-                    </UnderlineLink>
-                    <p className="text-muted-foreground">
-                      {project.summary}
-                    </p>
-                    <div className="text-sm text-muted-foreground">
-                      {project.timeframe} • {project.role}
-                    </div>
+                <div className="space-y-3">
+                  <div className="text-base text-gray-500 mb-2">
+                    {project.timeframe}
                   </div>
-                </Link>
+                  <UnderlineLink href={`/projects/${project.slug}`}>
+                    <h3 className="text-xl font-medium">
+                      {project.title}
+                    </h3>
+                  </UnderlineLink>
+                  <p className="text-muted-foreground">
+                    {project.summary}
+                  </p>
+                </div>
               </div>
               
               {/* Project Images - Full width container */}
               <div className="w-full mt-8 -mx-4 sm:-mx-6 md:mx-0">
-                <Link href={`/projects/${project.slug}`} className="block w-full">
-                  {Array.isArray(project.images) ? (
-                    <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 px-4 sm:px-6 md:px-0">
-                      {project.images.slice(0, 2).map((img, index) => (
-                        <div key={index} className="relative aspect-video bg-muted/20 rounded-lg overflow-hidden w-full">
-                          <img 
-                            src={img} 
-                            alt={`${project.title} ${index + 1}`}
-                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="relative aspect-video bg-muted/20 rounded-lg overflow-hidden w-full">
-                      <img 
-                        src={project.image} 
-                        alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                      />
-                    </div>
-                  )}
-                </Link>
+                <UnderlineLink href={`/projects/${project.slug}`}>
+                  <div className="block w-full">
+                    {Array.isArray(project.images) ? (
+                      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 px-4 sm:px-6 md:px-0">
+                        {project.images.slice(0, 2).map((img, index) => (
+                          <div key={index} className="relative aspect-video bg-muted/20 rounded-lg overflow-hidden w-full">
+                            <img 
+                              src={img} 
+                              alt={`${project.title} ${index + 1}`}
+                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="relative aspect-video bg-muted/20 rounded-lg overflow-hidden w-full">
+                        <img 
+                          src={project.image} 
+                          alt={project.title}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </UnderlineLink>
               </div>
             </article>
           ))}
@@ -92,23 +92,21 @@ export default function Home() {
 
         <div className="grid gap-6">
           {/* Replace with your actual notes data */}
-          <Link href="/notes/example-note" className="block group">
-            <div className="p-6 rounded-lg hover:bg-foreground/5 transition-colors border">
-              <UnderlineLink href="/notes/example-note">
-                <h3 className="text-lg font-medium mb-2">
-                  Example Note Title
-                </h3>
-              </UnderlineLink>
-              <p className="text-muted-foreground mb-4">
-                A brief description of the note content goes here. This is a preview of the note that gives readers an idea of what to expect.
-              </p>
-              <div className="flex items-center text-sm text-muted-foreground">
-                <span>May 28, 2025</span>
-                <span className="mx-2">•</span>
-                <span>3 min read</span>
-              </div>
+          <div className="p-6 rounded-lg hover:bg-foreground/5 transition-colors border">
+            <UnderlineLink href="/notes/example-note">
+              <h3 className="text-lg font-medium mb-2">
+                Example Note Title
+              </h3>
+            </UnderlineLink>
+            <p className="text-muted-foreground mb-4">
+              A brief description of the note content goes here. This is a preview of the note that gives readers an idea of what to expect.
+            </p>
+            <div className="flex items-center text-sm text-muted-foreground">
+              <span>May 28, 2025</span>
+              <span className="mx-2">•</span>
+              <span>3 min read</span>
             </div>
-          </Link>
+          </div>
           
           {/* Add more note previews as needed */}
           

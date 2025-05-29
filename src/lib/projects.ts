@@ -16,13 +16,19 @@ export const projects: Project[] = [
     role: "Product Designer",
     timeframe: "2015–2017",
     summary: "How Intuit QuickBooks matched small businesses with CPAs to improve survival rates, using user research, lean product experimentation, and measurable impact.",
-    image: "/images/qb-cpa-preview.png",
+    image: "/images/quickbooks-preview.webp",
     images: [
-      "/images/qb-cpa-owners.png",
-      "/images/qb-cpa-workflow.png",
-      "/images/qb-cpa-dashboard-ad.png",
-      "/images/qb-cpa-carousel.png",
-      "/images/qb-cpa-messaging.png"
+      "/images/coworkers/amy-ng.jpg",
+      "/images/coworkers/anne-sommer.jpg",
+      "/images/coworkers/chris-hodge.jpg",
+      "/images/coworkers/edward-won.jpg",
+      "/images/coworkers/julianne-vinh.jpg",
+      "/images/coworkers/kristin-landgraf.jpg",
+      "/images/coworkers/lisa-collins.jpg",
+      "/images/coworkers/majaliwa-bass.jpg",
+      "/images/coworkers/sagan-schultz.jpg",
+      "/images/coworkers/suhani-harish.jpg",
+      "/images/coworkers/stephen-perkins.jpg"
     ],
     body: `
 **Company**  
@@ -74,10 +80,10 @@ Immediate value surfaced: tax savings, time saved, and more business focus. Over
     role: "Head of Design",
     timeframe: "2021–2023",
     summary: "Brought design out of the margins and into the strategy room. I built RudderStack’s first design team — not as a service org, but as a cross-functional partner that shaped product direction, improved process, and earned its seat at the table.",
-    image: "/images/rudderstack-team-preview.png",
+    image: "/images/rudderstack-preview.webp",
     images: [
-      "/images/rudderstack-team-preview.png",
-      "/images/rudderstack-design-qa.png"
+      "/images/rudderstack-preview.webp",
+      "/images/startup-preview.webp"
     ],
     body: `
 **Company**  
