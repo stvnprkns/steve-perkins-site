@@ -2,6 +2,7 @@ import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import Section from '@/components/layout/Section';
 import { projects, Project } from '@/lib/projects';
+import UnderlineLink from '@/components/UnderlineLink';
 
 export default function Home() {
   // Get featured projects (first 3 for the home page)
@@ -29,9 +30,11 @@ export default function Home() {
               <div className="max-w-[640px] mx-auto">
                 <Link href={`/projects/${project.slug}`} className="block">
                   <div className="space-y-3">
-                    <h3 className="text-xl font-medium group-hover:text-foreground/80 transition-colors">
-                      {project.title}
-                    </h3>
+                    <UnderlineLink href={`/projects/${project.slug}`}>
+                      <h3 className="text-xl font-medium">
+                        {project.title}
+                      </h3>
+                    </UnderlineLink>
                     <p className="text-muted-foreground">
                       {project.summary}
                     </p>
@@ -78,18 +81,24 @@ export default function Home() {
       <Section variant="narrow" className="py-16 bg-muted/10" noDivider>
         <div className="mb-8">
           <h2 className="text-2xl font-medium mb-2">Latest Notes</h2>
-          <p className="text-muted-foreground max-w-2xl">
-            Thoughts, ideas, and insights on design, leadership, and product development.
-          </p>
+          <div className="text-muted-foreground max-w-2xl">
+            {"This is where I put the half-formed stuff. Ideas I'm wrestling with, patterns I keep noticing, questions I haven't fully answered. You won't find polish here — just the starting points of clarity.\n\nSometimes it's a hunch. Sometimes it's something a customer said that won't leave my head. Sometimes it's a note to my future self, written out loud.\n\nIf you're working through the same kinds of problems — or come at them from the other side — I'd love to hear from you.".split('\n\n').map((paragraph, index) => (
+              <p key={index} className="mb-2">
+                {paragraph}
+              </p>
+            ))}
+          </div>
         </div>
 
         <div className="grid gap-6">
           {/* Replace with your actual notes data */}
           <Link href="/notes/example-note" className="block group">
             <div className="p-6 rounded-lg hover:bg-foreground/5 transition-colors border">
-              <h3 className="text-lg font-medium mb-2 group-hover:text-foreground/80">
-                Example Note Title
-              </h3>
+              <UnderlineLink href="/notes/example-note">
+                <h3 className="text-lg font-medium mb-2">
+                  Example Note Title
+                </h3>
+              </UnderlineLink>
               <p className="text-muted-foreground mb-4">
                 A brief description of the note content goes here. This is a preview of the note that gives readers an idea of what to expect.
               </p>

@@ -15,7 +15,7 @@ export default function Nav() {
   
   return (
     <nav className="w-full">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
+      <div className="max-w-prose mx-auto px-4 sm:px-6 py-6 flex justify-between items-center">
         <Link href="/" className="font-bold text-foreground hover:opacity-80 transition-opacity">
           Steve Perkins
         </Link>

@@ -30,7 +30,15 @@ export default function NotesPage({
     <div className="w-full">
       <PageHero
         title="Notes"
-        subtitle="This is where I put the half-formed stuff. Ideas I'm wrestling with, patterns I keep noticing, questions I haven't fully answered. You won't find polish here — just the starting points of clarity.\n\nSometimes it's a hunch. Sometimes it's something a customer said that won't leave my head. Sometimes it's a note to my future self, written out loud.\n\nIf you're working through the same kinds of problems — or come at them from the other side — I'd love to hear from you."
+        subtitle={
+          "This is where I put the half-formed stuff. Ideas I'm wrestling with, patterns I keep noticing, questions I haven't fully answered. You won't find polish here — just the starting points of clarity.\n\nSometimes it's a hunch. Sometimes it's something a customer said that won't leave my head. Sometimes it's a note to my future self, written out loud.\n\nIf you're working through the same kinds of problems — or come at them from the other side — I'd love to hear from you."
+            .split('\n\n')
+            .map((paragraph, index) => (
+              <p key={index} className="mb-2">
+                {paragraph}
+              </p>
+            ))
+        }
         variant="narrow"
         padding="lg"
       />

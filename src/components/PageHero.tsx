@@ -3,7 +3,7 @@ import Section from '@/components/layout/Section';
 
 interface PageHeroProps {
   title: string;
-  subtitle?: string;
+  subtitle?: string | ReactNode;
   children?: ReactNode;
   className?: string;
   variant?: 'narrow' | 'wide' | 'wider';
@@ -44,11 +44,15 @@ export default function PageHero({
         </h1>
         {subtitle && (
           <div className="prose prose-lg text-muted-foreground max-w-3xl">
-            {subtitle.split('\n').map((paragraph, i) => (
-              <p key={i} className={i > 0 ? 'mt-4' : ''}>
-                {paragraph}
-              </p>
-            ))}
+            {typeof subtitle === 'string' ? (
+              subtitle.split('\n').map((paragraph, index) => (
+                <p key={index} className={index > 0 ? 'mt-4' : ''}>
+                  {paragraph}
+                </p>
+              ))
+            ) : (
+              subtitle
+            )}
           </div>
         )}
         {children}

@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ExternalLink } from '@/components/ExternalLink';
+import UnderlineLink from '@/components/UnderlineLink';
 import PageHero from '@/components/PageHero';
 import Section from '@/components/layout/Section';
 
@@ -71,25 +72,59 @@ export default function AboutPage() {
         <div className="space-y-8">
           <h2 className="text-2xl font-medium">Experience</h2>
           
-          <div className="space-y-8">
-            <div className="border-b border-border/20 pb-8">
-              <h3 className="text-lg font-medium">Procore Technologies</h3>
-              <p className="text-muted-foreground">Director of Product Design • 2020–Present</p>
-              <p className="mt-2">Leading the design of core product experiences for construction professionals.</p>
-            </div>
-            
-            <div className="border-b border-border/20 pb-8">
-              <h3 className="text-lg font-medium">RudderStack</h3>
-              <p className="text-muted-foreground">Head of Design • 2018–2020</p>
-              <p className="mt-2">Built and led the design team, establishing design processes and a design system.</p>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-medium">Intuit</h3>
-              <p className="text-muted-foreground">Senior Product Designer • 2015–2018</p>
-              <p className="mt-2">Designed experiences for QuickBooks products, focusing on small business solutions.</p>
-            </div>
-          </div>
+          <ul className="space-y-4">
+            <li className="flex flex-1 items-center space-x-4 pl-0">
+              <div className="text-foreground">
+                <UnderlineLink href="https://procore.com">Procore</UnderlineLink>
+              </div>
+              <span className="w-full border-t border-border border-dashed min-w-4" style={{ flexShrink: 999999 }}></span>
+              <div className="text-muted-foreground text-right">
+                <div className="flex items-center">
+                  <div>Director of Product Design</div>
+                  <div className="ml-4 w-[6em] text-right tabular-nums">2020–Now</div>
+                </div>
+              </div>
+            </li>
+
+            <li className="flex flex-1 items-center space-x-4 pl-0">
+              <div className="text-foreground">
+                <UnderlineLink href="https://rudderstack.com">RudderStack</UnderlineLink>
+              </div>
+              <span className="w-full border-t border-border border-dashed min-w-4" style={{ flexShrink: 999999 }}></span>
+              <div className="text-muted-foreground text-right">
+                <div className="flex items-center">
+                  <div>Head of Design</div>
+                  <div className="ml-4 w-[6em] text-right tabular-nums">2018–2020</div>
+                </div>
+              </div>
+            </li>
+
+            <li className="flex flex-1 items-center space-x-4 pl-0">
+              <div className="text-foreground">
+                <UnderlineLink href="https://intuit.com">Intuit</UnderlineLink>
+              </div>
+              <span className="w-full border-t border-border border-dashed min-w-4" style={{ flexShrink: 999999 }}></span>
+              <div className="text-muted-foreground text-right">
+                <div className="flex items-center">
+                  <div>Senior Product Designer</div>
+                  <div className="ml-4 w-[6em] text-right tabular-nums">2015–2018</div>
+                </div>
+              </div>
+            </li>
+
+            <li className="flex flex-1 items-center space-x-4 pl-0">
+              <div className="text-foreground">
+                <UnderlineLink href="https://shopify.com">Shopify</UnderlineLink>
+              </div>
+              <span className="w-full border-t border-border border-dashed min-w-4" style={{ flexShrink: 999999 }}></span>
+              <div className="text-muted-foreground text-right">
+                <div className="flex items-center">
+                  <div>Senior Staff Software Engineer</div>
+                  <div className="ml-4 w-[6em] text-right tabular-nums">2024–Now</div>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
       </Section>
       

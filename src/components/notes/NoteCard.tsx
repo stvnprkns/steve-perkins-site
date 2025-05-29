@@ -3,6 +3,19 @@ import { getCategoryByKey } from '@/lib/categories';
 import { FC } from 'react';
 import Link from 'next/link';
 import { ExtendedCard } from '../ui/ExtendedCard';
+import UnderlineLink from '../UnderlineLink';
+
+// Helper function to convert newlines to paragraphs
+const formatExcerpt = (text: string) => {
+  return text
+    .split('\n\n')
+    .filter(Boolean)
+    .map((paragraph, index) => (
+      <p key={index} className="text-sm text-muted-foreground mb-1 line-clamp-2">
+        {paragraph}
+      </p>
+    ));
+};
 
 interface NoteCardProps {
   note: Note;
@@ -17,12 +30,12 @@ export const NoteCard: FC<NoteCardProps> = ({ note, className = '', href = '#' }
     <div className="relative group">
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1">
-          <h3 className="text-lg font-medium group-hover:text-foreground/80 transition-colors">
-            {note.title}
-          </h3>
-          <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
-            {note.excerpt || note.body.slice(0, 120)}
-          </p>
+          <UnderlineLink href={href}>
+            <h3 className="text-lg font-medium">
+              {note.title}
+            </h3>
+          </UnderlineLink>
+          {note.excerpt ? formatExcerpt(note.excerpt) : formatExcerpt(note.body.slice(0, 120))}
           
           {category && (
             <div className="flex items-center gap-2 mt-3">
