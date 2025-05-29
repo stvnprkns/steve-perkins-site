@@ -1,4 +1,4 @@
-import { Note } from '@/lib/notes';
+import { Note } from '@/lib/markdown';
 import { getCategoryByKey } from '@/lib/categories';
 import { FC } from 'react';
 import Link from 'next/link';
@@ -35,12 +35,16 @@ export const NoteCard: FC<NoteCardProps> = ({ note, className = '', href = '#' }
               {note.title}
             </h3>
           </UnderlineLink>
-          {note.excerpt ? formatExcerpt(note.excerpt) : formatExcerpt(note.body.slice(0, 120))}
+          {note.excerpt && (
+            <p className="text-sm text-muted-foreground mb-1 line-clamp-2">
+              {note.excerpt}
+            </p>
+          )}
           
           {category && (
             <div className="flex items-center gap-2 mt-3">
               <span className="text-xs px-2.5 py-1 bg-muted/50 dark:bg-muted/20 rounded-full text-foreground/80">
-                {category.emoji} {category.title}
+                {note.emoji || note.icon || '📝'} {category.title}
               </span>
             </div>
           )}

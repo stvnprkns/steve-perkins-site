@@ -1,30 +1,45 @@
-import { notes, getAllCategoriesWithCounts } from "@/lib/notes";
 import Link from "next/link";
+import { getAllNotes, getAllCategoriesWithCounts, Note } from "@/lib/markdown";
 import { getCategoryByKey } from "@/lib/categories";
 import Section from "@/components/layout/Section";
 import PageHero from "@/components/PageHero";
+
+// Get all notes at build time
+export const dynamic = 'force-static';
 
 type SearchParams = {
   category?: string;
 };
 
-export default function NotesPage({
+interface CategoryCount {
+  category: string;
+  count: number;
+}
+
+export default async function NotesPage({
   searchParams,
 }: {
   searchParams: SearchParams;
 }) {
   const selectedCategory = searchParams.category;
-  const categories = getAllCategoriesWithCounts();
+  const [allNotes, categories] = await Promise.all([
+    getAllNotes(),
+    getAllCategoriesWithCounts()
+  ]) as [Note[], CategoryCount[]];
   
   // Filter notes by category if one is selected
   const filteredNotes = selectedCategory
-    ? notes.filter((note) => note.category === selectedCategory)
-    : notes;
+    ? allNotes.filter((note) => 
+        note.category?.toLowerCase() === selectedCategory.toLowerCase()
+      )
+    : allNotes;
 
   // Sort notes by date (newest first)
-  const sortedNotes = [...filteredNotes].sort((a, b) => 
-    new Date(b.updated || b.date).getTime() - new Date(a.updated || a.date).getTime()
-  );
+  const sortedNotes = [...filteredNotes].sort((a, b) => {
+    const dateA = a.updated || a.date || '1970-01-01';
+    const dateB = b.updated || b.date || '1970-01-01';
+    return new Date(dateB).getTime() - new Date(dateA).getTime();
+  });
 
   return (
     <div className="w-full">
@@ -62,7 +77,7 @@ export default function NotesPage({
             >
               All
             </Link>
-            {categories.map(({ category, count, data }) => (
+            {categories.map(({ category, count }) => (
               <Link
                 key={category}
                 href={`/notes?category=${encodeURIComponent(category)}`}
@@ -74,8 +89,7 @@ export default function NotesPage({
                   }`}
                 tabIndex={0}
               >
-                {data?.emoji && <span>{data.emoji}</span>}
-                <span>{category}</span>
+                <span className="capitalize">{category}</span>
                 <span className="text-xs opacity-70 ml-0.5">{count}</span>
               </Link>
             ))}
@@ -101,7 +115,7 @@ export default function NotesPage({
         {sortedNotes.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {sortedNotes.map((note) => {
-              const category = getCategoryByKey(note.category);
+              const category = note.category ? getCategoryByKey(note.category) : null;
               return (
                 <Link
                   key={note.slug}
@@ -110,8 +124,8 @@ export default function NotesPage({
                 >
                   <div className="h-full border rounded-lg p-6 transition-all duration-200 hover:shadow-md hover:border-muted-foreground/20 bg-background hover:bg-muted/50">
                     <div className="flex justify-between items-start mb-3">
-                      <span className="text-2xl">{note.emoji || note.icon}</span>
-                      {category && (
+                      <span className="text-2xl">{note.emoji || note.icon || ''}</span>
+                      {category && category.emoji && category.title && (
                         <span className="text-xs px-2 py-1 bg-muted rounded-full no-underline">
                           {category.emoji} {category.title}
                         </span>

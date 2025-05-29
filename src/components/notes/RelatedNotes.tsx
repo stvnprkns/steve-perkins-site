@@ -1,26 +1,53 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from "next/link";
 import { motion } from 'framer-motion';
-import { getNoteBySlug, getNotesByCategory } from "@/lib/notes";
+import { Note } from "@/lib/markdown";
 import { getCategoryByKey } from "@/lib/categories";
 import { fadeInUp } from "@/lib/animations";
 
-export interface RelatedNotesProps {
+interface RelatedNotesProps {
   currentSlug: string;
 }
 
 export default function RelatedNotes({ currentSlug }: RelatedNotesProps) {
-  const currentNote = getNoteBySlug(currentSlug);
-  
-  if (!currentNote) return null;
-  
-  const category = getCategoryByKey(currentNote.category);
-  const related = getNotesByCategory(currentNote.category)
-    .filter(note => note.slug !== currentSlug)
-    .sort((a, b) => (b.updated || "").localeCompare(a.updated || ""))
-    .slice(0, 3);
+  const [isLoading, setIsLoading] = useState(true);
+  const [related, setRelated] = useState<Note[]>([]);
+  const [category, setCategory] = useState<ReturnType<typeof getCategoryByKey> | null>(null);
 
+  useEffect(() => {
+    const fetchRelated = async () => {
+      try {
+        // Use dynamic imports to avoid including server-side code in the client bundle
+        const { getNoteBySlug, getNotesByCategory } = await import('@/lib/markdown');
+        
+        const currentNote = await getNoteBySlug(currentSlug);
+        if (!currentNote?.category) return;
+        
+        const categoryData = getCategoryByKey(currentNote.category);
+        setCategory(categoryData);
+        
+        const relatedNotes = await getNotesByCategory(currentNote.category);
+        const filteredAndSorted = relatedNotes
+          .filter((note: Note) => note.slug !== currentSlug)
+          .sort((a: Note, b: Note) => 
+            (b.updated || "").localeCompare(a.updated || "")
+          )
+          .slice(0, 3);
+          
+        setRelated(filteredAndSorted);
+      } catch (error) {
+        console.error('Error fetching related notes:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchRelated();
+  }, [currentSlug]);
+
+  if (isLoading) return null;
   if (related.length === 0) return null;
 
   return (
