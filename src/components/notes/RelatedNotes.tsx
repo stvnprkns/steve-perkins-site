@@ -24,21 +24,21 @@ export default function RelatedNotes({ currentSlug }: RelatedNotesProps) {
   if (related.length === 0) return null;
 
   return (
-    <motion.section 
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
-      variants={fadeInUp}
-      className="mt-16"
-    >
-      <div className="relative">
-        <div className="absolute -inset-6 bg-muted/50 dark:bg-muted/10 border border-border/50 rounded-lg -z-10" />
-        <div className="relative p-6 md:p-8">
+    <div className="w-full -mx-4 sm:-mx-6">
+      <motion.section 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={fadeInUp}
+        className="mt-16 relative px-4 sm:px-6"
+      >
+        <div className="absolute inset-0 -inset-x-3 -inset-y-2 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800/50 rounded-lg -z-10" />
+        <div className="max-w-3xl mx-auto py-6">
           <motion.div 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="space-y-1 mb-6"
+            className="space-y-1 mb-2"
           >
             <h2 className="text-lg font-medium">
               More on <span className="font-medium text-foreground">{category?.title}</span>
@@ -53,7 +53,7 @@ export default function RelatedNotes({ currentSlug }: RelatedNotesProps) {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-            className="h-px bg-gradient-to-r from-transparent via-border to-transparent mb-6"
+            className="h-px bg-gradient-to-r from-transparent via-border to-transparent mb-3"
           />
       
           <motion.ul 
@@ -92,9 +92,9 @@ export default function RelatedNotes({ currentSlug }: RelatedNotesProps) {
               >
                 <Link 
                   href={`/notes/${note.slug}`} 
-                  className="block group"
+                  className="block group no-underline text-foreground"
                 >
-                  <div className="flex items-start gap-3 p-2 -m-2 rounded-lg transition-colors hover:bg-muted/50">
+                  <div className="flex items-start gap-3 p-2 rounded-lg transition-colors hover:bg-purple-100/50 dark:hover:bg-purple-900/30">
                     <motion.span 
                       className="text-muted-foreground group-hover:text-foreground transition-colors"
                       whileHover={{ rotate: 5, scale: 1.1 }}
@@ -102,12 +102,12 @@ export default function RelatedNotes({ currentSlug }: RelatedNotesProps) {
                       {note.emoji || note.icon}
                     </motion.span>
                     <div>
-                      <span className="font-medium group-hover:underline decoration-1 underline-offset-4">
+                      <span className="font-medium">
                         {note.title}
                       </span>
                       {note.excerpt && (
                         <motion.p 
-                          className="text-sm text-muted-foreground mt-1"
+                          className="text-base text-gray-500 dark:text-gray-400 mt-1 leading-relaxed"
                           initial={{ opacity: 0.8 }}
                           whileHover={{ opacity: 1 }}
                         >
@@ -121,7 +121,7 @@ export default function RelatedNotes({ currentSlug }: RelatedNotesProps) {
             ))}
           </motion.ul>
         </div>
-      </div>
-    </motion.section>
+      </motion.section>
+    </div>
   );
 }
