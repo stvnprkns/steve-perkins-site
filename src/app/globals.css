@@ -49,6 +49,21 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Hover reveal positioning */
+.hover-reveal-left {
+  left: -400px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+}
+
+.hover-reveal-right {
+  right: -300px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

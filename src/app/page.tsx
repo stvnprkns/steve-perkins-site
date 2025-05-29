@@ -3,26 +3,47 @@ import PageHero from '@/components/PageHero';
 import Section from '@/components/layout/Section';
 import { projects, Project } from '@/lib/projects';
 import UnderlineLink from '@/components/UnderlineLink';
+import HoverReveal from '@/components/HoverReveal';
+import React from 'react';
 
 export default function Home() {
   // Get featured projects (first 3 for the home page)
   const featuredProjects: Project[] = projects.slice(0, 3);
 
   return (
-    <div className="w-full">
+    <>
       <PageHero
         title="Steve Perkins"
-        subtitle="Product Design Leader"
+        className="p-8"
+        subtitle={
+          <>
+            <p>Hey, I'm Steve — a design leader, 3x founding designer, and someone who's spent the last decade building clarity where there wasn't any.</p>
+            <p>I've helped launch 50+ products across startups and scale-ups — from Designer on <a href='https://www.intuitlabs.com/' className='text-foreground/80 hover:text-foreground underline underline-offset-4'>Intuit Labs</a> ↗, to Head of Design at <a href='https://www.rudderstack.com/' className='text-foreground/80 hover:text-foreground underline underline-offset-4'>RudderStack</a> ↗, to Founding Designer at <a href='https://www.tigerconnect.com/' className='text-foreground/80 hover:text-foreground underline underline-offset-4'>TigerConnect</a> ↗. I care a lot about thoughtful systems, fast feedback loops, and design that earns trust with customers.</p>
+            <p>But product isn't the only thing I build. I've got 
+              <HoverReveal image='/hover-reveals/kids-dogs.png' alt='Family and pets' className='relative' display='inline'>
+                <UnderlineLink href='#' className='inline-block'>
+                  twin 4-year-olds and three dogs
+                </UnderlineLink>
+              </HoverReveal>, and a running list of every Steve who's ever appeared on TV—which, yes, is one of several
+              <Link href='/projects' className='text-foreground/80 hover:text-foreground'>
+                side projects
+              </Link>.
+            </p>
+            <p>I like my teams opinionated, my design work honest and fast-moving, and my
+              <HoverReveal image='/hover-reveals/nba.png' alt='NBA players' className='relative' display='inline'>
+                <UnderlineLink href='#' className='inline-block'>
+                  basketball players from the mid-2000s
+                </UnderlineLink>
+              </HoverReveal>.
+            </p>
+          </>
+        }
         variant="narrow"
         padding="lg"
       />
 
       {/* Case Studies Section */}
       <Section variant="narrow" className="py-16" noDivider>
-        <div className="mb-12">
-          <h2 className="text-2xl font-medium">Case Studies</h2>
-        </div>
-
         <div className="space-y-16 w-full">
           {featuredProjects.map((project) => (
             <article key={project.slug} className="w-full group">
@@ -33,7 +54,7 @@ export default function Home() {
                     {project.timeframe}
                   </div>
                   <UnderlineLink href={`/projects/${project.slug}`}>
-                    <h3 className="text-xl font-medium">
+                    <h3 className="text-base font-medium">
                       {project.title}
                     </h3>
                   </UnderlineLink>
@@ -43,14 +64,14 @@ export default function Home() {
                 </div>
               </div>
               
-              {/* Project Images - Full width container */}
-              <div className="w-full mt-8 -mx-4 sm:-mx-6 md:mx-0">
+              {/* Project Images - Centered container */}
+              <div className="w-full mt-8 relative mx-auto max-w-[1200px] px-4 sm:px-6 md:px-0">
                 <UnderlineLink href={`/projects/${project.slug}`}>
-                  <div className="block w-full">
+                  <div className="block w-full relative left-0 right-0">
                     {Array.isArray(project.images) ? (
                       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 px-4 sm:px-6 md:px-0">
                         {project.images.slice(0, 2).map((img, index) => (
-                          <div key={index} className="relative aspect-video bg-muted/20 rounded-lg overflow-hidden w-full">
+                          <div key={index} className="relative aspect-[3/2] bg-muted/20 rounded-lg overflow-hidden w-full">
                             <img 
                               src={img} 
                               alt={`${project.title} ${index + 1}`}
@@ -60,7 +81,7 @@ export default function Home() {
                         ))}
                       </div>
                     ) : (
-                      <div className="relative aspect-video bg-muted/20 rounded-lg overflow-hidden w-full">
+                      <div className="relative aspect-[3/2] bg-muted/20 rounded-lg overflow-hidden w-full">
                         <img 
                           src={project.image} 
                           alt={project.title}
@@ -74,22 +95,22 @@ export default function Home() {
             </article>
           ))}
         </div>
-
       </Section>
-
-      {/* Latest Notes Section */}
       <Section variant="narrow" className="py-16 bg-muted/10" noDivider>
         <div className="mb-8">
           <h2 className="text-2xl font-medium mb-2">Latest Notes</h2>
-          <div className="text-muted-foreground max-w-2xl">
-            {"This is where I put the half-formed stuff. Ideas I'm wrestling with, patterns I keep noticing, questions I haven't fully answered. You won't find polish here — just the starting points of clarity.\n\nSometimes it's a hunch. Sometimes it's something a customer said that won't leave my head. Sometimes it's a note to my future self, written out loud.\n\nIf you're working through the same kinds of problems — or come at them from the other side — I'd love to hear from you.".split('\n\n').map((paragraph, index) => (
+          <div className="prose prose-lg text-muted-foreground">
+            {[
+              "This is where I put the half-formed stuff. Ideas I'm wrestling with, patterns I keep noticing, questions I haven't fully answered. You won't find polish here — just the starting points of clarity.",
+              "Sometimes it's a hunch. Sometimes it's something a customer said that won't leave my head. Sometimes it's a note to my future self, written out loud.",
+              "If you're working through the same kinds of problems — or come at them from the other side — I'd love to hear from you."
+            ].map((paragraph, index) => (
               <p key={index} className="mb-2">
                 {paragraph}
               </p>
             ))}
           </div>
         </div>
-
         <div className="grid gap-6">
           {/* Replace with your actual notes data */}
           <div className="p-6 rounded-lg hover:bg-foreground/5 transition-colors border">
@@ -123,6 +144,6 @@ export default function Home() {
           </div>
         </div>
       </Section>
-    </div>
+    </>
   );
 }
