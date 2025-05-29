@@ -71,6 +71,19 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Global link styles */
+a:not(nav a) {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: #d1d5db; /* gray-300 */
+  transition: text-decoration-color 0.2s ease;
+}
+
+a:not(nav a):hover {
+  text-decoration-color: #5b21b6; /* purple-800 */
+}
+
 /* Animation classes */
 .animate-fade-in {
   animation: fadeIn 0.6s ease-out forwards;
