@@ -7,6 +7,7 @@ export type Project = {
   image: string;
   images?: string[];
   body: string;
+  tags?: string[];
 };
 
 export const projects: Project[] = [
@@ -16,6 +17,7 @@ export const projects: Project[] = [
     role: "Product Designer",
     timeframe: "2015–2017",
     summary: "How Intuit QuickBooks matched small businesses with CPAs to improve survival rates, using user research, lean product experimentation, and measurable impact.",
+    tags: ["Product Design", "User Research", "Team Leadership"],
     image: "/images/quickbooks-preview.webp",
     images: [
       "/images/coworkers/amy-ng.jpg",

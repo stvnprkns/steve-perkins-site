@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 
 const navItems = [
   { name: 'Home', path: '/' },
-  { name: 'Projects', path: '/projects' },
+  { name: 'Side Projects', path: '/sideprojects' },
   { name: 'Notes', path: '/notes' },
   { name: 'About', path: '/about' },
 ];
@@ -15,12 +15,12 @@ export default function Nav() {
   
   return (
     <nav className="w-full">
-      <div className="max-w-prose mx-auto px-4 sm:px-6 py-6 flex justify-between items-center">
+      <div className="max-w-prose mx-auto px-4 sm:px-6 py-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-0">
         <Link href="/" className="font-bold text-foreground hover:opacity-80 transition-opacity">
           Steve Perkins
         </Link>
         
-        <div className="flex gap-8">
+        <div className="flex flex-wrap gap-4 sm:gap-8">
           {navItems.map((item) => {
             const isActive = pathname === item.path || 
                          (item.path !== '/' && pathname?.startsWith(item.path));
