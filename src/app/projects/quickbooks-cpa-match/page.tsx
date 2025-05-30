@@ -5,6 +5,8 @@ import TalkingShop from './TalkingShop';
 import CreatingExperiment from './CreatingExperiment';
 import WhatWeLearned from './WhatWeLearned';
 import Outcomes from './Outcomes';
+import CaseStudyNavigation from '@/components/case-study/CaseStudyNavigation';
+import { projects } from '@/lib/projects';
 
 export const metadata: Metadata = {
   title: 'Making Small Business Connections with CPAs',
@@ -52,6 +54,9 @@ export default function QuickBooksCPAMatch() {
 
           <Section id="outcomes" variant="wide">
             <Outcomes />
+            <div className="mt-16">
+              <CaseStudyNavigation currentSlug="quickbooks-cpa-match" projects={projects} />
+            </div>
           </Section>
         </div>
       </CaseStudyGrid>

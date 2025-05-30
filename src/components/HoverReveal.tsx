@@ -38,19 +38,19 @@ export default function HoverReveal({
       tabIndex={0}
     >
       {children}
-      <div 
+      <span 
         className={`
           absolute top-1/2 -translate-y-1/2 ${positionClass}
           transition-opacity duration-200 ease-in-out
           ${isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'}
           bg-background rounded-lg shadow-lg z-50
           border border-border/20 p-2
-          max-w-[90vw] max-h-[90vh] w-auto
-          flex items-center justify-center
+          max-w-[90vw] max-h-[90vh] inline-flex
+          items-center justify-center
           overflow-visible
         `}
       >
-        <div className="relative w-auto h-auto max-w-[80vw] max-h-[80vh]">
+        <span className="relative w-auto h-auto max-w-[80vw] max-h-[80vh] inline-block">
           <Image
             src={image}
             alt={alt}
@@ -66,8 +66,8 @@ export default function HoverReveal({
             }}
             sizes="(max-width: 768px) 90vw, 1200px"
           />
-        </div>
-      </div>
+        </span>
+      </span>
     </span>
   );
 }

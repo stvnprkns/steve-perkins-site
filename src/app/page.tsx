@@ -21,33 +21,34 @@ export default function Home() {
             <br />
             <p>I've helped launch 50+ products across startups and scale-ups — from Designer on <a href='https://www.intuitlabs.com/' className='inline-flex items-center'>Intuit Labs <span className='ml-1'>↗</span></a>, to Head of Design at <a href='https://www.rudderstack.com/' className='inline-flex items-center'>RudderStack <span className='ml-1'>↗</span></a>, to Founding Designer at <a href='https://www.tigerconnect.com/' className='inline-flex items-center'>TigerConnect <span className='ml-1'>↗</span></a>. I care a lot about thoughtful systems, fast feedback loops, and design that earns trust with customers.</p>
             <br />
-            <p>But product isn't the only thing I build. I've got 
-              <HoverReveal 
-                image='/images/hover-reveals/kids-dogs.png' 
-                alt='Family and pets'
-                position='left'
-                className='mx-1'
-              >
-                <UnderlineLink href='#' className='inline-block'>
-                  twin 4-year-olds and three dogs
-                </UnderlineLink>
-              </HoverReveal>, and a running list of every Steve who's ever appeared on TV—which, yes, is one of several <Link href='/sideprojects' className='inline-flex items-center'>
-                side projects
-              </Link>.
-            </p>
-            <br />
-            <p>I like my teams opinionated, my design work honest and fast-moving, and my
-              <HoverReveal 
-                image='/images/hover-reveals/nba.webp' 
-                alt='NBA players from the mid-2000s'
-                position='right'
-                className='mx-1'
-              >
-                <UnderlineLink href='#' className='inline-block'>
-                  basketball players from the mid-2000s
-                </UnderlineLink>
-              </HoverReveal>.
-            </p>
+            <div className="space-y-6">
+              <p>But product isn't the only thing I build. I've got 
+                <HoverReveal 
+                  image='/images/hover-reveals/kids-dogs.png' 
+                  alt='Family and pets'
+                  position='left'
+                  className='mx-1 inline-block'
+                >
+                  <UnderlineLink href='#' className='inline-block'>
+                    twin 4-year-olds and three dogs
+                  </UnderlineLink>
+                </HoverReveal>, and a running list of every Steve who's ever appeared on TV—which, yes, is one of several <Link href='/sideprojects' className='inline-flex items-center'>
+                  side projects
+                </Link>.
+              </p>
+              <p>I like my teams opinionated, my design work honest and fast-moving, and my{' '}
+                <HoverReveal 
+                  image='/images/hover-reveals/nba.webp' 
+                  alt='NBA players from the mid-2000s'
+                  position='right'
+                  className='mx-1 inline-block'
+                >
+                  <UnderlineLink href='#' className='inline-block'>
+                    basketball players from the mid-2000s
+                  </UnderlineLink>
+                </HoverReveal>.
+              </p>
+            </div>
           </>
         }
         variant="narrow"

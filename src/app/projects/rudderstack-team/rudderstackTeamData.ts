@@ -37,11 +37,11 @@ export const rudderstackTeamData: RudderstackTeamData = {
   summary: "Building a design team from the ground up at a fast-growing startup comes with unique challenges and opportunities. This is the story of how we established design as a strategic partner at RudderStack and created a culture of collaboration and innovation.",
   outcomes: {
     metrics: [
-      { value: "5x", label: "Increase in design output" },
-      { value: "90%", label: "Reduction in design debt" },
-      { value: "4.9/5", label: "Team satisfaction score" },
-      { value: "100%", label: "Feature adoption rate" }
+      { value: "+6", label: "Point improvement in System Usability Score" },
+      { value: "20%", label: "Reduction in design-related bugs" },
+      { value: "40%", label: "Reduction in design cycle times" },
+      { value: "60%", label: "More time spent with customers" }
     ],
-    summary: "By focusing on building a strong team culture and establishing clear processes, we were able to significantly increase our design output and quality while maintaining high team satisfaction."
+    summary: "Through collaborative processes and a focus on user needs, we significantly improved product usability and design efficiency."
   }
 };

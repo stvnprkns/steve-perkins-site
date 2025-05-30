@@ -9,6 +9,8 @@ import KeyMetrics from '@/components/KeyMetrics';
 import { rudderstackTeamData } from './rudderstackTeamData';
 import { TeamList } from '@/components/TeamMember';
 import { rudderstackTeam } from '@/types/team';
+import { projects } from '@/lib/projects';
+import CaseStudyNavigation from '@/components/case-study/CaseStudyNavigation';
 
 export const metadata: Metadata = {
   title: 'Founding a Design Team and Growing a Culture',
@@ -88,6 +90,12 @@ export default function RudderstackTeamPage() {
           <p className="text-base leading-loose text-text-base max-w-prose mx-auto mt-4 mb-8">
             {rudderstackTeamData.outcomes.summary}
           </p>
+          <div className="mt-16">
+            <CaseStudyNavigation 
+              currentSlug="rudderstack-team" 
+              projects={projects} 
+            />
+          </div>
         </Section>
       </div>
     </CaseStudyGrid>

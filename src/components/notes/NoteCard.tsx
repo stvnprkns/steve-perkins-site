@@ -2,8 +2,6 @@ import { Note } from '@/lib/markdown';
 import { getCategoryByKey } from '@/lib/categories';
 import { FC } from 'react';
 import Link from 'next/link';
-import { ExtendedCard } from '../ui/ExtendedCard';
-import UnderlineLink from '../UnderlineLink';
 
 // Helper function to convert newlines to paragraphs
 const formatExcerpt = (text: string) => {
@@ -24,23 +22,20 @@ interface NoteCardProps {
 }
 
 export const NoteCard: FC<NoteCardProps> = ({ note, className = '', href = '#' }) => {
-  const category = getCategoryByKey(note.category);
+  const category = note.category ? getCategoryByKey(note.category) : null;
   
   const content = (
-    <div className="relative group">
-      <div className="flex items-start justify-between gap-4">
+    <div className="relative group h-full">
+      <div className="flex items-start justify-between gap-4 h-full">
         <div className="flex-1">
-          <UnderlineLink href={href}>
-            <h3 className="text-lg font-medium">
-              {note.title}
-            </h3>
-          </UnderlineLink>
+          <h3 className="text-lg font-medium text-foreground">
+            {note.title}
+          </h3>
           {note.excerpt && (
-            <p className="text-sm text-muted-foreground mb-1 line-clamp-2">
+            <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
               {note.excerpt}
             </p>
           )}
-          
           {category && (
             <div className="flex items-center gap-2 mt-3">
               <span className="text-xs px-2.5 py-1 bg-muted/50 dark:bg-muted/20 rounded-full text-foreground/80">
@@ -56,18 +51,22 @@ export const NoteCard: FC<NoteCardProps> = ({ note, className = '', href = '#' }
     </div>
   );
 
+  const cardContent = (
+    <div className="h-full border border-purple-200 dark:border-purple-800/50 rounded-lg p-6 transition-colors hover:bg-purple-50 dark:hover:bg-purple-900/30">
+      {content}
+    </div>
+  );
+
   return (
-    <ExtendedCard className={className}>
+    <div className={`h-full border border-purple-200 dark:border-purple-800/50 rounded-lg transition-colors hover:bg-purple-50 dark:hover:bg-purple-900/30 ${className}`}>
       {href ? (
-        <Link href={href} className="block p-6">
-          {content}
+        <Link href={href} className="block h-full">
+          {cardContent}
         </Link>
       ) : (
-        <div className="p-6">
-          {content}
-        </div>
+        cardContent
       )}
-    </ExtendedCard>
+    </div>
   );
 };
 

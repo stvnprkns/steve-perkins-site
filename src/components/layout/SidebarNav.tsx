@@ -25,7 +25,7 @@ export default function SidebarNav({ items, className = '' }: SidebarNavProps) {
           key={item.id}
           href={`#${item.id}`}
           aria-current={active === item.id ? "true" : undefined}
-          className={`block transition-all hover:underline ${
+          className={`block transition-all hover:underline whitespace-nowrap ${
             active === item.id ? "text-black font-semibold" : "text-muted"
           }`}
           style={{ scrollBehavior: "smooth" }}

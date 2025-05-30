@@ -5,6 +5,8 @@ import Problem from './Problem';
 import Approach from './Approach';
 import FormReduction from './FormReduction';
 import Outcomes from './Outcomes';
+import CaseStudyNavigation from '@/components/case-study/CaseStudyNavigation';
+import { projects } from '@/lib/projects';
 
 export const metadata: Metadata = {
   title: 'RudderStack - Redesigning the Developer Experience',
@@ -47,6 +49,9 @@ export default function RudderstackPage() {
         
         <Section id="outcomes" className="mb-16">
           <Outcomes />
+          <div className="mt-16">
+            <CaseStudyNavigation currentSlug="rudderstack" projects={projects} />
+          </div>
         </Section>
       </div>
     </CaseStudyGrid>

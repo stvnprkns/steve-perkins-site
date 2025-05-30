@@ -1,5 +1,5 @@
 import * as React from "react";
-import { getProjectBySlug } from '../../../lib/projects';
+import { getProjectBySlug, projects } from '../../../lib/projects';
 import Section from '@/components/layout/Section';
 // Import from the new location for the main RudderStack case study
 import Intro from '../rudderstack/Intro';
@@ -12,6 +12,7 @@ import Outcomes from '../rudderstack/Outcomes';
 import { rudderstackData } from '../rudderstack/rudderstackData';
 import PageHeader from "@/components/PageHeader";
 import ScrollProgressBar from '@/components/ScrollProgressBar';
+import CaseStudyNavigation from '@/components/case-study/CaseStudyNavigation';
 
 export default function ProjectPage({ params }: { params: { slug: string } }) {
   if (params.slug === "rudderstack") {
@@ -29,6 +30,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               <FormReduction />
               <ConfigDesign />
               <Outcomes />
+            <CaseStudyNavigation currentSlug={params.slug} projects={projects} className="mt-16" />
             </Section>
           </main>
         </div>

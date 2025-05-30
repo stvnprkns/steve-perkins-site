@@ -20,35 +20,62 @@ export interface Note {
 
 export async function getNoteBySlug(slug: string): Promise<Note | null> {
   try {
+    console.log(`Looking for note with slug: ${slug}`);
     const fullPath = path.join(NOTES_DIRECTORY, `${slug}.md`);
-    const fileContents = await fs.readFile(fullPath, 'utf8');
-    const { data, content } = matter(fileContents);
+    console.log(`Looking for note at path: ${fullPath}`);
     
-    return {
-      ...data,
-      slug,
-      body: content,
-    } as Note;
+    try {
+      const fileContents = await fs.readFile(fullPath, 'utf8');
+      const { data, content } = matter(fileContents);
+      
+      const note = {
+        ...data,
+        slug,
+        body: content,
+      } as Note;
+      
+      console.log(`Successfully loaded note: ${slug}`);
+      return note;
+    } catch (fileError) {
+      console.error(`Error reading file for note ${slug}:`, fileError);
+      return null;
+    }
   } catch (error) {
-    console.error(`Error reading note ${slug}:`, error);
+    console.error(`Unexpected error in getNoteBySlug for ${slug}:`, error);
     return null;
   }
 }
 
 export async function getAllNotes(): Promise<Note[]> {
   try {
+    console.log(`Reading notes from directory: ${NOTES_DIRECTORY}`);
     const fileNames = await fs.readdir(NOTES_DIRECTORY);
+    console.log(`Found ${fileNames.length} files in directory`);
+    
+    const mdFiles = fileNames.filter((fileName: string) => fileName.endsWith('.md'));
+    console.log(`Found ${mdFiles.length} markdown files`);
+    
     const notes = await Promise.all(
-      fileNames
-        .filter((fileName: string) => fileName.endsWith('.md'))
-        .map(async (fileName: string) => {
-          const slug = fileName.replace(/\.md$/, '');
+      mdFiles.map(async (fileName: string) => {
+        const slug = fileName.replace(/\.md$/, '');
+        console.log(`Processing file: ${fileName} (slug: ${slug})`);
+        try {
           const note = await getNoteBySlug(slug);
-          if (!note) throw new Error(`Failed to load note: ${slug}`);
+          if (!note) {
+            console.warn(`Failed to load note: ${slug}`);
+            return null;
+          }
           return note;
-        })
+        } catch (error) {
+          console.error(`Error processing file ${fileName}:`, error);
+          return null;
+        }
+      })
     );
-    return notes.filter(Boolean) as Note[];
+    
+    const validNotes = notes.filter(Boolean) as Note[];
+    console.log(`Successfully loaded ${validNotes.length} valid notes`);
+    return validNotes;
   } catch (error) {
     console.error('Error reading notes directory:', error);
     return [];
