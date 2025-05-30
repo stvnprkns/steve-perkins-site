@@ -1,27 +1,73 @@
+'use client';
+
 import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
 
 interface HoverRevealProps {
   children: React.ReactNode;
   image: string;
   alt: string;
   className?: string;
-  display?: 'inline' | 'block';
+  position?: 'left' | 'right';
 }
 
-export default function HoverReveal({ children, image, alt, className = '', display = 'inline' }: HoverRevealProps) {
+export default function HoverReveal({ 
+  children, 
+  image, 
+  alt, 
+  className = '', 
+  position = 'right' 
+}: HoverRevealProps) {
+  const [isHovered, setIsHovered] = useState(false);
+  const containerRef = useRef<HTMLSpanElement>(null);
+  const [positionClass, setPositionClass] = useState('');
+
+  // Set position class based on prop
+  useEffect(() => {
+    setPositionClass(position === 'left' ? 'right-full mr-4' : 'left-full ml-4');
+  }, [position]);
+
   return (
-    <span className={`group relative ${display === 'inline' ? 'inline-block' : 'block'} ${className}`}>
+    <span 
+      ref={containerRef}
+      className={`relative inline-block ${className}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsHovered(true)}
+      onBlur={() => setIsHovered(false)}
+      tabIndex={0}
+    >
       {children}
-      <span className={`absolute opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none z-50 ${className.includes('kids-dogs') ? 'hover-reveal-left' : 'hover-reveal-right'}`}>
-        <span className="relative w-24 h-24 bg-muted/20 rounded-lg overflow-hidden z-50">
+      <div 
+        className={`
+          absolute top-1/2 -translate-y-1/2 ${positionClass}
+          transition-opacity duration-200 ease-in-out
+          ${isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'}
+          bg-background rounded-lg shadow-lg z-50
+          border border-border/20 p-2
+          max-w-[90vw] max-h-[90vh] w-auto
+          flex items-center justify-center
+          overflow-visible
+        `}
+      >
+        <div className="relative w-auto h-auto max-w-[80vw] max-h-[80vh]">
           <Image
             src={image}
             alt={alt}
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+            width={1200}
+            height={800}
+            className="w-auto h-auto max-w-[80vw] max-h-[80vh] object-scale-down"
+            style={{
+              width: 'auto',
+              height: 'auto',
+              maxWidth: '80vw',
+              maxHeight: '80vh',
+              objectFit: 'scale-down'
+            }}
+            sizes="(max-width: 768px) 90vw, 1200px"
           />
-        </span>
-      </span>
+        </div>
+      </div>
     </span>
   );
 }

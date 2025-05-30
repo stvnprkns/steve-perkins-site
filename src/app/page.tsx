@@ -22,7 +22,12 @@ export default function Home() {
             <p>I've helped launch 50+ products across startups and scale-ups — from Designer on <a href='https://www.intuitlabs.com/' className='inline-flex items-center'>Intuit Labs <span className='ml-1'>↗</span></a>, to Head of Design at <a href='https://www.rudderstack.com/' className='inline-flex items-center'>RudderStack <span className='ml-1'>↗</span></a>, to Founding Designer at <a href='https://www.tigerconnect.com/' className='inline-flex items-center'>TigerConnect <span className='ml-1'>↗</span></a>. I care a lot about thoughtful systems, fast feedback loops, and design that earns trust with customers.</p>
             <br />
             <p>But product isn't the only thing I build. I've got 
-              <HoverReveal image='/hover-reveals/kids-dogs.png' alt='Family and pets' className='relative' display='inline'>
+              <HoverReveal 
+                image='/images/hover-reveals/kids-dogs.png' 
+                alt='Family and pets'
+                position='left'
+                className='mx-1'
+              >
                 <UnderlineLink href='#' className='inline-block'>
                   twin 4-year-olds and three dogs
                 </UnderlineLink>
@@ -32,9 +37,14 @@ export default function Home() {
             </p>
             <br />
             <p>I like my teams opinionated, my design work honest and fast-moving, and my
-              <HoverReveal image='/hover-reveals/nba.png' alt='NBA players' className='relative' display='inline'>
+              <HoverReveal 
+                image='/images/hover-reveals/nba.webp' 
+                alt='NBA players from the mid-2000s'
+                position='right'
+                className='mx-1'
+              >
                 <UnderlineLink href='#' className='inline-block'>
-                   basketball players from the mid-2000s
+                  basketball players from the mid-2000s
                 </UnderlineLink>
               </HoverReveal>.
             </p>
