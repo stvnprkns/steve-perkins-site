@@ -13,16 +13,11 @@ interface CategoryCount {
 
 export const revalidate = 3600; // Revalidate at most every hour
 
-type SearchParams = {
-  category?: string | string[];
-  [key: string]: string | string[] | undefined;
-};
+interface PageProps {
+  searchParams: { category?: string | string[] };
+}
 
-export default async function NotesPage({
-  searchParams,
-}: {
-  searchParams?: SearchParams;
-}) {
+export default async function NotesPage({ searchParams = {} }: PageProps) {
   // Safely extract the category parameter
   const categoryParam = searchParams?.category;
   const selectedCategory = Array.isArray(categoryParam) 

@@ -3,9 +3,83 @@ import PageHero from '@/components/PageHero';
 import Section from '@/components/layout/Section';
 import { projects, Project } from '@/lib/projects';
 import UnderlineLink from '@/components/UnderlineLink';
-import HoverReveal from '@/components/HoverReveal';
+import HoverReveal, { HoverImage } from '@/components/HoverReveal';
 import Image from 'next/image';
 import React from 'react';
+
+// Image cluster configurations
+const familyImages: HoverImage[] = [
+  {
+    src: '/images/hover-reveals/family-1.jpg',
+    alt: 'Family scene with toys',
+    width: 200,
+    height: 160,
+    initial: { x: -40, y: -60, scale: 0.9, rotate: -5 },
+    animate: { x: -180, y: -40, scale: 1, rotate: -5 }
+  },
+  {
+    src: '/images/hover-reveals/dogs-1.jpg',
+    alt: 'Dogs playing',
+    width: 180,
+    height: 140,
+    initial: { x: 60, y: 60, scale: 0.8, rotate: 3 },
+    animate: { x: 100, y: 40, scale: 0.9, rotate: 5 }
+  }
+];
+
+const tvSteveImages: HoverImage[] = [
+  {
+    src: '/images/hover-reveals/steve1.webp',
+    alt: 'Steve on TV 1',
+    width: 200,
+    height: 150,
+    initial: { x: -100, y: -60, scale: 1, rotate: -5 },
+    animate: { x: -220, y: -40, scale: 1, rotate: -5 }
+  },
+  {
+    src: '/images/hover-reveals/steve2.webp',
+    alt: 'Steve on TV 2',
+    width: 220,
+    height: 160,
+    initial: { x: 0, y: 0, scale: 1, rotate: 0 },
+    animate: { x: 0, y: 40, scale: 1, rotate: 0 }
+  },
+  {
+    src: '/images/hover-reveals/steve3.webp',
+    alt: 'Steve on TV 3',
+    width: 200,
+    height: 150,
+    initial: { x: 100, y: 60, scale: 1, rotate: 5 },
+    animate: { x: 200, y: 40, scale: 1, rotate: 5 }
+  }
+];
+
+const basketballImages: HoverImage[] = [
+  {
+    src: '/images/hover-reveals/ben-wallace.webp',
+    alt: 'Ben Wallace',
+    width: 240,
+    height: 160,
+    initial: { x: 0, y: 0, scale: 1, rotate: 0 },
+    animate: { x: 0, y: 20, scale: 1, rotate: 0 }
+  },
+  {
+    src: '/images/hover-reveals/dirk.webp',
+    alt: 'Dirk Nowitzki',
+    width: 180,
+    height: 240,
+    initial: { x: -80, y: -40, scale: 1, rotate: -5 },
+    animate: { x: -180, y: -20, scale: 1, rotate: -5 }
+  },
+  {
+    src: '/images/hover-reveals/kobe.webp',
+    alt: 'Kobe Bryant',
+    width: 180,
+    height: 240,
+    initial: { x: 160, y: 40, scale: 1, rotate: 5 },
+    animate: { x: 240, y: 20, scale: 1, rotate: 5 }
+  }
+];
 
 export default function Home() {
   // Get all projects for the home page
@@ -25,22 +99,29 @@ export default function Home() {
             <div className="space-y-6">
               <p>But product isn&apos;t the only thing I build. I&apos;ve got 
                 <HoverReveal 
-                  image='/images/hover-reveals/kids-dogs.png' 
-                  alt='Family and pets'
+                  images={familyImages}
                   position='left'
                   className='mx-1 inline-block'
                 >
                   <UnderlineLink href='#' className='inline-block'>
                     twin 4-year-olds and three dogs
                   </UnderlineLink>
-                </HoverReveal>, and a running list of every Steve who&apos;s ever appeared on TV—which, yes, is one of several <Link href='/sideprojects' className='inline-flex items-center'>
+                </HoverReveal>, and a running list of every 
+                <HoverReveal 
+                  images={tvSteveImages}
+                  position='right'
+                  className='mx-1 inline-block'
+                >
+                  <UnderlineLink href='#' className='inline-block'>
+                    Steve who&apos;s ever appeared on TV
+                  </UnderlineLink>
+                </HoverReveal>—which, yes, is one of several <Link href='/sideprojects' className='inline-flex items-center'>
                   side projects
                 </Link>.
               </p>
               <p>I like my teams opinionated, my design work honest and fast-moving, and my{' '}
                 <HoverReveal 
-                  image='/images/hover-reveals/nba.webp' 
-                  alt='NBA players from the mid-2000s'
+                  images={basketballImages}
                   position='right'
                   className='mx-1 inline-block'
                 >

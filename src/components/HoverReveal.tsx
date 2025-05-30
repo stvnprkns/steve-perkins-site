@@ -1,12 +1,11 @@
 'use client';
 
-import Image from 'next/image';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { HoverImage, HoverImageCluster } from './HoverImageCluster';
 
 interface HoverRevealProps {
   children: React.ReactNode;
-  image: string;
-  alt: string;
+  images: HoverImage[];
   className?: string;
   position?: 'left' | 'right';
   width?: number;
@@ -15,25 +14,20 @@ interface HoverRevealProps {
 
 export default function HoverReveal({ 
   children, 
-  image, 
-  alt, 
+  images, 
   className = '', 
   position = 'right',
-  width = 400,
-  height = 300
+  width = 300,
+  height = 200
 }: HoverRevealProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const containerRef = useRef<HTMLSpanElement>(null);
   const hoverTimeout = useRef<number | null>(null);
-
-  // Memoize position class to prevent recalculation on every render
-  const positionClass = useMemo(
-    () => position === 'left' ? 'right-full mr-4' : 'left-full ml-4',
-    [position]
-  );
 
   // Debounced hover effect with cleanup
   const handleMouseEnter = useCallback((): void => {
+    if (hoverTimeout.current) {
+      window.clearTimeout(hoverTimeout.current);
+    }
     hoverTimeout.current = window.setTimeout(() => {
       setIsHovered(true);
     }, 100);
@@ -47,38 +41,17 @@ export default function HoverReveal({
     setIsHovered(false);
   }, []);
 
-  // Clean up timeouts on unmount and when dependencies change
+  // Clean up timeouts on unmount
   useEffect(() => {
     return () => {
       if (hoverTimeout.current) {
         window.clearTimeout(hoverTimeout.current);
-        hoverTimeout.current = null;
       }
     };
   }, []);
 
-  // Memoize the image element to prevent unnecessary re-renders
-  const imageElement = useMemo(() => (
-    <Image
-      src={image}
-      alt={alt}
-      width={width}
-      height={height}
-      className="max-w-none"
-      loading="lazy"
-      quality={85}
-      style={{
-        maxWidth: 'min(90vw, 800px)',
-        maxHeight: '90vh',
-        width: 'auto',
-        height: 'auto',
-      }}
-    />
-  ), [image, alt, width, height]);
-
   return (
     <span 
-      ref={containerRef}
       className={`relative inline-block ${className}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -87,23 +60,13 @@ export default function HoverReveal({
       tabIndex={0}
     >
       {children}
-      <span 
-        className={`
-          absolute top-1/2 -translate-y-1/2 ${positionClass}
-          transition-opacity duration-200 ease-in-out
-          ${isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'}
-          bg-background rounded-lg shadow-lg z-50
-          border border-border/20 p-2
-          max-w-[90vw] max-h-[90vh] inline-flex
-          items-center justify-center
-          overflow-visible
-          will-change-transform,opacity
-        `}
-      >
-        <span className="relative w-auto h-auto max-w-[80vw] max-h-[80vh] inline-block">
-          {imageElement}
-        </span>
-      </span>
+      <HoverImageCluster 
+        images={images}
+        isVisible={isHovered}
+        position={position}
+      />
     </span>
   );
 }
+
+export type { HoverImage };
