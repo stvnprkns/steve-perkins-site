@@ -24,10 +24,10 @@ export default function WhatWeLearned() {
         </div>
 
         <blockquote className="border-l-4 border-primary pl-6 py-2 my-8 text-text-base/80 italic">
-          "Running a business is already hard, but doing so while being the bookkeeper makes it nearly impossible to be successful. 
+          &ldquo;Running a business is already hard, but doing so while being the bookkeeper makes it nearly impossible to be successful. 
           After the experiment launched, the response was surprising. Customer feedback highlighted immediate benefits: they were 
           saving money on their taxes, finding more time and energy to devote to their businesses, and realizing how valuable 
-          tax professionals were in making daily financial decisions."
+          tax professionals were in making daily financial decisions.&rdquo;
         </blockquote>
       </div>
     </>

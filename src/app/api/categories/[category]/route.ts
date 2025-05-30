@@ -1,15 +1,10 @@
 import { NextResponse } from 'next/server';
 import { getNotesByCategory } from '@/lib/server/markdown-utils';
 
-export async function GET(
-  request: Request,
-  { params }: { params: { category: string } }
-) {
-  // Ensure params are properly awaited/destructured
-  const { category } = params;
+export async function GET(request: Request, context: any) {
   try {
-    const decodedCategory = decodeURIComponent(category);
-    const notes = await getNotesByCategory(decodedCategory);
+    const { category } = context.params;
+    const notes = await getNotesByCategory(category);
     return NextResponse.json(notes);
   } catch (error) {
     return NextResponse.json(
@@ -18,3 +13,5 @@ export async function GET(
     );
   }
 }
+
+export const dynamic = 'force-dynamic';

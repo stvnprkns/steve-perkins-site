@@ -1,8 +1,12 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { getOrSet } from '../cache';
 
 const NOTES_DIRECTORY = path.join(process.cwd(), 'content/notes');
+
+// Cache TTL in seconds
+const CACHE_TTL = process.env.NODE_ENV === 'production' ? 3600 : 60; // 1 hour in production, 1 min in dev
 
 export interface Note {
   slug: string;
@@ -47,40 +51,45 @@ export async function getNoteBySlug(slug: string): Promise<Note | null> {
 }
 
 export async function getAllNotes(): Promise<Note[]> {
-  try {
-    console.log(`Reading notes from directory: ${NOTES_DIRECTORY}`);
-    const fileNames = await fs.readdir(NOTES_DIRECTORY);
-    console.log(`Found ${fileNames.length} files in directory`);
-    
-    const mdFiles = fileNames.filter((fileName: string) => fileName.endsWith('.md'));
-    console.log(`Found ${mdFiles.length} markdown files`);
-    
-    const notes = await Promise.all(
-      mdFiles.map(async (fileName: string) => {
-        const slug = fileName.replace(/\.md$/, '');
-        console.log(`Processing file: ${fileName} (slug: ${slug})`);
-        try {
-          const note = await getNoteBySlug(slug);
-          if (!note) {
-            console.warn(`Failed to load note: ${slug}`);
-            return null;
-          }
-          return note;
-        } catch (error) {
-          console.error(`Error processing file ${fileName}:`, error);
-          return null;
-        }
-      })
-    );
-    
-    const validNotes = notes.filter(Boolean) as Note[];
-    console.log(`Successfully loaded ${validNotes.length} valid notes`);
-    return validNotes;
-  } catch (error) {
-    console.error('Error reading notes directory:', error);
-    return [];
+  return getOrSet('all-notes', async () => {
+    try {
+      console.log(`[CACHE MISS] Reading notes from directory: ${NOTES_DIRECTORY}`);
+      const filenames = await fs.readdir(NOTES_DIRECTORY);
+      
+      const notes = await Promise.all(
+        filenames
+          .filter(filename => filename.endsWith('.md'))
+          .map(async (filename) => {
+            const slug = filename.replace(/\.md$/, '');
+            const filePath = path.join(NOTES_DIRECTORY, filename);
+            try {
+              const fileContents = await fs.readFile(filePath, 'utf8');
+              const { data, content } = matter(fileContents);
+              return { ...data, slug, body: content } as Note;
+            } catch (error) {
+              console.error(`Error reading note ${slug}:`, error);
+              return null;
+            }
+          })
+      );
+
+      // Filter out any null values and sort by date (newest first)
+      const validNotes = notes.filter((note): note is Note => note !== null);
+      
+      validNotes.sort((a, b) => {
+        const dateA = a.updated || a.date || '1970-01-01';
+        const dateB = b.updated || b.date || '1970-01-01';
+        return new Date(dateB).getTime() - new Date(dateA).getTime();
+      });
+      
+      return validNotes;
+      
+    } catch (error) {
+      console.error('Error in getAllNotes:', error);
+      return [];
+    }
+  }, CACHE_TTL);
   }
-}
 
 export async function getAllCategoriesWithCounts() {
   try {

@@ -7,7 +7,7 @@ export default function HowWeSucceeded() {
       
       <div className="prose max-w-prose text-text-base space-y-6">
         <p>
-          We use a lot of methods to track our effectiveness as a Design team. The System Usability Score (SUS) is how we measure whether the product we've designed is intuitive. It uses a set of 10 questions to gauge our customers' experience with our product.
+          We use a lot of methods to track our effectiveness as a Design team. The System Usability Score (SUS) is how we measure whether the product we&apos;ve designed is intuitive. It uses a set of 10 questions to gauge our customers&apos; experience with our product.
         </p>
 
         <p>

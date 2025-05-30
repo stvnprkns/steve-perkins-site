@@ -1,38 +1,50 @@
 import Link from "next/link";
-import { getAllNotes, getAllCategoriesWithCounts, Note } from "@/lib/markdown";
-import { getCategoryByKey } from "@/lib/categories";
+import { getAllCategoriesWithCounts, getAllNotes } from '@/lib/markdown';
 import Section from "@/components/layout/Section";
 import PageHero from "@/components/PageHero";
-
-// Get all notes at build time
-export const dynamic = 'force-static';
-
-type SearchParams = {
-  category?: string;
-};
+import { notFound } from 'next/navigation';
 
 interface CategoryCount {
   category: string;
   count: number;
+  description?: string;
+  title?: string;
 }
+
+export const revalidate = 3600; // Revalidate at most every hour
+
+type SearchParams = {
+  category?: string | string[];
+  [key: string]: string | string[] | undefined;
+};
 
 export default async function NotesPage({
   searchParams,
 }: {
-  searchParams: SearchParams;
+  searchParams?: SearchParams;
 }) {
-  const selectedCategory = searchParams.category;
-  const [allNotes, categories] = await Promise.all([
+  // Safely extract the category parameter
+  const categoryParam = searchParams?.category;
+  const selectedCategory = Array.isArray(categoryParam) 
+    ? categoryParam[0] || '' 
+    : categoryParam || '';
+  
+  // Fetch data in parallel
+  const [notes, categories] = await Promise.all([
     getAllNotes(),
     getAllCategoriesWithCounts()
-  ]) as [Note[], CategoryCount[]];
-  
+  ]);
+
+  if (!notes || !categories) {
+    notFound();
+  }
+
   // Filter notes by category if one is selected
   const filteredNotes = selectedCategory
-    ? allNotes.filter((note) => 
+    ? notes.filter((note) => 
         note.category?.toLowerCase() === selectedCategory.toLowerCase()
       )
-    : allNotes;
+    : notes;
 
   // Sort notes by date (newest first)
   const sortedNotes = [...filteredNotes].sort((a, b) => {
@@ -40,6 +52,21 @@ export default async function NotesPage({
     const dateB = b.updated || b.date || '1970-01-01';
     return new Date(dateB).getTime() - new Date(dateA).getTime();
   });
+
+  // Get category info
+  const getCategoryInfo = (categoryKey: string): { title: string; description: string } => {
+    if (!categoryKey) return { title: 'Uncategorized', description: '' };
+    
+    // If we have category data from the API, use it
+    const categoryData = categories.find((cat: CategoryCount) => 
+      cat.category.toLowerCase() === categoryKey.toLowerCase()
+    );
+    
+    return {
+      title: categoryData?.title || categoryKey,
+      description: categoryData?.description || ''
+    };
+  };
 
   return (
     <div className="w-full">
@@ -77,22 +104,25 @@ export default async function NotesPage({
             >
               All
             </Link>
-            {categories.map(({ category, count }) => (
-              <Link
-                key={category}
-                href={`/notes?category=${encodeURIComponent(category)}`}
-                className={`px-3 py-1.5 text-sm rounded-full border flex items-center gap-1.5 transition-colors duration-150 outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background no-underline
-                  ${
-                    selectedCategory === category
-                      ? 'bg-zinc-900 text-white border-zinc-900 hover:bg-zinc-800 active:bg-zinc-700'
-                      : 'hover:bg-muted/50 active:bg-muted/70 border-border'
-                  }`}
-                tabIndex={0}
-              >
-                <span className="capitalize">{category}</span>
-                <span className="text-xs opacity-70 ml-0.5">{count}</span>
-              </Link>
-            ))}
+            {categories.map(({ category, count }: { category: string; count: number }) => {
+              const categoryInfo = getCategoryInfo(category);
+              return (
+                <Link
+                  key={category}
+                  href={`/notes?category=${encodeURIComponent(category)}`}
+                  className={`px-3 py-1.5 text-sm rounded-full border flex items-center gap-1.5 transition-colors duration-150 outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background no-underline
+                    ${
+                      selectedCategory === category
+                        ? 'bg-zinc-900 text-white border-zinc-900 hover:bg-zinc-800 active:bg-zinc-700'
+                        : 'hover:bg-muted/50 active:bg-muted/70 border-border'
+                    }`}
+                  tabIndex={0}
+                >
+                  {categoryInfo.title}
+                  <span className="text-xs opacity-70">{count}</span>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </Section>
@@ -103,10 +133,10 @@ export default async function NotesPage({
         {selectedCategory && (
           <div className="mb-8">
             <h2 className="text-2xl font-semibold mb-2">
-              {getCategoryByKey(selectedCategory)?.title}
+              {getCategoryInfo(selectedCategory).title}
             </h2>
             <p className="text-muted-foreground">
-              {getCategoryByKey(selectedCategory)?.subtitle}
+              {getCategoryInfo(selectedCategory).description}
             </p>
           </div>
         )}
@@ -115,7 +145,7 @@ export default async function NotesPage({
         {sortedNotes.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {sortedNotes.map((note) => {
-              const category = note.category ? getCategoryByKey(note.category) : null;
+              const categoryInfo = note.category ? getCategoryInfo(note.category) : null;
               return (
                 <Link
                   key={note.slug}
@@ -125,9 +155,9 @@ export default async function NotesPage({
                   <div className="h-full border rounded-lg p-6 transition-all duration-200 hover:shadow-md hover:border-muted-foreground/20 bg-background hover:bg-muted/50">
                     <div className="flex justify-between items-start mb-3">
                       <span className="text-2xl">{note.emoji || note.icon || ''}</span>
-                      {category && category.emoji && category.title && (
+                      {categoryInfo && (
                         <span className="text-xs px-2 py-1 bg-muted rounded-full no-underline">
-                          {category.emoji} {category.title}
+                          {categoryInfo.title}
                         </span>
                       )}
                     </div>

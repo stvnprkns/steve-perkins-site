@@ -1,5 +1,4 @@
 import { sideProjects } from "@/lib/side-projects";
-import Link from "next/link";
 import UnderlineLink from "@/components/UnderlineLink";
 import PageHero from "@/components/PageHero";
 import Section from "@/components/layout/Section";
@@ -32,7 +31,7 @@ export default function SideProjectsPage() {
                 </UnderlineLink>
               </div>
               <span className="w-full border-t border-border border-dashed min-w-4" style={{ flexShrink: 999999 }}></span>
-              <div className="text-muted-foreground text-right">
+              <div className="text-gray-500 text-right">
                 {project.timeframe}
               </div>
             </li>

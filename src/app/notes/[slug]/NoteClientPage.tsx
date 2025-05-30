@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from "next/link";
 import { ArrowLeft } from 'lucide-react';
-import { MarkdownRenderer } from "@/components/markdown/MarkdownRenderer";
+import MarkdownRenderer from "@/components/markdown/MarkdownRenderer";
 import RelatedNotes from "@/components/notes/RelatedNotes";
 import { Note } from "@/lib/markdown";
 import { format } from 'date-fns';

@@ -1,13 +1,19 @@
 import { NextResponse } from 'next/server';
-import { getAllNotes } from '@/lib/server/markdown-utils';
+import { getAllNotes, getAllCategoriesWithCounts } from '@/lib/markdown';
 
 export async function GET() {
-  console.log('API Route: GET /api/notes was called');
   try {
-    console.log('Attempting to fetch all notes...');
-    const notes = await getAllNotes();
-    console.log(`Successfully fetched ${notes.length} notes`);
-    return NextResponse.json(notes);
+    // Fetch both notes and categories in parallel
+    const [notes, categories] = await Promise.all([
+      getAllNotes(),
+      getAllCategoriesWithCounts()
+    ]);
+
+    return NextResponse.json({
+      notes,
+      categories
+    });
+    
   } catch (error) {
     console.error('Error in /api/notes:', error);
     return NextResponse.json(

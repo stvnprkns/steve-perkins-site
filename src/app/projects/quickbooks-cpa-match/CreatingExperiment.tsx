@@ -10,7 +10,7 @@ export default function CreatingExperiment() {
           engage in a back-and-forth dialogue, and invoice and pay.
         </p>
         <p>
-          We included a dashboard ad that targeted users who didn't have a CPA. We iterated on the messaging 
+          We included a dashboard ad that targeted users who didn&apos;t have a CPA. We iterated on the messaging 
           and ad copy to improve engagement. We used a limited pool of CPAs and randomized the matches. 
           We also built a custom messaging flow to support real-world communication and disengagement logic.
         </p>

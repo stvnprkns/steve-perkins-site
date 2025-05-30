@@ -1,13 +1,7 @@
-import { promises as fs } from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-
-const NOTES_DIRECTORY = path.join(process.cwd(), 'content/notes');
-
 // Re-export the Note type from server utilities
 export type { Note } from './server/markdown-utils';
 
-// This file now only contains client-side utilities for fetching data from the API
+// This file contains client-side utilities for fetching data from the API
 
 // Re-export the Note type for backward compatibility
 type Note = import('./server/markdown-utils').Note;

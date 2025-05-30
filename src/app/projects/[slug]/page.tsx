@@ -1,5 +1,5 @@
 import * as React from "react";
-import { getProjectBySlug, projects } from '../../../lib/projects';
+import { projects } from '../../../lib/projects';
 import Section from '@/components/layout/Section';
 // Import from the new location for the main RudderStack case study
 import Intro from '../rudderstack/Intro';

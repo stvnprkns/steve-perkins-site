@@ -35,7 +35,7 @@ export default function Approach() {
             )}
             {step.quote && (
               <blockquote className="border-l-4 border-gray-200 pl-4 italic text-muted my-8">
-                <span>"{step.quote.text}"</span>
+                <span>&ldquo;{step.quote.text}&rdquo;</span>
                 <footer className="block mt-2 text-xs text-muted">— {step.quote.author}</footer>
               </blockquote>
             )}

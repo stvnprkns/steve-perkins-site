@@ -1,4 +1,4 @@
-import { projects, Project } from "@/lib/projects";
+import { projects } from "@/lib/projects";
 import Link from "next/link";
 import Section from "@/components/layout/Section";
 import PageHero from "@/components/PageHero";

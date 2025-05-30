@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ExternalLink } from '@/components/ExternalLink';
 import UnderlineLink from '@/components/UnderlineLink';
 import PageHero from '@/components/PageHero';
 import Section from '@/components/layout/Section';
@@ -24,22 +23,23 @@ export default function AboutPage() {
       <Section variant="narrow" className="py-16" noDivider>
         <div className="grid md:grid-cols-3 gap-12">
           <div className="md:col-span-2 space-y-6">
-            <h2 className="text-2xl font-medium">Hello, I'm Steve</h2>
+            <h2 className="text-2xl font-medium">Hello, I&apos;m Steve</h2>
             
             <div className="prose text-base leading-relaxed space-y-4">
               <p>
-                I'm a product design leader with over 10 years of experience creating digital products that people love to use. 
-                Currently, I lead design at Procore, where I focus on building tools that help construction professionals build better.
+                I&apos;m a product leader with over 15 years of experience building and scaling high-performing teams and products. My expertise lies in product management, data analytics, and user experience design. I help companies navigate the challenges of rapid growth, with a focus on building resilient, customer-focused products.
               </p>
               
               <p>
-                My approach combines user-centered design with business strategy to create products that are both valuable and 
-                viable. I believe in the power of research, rapid prototyping, and iterative design to solve complex problems.
+                My approach combines deep technical expertise with strong product sense, enabling me to bridge the gap between business objectives and technical implementation. I&apos;m passionate about creating products that solve real problems and deliver exceptional user experiences.
               </p>
               
               <p>
-                When I'm not designing, you can find me hiking with my family, experimenting with new recipes in the kitchen, 
-                or exploring the latest design tools and technologies.
+                I&apos;ve had the privilege of working with some amazing companies, including RudderStack, QuickBooks, and Intuit, where I&apos;ve led teams to deliver innovative solutions that drive business growth.
+              </p>
+              
+              <p>
+                When I&apos;m not building products, you can find me hiking in the mountains, experimenting with new cooking techniques, or spending time with my family.
               </p>
               
               <div className="pt-4">
@@ -132,7 +132,7 @@ export default function AboutPage() {
         <div className="space-y-8">
           <h2 className="text-2xl font-medium">Get in Touch</h2>
           <p className="text-muted-foreground max-w-2xl">
-            I'm always open to discussing product design, leadership, or potential opportunities. 
+            I&apos;m always open to discussing product design, leadership, or potential opportunities. 
             Feel free to reach out through any of these channels:
           </p>
           

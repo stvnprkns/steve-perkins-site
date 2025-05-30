@@ -1,10 +1,5 @@
 import { TeamMember } from '@/types/team';
 
-interface HeroImage {
-  src: "/images/projects/rudderstack/rudderstack-hero.webp";
-  alt: string;
-}
-
 interface Quote {
   text: string;
   author: string;

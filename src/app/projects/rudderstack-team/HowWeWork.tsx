@@ -12,12 +12,12 @@ export default function HowWeWork() {
 
         <h3 className="text-2xl font-semibold mt-12 mb-4 font-sans">What we Build</h3>
         <p>
-          We never build without evidence. Everything on the roadmap needs to have data (qualitative and/or quantitative) to assess the business value and the customer pain. We shouldn't do work that doesn't improve the customer experience or build the business.
+          We never build without evidence. Everything on the roadmap needs to have data (qualitative and/or quantitative) to assess the business value and the customer pain. We shouldn&apos;t do work that doesn&apos;t improve the customer experience or build the business.
         </p>
 
         <h3 className="text-2xl font-semibold mt-12 mb-4 font-sans">Be a Part of the Backlog</h3>
         <p>
-          For design to be a strategic partner, we need to bring ideas to the table. Design has to look beyond the pixels and understand how we make money and how customers use the product. We have to be in the analytics, read the support tickets, and talk to our customers. If you don't intimately understand the problem, you can't create a good solution.
+          For design to be a strategic partner, we need to bring ideas to the table. Design has to look beyond the pixels and understand how we make money and how customers use the product. We have to be in the analytics, read the support tickets, and talk to our customers. If you don&apos;t intimately understand the problem, you can&apos;t create a good solution.
         </p>
 
         <h3 className="text-2xl font-semibold mt-12 mb-4 font-sans">Designers Write and Groom Tickets</h3>
@@ -27,7 +27,7 @@ export default function HowWeWork() {
 
         <h3 className="text-2xl font-semibold mt-12 mb-4 font-sans">Designing the Product</h3>
         <p>
-          Design, this is what we know how to do. Once projects are scoped, the most impactful aspect to design is collaboration. Nothing is more important for design than feedback. My team has weekly internal design critiques, regular design reviews for each project, and company work shares. Design and Engineering need to work hand-in-hand, understanding what we're thinking, what is feasible, consistently checking each other's work.
+          Design, this is what we know how to do. Once projects are scoped, the most impactful aspect to design is collaboration. Nothing is more important for design than feedback. My team has weekly internal design critiques, regular design reviews for each project, and company work shares. Design and Engineering need to work hand-in-hand, understanding what we&apos;re thinking, what is feasible, consistently checking each other&apos;s work.
         </p>
 
         <figure className="w-full my-12 bg-purple-50 p-4 rounded-lg">
@@ -40,7 +40,7 @@ export default function HowWeWork() {
               className="w-full h-auto rounded"
             />
             <figcaption className="mt-2 text-sm text-gray-500 text-center">
-              [Fig. 2] RudderStack's Design and QA process
+              [Fig. 2] RudderStack&apos;s Design and QA process
             </figcaption>
           </div>
         </figure>

@@ -4,6 +4,7 @@ import Section from '@/components/layout/Section';
 import { projects, Project } from '@/lib/projects';
 import UnderlineLink from '@/components/UnderlineLink';
 import HoverReveal from '@/components/HoverReveal';
+import Image from 'next/image';
 import React from 'react';
 
 export default function Home() {
@@ -17,12 +18,12 @@ export default function Home() {
         className="p-8"
         subtitle={
           <>
-            <p>Hey, I'm Steve — a design leader, 3x founding designer, and someone who's spent the last decade building clarity where there wasn't any.</p>
+            <p>Hey, I&apos;m Steve — a design leader, 3x founding designer, and someone who&apos;s spent the last decade building clarity where there wasn&apos;t any.</p>
             <br />
-            <p>I've helped launch 50+ products across startups and scale-ups — from Designer on <a href='https://www.intuitlabs.com/' className='inline-flex items-center'>Intuit Labs <span className='ml-1'>↗</span></a>, to Head of Design at <a href='https://www.rudderstack.com/' className='inline-flex items-center'>RudderStack <span className='ml-1'>↗</span></a>, to Founding Designer at <a href='https://www.tigerconnect.com/' className='inline-flex items-center'>TigerConnect <span className='ml-1'>↗</span></a>. I care a lot about thoughtful systems, fast feedback loops, and design that earns trust with customers.</p>
+            <p>I&apos;ve helped launch 50+ products across startups and scale-ups — from Designer on <a href='https://www.intuitlabs.com/' className='inline-flex items-center'>Intuit Labs <span className='ml-1'>↗</span></a>, to Head of Design at <a href='https://www.rudderstack.com/' className='inline-flex items-center'>RudderStack <span className='ml-1'>↗</span></a>, to Founding Designer at <a href='https://www.tigerconnect.com/' className='inline-flex items-center'>TigerConnect <span className='ml-1'>↗</span></a>. I care a lot about thoughtful systems, fast feedback loops, and design that earns trust with customers.</p>
             <br />
             <div className="space-y-6">
-              <p>But product isn't the only thing I build. I've got 
+              <p>But product isn&apos;t the only thing I build. I&apos;ve got 
                 <HoverReveal 
                   image='/images/hover-reveals/kids-dogs.png' 
                   alt='Family and pets'
@@ -32,7 +33,7 @@ export default function Home() {
                   <UnderlineLink href='#' className='inline-block'>
                     twin 4-year-olds and three dogs
                   </UnderlineLink>
-                </HoverReveal>, and a running list of every Steve who's ever appeared on TV—which, yes, is one of several <Link href='/sideprojects' className='inline-flex items-center'>
+                </HoverReveal>, and a running list of every Steve who&apos;s ever appeared on TV—which, yes, is one of several <Link href='/sideprojects' className='inline-flex items-center'>
                   side projects
                 </Link>.
               </p>
@@ -84,25 +85,35 @@ export default function Home() {
                 <div className="max-w-[640px] mx-auto">
                   <UnderlineLink href={`/projects/${project.slug}`}>
                     <div className="block w-full relative left-0 right-0">
-                      {Array.isArray(project.images) ? (
-                        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4">
-                          {project.images.slice(0, 2).map((img, index) => (
-                            <div key={index} className="relative aspect-[3/2] bg-muted/20 rounded-lg overflow-hidden w-full">
-                              <img 
-                                src={img} 
-                                alt={`${project.title} ${index + 1}`}
-                                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                              />
-                            </div>
-                          ))}
-                        </div>
+                      {project.images && project.images.length > 0 ? (
+                        project.images.length > 1 ? (
+                          <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {project.images.slice(0, 2).map((img, index) => (
+                              <div key={index} className="relative aspect-[3/2] bg-muted/20 rounded-lg overflow-hidden w-full">
+                                <Image 
+                                  src={img} 
+                                  alt={`${project.title} screenshot ${index + 1}`}
+                                  fill
+                                  sizes="(max-width: 768px) 100vw, 50vw"
+                                  className="object-cover transition-all duration-300 group-hover:scale-105"
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="relative aspect-[3/2] bg-muted/20 rounded-lg overflow-hidden w-full">
+                            <Image 
+                              src={project.images[0]} 
+                              alt={project.title}
+                              fill
+                              sizes="(max-width: 768px) 100vw, 50vw"
+                              className="object-cover transition-all duration-300 group-hover:scale-105"
+                            />
+                          </div>
+                        )
                       ) : (
-                        <div className="relative aspect-[3/2] bg-muted/20 rounded-lg overflow-hidden w-full">
-                          <img 
-                            src={project.image} 
-                            alt={project.title}
-                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                          />
+                        <div className="relative aspect-[3/2] bg-muted/20 rounded-lg overflow-hidden w-full flex items-center justify-center">
+                          <span className="text-muted-foreground">No image available</span>
                         </div>
                       )}
                     </div>
@@ -121,7 +132,7 @@ export default function Home() {
               <div className="space-y-1 mb-2">
                 <h2 className="text-lg font-medium">Latest Notes</h2>
                 <div className="text-sm text-muted-foreground">
-                  Ideas I'm wrestling with, patterns I keep noticing, questions I haven't fully answered.
+                  Ideas I&apos;m wrestling with, patterns I keep noticing, questions I haven&apos;t fully answered.
                 </div>
               </div>
               

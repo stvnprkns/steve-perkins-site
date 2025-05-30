@@ -1,9 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { Project } from '@/lib/projects';
 import { cn } from '@/lib/utils';
+import { useMemo } from 'react';
 
 interface CaseStudyNavigationProps {
   currentSlug: string;
@@ -12,21 +13,25 @@ interface CaseStudyNavigationProps {
 }
 
 export default function CaseStudyNavigation({ currentSlug, projects, className }: CaseStudyNavigationProps) {
-  // Find the current project index
-  const currentIndex = projects.findIndex(project => project.slug === currentSlug);
-  
-  // Get previous and next projects
-  const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
-  const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
+  // Memoize the navigation items to prevent unnecessary recalculations
+  const { nextProject, firstProject } = useMemo(() => {
+    const currentIndex = projects.findIndex(project => project.slug === currentSlug);
+    const prev = currentIndex > 0 ? projects[currentIndex - 1] : null;
+    const next = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
+    const first = projects[0];
+    
+    return { prevProject: prev, nextProject: next, firstProject: first };
+  }, [currentSlug, projects]);
 
   // If there's no next project, link to the first project
-  if (!nextProject && projects.length > 0) {
-    const firstProject = projects[0];
+  if (!nextProject && firstProject) {
     return (
       <div className={cn('mt-16 max-w-[640px] mx-auto', className)}>
         <Link 
           href={`/projects/${firstProject.slug}`}
           className="block group no-underline"
+          aria-label={`Next project: ${firstProject.title}`}
+          prefetch={false}
         >
           <div className="bg-card border border-purple-200 dark:border-purple-800/50 rounded-lg p-6 transition-colors hover:bg-purple-50 dark:hover:bg-purple-900/30">
             <div className="relative h-full">
@@ -49,6 +54,8 @@ export default function CaseStudyNavigation({ currentSlug, projects, className }
       {nextProject && (
         <Link 
           href={`/projects/${nextProject.slug}`}
+          aria-label={`Next project: ${nextProject.title}`}
+          prefetch={false}
           className="block group no-underline"
         >
           <div className="bg-card border border-purple-200 dark:border-purple-800/50 rounded-lg p-6 transition-colors hover:bg-purple-50 dark:hover:bg-purple-900/30">
