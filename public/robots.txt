@@ -1,0 +1,33 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://steveperkins.dev/sitemap.xml
+
+# Crawl-delay: 10
+# 10 second delay between requests to be nice to the server
+
+# Disallow crawling of admin and API endpoints
+Disallow: /admin/
+Disallow: /api/
+
+# Allow all other paths
+Allow: /*
+
+# Crawl-delay for specific bots
+User-agent: Googlebot
+Crawl-delay: 10
+
+User-agent: Bingbot
+Crawl-delay: 10
+
+# Block AI bots that might be scraping content
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /

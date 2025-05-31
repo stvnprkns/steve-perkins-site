@@ -9,9 +9,20 @@ type Note = import('./server/markdown-utils').Note;
 async function fetchFromAPI(endpoint: string) {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-    const response = await fetch(`${baseUrl}/api/${endpoint}`);
+    // For Next.js App Router, the API routes are under /api/ by default
+    const response = await fetch(`${baseUrl}/api/${endpoint}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    
     if (!response.ok) {
-      throw new Error(`API request failed: ${response.statusText}`);
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(
+        errorData.message || 
+        errorData.error || 
+        `API request failed with status ${response.status}: ${response.statusText}`
+      );
     }
     return await response.json();
   } catch (error) {

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import RootLayoutClient from './RootLayout';
+import { siteConfig } from '@/config/site';
 
 // Initialize the Inter font with optimized settings
 const inter = Inter({
@@ -16,17 +17,58 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Steve Perkins — Product Design Leader',
-  description: 'Timeless, fast, and thoughtful personal site for Steve Perkins.',
-  applicationName: 'Steve Perkins',
-  authors: [{ name: 'Steve Perkins' }],
-  keywords: ['Product Design', 'Design Leadership', 'UX Design', 'Portfolio'],
-  creator: 'Steve Perkins',
-  publisher: 'Steve Perkins',
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  metadataBase: new URL(siteConfig.url),
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.author.name }],
+  keywords: siteConfig.keywords,
+  creator: siteConfig.author.name,
+  publisher: siteConfig.author.name,
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [
+      {
+        url: siteConfig.defaultImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.title,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.title,
+    description: siteConfig.description,
+    creator: siteConfig.twitterHandle,
+    images: [siteConfig.defaultImage],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: siteConfig.googleSiteVerification,
   },
 };
 
