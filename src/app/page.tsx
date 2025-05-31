@@ -89,7 +89,6 @@ export default function Home() {
     <>
       <PageHero
         title="Steve Perkins"
-        className="p-8"
         subtitle={
           <>
             <p>Hey, I&apos;m Steve — a design leader, 3x founding designer, and someone who&apos;s spent the last decade building clarity where there wasn&apos;t any.</p>
@@ -97,39 +96,45 @@ export default function Home() {
             <p>I&apos;ve helped launch 50+ products across startups and scale-ups — from Designer on <a href='https://www.intuitlabs.com/' className='inline-flex items-center'>Intuit Labs <span className='ml-1'>↗</span></a>, to Head of Design at <a href='https://www.rudderstack.com/' className='inline-flex items-center'>RudderStack <span className='ml-1'>↗</span></a>, to Founding Designer at <a href='https://www.tigerconnect.com/' className='inline-flex items-center'>TigerConnect <span className='ml-1'>↗</span></a>. I care a lot about thoughtful systems, fast feedback loops, and design that earns trust with customers.</p>
             <br />
             <div className="space-y-6">
-              <p>But product isn&apos;t the only thing I build. I&apos;ve got 
-                <HoverReveal 
-                  images={familyImages}
-                  position='left'
-                  className='mx-1 inline-block'
-                >
-                  <UnderlineLink href='#' className='inline-block'>
-                    twin 4-year-olds and three dogs
-                  </UnderlineLink>
-                </HoverReveal>, and a running list of every 
-                <HoverReveal 
-                  images={tvSteveImages}
-                  position='right'
-                  className='mx-1 inline-block'
-                >
-                  <UnderlineLink href='#' className='inline-block'>
-                    Steve who&apos;s ever appeared on TV
-                  </UnderlineLink>
-                </HoverReveal>—which, yes, is one of several <Link href='/sideprojects' className='inline-flex items-center'>
-                  side projects
-                </Link>.
-              </p>
-              <p>I like my teams opinionated, my design work honest and fast-moving, and my{' '}
-                <HoverReveal 
-                  images={basketballImages}
-                  position='right'
-                  className='mx-1 inline-block'
-                >
-                  <UnderlineLink href='#' className='inline-block'>
-                    basketball players from the mid-2000s
-                  </UnderlineLink>
-                </HoverReveal>.
-              </p>
+              <div className="prose dark:prose-invert max-w-none">
+                <div className="space-y-4">
+                  <p>But product isn't the only thing I build. I've got{' '}
+                    <HoverReveal 
+                      images={familyImages}
+                      position='left'
+                    >
+                      <UnderlineLink href='#'>
+                        twin 4-year-olds and three dogs
+                      </UnderlineLink>
+                    </HoverReveal>
+                    , and a running list of every{' '}
+                    <HoverReveal 
+                      images={tvSteveImages}
+                      position='right'
+                    >
+                      <UnderlineLink href='#'>
+                        Steve who's ever appeared on TV
+                      </UnderlineLink>
+                    </HoverReveal>
+                    —which, yes, is one of several{' '}
+                    <Link href='/sideprojects' className='inline-flex items-center'>
+                      side projects
+                    </Link>
+                    .
+                  </p>
+                  <p>
+                    I like my teams opinionated, my design work honest and fast-moving, and my{' '}
+                    <HoverReveal 
+                      images={basketballImages}
+                      position='right'
+                    >
+                      <UnderlineLink href='#'>
+                        basketball players from the mid-2000s
+                      </UnderlineLink>
+                    </HoverReveal>.
+                  </p>
+                </div>
+              </div>
             </div>
           </>
         }

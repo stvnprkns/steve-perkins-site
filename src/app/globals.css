@@ -99,6 +99,50 @@ img {
   }
 }
 
+/* Navigation Link Styles */
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px;
+  text-decoration: none;
+  color: #4b5563;
+  transition: color 0.2s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #171717;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #171717;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Dark mode styles */
+.dark .nav-link {
+  color: #9ca3af;
+}
+
+.dark .nav-link:hover,
+.dark .nav-link.active {
+  color: #a78bfa;
+}
+
+.dark .nav-link::after {
+  background-color: #a78bfa;
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;

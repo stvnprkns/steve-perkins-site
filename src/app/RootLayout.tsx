@@ -33,10 +33,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-background">
       <Nav />
-      <main className="flex-1">
-        {children}
+      <main className="flex-1 w-full">
+        <div className="w-full">
+          {children}
+        </div>
       </main>
     </div>
   );

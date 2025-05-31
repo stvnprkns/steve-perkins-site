@@ -41,9 +41,18 @@ export default function Nav() {
   return (
     <>
       <style jsx global>{navLinkStyles}</style>
-      <nav className="w-full">
-        <div className="max-w-prose mx-auto px-4 sm:px-6 py-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-0">
-          <Link href="/" className="font-bold text-foreground hover:opacity-80 transition-opacity">
+      <nav className="w-full bg-background/80 backdrop-blur-sm">
+        <div className="max-w-[640px] mx-auto w-full px-4 sm:px-8 py-8 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-0">
+          <Link 
+            href="/" 
+            className="font-bold text-foreground hover:opacity-80 transition-opacity"
+            style={{
+              fontSize: '1.25rem',
+              lineHeight: '1.75rem',
+              textDecoration: 'none',
+              outline: 'none'
+            }}
+          >
             Steve Perkins
           </Link>
           

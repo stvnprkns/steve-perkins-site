@@ -20,17 +20,17 @@ export default function Section({
   id,
 }: SectionProps): React.JSX.Element {
   const widthClass = {
-    narrow: 'max-w-prose',
-    wide: 'max-w-screen-md',
-    wider: 'max-w-4xl' // 56rem (50% wider than prose which is ~37.5rem)
+    narrow: 'max-w-[640px]',
+    wide: 'max-w-5xl',
+    wider: 'max-w-6xl'
   }[variant];
 
-  const paddingClass = noPadding ? '' : 'px-4 sm:px-6';
+  const paddingClass = noPadding ? '' : 'px-4 sm:px-8';
 
   return (
     <div className="w-full">
       <Component 
-        className={`py-6 space-y-3 w-full min-h-0 ${className}`}
+        className={`py-0 w-full min-h-0 ${className}`}
         id={id}
         style={{
           scrollMarginTop: '96px', // 6rem for sticky header offset
@@ -40,11 +40,6 @@ export default function Section({
           {children}
         </div>
       </Component>
-      {!noDivider && (
-        <div className="flex justify-center">
-          <div className={`border-t border-gray-200 mt-8 ${widthClass} ${paddingClass}`} style={{ width: '100%' }}></div>
-        </div>
-      )}
     </div>
   );
 }

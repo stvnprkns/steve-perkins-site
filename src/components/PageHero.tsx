@@ -21,9 +21,9 @@ export default function PageHero({
   background = 'default',
 }: PageHeroProps) {
   const paddingClasses = {
-    default: 'py-8',
-    lg: 'py-12',
-    xl: 'py-16',
+    default: 'pt-0 pb-8', // Match nav padding-bottom (py-8)
+    lg: 'pt-0 pb-12',
+    xl: 'pt-0 pb-16',
   };
 
   const backgroundClasses = {
@@ -38,21 +38,25 @@ export default function PageHero({
       className={`${paddingClasses[padding]} ${backgroundClasses[background]} ${className}`}
       noDivider
     >
-      <div className="space-y-6">
-        <div className="max-w-[640px] mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+      <div className="w-full">
+        <div className="w-full">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
             {title}
           </h1>
           {subtitle && (
-            <div className="prose prose-lg text-muted-foreground mt-8">
+            <div className="text-muted-foreground mt-8">
               {typeof subtitle === 'string' ? (
-                subtitle.split('\n').map((paragraph, index) => (
-                  <p key={index} className={index > 0 ? 'mt-4' : ''}>
-                    {paragraph}
-                  </p>
-                ))
+                <div className="prose prose-lg">
+                  {subtitle.split('\n').map((paragraph, index) => (
+                    <p key={index} className={index > 0 ? 'mt-4' : ''}>
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
               ) : (
-                subtitle
+                <div className="space-y-4">
+                  {subtitle}
+                </div>
               )}
             </div>
           )}
