@@ -93,41 +93,41 @@ export default function NoteClientPage({ note: initialNote, slug }: NoteClientPa
       </h1>
 
       {/* Attributes */}
-      <div className="flex flex-wrap items-start gap-6 text-sm text-muted-foreground mb-12 border-b border-border pb-8">
+      <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 text-sm text-muted-foreground mb-12 border-b border-border pb-8">
         {category && (
-          <div className="flex items-center gap-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-6">
             <div className="flex flex-col">
               <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground/70 mb-1">Category</span>
               <span className="text-gray-500 capitalize">{category}</span>
             </div>
-            <div className="h-8 w-px bg-gray-300" />
+            <div className="hidden sm:block h-8 w-px bg-gray-300" />
           </div>
         )}
         
         {date && (
-          <div className="flex items-center gap-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-6">
             <div className="flex flex-col">
               <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground/70 mb-1">Created</span>
               <span className="text-gray-500">{formatDate(date)}</span>
             </div>
             {(updated?.getTime() !== date?.getTime() || tags.length > 0) && (
-              <div className="h-8 w-px bg-gray-300" />
+              <div className="hidden sm:block h-8 w-px bg-gray-300" />
             )}
           </div>
         )}
         
         {updated && updated.getTime() !== date?.getTime() && (
-          <div className="flex items-center gap-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-6">
             <div className="flex flex-col">
               <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground/70 mb-1">Updated</span>
               <span className="text-gray-500">{formatDate(updated)}</span>
             </div>
-            {tags.length > 0 && <div className="h-8 w-px bg-gray-300" />}
+            {tags.length > 0 && <div className="hidden sm:block h-8 w-px bg-gray-300" />}
           </div>
         )}
         
         {tags.length > 0 && (
-          <div className="flex-1 min-w-0">
+          <div className="w-full sm:flex-1 min-w-0 mt-2 sm:mt-0">
             <div className="flex flex-col">
               <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground/70 mb-1">Topics</span>
               <div className="flex flex-wrap gap-2">

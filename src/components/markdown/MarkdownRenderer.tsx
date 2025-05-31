@@ -126,6 +126,14 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, className 
       <hr className="my-8 border-t border-border" {...props} />
     ),
     
+    // Blockquotes with enhanced styling
+    blockquote: (props) => (
+      <blockquote 
+        className="border-l-4 border-primary pl-6 py-2 my-6 bg-muted/10 dark:bg-muted/20 italic text-muted-foreground/90"
+        {...props}
+      />
+    ),
+    
     // Use our custom MarkdownImage component for better image handling
     img: (props) => {
       const { src, alt = '', ...rest } = props;
