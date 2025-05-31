@@ -1,5 +1,8 @@
-import * as React from "react";
-import { projects } from '../../../lib/projects';
+'use client';
+
+import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
+import { projects } from '@/lib/projects';
 import Section from '@/components/layout/Section';
 // Import from the new location for the main RudderStack case study
 import Intro from '../rudderstack/Intro';
@@ -14,8 +17,21 @@ import PageHeader from "@/components/PageHeader";
 import ScrollProgressBar from '@/components/ScrollProgressBar';
 import CaseStudyNavigation from '@/components/case-study/CaseStudyNavigation';
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
-  if (params.slug === "rudderstack") {
+export default function ProjectPage() {
+  const params = useParams<{ slug: string }>();
+  const [isClient, setIsClient] = useState(false);
+  
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+  
+  if (!isClient || !params?.slug) {
+    return null; // Or a loading state
+  }
+  
+  const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
+  
+  if (slug === "rudderstack") {
     return (
       <>
         <ScrollProgressBar />
@@ -30,7 +46,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               <FormReduction />
               <ConfigDesign />
               <Outcomes />
-            <CaseStudyNavigation currentSlug={params.slug} projects={projects} className="mt-16" />
+            <CaseStudyNavigation currentSlug={slug} projects={projects} className="mt-16" />
             </Section>
           </main>
         </div>

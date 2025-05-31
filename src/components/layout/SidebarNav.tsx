@@ -17,7 +17,7 @@ export default function SidebarNav({ items, className = '' }: SidebarNavProps) {
 
   return (
     <nav
-      className={`hidden lg:block sticky top-32 pt-6 space-y-4 text-sm text-muted border-l border-gray-100 pl-4 ${className}`}
+      className={`hidden lg:block sticky top-32 pt-6 space-y-4 text-sm text-muted border-l border-gray-100 dark:border-gray-800 pl-4 ${className}`}
       aria-label="Case Study Navigation"
     >
       {items.map((item) => (
@@ -26,7 +26,9 @@ export default function SidebarNav({ items, className = '' }: SidebarNavProps) {
           href={`#${item.id}`}
           aria-current={active === item.id ? "true" : undefined}
           className={`block transition-all hover:underline whitespace-nowrap ${
-            active === item.id ? "text-black font-semibold" : "text-muted"
+            active === item.id 
+              ? "text-purple-500 dark:text-purple-400 font-semibold" 
+              : "text-muted dark:text-gray-400 hover:text-purple-500 dark:hover:text-purple-400"
           }`}
           style={{ scrollBehavior: "smooth" }}
         >

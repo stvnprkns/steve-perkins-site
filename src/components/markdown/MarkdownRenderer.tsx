@@ -129,7 +129,9 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, className 
     // Use our custom MarkdownImage component for better image handling
     img: (props) => {
       const { src, alt = '', ...rest } = props;
-      return <MarkdownImage src={src} alt={alt} {...rest} />;
+      // Ensure src is a string before passing to MarkdownImage
+      const imageSrc = typeof src === 'string' ? src : '';
+      return <MarkdownImage src={imageSrc} alt={alt} {...rest} />;
     },
   };
 

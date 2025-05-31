@@ -3,9 +3,11 @@
 import Image, { ImageProps } from 'next/image';
 import { useState } from 'react';
 
-interface MarkdownImageProps extends Omit<ImageProps, 'src' | 'alt'> {
+interface MarkdownImageProps extends Omit<ImageProps, 'src' | 'alt' | 'width' | 'height'> {
   src?: string | null;
   alt?: string;
+  width?: string | number;
+  height?: string | number;
 }
 
 // Custom loader for external images
@@ -17,8 +19,13 @@ export default function MarkdownImage({
   src, 
   alt = '', 
   className = '',
+  width: widthProp,
+  height: heightProp,
   ...props 
 }: MarkdownImageProps) {
+  // Convert width and height to numbers if they're strings
+  const width = widthProp ? Number(widthProp) : undefined;
+  const height = heightProp ? Number(heightProp) : undefined;
   const [isImageError, setIsImageError] = useState(false);
   
   // Skip rendering if no source
@@ -41,13 +48,19 @@ export default function MarkdownImage({
   // For all images, use Next.js Image component with custom loader for external images
   const isExternal = typeof src === 'string' && (src.startsWith('http') || src.startsWith('//'));
   
+  // Convert width and height to numbers if they're strings
+  const widthNum = width ? Number(width) : undefined;
+  const heightNum = height ? Number(height) : undefined;
+
   return (
     <div className="my-8">
       <div className="relative w-full aspect-video">
         <Image
           src={src}
           alt={alt}
-          fill
+          fill={!widthNum || !heightNum}
+          width={widthNum}
+          height={heightNum}
           className={`rounded-lg object-cover ${className}`}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
           onError={handleError}

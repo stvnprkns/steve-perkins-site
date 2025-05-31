@@ -2,7 +2,11 @@ import NodeCache from 'node-cache';
 
 const cache = new NodeCache({ stdTTL: 300 }); // 5 minutes cache by default
 
-export async function getOrSet<T>(key: string, fn: () => Promise<T>, ttl?: number): Promise<T> {
+export async function getOrSet<T>(
+  key: string, 
+  fn: () => Promise<T>, 
+  ttl: number = 300 // 5 minutes default TTL
+): Promise<T> {
   const cached = cache.get<T>(key);
   if (cached) return cached;
   

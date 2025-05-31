@@ -12,6 +12,105 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "appealio-insurance-appeals",
+    title: "Revolutionizing the Insurance Appeal Process",
+    role: "Lead Product Designer",
+    timeframe: "2023 - Present",
+    summary: "Designed an AI-powered platform that streamlines the insurance appeals process, reducing appeal time by 75% and increasing revenue by 26% through prioritized appeals.",
+    image: "/images/appealio-preview.webp",
+    images: [
+      "/images/appealio-preview.webp"
+    ],
+    tags: ["Product Design", "UX Research", "Healthcare", "AI"],
+    body: `
+**Company**  
+[DocVocate - Appealio ↗](https://appealio.com)
+
+**Product Team**  
+Stephen Perkins, Kishan Patel, Sean Kim, Andrii Gorishnii
+
+---
+
+## The Challenge: A Broken Healthcare Billing System
+
+In the complex world of healthcare, insurance claim denials create a massive administrative burden. Each year, healthcare providers spend countless hours appealing denied claims, often losing significant revenue in the process. Traditional methods are slow, inefficient, and prone to human error.
+
+## Our Solution: AI-Powered Appeals Platform
+
+We built Appealio to transform this broken process. Our platform leverages AI to automate the most time-consuming aspects of insurance appeals while providing intelligent prioritization to maximize recovery.
+
+## Key Features
+
+### 1. Intelligent Appeal Generation
+- **AI-Powered Drafting**: Automatically generates appeal letters by analyzing patient records and insurance policies
+- **Smart Templates**: Customizable templates that adapt to different insurance providers and appeal types
+- **Two-Panel Interface**: Side-by-side view of the draft and final letter for easy editing and review
+
+### 2. Smart Prioritization
+- **Value-Based Sorting**: Ranks appeals by potential financial impact and deadline
+- **Success Prediction**: AI models predict the likelihood of appeal success
+- **Workflow Automation**: Automates follow-ups and tracks appeal status in real-time
+
+### 3. Secure Document Management
+- **HIPAA-Compliant Storage**: Secure, encrypted document repository
+- **Easy Retrieval**: Quick access to patient records and previous appeals
+- **Audit Trail**: Complete history of all appeal-related activities
+
+## The Impact
+
+Our platform has transformed the appeals process for healthcare providers:
+
+<div class="grid grid-cols-2 gap-6 mt-8 mb-2">
+  <div>
+    <p class="text-2xl font-bold">75%</p>
+    <p class="text-sm text-muted">Reduction in time spent per appeal</p>
+  </div>
+  <div>
+    <p class="text-2xl font-bold">+26%</p>
+    <p class="text-sm text-muted">Increase in revenue through prioritized appeals</p>
+  </div>
+  <div>
+    <p class="text-2xl font-bold">40%</p>
+    <p class="text-sm text-muted">More appeals processed per staff member</p>
+  </div>
+  <div>
+    <p class="text-2xl font-bold">9.2/10</p>
+    <p class="text-sm text-muted">User satisfaction score</p>
+  </div>
+</div>
+
+## The Process
+
+### Research & Discovery
+- Conducted interviews with 25+ healthcare providers
+- Mapped the complete appeals workflow
+- Identified key pain points and opportunities for automation
+
+### Design & Development
+- Created intuitive interfaces for complex workflows
+- Implemented AI/ML models for document analysis
+- Built robust security measures for sensitive health data
+
+### Testing & Iteration
+- Conducted usability testing with real healthcare staff
+- Refined AI models based on real-world appeal outcomes
+- Continuously improved based on user feedback
+
+## The Results
+
+- **85%** of users reported significant reduction in administrative burden
+- **92%** of providers saw an increase in successful appeals
+- **100%** compliance with healthcare regulations
+
+## Looking Ahead
+
+We're continuously enhancing Appealio with:
+- Expanded insurance provider integrations
+- Advanced analytics for appeal success prediction
+- Mobile app for on-the-go appeal management
+`
+  },
+  {
     slug: "rudderstack-team",
     title: "Founding a Design Team and Growing a Culture",
     role: "Head of Design",
@@ -205,26 +304,6 @@ We completely redesigned our settings forms to be organized and created plenty o
 </div>
 
 The impact of this project had ripples across the product and the business. By streamlining the core creation workflow we boosted new destinations by 220% and drastically decreased the time it took to get set destination set up. These changes also improved our new user retention.
-`,
-  },
-  {
-    slug: "startup",
-    title: "Early Stage Startup",
-    role: "Product Designer",
-    timeframe: "2020–2021",
-    summary: "Drove MVP design and launch for a stealth SaaS startup, helping secure pre-seed funding and first customers.",
-    image: "/images/startup-preview.png",
-    body: `
-## Context
-Stealth SaaS startup needed to validate product-market fit and ship an MVP fast.
-
-## My Role
-Led all product design, worked closely with founders, and set up design systems from scratch.
-
-## Results
-- MVP launched in 3 months
-- Helped secure pre-seed funding
-- Won first 10 paying customers
 `,
   },
   {

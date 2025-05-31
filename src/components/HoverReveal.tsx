@@ -16,9 +16,7 @@ export default function HoverReveal({
   children, 
   images, 
   className = '', 
-  position = 'right',
-  width = 300,
-  height = 200
+  position = 'right'
 }: HoverRevealProps) {
   const [isHovered, setIsHovered] = useState(false);
   const hoverTimeout = useRef<number | null>(null);

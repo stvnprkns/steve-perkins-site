@@ -64,7 +64,7 @@ export function HoverImageCluster({
   const containerRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
   const [isTapped, setIsTapped] = useState(false);
-  const tapTimeout = useRef<ReturnType<typeof setTimeout>>();
+  const tapTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (containerRef.current) {

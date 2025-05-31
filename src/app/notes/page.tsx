@@ -1,8 +1,23 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import Link from "next/link";
-import { getAllCategoriesWithCounts, getAllNotes } from '@/lib/markdown';
+import { useSearchParams } from 'next/navigation';
 import Section from "@/components/layout/Section";
 import PageHero from "@/components/PageHero";
-import { notFound } from 'next/navigation';
+
+interface Note {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  updated?: string;
+  category?: string;
+  emoji?: string;
+  icon?: string;
+  status?: string;
+  // Add other note properties as needed
+}
 
 interface CategoryCount {
   category: string;
@@ -11,28 +26,39 @@ interface CategoryCount {
   title?: string;
 }
 
-export const revalidate = 3600; // Revalidate at most every hour
-
-interface PageProps {
-  searchParams: { category?: string | string[] };
-}
-
-export default async function NotesPage({ searchParams = {} }: PageProps) {
-  // Safely extract the category parameter
-  const categoryParam = searchParams?.category;
-  const selectedCategory = Array.isArray(categoryParam) 
-    ? categoryParam[0] || '' 
-    : categoryParam || '';
+export default function NotesPage() {
+  const searchParams = useSearchParams();
+  const [notes, setNotes] = useState<Note[]>([]);
+  const [categories, setCategories] = useState<CategoryCount[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   
-  // Fetch data in parallel
-  const [notes, categories] = await Promise.all([
-    getAllNotes(),
-    getAllCategoriesWithCounts()
-  ]);
+  // Get category from URL search params
+  const selectedCategory = searchParams?.get('category') || '';
 
-  if (!notes || !categories) {
-    notFound();
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        
+        // Fetch notes and categories in parallel
+        const [notesRes, categoriesRes] = await Promise.all([
+          fetch('/api/notes').then(res => res.json()),
+          fetch('/api/categories').then(res => res.json())
+        ]);
+        
+        setNotes(notesRes);
+        setCategories(categoriesRes);
+      } catch (err) {
+        console.error('Error fetching data:', err);
+        setError('Failed to load notes. Please try again later.');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   // Filter notes by category if one is selected
   const filteredNotes = selectedCategory
@@ -137,7 +163,25 @@ export default async function NotesPage({ searchParams = {} }: PageProps) {
         )}
 
         {/* Notes grid */}
-        {sortedNotes.length > 0 ? (
+        {isLoading ? (
+          <div className="container mx-auto px-4 py-12 max-w-4xl">
+            <div className="animate-pulse">
+              <div className="h-10 bg-gray-200 rounded w-1/3 mb-4"></div>
+              <div className="h-5 bg-gray-200 rounded w-2/3 mb-8"></div>
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {[1, 2, 3, 4, 5, 6].map((i) => (
+                  <div key={i} className="h-48 bg-gray-100 rounded-lg"></div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : error ? (
+          <div className="container mx-auto px-4 py-12 max-w-4xl">
+            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+              <p>{error}</p>
+            </div>
+          </div>
+        ) : sortedNotes.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {sortedNotes.map((note) => {
               const categoryInfo = note.category ? getCategoryInfo(note.category) : null;
@@ -174,7 +218,7 @@ export default async function NotesPage({ searchParams = {} }: PageProps) {
           </div>
         ) : (
           <div className="text-center py-12">
-            <p className="text-muted-foreground">No notes found in this category.</p>
+            <p className="text-muted-foreground">No notes found{selectedCategory ? ' in this category' : ''}.</p>
             <Link href="/notes" className="mt-4 inline-block text-sm text-foreground hover:underline">
               View all notes
             </Link>

@@ -10,18 +10,13 @@ const navItems = [
   { name: 'About', path: '/about' },
 ];
 
-// Add a style tag for explicit hover states
+// Add a style tag for the underline animation
 const navLinkStyles = `
   .nav-link {
     position: relative;
     display: inline-block;
     padding-bottom: 2px;
-    color: #4B5563; /* gray-600 */
-    transition: color 0.2s ease;
     text-decoration: none;
-  }
-  .nav-link:hover {
-    color: #171717; /* foreground */
   }
   .nav-link::after {
     content: '';
@@ -30,27 +25,13 @@ const navLinkStyles = `
     left: 0;
     width: 0;
     height: 1px;
-    background-color: #171717; /* foreground */
     transition: width 0.3s ease;
   }
   .nav-link:hover::after {
     width: 100%;
   }
-  .nav-link.active {
-    color: #171717; /* foreground */
-  }
   .nav-link.active::after {
     width: 100%;
-  }
-  .dark .nav-link {
-    color: #9CA3AF; /* gray-400 */
-  }
-  .dark .nav-link:hover,
-  .dark .nav-link.active {
-    color: #FBF8FD; /* foreground in dark mode */
-  }
-  .dark .nav-link::after {
-    background-color: #FBF8FD; /* foreground in dark mode */
   }
 `;
 
@@ -75,7 +56,11 @@ export default function Nav() {
                 <Link 
                   key={item.path}
                   href={item.path}
-                  className={`nav-link ${isActive ? 'active' : ''}`}
+                  className={`nav-link 
+                    ${isActive 
+                      ? 'text-foreground dark:text-purple-400 after:bg-foreground dark:after:bg-purple-400' 
+                      : 'text-gray-600 dark:text-gray-400 hover:text-foreground dark:hover:text-purple-400 after:bg-foreground dark:after:bg-purple-400'}
+                    transition-colors duration-200`}
                 >
                   {item.name}
                 </Link>
