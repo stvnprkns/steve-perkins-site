@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import Section from '@/components/layout/Section';
+import Image from 'next/image';
 
 interface PageHeroProps {
   title: string;
@@ -9,6 +10,11 @@ interface PageHeroProps {
   variant?: 'narrow' | 'wide' | 'wider';
   padding?: 'default' | 'lg' | 'xl';
   background?: 'default' | 'muted' | 'none';
+  heroImage?: {
+    src: string;
+    alt: string;
+    className?: string;
+  };
 }
 
 export default function PageHero({
@@ -19,6 +25,7 @@ export default function PageHero({
   variant = 'narrow',
   padding = 'default',
   background = 'default',
+  heroImage,
 }: PageHeroProps) {
   const paddingClasses = {
     default: 'pt-0 pb-8', // Match nav padding-bottom (py-8)
@@ -62,6 +69,18 @@ export default function PageHero({
           )}
           {children}
         </div>
+        {heroImage && (
+          <div className={`mt-12 w-full max-w-4xl mx-auto rounded-lg overflow-hidden ${heroImage.className || ''}`}>
+            <Image
+              src={heroImage.src}
+              alt={heroImage.alt}
+              width={1200}
+              height={630}
+              className="w-full h-auto object-cover rounded-lg"
+              priority
+            />
+          </div>
+        )}
       </div>
     </Section>
   );

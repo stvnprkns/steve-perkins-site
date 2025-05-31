@@ -312,9 +312,9 @@ The impact of this project had ripples across the product and the business. By s
     role: "Product Designer",
     timeframe: "2018–2019",
     summary: "Led design for a 0→1 product at Intuit Labs that matched small businesses with CPAs, improving business success rates.",
-    image: "/images/projects/quickbooks-cpa-match/quickbooks-hero.webp",
+    image: "/images/projects/quickbooks-cpa-match/qb-hero.webp",
     images: [
-      "/images/projects/quickbooks-cpa-match/quickbooks-hero.webp"
+      "/images/projects/quickbooks-cpa-match/qb-hero.webp"
     ],
     body: `
 **Company**  

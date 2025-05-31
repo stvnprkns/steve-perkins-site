@@ -14,7 +14,7 @@ export default function TalkingShop() {
         
         {images.map((image, index) => (
           <figure key={index} className="w-full my-12">
-            <div className="w-full max-w-4xl mx-auto bg-purple-50 p-4 rounded-lg">
+            <div className="w-full max-w-4xl mx-auto bg-purple-100 dark:bg-purple-900/30 p-4 rounded-lg">
               <div className="relative w-full aspect-video">
                 <Image 
                   src={image.src} 

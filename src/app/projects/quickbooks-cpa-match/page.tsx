@@ -38,11 +38,10 @@ export default function QuickBooksCPAMatch() {
         <div className="space-y-32">
           <BackToProjects />
           <Section variant="wide" className="pt-16">
-            <Intro />
-          </Section>
-
-          <Section variant="wide" className="-mt-12">
-            <CaseStudyIntro />
+            <div className="space-y-16">
+              <Intro />
+              <CaseStudyIntro />
+            </div>
           </Section>
 
           <Section id="talking-shop" variant="wide">
