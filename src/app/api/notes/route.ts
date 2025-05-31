@@ -1,11 +1,14 @@
 import { NextResponse } from 'next/server';
-import { getAllNotes, getAllCategoriesWithCounts } from '@/lib/markdown';
+import { getMinimalNotesData, getAllCategoriesWithCounts } from '@/lib/server/markdown-utils';
+
+export const dynamic = 'force-static';
+export const revalidate = 3600; // 1 hour
 
 export async function GET() {
   try {
     // Fetch both notes and categories in parallel
     const [notes, categories] = await Promise.all([
-      getAllNotes(),
+      getMinimalNotesData(),
       getAllCategoriesWithCounts()
     ]);
 
