@@ -2,6 +2,15 @@
 
 import React from 'react';
 import ReactMarkdown, { Components } from 'react-markdown';
+
+type Node = {
+  type: string;
+  tagName?: string;
+  children?: Node[];
+  value?: string;
+  properties?: any;
+  parent?: Node;
+};
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import remarkGfm from 'remark-gfm';
@@ -135,11 +144,27 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, className 
     ),
     
     // Use our custom MarkdownImage component for better image handling
-    img: (props) => {
-      const { src, alt = '', ...rest } = props;
+    img: (props: React.ImgHTMLAttributes<HTMLImageElement> & { node?: any }) => {
+      const { src, alt = '', node, ...rest } = props;
       // Ensure src is a string before passing to MarkdownImage
       const imageSrc = typeof src === 'string' ? src : '';
-      return <MarkdownImage src={imageSrc} alt={alt} {...rest} />;
+      
+      // Check if this is a standalone image (not in a paragraph with other content)
+      const isStandalone = !node || 
+                         !node.parent || 
+                         node.parent.type !== 'paragraph' || 
+                         (node.parent.children && node.parent.children.length === 1);
+      
+      if (isStandalone) {
+        return (
+          <div className="my-6">
+            <MarkdownImage src={imageSrc} alt={alt} {...rest} />
+          </div>
+        );
+      }
+      
+      // For inline images, render without the wrapper div
+      return <MarkdownImage src={imageSrc} alt={alt} inline {...rest} />;
     },
   };
 

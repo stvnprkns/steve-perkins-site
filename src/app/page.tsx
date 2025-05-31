@@ -8,22 +8,30 @@ import Image from 'next/image';
 import React from 'react';
 
 // Image cluster configurations
-const familyImages: HoverImage[] = [
+const dogsAndKidsImages: HoverImage[] = [
   {
-    src: '/images/hover-reveals/family-1.jpg',
-    alt: 'Family scene with toys',
+    src: '/images/hover-reveals/bluey.webp',
+    alt: 'Bluey and family',
     width: 200,
-    height: 160,
+    height: 150,
     initial: { x: -40, y: -60, scale: 0.9, rotate: -5 },
     animate: { x: -180, y: -40, scale: 1, rotate: -5 }
   },
   {
-    src: '/images/hover-reveals/dogs-1.jpg',
+    src: '/images/hover-reveals/dogs.webp',
     alt: 'Dogs playing',
     width: 180,
     height: 140,
     initial: { x: 60, y: 60, scale: 0.8, rotate: 3 },
     animate: { x: 100, y: 40, scale: 0.9, rotate: 5 }
+  },
+  {
+    src: '/images/hover-reveals/kids-dogs.webp',
+    alt: 'Kids playing with dogs',
+    width: 200,
+    height: 150,
+    initial: { x: 20, y: -20, scale: 0.85, rotate: 2 },
+    animate: { x: 20, y: -60, scale: 0.95, rotate: 2 }
   }
 ];
 
@@ -100,7 +108,7 @@ export default function Home() {
                 <div className="space-y-4">
                   <p>But product isn't the only thing I build. I've got{' '}
                     <HoverReveal 
-                      images={familyImages}
+                      images={dogsAndKidsImages}
                       position='left'
                     >
                       <UnderlineLink href='#'>

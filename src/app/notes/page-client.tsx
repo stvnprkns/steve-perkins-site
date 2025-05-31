@@ -150,7 +150,7 @@ export default function NotesPageClient({ notes, categories }: NotesPageProps) {
       </Section>
 
       {/* Notes grid section */}
-      <section className="w-full px-[80px] py-10">
+      <section className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
         <div className="max-w-screen-2xl mx-auto">
           <NotesList 
             notes={filteredNotes}

@@ -1,9 +1,10 @@
 ---
 title: "Hire More Juniors"
-date: 2024-11-01
+date: 2023-12-21
 emoji: 👥
 category: Leadership
 tags: [hiring, culture, leadership, teams]
+description: "Why bringing in junior talent accelerates your team's growth and clarifies your culture."
 ---
 # Hiring Juniors Builds Your Culture Faster Than Any Offsite Ever Will
 Not because they're cheap.  

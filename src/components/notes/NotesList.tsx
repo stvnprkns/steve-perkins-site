@@ -57,7 +57,7 @@ export default function NotesList({
 
   return (
     <div className="w-full">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 px-4 sm:px-6 lg:px-8">
         {validNotes.map((note) => {
           const noteDate = note.updated || note.date;
           const formattedDate = noteDate 
@@ -71,7 +71,7 @@ export default function NotesList({
             <Link 
               key={note.slug} 
               href={`/notes/${note.slug}`}
-              className="group block p-6 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] h-full no-underline"
+              className="group block p-4 sm:p-6 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] h-full no-underline"
             >
               <div className="space-y-4">
                 <div className="flex items-center space-x-3 mb-2">

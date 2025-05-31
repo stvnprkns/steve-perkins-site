@@ -17,9 +17,9 @@ export const projects: Project[] = [
     role: "Lead Product Designer",
     timeframe: "2023 - Present",
     summary: "Designed an AI-powered platform that streamlines the insurance appeals process, reducing appeal time by 75% and increasing revenue by 26% through prioritized appeals.",
-    image: "/images/appealio-preview.webp",
+    image: "/images/projects/appealio/appealio-hero.webp",
     images: [
-      "/images/appealio-preview.webp"
+      "/images/projects/appealio/appealio-hero.webp"
     ],
     tags: ["Product Design", "UX Research", "Healthcare", "AI"],
     body: `

@@ -8,6 +8,7 @@ interface MarkdownImageProps extends Omit<ImageProps, 'src' | 'alt' | 'width' | 
   alt?: string;
   width?: string | number;
   height?: string | number;
+  inline?: boolean;
 }
 
 // Custom loader for external images
@@ -52,28 +53,36 @@ export default function MarkdownImage({
   const widthNum = width ? Number(width) : undefined;
   const heightNum = height ? Number(height) : undefined;
 
+  const image = (
+    <Image
+      src={src}
+      alt={alt}
+      fill={!widthNum || !heightNum}
+      width={widthNum}
+      height={heightNum}
+      className={`rounded-lg ${props.inline ? 'inline-block max-h-6 w-auto' : 'object-cover'} ${className}`}
+      sizes={!props.inline ? "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px" : undefined}
+      onError={handleError}
+      loader={isExternal ? customLoader : undefined}
+      unoptimized={isExternal}
+      {...props}
+    />
+  );
+
+  if (props.inline) {
+    return image;
+  }
+
   return (
     <div className="not-prose my-8">
       <div className="relative w-full aspect-video">
-        <Image
-          src={src}
-          alt={alt}
-          fill={!widthNum || !heightNum}
-          width={widthNum}
-          height={heightNum}
-          className={`rounded-lg object-cover ${className}`}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
-          onError={handleError}
-          loader={isExternal ? customLoader : undefined}
-          unoptimized={isExternal}
-          {...props}
-        />
+        {image}
       </div>
-      {alt && (
-        <div className="text-center text-sm text-muted-foreground mt-2">
+      {alt && !alt.startsWith('http') && (
+        <p className="mt-2 text-sm text-muted-foreground text-center">
           {alt}
-        </div>
+        </p>
       )}
     </div>
-  );
+  )
 }

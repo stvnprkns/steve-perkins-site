@@ -32,6 +32,7 @@ export interface Note {
   icon?: string;
   excerpt?: string;
   emoji?: string;
+  description?: string;
 }
 
 export async function getNoteBySlug(slug: string): Promise<Note | null> {

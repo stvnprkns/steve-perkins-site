@@ -132,7 +132,11 @@ export default function HoverReveal({
                     <img
                       src={images[0].src}
                       alt={images[0].alt}
-                      className="block rounded-lg shadow-lg"
+                      className={`block rounded-lg ${
+                        ['kobe.webp', 'steve2.webp'].some(img => images[0].src.includes(img)) 
+                          ? '' 
+                          : 'shadow-lg'
+                      }`}
                       style={{
                         maxWidth: '280px',
                         width: 'auto',
@@ -179,7 +183,11 @@ export default function HoverReveal({
                       <img
                         src={image.src}
                         alt={image.alt}
-                        className="block rounded-lg shadow-lg"
+                        className={`block rounded-lg ${
+                          ['kobe.webp', 'steve2.webp'].some(img => image.src.includes(img)) 
+                            ? '' 
+                            : 'shadow-lg'
+                        }`}
                         style={{
                           maxWidth: '280px',
                           width: 'auto',

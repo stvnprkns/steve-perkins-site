@@ -36,9 +36,9 @@ const NoteCard: FC<NoteCardProps> = ({ note, className = '', href = '#' }) => {
           <h3 className="text-lg font-medium text-foreground">
             {note.title}
           </h3>
-          {formattedExcerpt && (
-            <div className="mt-2">
-              {formattedExcerpt}
+          {(note.description || formattedExcerpt) && (
+            <div className="mt-2 text-sm text-muted-foreground">
+              {note.description || formattedExcerpt}
             </div>
           )}
           {category && (

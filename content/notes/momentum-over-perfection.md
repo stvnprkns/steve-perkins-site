@@ -1,6 +1,6 @@
 ---
 title: "Momentum over Perfection"
-date: "April 2025"
+date: 2023-08-30
 icon: "🌿"
 tags: ["Mindset"]
 category: "Mindset"
@@ -8,6 +8,7 @@ emoji: "🌿"
 excerpt: "Shipping builds confidence. Waiting builds pressure."
 status: "Budding"
 updated: "2025-04-30"
+description: "Why shipping beats polishing and how momentum drives real progress."
 ---
 
 Shipping builds confidence. Waiting builds pressure. Even a half-good release builds more momentum than a perfectly scoped delay.
