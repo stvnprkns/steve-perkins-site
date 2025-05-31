@@ -13,6 +13,7 @@ export type MinimalNote = {
   slug: string;
   title: string;
   excerpt?: string;
+  description?: string;
   date?: string;
   updated?: string;
   category?: string;
@@ -68,12 +69,13 @@ function getMinimalNoteData(note: Note): MinimalNote {
   return {
     slug: note.slug,
     title: note.title,
-    excerpt: note.excerpt || note.body.substring(0, 200) + (note.body.length > 200 ? '...' : ''),
+    excerpt: note.description || note.excerpt || note.body.substring(0, 200) + (note.body.length > 200 ? '...' : ''),
     date: note.date,
     updated: note.updated,
     category: note.category,
     emoji: note.emoji,
-    status: note.status
+    status: note.status,
+    description: note.description
   };
 }
 

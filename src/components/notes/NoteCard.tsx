@@ -23,11 +23,12 @@ interface NoteCardProps {
 
 const NoteCard: FC<NoteCardProps> = ({ note, className = '', href = '#' }) => {
   // Memoize category lookup and excerpt formatting
-  const { category, formattedExcerpt, emoji } = useMemo(() => ({
+  const { category, formattedDescription, formattedExcerpt, emoji } = useMemo(() => ({
     category: note.category ? getCategoryByKey(note.category) : null,
+    formattedDescription: note.description ? formatExcerpt(note.description) : null,
     formattedExcerpt: note.excerpt ? formatExcerpt(note.excerpt) : null,
     emoji: note.emoji || note.icon || '📝'
-  }), [note.category, note.excerpt, note.emoji, note.icon]);
+  }), [note.category, note.description, note.excerpt, note.emoji, note.icon]);
   
   const content = useMemo(() => (
     <div className="relative group h-full">
@@ -36,11 +37,11 @@ const NoteCard: FC<NoteCardProps> = ({ note, className = '', href = '#' }) => {
           <h3 className="text-lg font-medium text-foreground">
             {note.title}
           </h3>
-          {(note.description || formattedExcerpt) && (
-            <div className="mt-2 text-sm text-muted-foreground">
-              {note.description || formattedExcerpt}
+          {formattedDescription || formattedExcerpt ? (
+            <div className="mt-2">
+              {formattedDescription || formattedExcerpt}
             </div>
-          )}
+          ) : null}
           {category && (
             <div className="flex items-center gap-2 mt-3">
               <span className="text-xs px-2.5 py-1 bg-muted/50 dark:bg-muted/20 rounded-full text-foreground/80">
