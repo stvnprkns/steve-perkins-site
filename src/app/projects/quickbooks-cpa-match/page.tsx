@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { CaseStudyGrid, Section, SidebarNav, BackToProjects } from '@/components';
 import Intro from './Intro';
+import CaseStudyIntro from './CaseStudyIntro';
 import TalkingShop from './TalkingShop';
 import CreatingExperiment from './CreatingExperiment';
 import WhatWeLearned from './WhatWeLearned';
@@ -38,6 +39,10 @@ export default function QuickBooksCPAMatch() {
           <BackToProjects />
           <Section variant="wide" className="pt-16">
             <Intro />
+          </Section>
+
+          <Section variant="wide" className="-mt-12">
+            <CaseStudyIntro />
           </Section>
 
           <Section id="talking-shop" variant="wide">

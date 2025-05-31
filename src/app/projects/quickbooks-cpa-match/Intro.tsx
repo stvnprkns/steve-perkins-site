@@ -24,11 +24,6 @@ function HeroImage({ src, alt }: { src: string; alt: string }) {
 }
 
 export default function Intro() {
-  // Split the summary into the first sentence and the rest
-  const summaryParagraphs = quickbooksData.summary.split('.');
-  const firstSentence = summaryParagraphs[0] + '.';
-  const restOfSummary = quickbooksData.summary.slice(firstSentence.length).trim();
-
   return (
     <>
       <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-left">
@@ -48,14 +43,6 @@ export default function Intro() {
       {quickbooksData.heroImage && (
         <HeroImage src={quickbooksData.heroImage.src} alt={quickbooksData.heroImage.alt} />
       )}
-      <div className="prose max-w-prose mt-8 text-text-base">
-        <h1 className="text-3xl font-bold mt-12 mb-8">{firstSentence}</h1>
-        <div className="space-y-4">
-          {restOfSummary.split('\n\n').map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
-        </div>
-      </div>
     </>
   );
 }

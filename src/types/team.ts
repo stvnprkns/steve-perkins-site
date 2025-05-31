@@ -1,7 +1,9 @@
 export interface TeamMember {
   name: string;
   linkedin: string;
-  avatar: string;
+  avatar?: string;  // Keeping for backward compatibility
+  image?: string;  // New property for image path
+  role?: string;   // Optional role property
 }
 
 export const rudderstackTeam: TeamMember[] = [

@@ -8,18 +8,24 @@ interface TeamMemberProps {
 }
 
 export function TeamMember({ member }: TeamMemberProps) {
+  const imageSrc = member.image || member.avatar;
+  
   return (
     <div className="flex items-center gap-3 group">
-      <div className="relative w-6 h-6 flex-shrink-0">
-        <Image
-          src={member.avatar}
-          alt={member.name}
-          fill
-          className="rounded-full object-cover"
-          sizes="24px"
-        />
+      <div className="relative w-6 h-6 flex-shrink-0 rounded-full bg-muted flex items-center justify-center text-xs text-muted-foreground overflow-hidden">
+        {imageSrc ? (
+          <Image
+            src={imageSrc}
+            alt={member.name}
+            fill
+            className="object-cover"
+            sizes="24px"
+          />
+        ) : (
+          <span>{member.name.split(' ').map(n => n[0]).join('').toUpperCase()}</span>
+        )}
       </div>
-      {member.linkedin === '#' ? (
+      {!member.linkedin || member.linkedin === '#' ? (
         <span className="text-sm text-foreground">{member.name}</span>
       ) : (
         <Link
@@ -29,7 +35,7 @@ export function TeamMember({ member }: TeamMemberProps) {
           className="text-sm text-foreground hover:text-primary transition-colors flex items-center gap-1 group-hover:underline"
         >
           {member.name}
-          <GoArrowUpRight className="inline-block w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity ml-0.5" />
+          <GoArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
         </Link>
       )}
     </div>
