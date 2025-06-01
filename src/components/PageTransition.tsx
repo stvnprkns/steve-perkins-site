@@ -1,60 +1,98 @@
 'use client';
 
-import { ReactNode, useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { ReactNode, useRef, useEffect } from 'react';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
+import { pageTransition, fadeInUp, spring } from '@/lib/animation';
 
 interface PageTransitionProps {
   children: ReactNode;
+  className?: string;
+  isFirstRender?: boolean;
 }
 
-export default function PageTransition({ children }: PageTransitionProps) {
-  const pathname = usePathname();
-  const [isFirstLoad, setIsFirstLoad] = useState(true);
+// Helper component to wrap page content for consistent animation
+const AnimatedPageContent = ({ 
+  children, 
+  className = '',
+  isInitial = false 
+}: { 
+  children: ReactNode; 
+  className?: string;
+  isInitial?: boolean;
+}) => {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const shouldReduceMotion = useReducedMotion();
 
-  useEffect(() => {
-    // On first load, wait a brief moment before showing content
-    if (isFirstLoad) {
-      const timer = setTimeout(() => {
-        setIsFirstLoad(false);
-      }, 300);
-      return () => clearTimeout(timer);
-    }
-    
-    // On subsequent navigations, show content immediately
-  }, [pathname, isFirstLoad]);
-
-  // Don't render anything until the initial load is complete
-  if (isFirstLoad) {
-    return null;
+  // Skip animation if user prefers reduced motion
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
   }
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={pathname}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ 
-          opacity: 1, 
-          y: 0,
-          transition: { 
-            duration: 0.4,
-            ease: [0.4, 0, 0.2, 1],
-            delay: isFirstLoad ? 0.2 : 0
-          } 
-        }}
-        exit={{ 
-          opacity: 0, 
-          y: -10,
-          transition: { 
-            duration: 0.2,
-            ease: [0.4, 0, 1, 1]
-          } 
-        }}
-        className="flex-1"
-      >
+    <motion.div
+      key={isInitial ? 'initial' : 'navigated'}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={pageTransition}
+      className={className}
+      ref={contentRef}
+    >
+      {React.Children.map(children, (child, index) => (
+        <motion.div
+          key={index}
+          variants={fadeInUp}
+          transition={{
+            ...spring,
+            delay: isInitial ? 0.1 + (index * 0.03) : 0.03 * index
+          }}
+          className="w-full"
+        >
+          {child}
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+};
+
+export default function PageTransition({ 
+  children, 
+  className = '',
+  isFirstRender = false 
+}: PageTransitionProps) {
+  const pathname = usePathname();
+  const hasAnimated = useRef(false);
+  const isFirstRenderRef = useRef(isFirstRender);
+
+  // Reset animation state on route change
+  useEffect(() => {
+    return () => {
+      hasAnimated.current = false;
+    };
+  }, [pathname]);
+
+  // Skip animation after first render
+  if (isFirstRenderRef.current && !hasAnimated.current) {
+    hasAnimated.current = true;
+    return (
+      <AnimatePresence>
+        <AnimatedPageContent 
+          className={className} 
+          isInitial={true}
+        >
+          {children}
+        </AnimatedPageContent>
+      </AnimatePresence>
+    );
+  }
+
+  // For subsequent navigations
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <AnimatedPageContent className={className}>
         {children}
-      </motion.div>
+      </AnimatedPageContent>
     </AnimatePresence>
   );
 }

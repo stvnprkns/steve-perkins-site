@@ -41,7 +41,7 @@ export default function Nav() {
   return (
     <>
       <style jsx global>{navLinkStyles}</style>
-      <nav className="w-full bg-background/80 backdrop-blur-sm">
+      <nav className="w-full bg-background">
         <div className="max-w-[640px] mx-auto w-full px-4 sm:px-8 py-8 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-0">
           <Link 
             href="/" 
