@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="w-full">
+    <div className="w-full mx-auto max-w-3xl px-4 sm:px-6">
       <PageHero
         title="About Me"
         subtitle="Product Design Leader with a passion for creating intuitive, user-centered digital experiences."

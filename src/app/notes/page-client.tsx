@@ -149,9 +149,9 @@ export default function NotesPageClient({ notes, categories }: NotesPageProps) {
         </div>
       </Section>
 
-      {/* Notes grid section */}
-      <section className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
-        <div className="max-w-screen-2xl mx-auto">
+      {/* Notes grid section - Full width */}
+      <section className="w-full max-w-none py-8 sm:py-10">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <NotesList 
             notes={filteredNotes}
             selectedCategory={selectedCategory}

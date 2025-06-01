@@ -76,7 +76,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       
       <main className="flex-1 w-full pt-28">
         <PageTransition 
-          className="w-full mx-auto max-w-3xl px-4 sm:px-6"
+          className="w-full"
           isFirstRender={isFirstRender}
         >
           {children}

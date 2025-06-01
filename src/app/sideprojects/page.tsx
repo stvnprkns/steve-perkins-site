@@ -5,7 +5,7 @@ import Section from "@/components/layout/Section";
 
 export default function SideProjectsPage() {
   return (
-    <>
+    <div className="w-full mx-auto max-w-3xl px-4 sm:px-6">
       <PageHero
         title="Side Projects"
         subtitle={
@@ -38,6 +38,6 @@ export default function SideProjectsPage() {
           ))}
         </div>
       </Section>
-    </>
+    </div>
   );
 }

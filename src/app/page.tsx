@@ -94,7 +94,7 @@ export default function Home() {
   const featuredProjects: Project[] = [...projects];
 
   return (
-    <>
+    <div className="mx-auto max-w-3xl px-4 sm:px-6">
       <PageHero
         title="Steve Perkins"
         subtitle={
@@ -269,6 +269,6 @@ export default function Home() {
           </div>
         </div>
       </Section>
-    </>
+    </div>
   );
 }
