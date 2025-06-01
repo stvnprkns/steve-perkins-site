@@ -5,7 +5,7 @@ import PageHero from "@/components/PageHero";
 
 export default function ProjectsPage() {
   return (
-    <>
+    <div className="w-full mx-auto max-w-3xl px-4 sm:px-6">
       <PageHero
         title="Projects"
         subtitle={
@@ -38,6 +38,6 @@ export default function ProjectsPage() {
           ))}
         </div>
       </Section>
-    </>
+    </div>
   );
 }

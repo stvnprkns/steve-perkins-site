@@ -55,6 +55,6 @@ export default function ProjectPage() {
   }
   // Fallback for other projects
   return (
-    <div className="px-6 py-20 text-muted">Project not found or not yet available.</div>
+    <div className="w-full mx-auto max-w-3xl px-4 sm:px-6 py-20 text-muted">Project not found or not yet available.</div>
   );
 }
