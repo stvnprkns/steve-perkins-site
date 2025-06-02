@@ -16,7 +16,13 @@ export const metadata: Metadata = {
 const sidebarItems = [
   { id: 'problem', label: 'The Problem' },
   { id: 'approach', label: 'Our Approach' },
-  { id: 'form-reduction', label: 'From 27 fields to 2 steps' },
+  { 
+    id: 'form-reduction', 
+    label: 'From 27 fields to 2 steps',
+    subItems: [
+      { id: 'config-design', label: 'Configuring with ease' }
+    ]
+  },
   { id: 'outcomes', label: 'Outcomes' },
 ];
 
@@ -31,23 +37,23 @@ export default function RudderstackPage() {
     >
       <div>
         <BackToProjects />
-        <Section className="pt-16">
+        <Section variant="wide" className="pt-16">
           <Intro />
         </Section>
 
-        <Section id="problem">
+        <Section variant="wide" id="problem" className="mb-24">
           <Problem />
         </Section>
 
-        <Section id="approach">
+        <Section variant="wide" id="approach" className="mb-24">
           <Approach />
         </Section>
 
-        <Section id="form-reduction">
+        <Section variant="wide" id="form-reduction" className="mb-24">
           <FormReduction />
         </Section>
         
-        <Section id="outcomes" className="mb-16">
+        <Section variant="wide" id="outcomes" className="mb-16">
           <Outcomes />
           <div className="mt-16">
             <CaseStudyNavigation currentSlug="rudderstack" projects={projects} />

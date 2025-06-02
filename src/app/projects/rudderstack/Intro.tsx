@@ -26,7 +26,7 @@ function HeroImage({ src, alt }: { src: string; alt: string }) {
 export default function Intro() {
   return (
     <>
-      <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-left">
+      <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-left mb-8">
         {rudderstackData.title}
       </h1>
       <div className="mt-8 text-lg text-muted-foreground text-left">
@@ -43,9 +43,7 @@ export default function Intro() {
       {rudderstackData.heroImage && (
         <HeroImage src={rudderstackData.heroImage.src} alt={rudderstackData.heroImage.alt} />
       )}
-      <div className="prose max-w-prose mt-8 text-text-base">
-        <p>{rudderstackData.summary}</p>
-      </div>
+
     </>
   );
 }
