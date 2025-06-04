@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default function HowIBuiltATeam() {
   return (
     <>
-      <section id="project-overview" className="scroll-mt-20 mb-24">
+      <section id="project-overview" className="scroll-mt-20 mb-16">
         <div className="prose max-w-prose text-text-base space-y-6">
           
           <h1 className="text-4xl font-bold mb-6 font-sans">Good or bad, we all have to deal with insurance.</h1>
@@ -19,7 +19,7 @@ export default function HowIBuiltATeam() {
         </div>
       </section>
       
-      <section id="customer-research" className="scroll-mt-20 pt-16">
+      <section id="customer-research" className="scroll-mt-20">
         <div className="prose max-w-prose text-text-base space-y-6">
           <h2 className="text-3xl font-bold mb-8 font-sans">Customer Research</h2>
           

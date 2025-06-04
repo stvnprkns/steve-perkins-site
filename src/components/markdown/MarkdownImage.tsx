@@ -1,7 +1,9 @@
 'use client';
 
-import Image, { ImageProps } from 'next/image';
-import { useState } from 'react';
+import Image, { type ImageProps } from 'next/image';
+import { useState, useCallback } from 'react';
+import { useLightbox } from '@/context/LightboxContext';
+import { cn } from '@/lib/utils';
 
 interface MarkdownImageProps extends Omit<ImageProps, 'src' | 'alt' | 'width' | 'height'> {
   src?: string | null;
@@ -9,80 +11,80 @@ interface MarkdownImageProps extends Omit<ImageProps, 'src' | 'alt' | 'width' | 
   width?: string | number;
   height?: string | number;
   inline?: boolean;
+  className?: string;
+  containerClassName?: string;
 }
 
 // Custom loader for external images
-const customLoader = ({ src }: { src: string }) => {
-  return src;
-};
+const customLoader = ({ src }: { src: string }) => src;
 
 export default function MarkdownImage({ 
   src, 
   alt = '', 
   className = '',
-  width: widthProp,
-  height: heightProp,
+  containerClassName = '',
+  width = 800,
+  height = 600,
   ...props 
 }: MarkdownImageProps) {
-  // Convert width and height to numbers if they're strings
-  const width = widthProp ? Number(widthProp) : undefined;
-  const height = heightProp ? Number(heightProp) : undefined;
   const [isImageError, setIsImageError] = useState(false);
+  const { openLightbox } = useLightbox();
   
-  // Skip rendering if no source
   if (!src) return null;
   
-  // Handle image loading errors
-  const handleError = () => {
-    setIsImageError(true);
-  };
+  const handleError = () => setIsImageError(true);
+  const handleImageClick = useCallback((e: React.MouseEvent) => {
+    if (!src || props.inline) return;
+    e.stopPropagation();
+    const lightboxAlt = alt && !alt.includes('\n') ? alt : '';
+    openLightbox(src, lightboxAlt);
+  }, [src, alt, openLightbox, props.inline]);
 
-  // If image failed to load, show a placeholder
   if (isImageError) {
     return (
-      <div className="not-prose my-8 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center aspect-video">
+      <div className="not-prose my-8 rounded-lg p-8 text-center bg-transparent">
         <span className="text-gray-500">Image failed to load</span>
       </div>
     );
   }
 
-  // For all images, use Next.js Image component with custom loader for external images
   const isExternal = typeof src === 'string' && (src.startsWith('http') || src.startsWith('//'));
-  
-  // Convert width and height to numbers if they're strings
-  const widthNum = width ? Number(width) : undefined;
-  const heightNum = height ? Number(height) : undefined;
-
-  const image = (
-    <Image
-      src={src}
-      alt={alt}
-      fill={!widthNum || !heightNum}
-      width={widthNum}
-      height={heightNum}
-      className={`rounded-lg ${props.inline ? 'inline-block max-h-6 w-auto' : 'object-cover'} ${className}`}
-      sizes={!props.inline ? "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px" : undefined}
-      onError={handleError}
-      loader={isExternal ? customLoader : undefined}
-      unoptimized={isExternal}
-      {...props}
-    />
-  );
-
-  if (props.inline) {
-    return image;
-  }
+  const showCaption = Boolean(alt);
+  const numericWidth = typeof width === 'string' ? parseInt(width, 10) : width;
+  const numericHeight = typeof height === 'string' ? parseInt(height, 10) : height;
 
   return (
-    <div className="not-prose my-8">
-      <div className="relative w-full aspect-video">
-        {image}
+    <div className={cn('not-prose my-2 flex flex-col items-center', containerClassName)}>
+      <div 
+        className={cn('relative w-full bg-transparent', { 'cursor-zoom-in': !props.inline })}
+        onClick={handleImageClick}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          width={numericWidth}
+          height={numericHeight}
+          className={cn(
+            'mx-auto my-0 block w-full h-auto',
+            { 'inline-block': props.inline },
+            className
+          )}
+          style={{
+            borderRadius: '0.25rem',
+            maxWidth: '100%',
+          }}
+          loader={isExternal ? customLoader : undefined}
+          unoptimized={isExternal}
+          onError={handleError}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
+          {...props}
+        />
       </div>
-      {alt && !alt.startsWith('http') && (
-        <p className="mt-2 text-sm text-muted-foreground text-center">
+      {showCaption && !props.inline && (
+        <figcaption className="mt-2 text-sm text-gray-500 text-center">
           {alt}
-        </p>
+        </figcaption>
       )}
     </div>
-  )
+  );
 }
