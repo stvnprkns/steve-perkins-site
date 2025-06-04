@@ -34,7 +34,7 @@ export const rudderstackTeamData: RudderstackTeamData = {
     alt: "RudderStack design team working together"
   },
   team: ["Me", "Edward Won", "Kristin Landgraf", "Lisa Collins", "Suhani Harish", "Anne Sommer", "Julianne Vinh"],
-  summary: "Building a design team from the ground up at a fast-growing startup comes with unique challenges and opportunities. This is the story of how we established design as a strategic partner at RudderStack and created a culture of collaboration and innovation.",
+  summary: "",
   outcomes: {
     metrics: [
       { value: "+6", label: "Point improvement in System Usability Score" },

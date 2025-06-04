@@ -71,7 +71,7 @@ export default function NotesList({
             <Link 
               key={note.slug} 
               href={`/notes/${note.slug}`}
-              className="group block p-4 sm:p-6 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] h-full no-underline"
+              className="group block p-4 sm:p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] h-full no-underline"
             >
               <div className="space-y-4">
                 <div className="flex items-center space-x-3 mb-2">
@@ -81,26 +81,26 @@ export default function NotesList({
                     </span>
                   )}
                   {note.category && (
-                    <span className="text-xs font-medium text-gray-500">
+                    <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
                       {note.category}
                     </span>
                   )}
                 </div>
                 
-                <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-700 transition-colors duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">
                   {note.title}
                 </h3>
                 
                 {note.excerpt && (
-                  <p className="text-sm text-gray-600 line-clamp-2">
+                  <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2">
                     {note.excerpt}
                   </p>
                 )}
                 
-                <div className="flex items-center justify-between pt-3 text-xs text-gray-500 border-t border-gray-100 mt-4">
+                <div className="flex items-center justify-between pt-3 text-xs text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-700 mt-4">
                   <span>{formattedDate}</span>
                   {note.status && (
-                    <span className="px-2 py-0.5 bg-gray-100 rounded-full">
+                    <span className="px-2 py-0.5 bg-gray-100 dark:bg-gray-700 rounded-full">
                       {note.status}
                     </span>
                   )}

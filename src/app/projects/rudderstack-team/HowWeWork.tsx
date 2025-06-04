@@ -16,9 +16,29 @@ export default function HowWeWork() {
         </p>
 
         <h3 className="text-2xl font-semibold mt-12 mb-4 font-sans">Be a Part of the Backlog</h3>
-        <p>
-          For design to be a strategic partner, we need to bring ideas to the table. Design has to look beyond the pixels and understand how we make money and how customers use the product. We have to be in the analytics, read the support tickets, and talk to our customers. If you don&apos;t intimately understand the problem, you can&apos;t create a good solution.
-        </p>
+        <div className="flex flex-col md:flex-row gap-6 items-start">
+          <div className="flex-1">
+            <p>
+              For design to be a strategic partner, we need to bring ideas to the table. Design has to look beyond the pixels and understand how we make money and how customers use the product. We have to be in the analytics, read the support tickets, and talk to our customers. If you don't intimately understand the problem, you can't create a good solution.
+            </p>
+          </div>
+          <div className="w-full md:w-1/2">
+            <figure className="bg-purple-50 p-4 rounded-lg">
+              <div className="relative w-full">
+                <Image
+                  src="/images/projects/rudderstack-team/rudderstack-prd.webp"
+                  alt="Product requirements document showing design integration"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto rounded"
+                />
+                <figcaption className="mt-2 text-sm text-gray-500">
+                  [Fig. 3] Example of design integration in product requirements
+                </figcaption>
+              </div>
+            </figure>
+          </div>
+        </div>
 
         <h3 className="text-2xl font-semibold mt-12 mb-4 font-sans">Designers Write and Groom Tickets</h3>
         <p>
@@ -33,7 +53,7 @@ export default function HowWeWork() {
         <figure className="w-full my-12 bg-purple-50 p-4 rounded-lg">
           <div className="relative w-full max-w-4xl mx-auto">
             <Image
-              src="/images/projects/rudderstack-team/design-qa-process.jpg"
+              src="/images/projects/rudderstack-team/rudderstack-design-qa.webp"
               alt="RudderStack's Design and QA process"
               width={1200}
               height={800}

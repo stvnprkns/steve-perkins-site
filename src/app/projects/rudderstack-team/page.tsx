@@ -73,30 +73,23 @@ export default function RudderstackTeamPage() {
           </div>
         </Section>
 
-          <Section id="how-i-built-a-team" variant="wide">
+          <Section id="how-i-built-a-team" variant="wide" className="mb-24">
             <HowIBuiltATeam />
           </Section>
 
-          <Section variant="wide" id="how-we-work">
+          <Section variant="wide" id="how-we-work" className="mb-24">
             <HowWeWork />
           </Section>
 
-          <Section variant="wide" id="how-we-succeeded" className="space-y-0">
+          <Section variant="wide" id="how-we-succeeded" className="mb-16">
             <HowWeSucceeded />
+            <div className="mt-16">
+              <CaseStudyNavigation 
+                currentSlug="rudderstack-team" 
+                projects={projects} 
+              />
+            </div>
           </Section>
-          <Section variant="wide" id="outcomes" className="max-w-prose mx-auto mb-16">
-          <h2 className="text-2xl font-bold mb-4">Outcomes</h2>
-          <KeyMetrics metrics={rudderstackTeamData.outcomes.metrics.map(m => ({ value: m.value, description: m.label }))} />
-          <p className="text-base leading-loose text-text-base max-w-prose mx-auto mt-4 mb-8">
-            {rudderstackTeamData.outcomes.summary}
-          </p>
-          <div className="mt-16">
-            <CaseStudyNavigation 
-              currentSlug="rudderstack-team" 
-              projects={projects} 
-            />
-          </div>
-        </Section>
       </div>
     </CaseStudyGrid>
   );

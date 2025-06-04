@@ -1,25 +1,29 @@
 import { Metadata } from 'next';
-import { CaseStudyGrid, Section, SidebarNav, BackToProjects } from '@/components';
-import CaseStudyNavigation from '@/components/case-study/CaseStudyNavigation';
+import Image from 'next/image';
+import { SidebarNav, CaseStudyGrid, Section, BackToProjects } from '@/components';
+import { ExternalLink } from '@/components/ExternalLink';
+import HowIBuiltATeam from './HowIBuiltATeam';
+import HowWeWork from './HowWeWork';
+import HowWeSucceeded from './HowWeSucceeded';
+import KeyMetrics from '@/components/KeyMetrics';
+import { appealioData } from './appealioData';
+import { TeamList } from '@/components/TeamMember';
 import { projects } from '@/lib/projects';
-
-// Import sections (we'll create these next)
-import Intro from './Intro';
-import Problem from './Problem';
-import Approach from './Approach';
-import Solution from './Solution';
-import Outcomes from './Outcomes';
+import CaseStudyNavigation from '@/components/case-study/CaseStudyNavigation';
 
 export const metadata: Metadata = {
-  title: 'Appealio - Streamlining Insurance Appeals',
-  description: 'Designing an intuitive platform to simplify the insurance appeals process for healthcare providers',
+  title: appealioData.title,
+  description: 'How we designed an intuitive platform to simplify the insurance appeals process for healthcare providers',
+  openGraph: {
+    images: ['/images/appealio-preview.png'],
+  },
 };
 
 const sidebarItems = [
-  { id: 'problem', label: 'The Challenge' },
-  { id: 'approach', label: 'Our Approach' },
-  { id: 'solution', label: 'The Solution' },
-  { id: 'outcomes', label: 'Results' },
+  { id: 'project-overview', label: 'Project Overview' },
+  { id: 'customer-research', label: 'Customer Research' },
+  { id: 'building-the-product', label: 'Building the Product' },
+  { id: 'outcomes', label: 'Outcomes' },
 ];
 
 export default function AppealioPage() {
@@ -33,26 +37,57 @@ export default function AppealioPage() {
     >
       <div>
         <BackToProjects />
-        <Section className="pt-16">
-          <Intro />
+        <Section variant="wide" className="pt-16">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-left">
+            {appealioData.title}
+          </h1>
+          <div className="mt-8 text-lg text-muted-foreground text-left">
+            <p className="font-medium">
+              <ExternalLink href={appealioData.company.url}>
+                {appealioData.company.name}
+              </ExternalLink>
+            </p>
+            <div className="mt-4">
+              <h3 className="text-sm font-medium text-muted-foreground mb-2">Team</h3>
+              <TeamList members={appealioData.team} />
+            </div>
+          </div>
+          {appealioData.heroImage && (
+            <div className="w-[110%] relative -left-[5%] my-8 md:my-12">
+              <div className="max-w-screen-2xl mx-auto">
+                <div className="relative w-full aspect-video">
+                  <Image
+                    src={appealioData.heroImage.src}
+                    alt={appealioData.heroImage.alt}
+                    fill
+                    className="object-cover w-full h-full rounded"
+                    priority
+                    sizes="100vw"
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+          <div className="prose max-w-prose mt-8 text-text-base">
+            <p>{appealioData.summary}</p>
+          </div>
         </Section>
 
-        <Section id="problem">
-          <Problem />
+        <Section id="how-i-built-a-team" variant="wide" className="mb-24">
+          <HowIBuiltATeam />
         </Section>
 
-        <Section id="approach">
-          <Approach />
-        </Section>
-        
-        <Section id="solution">
-          <Solution />
+        <Section variant="wide" id="how-we-work" className="mb-24">
+          <HowWeWork />
         </Section>
 
-        <Section id="outcomes" className="mb-16">
-          <Outcomes />
+        <Section variant="wide" id="how-we-succeeded" className="mb-16">
+          <HowWeSucceeded />
           <div className="mt-16">
-            <CaseStudyNavigation currentSlug="appealio-insurance-appeals" projects={projects} />
+            <CaseStudyNavigation 
+              currentSlug="appealio-insurance-appeals" 
+              projects={projects} 
+            />
           </div>
         </Section>
       </div>

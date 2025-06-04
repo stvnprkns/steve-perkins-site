@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import UnderlineLink from '@/components/UnderlineLink';
 import PageHero from '@/components/PageHero';
@@ -15,56 +14,16 @@ export default function AboutPage() {
     <div className="w-full mx-auto max-w-3xl px-4 sm:px-6">
       <PageHero
         title="About Me"
-        subtitle="Product Design Leader with a passion for creating intuitive, user-centered digital experiences."
         variant="narrow"
-        padding="lg"
+        padding="default"
       />
-
-      <Section variant="narrow" className="py-16" noDivider>
-        <div className="grid md:grid-cols-3 gap-12">
-          <div className="md:col-span-2 space-y-6">
-            <h2 className="text-2xl font-medium">Hello, I&apos;m Steve</h2>
-            
-            <div className="prose text-base leading-relaxed space-y-4">
-              <p>
-                I&apos;m a product leader with over 15 years of experience building and scaling high-performing teams and products. My expertise lies in product management, data analytics, and user experience design. I help companies navigate the challenges of rapid growth, with a focus on building resilient, customer-focused products.
-              </p>
-              
-              <p>
-                My approach combines deep technical expertise with strong product sense, enabling me to bridge the gap between business objectives and technical implementation. I&apos;m passionate about creating products that solve real problems and deliver exceptional user experiences.
-              </p>
-              
-              <p>
-                I&apos;ve had the privilege of working with some amazing companies, including RudderStack, QuickBooks, and Intuit, where I&apos;ve led teams to deliver innovative solutions that drive business growth.
-              </p>
-              
-              <p>
-                When I&apos;m not building products, you can find me hiking in the mountains, experimenting with new cooking techniques, or spending time with my family.
-              </p>
-              
-              <div className="pt-4">
-                <Link 
-                  href="/projects" 
-                  className="inline-flex items-center text-foreground hover:text-foreground/80 transition-colors"
-                >
-                  View my work
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-          </div>
+      <Section variant="narrow" className="pt-2 pb-8" noDivider>
+        <div className="prose text-base leading-relaxed space-y-3">
+          <p>I was halfway to becoming a cosmetic dentist when I realized I didn&apos;t want to memorize the right answer — I wanted to ask better questions. So I switched majors, studied New Media Art, and ended up somewhere between art, design, code, and systems thinking.</p>
           
-          <div className="relative aspect-square rounded-lg overflow-hidden">
-            <Image
-              src="/images/steve-perkins.jpg"
-              alt="Steve Perkins"
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
+          <p>That was over 13 years ago. Since then, I&apos;ve led design orgs, launched products from zero, cleaned up the messes others left behind, and built teams that like building together.</p>
+          
+          <p>I&apos;ve worked in just about every industry, fintech, healthcare, dev tools, and construction — usually on the hard stuff that has more edge cases than glamour shots. I&apos;ve designed HIPAA-compliant messengers, built data platforms, overhauled design systems, and reimagined how customer info flows across tools. The unsexy problems that quietly power everything.</p>
         </div>
       </Section>
 
@@ -74,53 +33,127 @@ export default function AboutPage() {
           
           <ul className="space-y-4">
             <li className="flex flex-1 items-center space-x-4 pl-0">
-              <div className="text-foreground">
+              <div>
                 <UnderlineLink href="https://procore.com">Procore</UnderlineLink>
               </div>
-              <span className="w-full border-t border-border border-dashed min-w-4" style={{ flexShrink: 999999 }}></span>
-              <div className="text-muted-foreground text-right">
+              <span className="w-full border-t border-gray-500/30 border-dashed min-w-4" style={{ flexShrink: 999999 }} />
+              <div className="text-right">
                 <div className="flex items-center">
-                  <div>Director of Product Design</div>
-                  <div className="ml-4 w-[6em] text-right tabular-nums">2020–Now</div>
+                  <div className="font-normal text-gray-600 dark:text-gray-300">Senior Product Design Manager</div>
+                  <div className="ml-4 w-[6em] text-right tabular-nums text-gray-400 dark:text-gray-500">2025–Now</div>
                 </div>
               </div>
             </li>
 
             <li className="flex flex-1 items-center space-x-4 pl-0">
-              <div className="text-foreground">
+              <div>Argo Design</div>
+              <span className="w-full border-t border-gray-500/30 border-dashed min-w-4" style={{ flexShrink: 999999 }} />
+              <div className="text-right">
+                <div className="flex items-center">
+                  <div className="font-normal text-gray-600 dark:text-gray-300">Freelance Designer</div>
+                  <div className="ml-4 w-[6em] text-right tabular-nums text-gray-400 dark:text-gray-500">2024</div>
+                </div>
+              </div>
+            </li>
+
+            <li className="flex flex-1 items-center space-x-4 pl-0">
+              <div>
+                <UnderlineLink href="https://gartner.com">Gartner</UnderlineLink>
+              </div>
+              <span className="w-full border-t border-gray-500/30 border-dashed min-w-4" style={{ flexShrink: 999999 }} />
+              <div className="text-right">
+                <div className="flex items-center">
+                  <div className="font-normal text-gray-600 dark:text-gray-300">Manager, Product Design</div>
+                  <div className="ml-4 w-[6em] text-right tabular-nums text-gray-400 dark:text-gray-500">2024</div>
+                </div>
+              </div>
+            </li>
+
+            <li className="flex flex-1 items-center space-x-4 pl-0">
+              <div>
                 <UnderlineLink href="https://rudderstack.com">RudderStack</UnderlineLink>
               </div>
-              <span className="w-full border-t border-border border-dashed min-w-4" style={{ flexShrink: 999999 }}></span>
-              <div className="text-muted-foreground text-right">
+              <span className="w-full border-t border-gray-500/30 border-dashed min-w-4" style={{ flexShrink: 999999 }} />
+              <div className="text-right">
                 <div className="flex items-center">
-                  <div>Head of Design</div>
-                  <div className="ml-4 w-[6em] text-right tabular-nums">2018–2020</div>
+                  <div className="font-normal text-gray-600 dark:text-gray-300">Head of Design</div>
+                  <div className="ml-4 w-[6em] text-right tabular-nums text-gray-400 dark:text-gray-500">2021–2024</div>
                 </div>
               </div>
             </li>
 
             <li className="flex flex-1 items-center space-x-4 pl-0">
-              <div className="text-foreground">
-                <UnderlineLink href="https://intuit.com">Intuit</UnderlineLink>
+              <div>
+                <UnderlineLink href="https://sailpoint.com">SailPoint</UnderlineLink>
               </div>
-              <span className="w-full border-t border-border border-dashed min-w-4" style={{ flexShrink: 999999 }}></span>
-              <div className="text-muted-foreground text-right">
+              <span className="w-full border-t border-gray-500/30 border-dashed min-w-4" style={{ flexShrink: 999999 }} />
+              <div className="text-right">
                 <div className="flex items-center">
-                  <div>Senior Product Designer</div>
-                  <div className="ml-4 w-[6em] text-right tabular-nums">2015–2018</div>
+                  <div className="font-normal text-gray-600 dark:text-gray-300">Lead, Design Operations</div>
+                  <div className="ml-4 w-[6em] text-right tabular-nums text-gray-400 dark:text-gray-500">2020–2021</div>
                 </div>
               </div>
             </li>
 
             <li className="flex flex-1 items-center space-x-4 pl-0">
-              <div className="text-foreground">
-                <UnderlineLink href="https://shopify.com">Shopify</UnderlineLink>
+              <div>
+                <UnderlineLink href="https://kunaico.com">Kunai</UnderlineLink>
               </div>
-              <span className="w-full border-t border-border border-dashed min-w-4" style={{ flexShrink: 999999 }}></span>
-              <div className="text-muted-foreground text-right">
+              <span className="w-full border-t border-gray-500/30 border-dashed min-w-4" style={{ flexShrink: 999999 }} />
+              <div className="text-right">
                 <div className="flex items-center">
-                  <div>Senior Staff Software Engineer</div>
-                  <div className="ml-4 w-[6em] text-right tabular-nums">2024–Now</div>
+                  <div className="font-normal text-gray-600 dark:text-gray-300">Design Manager</div>
+                  <div className="ml-4 w-[6em] text-right tabular-nums text-gray-400 dark:text-gray-500">2016–2020</div>
+                </div>
+              </div>
+            </li>
+
+            <li className="flex flex-1 items-center space-x-4 pl-0">
+              <div>
+                <UnderlineLink href="https://www.att.com">AT&T</UnderlineLink>
+              </div>
+              <span className="w-full border-t border-gray-500/30 border-dashed min-w-4" style={{ flexShrink: 999999 }} />
+              <div className="text-right">
+                <div className="flex items-center">
+                  <div className="font-normal text-gray-600 dark:text-gray-300">Lead UX Designer</div>
+                  <div className="ml-4 w-[6em] text-right tabular-nums text-gray-400 dark:text-gray-500">2015–2016</div>
+                </div>
+              </div>
+            </li>
+
+            <li className="flex flex-1 items-center space-x-4 pl-0">
+              <div>
+                <UnderlineLink href="https://www.intuit.com">Intuit</UnderlineLink>
+              </div>
+              <span className="w-full border-t border-gray-500/30 border-dashed min-w-4" style={{ flexShrink: 999999 }} />
+              <div className="text-right">
+                <div className="flex items-center">
+                  <div className="font-normal text-gray-600 dark:text-gray-300">Interaction Designer</div>
+                  <div className="ml-4 w-[6em] text-right tabular-nums text-gray-400 dark:text-gray-500">2014–2015</div>
+                </div>
+              </div>
+            </li>
+
+            <li className="flex flex-1 items-center space-x-4 pl-0">
+              <div>
+                <UnderlineLink href="https://tigerconnect.com">TigerConnect</UnderlineLink>
+              </div>
+              <span className="w-full border-t border-gray-500/30 border-dashed min-w-4" style={{ flexShrink: 999999 }} />
+              <div className="text-right">
+                <div className="flex items-center">
+                  <div className="font-normal text-gray-600 dark:text-gray-300">Founding Designer</div>
+                  <div className="ml-4 w-[6em] text-right tabular-nums text-gray-400 dark:text-gray-500">2013–2014</div>
+                </div>
+              </div>
+            </li>
+
+            <li className="flex flex-1 items-center space-x-4 pl-0">
+              <div>The Media Grind</div>
+              <span className="w-full border-t border-gray-500/30 border-dashed min-w-4" style={{ flexShrink: 999999 }} />
+              <div className="text-right">
+                <div className="flex items-center">
+                  <div className="font-normal text-gray-600 dark:text-gray-300">Digital Designer</div>
+                  <div className="ml-4 w-[6em] text-right tabular-nums text-gray-400 dark:text-gray-500">2012–2013</div>
                 </div>
               </div>
             </li>

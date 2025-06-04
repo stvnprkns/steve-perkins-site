@@ -87,7 +87,7 @@ export default function NotesPageClient({ notes, categories }: NotesPageProps) {
       <PageHero
         title="Notes"
         subtitle={
-          "This is where I put the half-formed stuff. Ideas I'm wrestling with, patterns I keep noticing, questions I haven't fully answered. You won't find polish here — just the starting points of clarity.\n\nSometimes it's a hunch. Sometimes it's something a customer said that won't leave my head. Sometimes it's a note to my future self, written out loud."
+          "Loose threads. Early thoughts. Things I'm still figuring out.\n\nThis is where I stash the ideas that aren't ready for a case study but won't leave me alone. Some are half-right. Some are just half.\n\nNo polish, no conclusions — just trying to get a little closer to the truth by writing it down."
             .split('\n\n')
             .map((paragraph, index) => (
               <p key={index} className="mb-2">

@@ -59,8 +59,8 @@ export default function RelatedNotes({ currentSlug }: RelatedNotesProps) {
         variants={fadeInUp}
         className="mt-16 relative px-4 sm:px-6"
       >
-        <div className="absolute inset-0 -inset-x-3 -inset-y-2 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800/50 rounded-lg -z-10" />
-        <div className="max-w-3xl mx-auto py-6">
+        <div className="absolute inset-0 -inset-x-3 -inset-y-2 bg-purple-50 dark:bg-gray-800/50 border border-purple-200 dark:border-gray-700/70 rounded-lg z-0" />
+        <div className="relative max-w-3xl mx-auto py-6 z-10">
           <motion.div 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}

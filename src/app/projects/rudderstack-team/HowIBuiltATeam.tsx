@@ -36,9 +36,29 @@ export default function HowIBuiltATeam() {
         </p>
         
         <h4 className="text-xl font-semibold mt-8 mb-4 font-sans">Collaboration at the Core</h4>
-        <p>
-          I didn&apos;t want designers to work alone in siloed pods. That&apos;s no fun, and when you&apos;re already outnumbered, it makes it even harder for creatives to have a voice. I built a cross-discipline team that tackled the problems of the product together. Each member owned a domain, and they all worked side by side throughout the project&apos;s lifecycle.
-        </p>
+        <div className="flex flex-col md:flex-row gap-6 items-start">
+          <div className="flex-1">
+            <p>
+              I didn't want designers to work alone in siloed pods. That's no fun, and when you're already outnumbered, it makes it even harder for creatives to have a voice. I built a cross-discipline team that tackled the problems of the product together. Each member owned a domain, and they all worked side by side throughout the project's lifecycle.
+            </p>
+          </div>
+          <div className="w-full md:w-1/2">
+            <figure className="bg-purple-50 p-4 rounded-lg">
+              <div className="relative w-full">
+                <Image
+                  src="/images/projects/rudderstack-team/rudderstack-team-process.jpg"
+                  alt="A team process diagram showing the roles of the RudderStack Design Team"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto rounded"
+                />
+                <figcaption className="mt-2 text-sm text-gray-500">
+                  [Fig. 2] RudderStack's Design and QA process
+                </figcaption>
+              </div>
+            </figure>
+          </div>
+        </div>
         
         <h4 className="text-xl font-semibold mt-8 mb-4 font-sans">Being an Advocate</h4>
         <p>
@@ -46,22 +66,7 @@ export default function HowIBuiltATeam() {
         </p>
       </div>
       
-      <div className="w-full my-12">
-        <figure className="w-full bg-purple-50 p-4 rounded-lg">
-          <div className="relative w-full max-w-4xl mx-auto">
-            <Image
-              src="/images/projects/rudderstack-team/rudderstack-team-process.jpg"
-              alt="A team process diagram showing the roles of the RudderStack Design Team"
-              width={1200}
-              height={800}
-              className="w-full h-auto rounded"
-            />
-            <figcaption className="mt-2 text-sm text-gray-500 text-center">
-              [Fig. 2] RudderStack&apos;s Design and QA process
-            </figcaption>
-          </div>
-        </figure>
-      </div>
+
     </section>
   );
 }

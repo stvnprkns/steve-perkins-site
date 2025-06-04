@@ -45,6 +45,11 @@ export const categories: Record<string, Category> = {
     subtitle: "Making intentional choices about where to play and how to win",
     emoji: "🎯",
   },
+  "Leadership": {
+    title: "Leadership",
+    subtitle: "Guiding teams and fostering growth",
+    emoji: "🧑‍✈️",
+  },
 };
 
 export function getCategoryByKey(key: string): Category | undefined {

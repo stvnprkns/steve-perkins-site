@@ -99,51 +99,43 @@ export default function Home() {
         title="Steve Perkins"
         subtitle={
           <>
-            <p>Hey, I&apos;m Steve — a design leader, 3x founding designer, and someone who&apos;s spent the last decade building clarity where there wasn&apos;t any.</p>
+            <p>
+              I’m currently the Senior Manager of Product Design at <a href="https://www.procore.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors inline-flex items-center">Procore <span className='ml-1'>↗</span></a>, leading
+              teams behind the platforms that power construction — Directory,
+              Permissions, Ecosystem, and Authentication.
+            </p>
             <br />
-            <p>I&apos;ve helped launch 50+ products across startups and scale-ups — from Designer on <a href='https://www.intuitlabs.com/' className='inline-flex items-center'>Intuit Labs <span className='ml-1'>↗</span></a>, to Head of Design at <a href='https://www.rudderstack.com/' className='inline-flex items-center'>RudderStack <span className='ml-1'>↗</span></a>, to Founding Designer at <a href='https://www.tigerconnect.com/' className='inline-flex items-center'>TigerConnect <span className='ml-1'>↗</span></a>. I care a lot about thoughtful systems, fast feedback loops, and design that earns trust with customers.</p>
+            <p>
+              Over the years, I’ve helped launch more than 50 products across
+              fintech, healthcare, dev tools, and communication. From building the
+              first mobile app for CPAs to file taxes, to shaping early concepts for
+              Amex Pay It Plan It, to working on what became TurboTax Live — I’ve
+              focused on the unglamorous stuff that quietly powers everything else.
+            </p>
             <br />
-            <div className="space-y-6">
-              <div className="prose dark:prose-invert max-w-none">
-                <div className="space-y-4">
-                  <p>But product isn't the only thing I build. I've got{' '}
-                    <HoverReveal 
-                      images={dogsAndKidsImages}
-                      position='left'
-                    >
-                      <UnderlineLink href='#'>
-                        twin 4-year-olds and three dogs
-                      </UnderlineLink>
-                    </HoverReveal>
-                    , and a running list of every{' '}
-                    <HoverReveal 
-                      images={tvSteveImages}
-                      position='right'
-                    >
-                      <UnderlineLink href='#'>
-                        Steve who's ever appeared on TV
-                      </UnderlineLink>
-                    </HoverReveal>
-                    —which, yes, is one of several{' '}
-                    <Link href='/sideprojects' className='inline-flex items-center'>
-                      side projects
-                    </Link>
-                    .
-                  </p>
-                  <p>
-                    I like my teams opinionated, my design work honest and fast-moving, and my{' '}
-                    <HoverReveal 
-                      images={basketballImages}
-                      position='right'
-                    >
-                      <UnderlineLink href='#'>
-                        basketball players from the mid-2000s
-                      </UnderlineLink>
-                    </HoverReveal>.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <p>
+              I’m a generalist, a builder, and a team-first leader. I care about
+              momentum, culture, and whether the decisions we make today lead to
+              meaningful change.
+            </p>
+            <br />
+            <p>
+              Outside of work, I’m just{' '}
+              <HoverReveal images={tvSteveImages} position="right">
+                <UnderlineLink href="#">Steve</UnderlineLink>
+              </HoverReveal>{' '}
+              — a dad{' '}
+              <HoverReveal images={dogsAndKidsImages} position="left">
+                <UnderlineLink href="#">
+                  raising twins, wrangling three dogs
+                </UnderlineLink>
+              </HoverReveal>
+              , and spending Saturday mornings{' '}
+              <HoverReveal images={basketballImages} position="right">
+                <UnderlineLink href="#">playing basketball</UnderlineLink>
+              </HoverReveal>
+              .
+            </p>
           </>
         }
         variant="narrow"
@@ -216,57 +208,6 @@ export default function Home() {
               </div>
             </article>
           ))}
-        </div>
-      </Section>
-      <Section variant="narrow" className="py-16" noDivider>
-        <div className="relative">
-          <div className="absolute inset-0 -inset-x-4 sm:-inset-x-6 -inset-y-2 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800/50 rounded-lg -z-10" />
-          <div className="relative max-w-3xl mx-auto py-6 px-4 sm:px-6">
-            <div className="space-y-1 mb-4">
-              <h2 className="text-lg font-medium">Latest Notes</h2>
-              <p className="text-sm text-muted-foreground">
-                Ideas I&apos;m wrestling with, patterns I keep noticing, questions I haven&apos;t fully answered.
-              </p>
-            </div>
-            
-            <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent my-4" />
-            
-            <div className="space-y-4">
-              {/* Example Note - Replace with your actual notes data */}
-              <div className="group">
-                <Link 
-                  href="/notes/example-note" 
-                  className="block group no-underline text-foreground"
-                >
-                  <div className="flex items-start gap-3 p-3 rounded-lg transition-colors hover:bg-purple-100/50 dark:hover:bg-purple-900/30">
-                    <span className="text-muted-foreground group-hover:text-foreground transition-colors mt-0.5">
-                      📝
-                    </span>
-                    <div className="flex-1">
-                      <span className="font-medium">
-                        Example Note Title
-                      </span>
-                      <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
-                        A brief description of the note content goes here. This is a preview of the note that gives readers an idea of what to expect.
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-              
-              <div className="mt-6 text-center">
-                <Link 
-                  href="/notes" 
-                  className="inline-flex items-center text-sm font-medium text-foreground/80 hover:text-foreground transition-colors group"
-                >
-                  View All Notes
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1.5 transition-transform group-hover:translate-x-0.5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-          </div>
         </div>
       </Section>
     </div>

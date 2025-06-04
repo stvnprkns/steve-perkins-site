@@ -5,6 +5,8 @@ import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import PageTransition from '@/components/PageTransition';
+import { ThemeProvider } from '@/components/ThemeProvider';
+import { FloatingThemeToggle } from '@/components/FloatingThemeToggle';
 
 // Dynamically import the Nav component with SSR disabled
 const Nav = dynamic(() => import('@/components/Nav'), { 
@@ -54,7 +56,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <ThemeProvider>
+      <div className="min-h-screen flex flex-col bg-background dark:bg-gray-900">
       <AnimatePresence mode="wait">
         <motion.div
           key="nav-wrapper"
@@ -80,8 +83,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
           isFirstRender={isFirstRender}
         >
           {children}
+          <FloatingThemeToggle />
         </PageTransition>
-      </main>
-    </div>
+        </main>
+      </div>
+    </ThemeProvider>
   );
 }
