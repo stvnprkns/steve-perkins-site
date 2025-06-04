@@ -32,18 +32,7 @@ export default function HowWeSucceeded() {
           </div>
         </div>
         
-        <div className="bg-gray-50 p-6 rounded-lg my-8">
-          <Image
-            src="/images/projects/appealio-insurance-appeals/success-metrics.webp"
-            alt="Success metrics and impact dashboard"
-            width={1200}
-            height={600}
-            className="w-full h-auto rounded"
-          />
-          <figcaption className="mt-2 text-sm text-gray-500 text-center">
-            [Fig. 5] Impact metrics showing the success of the Appealio platform
-          </figcaption>
-        </div>
+        
       </div>
     </section>
   );

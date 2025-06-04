@@ -100,9 +100,7 @@ We needed a clear way for CPAs and business owners to communicate. QuickBooks ha
     ]
   },
   whatWeLearned: {
-    content: `Running a business is already hard, but doing so while being the bookkeeper makes it nearly impossible to be successful. After the experiment launched, the response was surprising.
-
-Customer feedback highlighted immediate benefits: they were saving money on their taxes, finding more time and energy to devote to their businesses, and realizing how valuable tax professionals were in making daily financial decisions.`,
+    content: `The experiment revealed that small business owners who connected with CPAs through our platform experienced significant benefits. They were able to focus more on growing their businesses while leaving the financial complexities to professionals.`,
     images: [
       {
         src: "/images/projects/quickbooks-cpa-match/Matching_V4.007-p-800.jpeg",

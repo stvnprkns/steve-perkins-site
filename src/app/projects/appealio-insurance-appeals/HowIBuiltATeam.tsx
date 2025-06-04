@@ -5,11 +5,11 @@ export default function HowIBuiltATeam() {
     <>
       <section id="project-overview" className="scroll-mt-20 mb-24">
         <div className="prose max-w-prose text-text-base space-y-6">
-          <p className="text-lg text-muted-foreground">
-            However, unless you work in healthcare, you've probably never encountered the appeals process. This process involves negotiations between insurers and healthcare providers to determine final prices.
-          </p>
           
           <h1 className="text-4xl font-bold mb-6 font-sans">Good or bad, we all have to deal with insurance.</h1>
+          <p>
+            However, unless you work in healthcare, you've probably never encountered the appeals process. This process involves negotiations between insurers and healthcare providers to determine final prices.
+          </p>
           
           <h2 className="text-3xl font-bold mt-12 mb-6 font-sans">Project Overview</h2>
           

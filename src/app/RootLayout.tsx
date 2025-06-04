@@ -83,9 +83,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
           isFirstRender={isFirstRender}
         >
           {children}
-          <FloatingThemeToggle />
         </PageTransition>
-        </main>
+      </main>
       </div>
     </ThemeProvider>
   );

@@ -16,7 +16,7 @@ It’s one of the clearest ways I’ve ever seen someone describe what it actual
 
 Not manage.  
 Not delegate.  
-**Lead.**
+**Lead, by making people excited about the problem**
 
 ---
 
@@ -84,14 +84,3 @@ And it has to be **felt every day**, in:
 - The way you talk about users  
 - The way you talk about quality  
 - The way you remind people why any of this matters
-
----
-
-### Yes, Do the Work. But...
-
-✅ Build your system  
-✅ Create your docs  
-✅ Define your expectations
-
-But also —  
-**show them the sea.**

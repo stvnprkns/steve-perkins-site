@@ -13,22 +13,21 @@ export default function TalkingShop() {
         ))}
         
         {images.map((image, index) => (
-          <figure key={index} className="w-full my-12">
-            <div className="w-full max-w-4xl mx-auto bg-purple-100 dark:bg-purple-900/30 p-4 rounded-lg">
-              <div className="relative w-full aspect-video">
-                <Image 
-                  src={image.src} 
-                  alt={image.alt}
-                  fill
-                  className="object-cover w-full h-full rounded" 
-                />
-              </div>
-              {image.caption && (
-                <figcaption className="text-sm text-muted-foreground mt-2 text-center">
-                  {image.caption}
-                </figcaption>
-              )}
+          <figure key={index} className="w-full my-8 bg-purple-50 p-6 rounded-lg">
+            <div className="relative w-full">
+              <Image 
+                src={image.src} 
+                alt={image.alt}
+                width={1200}
+                height={600}
+                className="w-full h-auto rounded" 
+              />
             </div>
+            {image.caption && (
+              <figcaption className="mt-2 text-sm text-gray-500 text-center">
+                {image.caption}
+              </figcaption>
+            )}
           </figure>
         ))}
       </div>

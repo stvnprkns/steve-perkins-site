@@ -3,6 +3,7 @@ import Link from 'next/link';
 import UnderlineLink from '@/components/UnderlineLink';
 import PageHero from '@/components/PageHero';
 import Section from '@/components/layout/Section';
+import ButtonLink from '@/components/ButtonLink';
 
 export const metadata: Metadata = {
   title: 'About Steve Perkins',
@@ -46,7 +47,9 @@ export default function AboutPage() {
             </li>
 
             <li className="flex flex-1 items-center space-x-4 pl-0">
-              <div>Argo Design</div>
+              <div>
+                <UnderlineLink href="https://argodesign.com">ArgoDesign</UnderlineLink>
+              </div>
               <span className="w-full border-t border-gray-500/30 border-dashed min-w-4" style={{ flexShrink: 999999 }} />
               <div className="text-right">
                 <div className="flex items-center">
@@ -169,28 +172,28 @@ export default function AboutPage() {
             Feel free to reach out through any of these channels:
           </p>
           
-          <div className="flex flex-wrap gap-4 pt-4">
+          <div className="flex flex-wrap gap-6 pt-2 text-base">
             <a 
-              href="mailto:hello@steveperkins.design" 
-              className="inline-flex items-center px-4 py-2 border border-foreground/20 rounded-md hover:bg-foreground/5 transition-colors"
+              href="mailto:meet@steveperk.com"
+              className="text-foreground hover:text-foreground/70 transition-colors duration-200"
             >
               Email
             </a>
             <a 
-              href="https://www.linkedin.com/in/steveperkins" 
+              href="https://www.linkedin.com/in/perkinsstephen" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center px-4 py-2 border border-foreground/20 rounded-md hover:bg-foreground/5 transition-colors"
+              className="text-foreground hover:text-foreground/70 transition-colors duration-200"
             >
               LinkedIn
             </a>
             <a 
-              href="https://twitter.com/steveperkins" 
+              href="https://steveperk.substack.com/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center px-4 py-2 border border-foreground/20 rounded-md hover:bg-foreground/5 transition-colors"
+              className="text-foreground hover:text-foreground/70 transition-colors duration-200"
             >
-              Twitter
+              Substack
             </a>
           </div>
         </div>

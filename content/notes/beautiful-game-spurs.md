@@ -50,7 +50,7 @@ Chemistry gets you championships.**
 
 ### How I Build Teams
 
-That’s how I build and run teams.  
+That’s exactly how I build and run teams.  
 Not just a collection of stars.  
 A unit.
 

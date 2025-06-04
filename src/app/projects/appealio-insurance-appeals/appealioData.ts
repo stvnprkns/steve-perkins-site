@@ -43,18 +43,21 @@ export const appealioData: AppealioData = {
     },
     {
       name: "Kishan Patel",
-      linkedin: "#"
+      linkedin: "https://www.linkedin.com/in/kishanhpatel/",
+      avatar: "/images/coworkers/kishan-patel.jpeg"
     },
     {
       name: "Sean Kim",
-      linkedin: "#"
+      linkedin: "https://www.linkedin.com/in/seanwkim/",
+      avatar: "/images/coworkers/sean-kim.jpeg"
     },
     {
       name: "Andrii Gorishnii",
-      linkedin: "#"
+      linkedin: "https://www.linkedin.com/in/gorishnii/",
+      avatar: "/images/coworkers/andrii-gorishnii.jpeg"
     }
   ],
-  summary: "Good or bad, we all have to deal with insurance. However, unless you work in healthcare, you've probably never encountered the appeals process. This process involves negotiations between insurers and healthcare providers to determine final prices.",
+  summary: "Appealio revolutionizes the insurance appeal process by automating and streamlining the complex workflow between healthcare providers and insurance companies, significantly reducing processing time and increasing revenue recovery.",
   outcomes: {
     metrics: [
       { value: "75%", label: "Decrease in appeal time" },

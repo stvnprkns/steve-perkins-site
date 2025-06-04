@@ -20,10 +20,6 @@ export default function WhatWeLearned() {
             </div>
           ))}
         </div>
-
-        <blockquote className="border-l-4 border-primary pl-6 py-2 my-8 text-text-base/80 italic">
-          &ldquo;{content}&rdquo;
-        </blockquote>
       </div>
     </>
   );

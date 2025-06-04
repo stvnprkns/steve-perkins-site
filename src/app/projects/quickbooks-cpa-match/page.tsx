@@ -5,7 +5,6 @@ import CaseStudyIntro from './CaseStudyIntro';
 import TalkingShop from './TalkingShop';
 import CreatingExperiment from './CreatingExperiment';
 import WhatWeLearned from './WhatWeLearned';
-import Outcomes from './Outcomes';
 import CaseStudyNavigation from '@/components/case-study/CaseStudyNavigation';
 import { projects } from '@/lib/projects';
 
@@ -21,8 +20,7 @@ export const metadata: Metadata = {
 const sidebarItems = [
   { id: 'talking-shop', label: 'Talking Shop' },
   { id: 'creating-the-experiment', label: 'Creating the Experiment' },
-  { id: 'what-we-learned', label: 'What We Learned' },
-  { id: 'outcomes', label: 'Outcomes' },
+  { id: 'what-we-learned', label: 'What We Learned' }
 ];
 
 export default function QuickBooksCPAMatch() {
@@ -54,10 +52,6 @@ export default function QuickBooksCPAMatch() {
 
           <Section id="what-we-learned" variant="wide">
             <WhatWeLearned />
-          </Section>
-
-          <Section id="outcomes" variant="wide">
-            <Outcomes />
             <div className="mt-16">
               <CaseStudyNavigation currentSlug="quickbooks-cpa-match" projects={projects} />
             </div>

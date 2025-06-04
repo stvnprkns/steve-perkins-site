@@ -20,7 +20,7 @@ export const projects: Project[] = [
     image: "/images/rudderstack-preview.webp",
     images: [
       "/images/rudderstack-preview.webp",
-      "/images/startup-preview.webp"
+      "/images/projects/rudderstack-team/Team.webp"
     ],
     body: `
 **Company**  
@@ -101,10 +101,10 @@ By focusing on collaboration, process, and measurement, we were able to transfor
     role: "Head of Design",
     timeframe: "June 2023",
     summary: "Redesigned RudderStack’s core setup experience from the ground up. We turned a 27-field engineering form into a focused 2-step workflow — increasing destination creation by 220% and dramatically improving first-time success. All through better language, structure, and UX strategy.",
-    image: "/images/rudderstack-preview.png",
+    image: "/images/projects/rudderstack/Connecting Data 1.webp",
     images: [
-      "/images/projects/rudderstack/rudderstack-hero.webp",
-      "/images/rudderstack-preview.png"
+      "/images/projects/rudderstack/Connecting Data 1.webp",
+      "/images/projects/rudderstack/Connecting Data 2.webp"
     ],
     body: `
 **Company**  
@@ -215,7 +215,8 @@ The impact of this project had ripples across the product and the business. By s
     summary: "Designed an AI-powered platform that streamlines the insurance appeals process for healthcare providers, reducing appeal time by 75% and increasing revenue by 26%.",
     image: "/images/projects/appealio/appealio-hero.webp",
     images: [
-      "/images/projects/appealio/appealio-hero.webp"
+      "/images/projects/appealio/appealio-hero.webp",
+      "/images/projects/appealio/Appeals Card.webp"
     ],
     body: `
 **Company**  
@@ -227,8 +228,6 @@ Stephen Perkins, Kishan Patel, Sean Kim, Andrii Gorishnii
 ---
 
 ## The Challenge
-
-Good or bad, we all have to deal with insurance. However, unless you work in healthcare, you've probably never encountered the appeals process. This process involves negotiations between insurers and healthcare providers to determine final prices.
 
 ## Our Approach
 
@@ -258,7 +257,8 @@ The tool not only saved time and reduced stress but also increased financial ret
     summary: "Led design for a 0→1 product at Intuit Labs that matched small businesses with CPAs, improving business success rates.",
     image: "/images/projects/quickbooks-cpa-match/qb-hero.webp",
     images: [
-      "/images/projects/quickbooks-cpa-match/qb-hero.webp"
+      "/images/projects/quickbooks-cpa-match/qb-hero.webp",
+      "/images/projects/quickbooks-cpa-match/qb-businesses.jpeg"
     ],
     body: `
 **Company**  

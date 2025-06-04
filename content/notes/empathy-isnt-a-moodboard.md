@@ -61,17 +61,4 @@ Then come back and build something that *matters.*
 
 ![](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3ptdXowMm9qbWdyNXI5dWU2Y3FxbDJtczljY3JzdGE3NmFxOWZ4OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l5IZuiOBnZubO8tNvm/giphy.gif)
 
----
 
-### The Truth
-
-Empathy is not soft.  
-It’s not optional.  
-It’s the hardest, most essential part of design.
-
-And it’s what makes you — and the business — better.
-
-So if you haven’t talked to a customer this month,  
-don’t tell me you’re empathetic.
-
-Tell me you’re getting there.
