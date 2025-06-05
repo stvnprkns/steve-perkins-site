@@ -1,3 +1,13 @@
+'use client';
+
+import dynamic from 'next/dynamic';
+
+// Dynamically import CaseStudyImage with no SSR to avoid window is not defined errors
+const CaseStudyImage = dynamic(
+  () => import('@/components/markdown/CaseStudyImage'),
+  { ssr: false }
+);
+
 export default function Intro() {
   return (
     <div className="space-y-8">
@@ -10,9 +20,17 @@ export default function Intro() {
         </p>
       </div>
       
-      <div className="rounded-xl border overflow-hidden bg-muted/50">
-        <div className="aspect-video bg-muted flex items-center justify-center">
-          <p className="text-muted-foreground">Hero image/video will go here</p>
+      <div className="w-full">
+        <div className="relative w-full aspect-video">
+          <CaseStudyImage
+            src="/images/projects/appealio/appealio-hero.png"
+            alt="Appealio dashboard showing insurance appeal management interface"
+            width={1600}
+            height={900}
+            priority={true}
+            className="object-cover w-full h-full"
+            containerClassName="h-full"
+          />
         </div>
       </div>
       

@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { SidebarNav, CaseStudyGrid, Section, BackToProjects } from '@/components';
+import MarkdownImage from '@/components/markdown/MarkdownImage';
 import { ExternalLink } from '@/components/ExternalLink';
 import HowIBuiltATeam from './HowIBuiltATeam';
 import HowWeWork from './HowWeWork';
@@ -37,7 +38,7 @@ export default function RudderstackTeamPage() {
     >
       <div>
         <BackToProjects />
-        <Section variant="wide" className="pt-16">
+        <Section variant="wide">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-left">
             {rudderstackTeamData.title}
           </h1>

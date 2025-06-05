@@ -37,7 +37,7 @@ export default function AppealioPage() {
     >
       <div>
         <BackToProjects />
-        <Section variant="wide" className="pt-16">
+        <Section variant="wide">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-left">
             {appealioData.title}
           </h1>

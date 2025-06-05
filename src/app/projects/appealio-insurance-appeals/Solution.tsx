@@ -1,3 +1,13 @@
+'use client';
+
+import dynamic from 'next/dynamic';
+
+// Dynamically import CaseStudyImage with no SSR to avoid window is not defined errors
+const CaseStudyImage = dynamic(
+  () => import('@/components/markdown/CaseStudyImage'),
+  { ssr: false }
+);
+
 export default function Solution() {
   return (
     <div className="space-y-8">
@@ -20,8 +30,15 @@ export default function Solution() {
                 <li>Real-time validation to catch errors early</li>
               </ul>
             </div>
-            <div className="rounded-lg border bg-muted/50 p-4 flex items-center justify-center h-64">
-              <p className="text-muted-foreground">Appeal creation interface mockup</p>
+            <div className="w-full h-64 overflow-hidden rounded-lg">
+              <CaseStudyImage
+                src="/images/projects/appealio/appealio-creation-interface.png"
+                alt="Appeal creation interface mockup"
+                width={800}
+                height={400}
+                containerClassName="h-full"
+                className="object-cover w-full h-full"
+              />
             </div>
           </div>
         </div>
@@ -42,8 +59,15 @@ export default function Solution() {
                 <li>Secure sharing with insurance providers</li>
               </ul>
             </div>
-            <div className="rounded-lg border bg-muted/50 p-4 flex items-center justify-center h-64">
-              <p className="text-muted-foreground">Document management interface</p>
+            <div className="w-full h-64 overflow-hidden rounded-lg">
+              <CaseStudyImage
+                src="/images/projects/appealio/appealio-document-management.png"
+                alt="Document management interface"
+                width={800}
+                height={400}
+                containerClassName="h-full"
+                className="object-cover w-full h-full"
+              />
             </div>
           </div>
         </div>

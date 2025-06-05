@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import PageTransition from '@/components/PageTransition';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { FloatingThemeToggle } from '@/components/FloatingThemeToggle';
+import { LightboxProvider } from '@/context/LightboxContext';
 
 // Dynamically import the Nav component with SSR disabled
 const Nav = dynamic(() => import('@/components/Nav'), { 
@@ -57,6 +58,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
   return (
     <ThemeProvider>
+      <LightboxProvider>
       <div className="min-h-screen flex flex-col bg-background dark:bg-gray-900">
       <AnimatePresence mode="wait">
         <motion.div
@@ -86,6 +88,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         </PageTransition>
       </main>
       </div>
+      </LightboxProvider>
     </ThemeProvider>
   );
 }

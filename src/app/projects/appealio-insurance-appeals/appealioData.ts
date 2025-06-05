@@ -57,7 +57,7 @@ export const appealioData: AppealioData = {
       avatar: "/images/coworkers/andrii-gorishnii.jpeg"
     }
   ],
-  summary: "Appealio revolutionizes the insurance appeal process by automating and streamlining the complex workflow between healthcare providers and insurance companies, significantly reducing processing time and increasing revenue recovery.",
+  summary: "",
   outcomes: {
     metrics: [
       { value: "75%", label: "Decrease in appeal time" },

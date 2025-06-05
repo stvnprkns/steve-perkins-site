@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface SectionProps {
+interface SectionProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
   variant?: 'narrow' | 'wide' | 'wider'; // now optional, default is 'narrow'
   className?: string;

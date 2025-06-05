@@ -4,6 +4,9 @@ import Intro from './Intro';
 import CaseStudyIntro from './CaseStudyIntro';
 import TalkingShop from './TalkingShop';
 import CreatingExperiment from './CreatingExperiment';
+import TheAd from './TheAd';
+import PlayingMatchmaker from './PlayingMatchmaker';
+import TalkingTax from './TalkingTax';
 import WhatWeLearned from './WhatWeLearned';
 import CaseStudyNavigation from '@/components/case-study/CaseStudyNavigation';
 import { projects } from '@/lib/projects';
@@ -33,10 +36,10 @@ export default function QuickBooksCPAMatch() {
           </div>
         }
       >
-        <div className="space-y-32">
+        <div className="space-y-24">
           <BackToProjects />
-          <Section variant="wide" className="pt-16">
-            <div className="space-y-16">
+          <Section variant="wide">
+            <div className="space-y-12">
               <Intro />
               <CaseStudyIntro />
             </div>
@@ -48,6 +51,18 @@ export default function QuickBooksCPAMatch() {
 
           <Section id="creating-the-experiment" variant="wide">
             <CreatingExperiment />
+          </Section>
+
+          <Section id="the-ad" variant="wide">
+            <TheAd />
+          </Section>
+
+          <Section id="playing-matchmaker" variant="wide">
+            <PlayingMatchmaker />
+          </Section>
+
+          <Section id="talking-tax" variant="wide">
+            <TalkingTax />
           </Section>
 
           <Section id="what-we-learned" variant="wide">

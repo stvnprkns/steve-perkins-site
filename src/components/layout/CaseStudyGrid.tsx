@@ -7,7 +7,7 @@ export interface CaseStudyGridProps {
 
 export default function CaseStudyGrid({ sidebar, children }: CaseStudyGridProps) {
   return (
-    <div className="relative py-12 overflow-visible">
+    <div className="relative pt-6 pb-12 overflow-visible">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 relative">
         {/* Sidebar - positioned to the left of content, hidden on mobile/tablet */}
         <div className="hidden lg:block absolute left-0 top-0 h-full w-[200px] pr-12 mt-48">

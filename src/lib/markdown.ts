@@ -8,32 +8,64 @@ type Note = import('./server/markdown-utils').Note;
 
 async function fetchFromAPI(endpoint: string) {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-    // For Next.js App Router, the API routes are under /api/ by default
-    const response = await fetch(`${baseUrl}/api/${endpoint}`, {
+    // For client-side requests, use relative path to avoid CORS issues
+    const isClient = typeof window !== 'undefined';
+    const baseUrl = isClient ? '' : process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+    
+    // Remove any leading slashes from the endpoint to avoid double slashes
+    const cleanEndpoint = endpoint.startsWith('/') ? endpoint.slice(1) : endpoint;
+    
+    const url = `${baseUrl}/api/${cleanEndpoint}`;
+    console.log('Fetching from:', url);
+    
+    const response = await fetch(url, {
       headers: {
         'Content-Type': 'application/json',
       },
+      // Add cache control to prevent stale data
+      cache: 'no-store',
     });
     
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
-      throw new Error(
+      const error = new Error(
         errorData.message || 
         errorData.error || 
         `API request failed with status ${response.status}: ${response.statusText}`
       );
+      console.error('API Error:', {
+        url,
+        status: response.status,
+        statusText: response.statusText,
+        errorData
+      });
+      throw error;
     }
+    
     return await response.json();
   } catch (error) {
     console.error(`Error fetching from ${endpoint}:`, error);
-    throw error;
+    // Return empty data instead of throwing to prevent UI from breaking
+    if (endpoint.startsWith('notes')) {
+      return [];
+    }
+    return null;
   }
 }
 
 export async function getNoteBySlug(slug: string): Promise<Note | null> {
   try {
-    return await fetchFromAPI(`notes/${slug}`);
+    // First try the direct note by slug endpoint
+    const note = await fetchFromAPI(`notes/${slug}`);
+    
+    // If no note found, try fetching all notes and filtering client-side
+    if (!note) {
+      console.log(`Note not found at /api/notes/${slug}, trying fallback...`);
+      const allNotes = await fetchFromAPI('notes');
+      return allNotes.find((n: Note) => n.slug === slug) || null;
+    }
+    
+    return note;
   } catch (error) {
     console.error(`Error fetching note ${slug}:`, error);
     return null;

@@ -37,7 +37,7 @@ export default function RudderstackPage() {
     >
       <div>
         <BackToProjects />
-        <Section variant="wide" className="pt-16">
+        <Section variant="wide">
           <Intro />
         </Section>
 

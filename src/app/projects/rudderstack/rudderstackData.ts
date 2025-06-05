@@ -92,7 +92,7 @@ export const rudderstackData: RudderstackData = {
   summary: "A strategic redesign of RudderStack’s core workflow — reducing onboarding friction, clarifying configuration, and boosting new destination creation by 220%.",
   problem: {
     heading: "Integrating data across platforms is hard.",
-    content: `Many of the core functions of RudderStack were built by developers. In this case engineers had designed a form that put everything users could ever want to tell us on one page. (It's too long to show here, but [click here to see it.](/images/projects/rudderstack/Connections-Before.png){:target="_blank" rel="noopener noreferrer"})\n\nIt was an act of generosity, that fell short on user empathy.\n\nFrom a design perspective it felt overwhelming. The data backed up that this all-in-one approach wasn't working. Less than 50% of users who started the form completed it.\n\nThis was the project that I used to change our process at RudderStack.`
+    content: `Many of the core functions of RudderStack were built by developers. In this case engineers had designed a form that put everything users could ever want to tell us on one page. (It's too long to show here, but <a href="/images/projects/rudderstack/Connections-Before.png" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">click here to see it.</a>)\n\nIt was an act of generosity, that fell short on user empathy.\n\nFrom a design perspective it felt overwhelming. The data backed up that this all-in-one approach wasn't working. Less than 50% of users who started the form completed it.\n\nThis was the project that I used to change our process at RudderStack.`
   },
   approach: {
     heading: "Our Approach",

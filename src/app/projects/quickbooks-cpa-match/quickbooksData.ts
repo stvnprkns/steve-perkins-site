@@ -2,8 +2,8 @@ export const quickbooksData = {
   title: "Making Small Business Connections with CPAs",
   summary: "", // Summary is used for metadata but not displayed in the UI
   company: {
-    name: "Intuit",
-    url: "https://www.intuit.com/"
+    name: "Intuit - QuickBooks",
+    url: "https://www.quickbooks.com/"
   },
   team: [
     {
@@ -45,67 +45,64 @@ A big insight we found was that the owners who worked with tax professionals del
     images: [
       {
         src: "/images/projects/quickbooks-cpa-match/qb-businesses.jpeg",
-        alt: "Photos featuring various small business owners we talked to across Dallas",
-        caption: "Fig. 1 - Small business owners we interviewed"
+        alt: "Fig. 1 - Photos featuring various small business owners we talked to across Dallas"
       }
     ]
   },
   creatingExperiment: {
-    content: `We built a very slim feature in QuickBooks that did 3 things: It let businesses match with a CPA, engage in a back-and-forth dialogue, and invoice and pay.
+    content: `We built a very slim feature in QuickBooks that did 3 things: It let businesses match with a CPA, engage in a back-and-forth dialogue, and invoice and pay.`,
+    images: [
+      {
+        src: "/images/projects/quickbooks-cpa-match/qb-workflow.webp",
+        alt: "Fig. 3 - User flow for CPA matching. A workflow of how users enter the experiment, select a CPA, and engage with them"
+      }
+    ]
+  },
+  theAd: {
+    content: `### The Ad
 
-### The Ad
-
-We needed a way to get QuickBooks users to use this product. We set up targeting filters, the primary one was for businesses without a CPA connected to their QuickBooks account. We presented the 'ad' on the dashboard page of QuickBooks. We ran dozens of quick tests of this ad to try and improve click-through rates.
-
-### Playing matchmaker
+We needed a way to get QuickBooks users to use this product. We set up targeting filters, the primary one was for businesses without a CPA connected to their QuickBooks account. We presented the 'ad' on the dashboard page of QuickBooks. We ran dozens of quick tests of this ad to try and improve click-through rates.`,
+    images: [
+      {
+        src: "/images/projects/quickbooks-cpa-match/qb-ad.jpeg",
+        alt: "Fig. 4 - Experiment Ad on the QuickBooks dashboard. The ad promotes the CPA matching service to QuickBooks users"
+      }
+    ]
+  },
+  playingMatchmaker: {
+    content: `### Playing matchmaker
 
 We wanted the business owner to feel like we could find the perfect CPA for their business, but we only had 15 CPAs in our beta group. The owner would fill out a short questionnaire about their preferences, and we would filter the 15 CPAs down to 9 and randomize the order.
 
-Contrary to what they told us, businesses didn't care as much about a perfect match as they let on.
-
-### Talking Tax
+Contrary to what they told us, businesses didn't care as much about a perfect match as they let on.`,
+    images: [
+      {
+        src: "/images/projects/quickbooks-cpa-match/qb-match-cpas.jpeg",
+        alt: "Fig. 5 - Matchmaker page showing a carousel of CPAs in our beta group. The interface allows users to browse and select from available CPAs"
+      }
+    ]
+  },
+  talkingTax: {
+    content: `### Talking Tax
 
 We needed a clear way for CPAs and business owners to communicate. QuickBooks had a messaging system integrated into the tool, but it wasn't built for this matchmaking concept. So we developed a way to have an introduction conversation, a way for the CPA to request access to their books, a task manager in the tool, and a way to cancel an engagement if it didn't work out.`,
     images: [
       {
-        src: "/images/projects/quickbooks-cpa-match/qb-workflow.webp",
-        alt: "A workflow of how users enter the experiment, select a CPA, and engage with them",
-        caption: "Fig. 3 - User flow for CPA matching"
-      },
-      {
-        src: "/images/projects/quickbooks-cpa-match/qb-ad.jpeg",
-        alt: "Experiment Ad on the QuickBooks dashboard",
-        caption: "Fig. 4 - Experiment Ad on the QuickBooks dashboard"
-      },
-      {
-        src: "/images/projects/quickbooks-cpa-match/qb-match-cpas.jpeg",
-        alt: "Matchmaker page, showing a carousel of the CPAs in our beta group",
-        caption: "Fig. 5 - CPA matchmaker interface"
-      },
-      {
         src: "/images/projects/quickbooks-cpa-match/qb-chat-feed.jpeg",
-        alt: "The messaging tool with the task manager",
-        caption: "Fig. 6 - Integrated messaging and task management"
-      },
-      {
-        src: "/images/projects/quickbooks-cpa-match/qb-chat.jpeg",
-        alt: "Close-up of the chat interface between business owner and CPA",
-        caption: "Fig. 7 - Direct messaging with matched CPA"
-      },
-      {
-        src: "/images/projects/quickbooks-cpa-match/qb-access.jpeg",
-        alt: "CPA access request screen for business financials",
-        caption: "Fig. 8 - Secure financial data access controls"
+        alt: "Fig. 6 - The messaging tool with the task manager. Shows the integrated communication interface between business owners and CPAs"
       }
     ]
   },
   whatWeLearned: {
-    content: `The experiment revealed that small business owners who connected with CPAs through our platform experienced significant benefits. They were able to focus more on growing their businesses while leaving the financial complexities to professionals.`,
+    content: `Running a business is already hard, but doing so while being the bookkeeper makes it nearly impossible to be successful. After the experiment launched, the response was surprising.
+
+Customer feedback highlighted immediate benefits: they were saving money on their taxes, finding more time and energy to devote to their businesses, and realizing how valuable tax professionals were in making daily financial decisions.
+
+Over the course of a year, we connected 2000 businesses to CPAs`,
     images: [
       {
         src: "/images/projects/quickbooks-cpa-match/Matching_V4.007-p-800.jpeg",
-        alt: "Data visualization showing improved business metrics after CPA matching",
-        caption: "Fig. 9 - Impact metrics from the CPA matching program"
+        alt: "Fig. 9 - Impact metrics from the CPA matching program. Data visualization showing improved business metrics after CPA matching"
       }
     ],
     stats: [

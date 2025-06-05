@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import CaseStudyImage from '@/components/markdown/CaseStudyImage';
 
 export default function HowWeWork() {
   return (
@@ -16,29 +16,17 @@ export default function HowWeWork() {
         </p>
 
         <h3 className="text-2xl font-semibold mt-12 mb-4 font-sans">Be a Part of the Backlog</h3>
-        <div className="flex flex-col md:flex-row gap-6 items-start">
-          <div className="flex-1">
-            <p>
-              For design to be a strategic partner, we need to bring ideas to the table. Design has to look beyond the pixels and understand how we make money and how customers use the product. We have to be in the analytics, read the support tickets, and talk to our customers. If you don't intimately understand the problem, you can't create a good solution.
-            </p>
-          </div>
-          <div className="w-full md:w-1/2">
-            <figure className="bg-purple-50 p-4 rounded-lg">
-              <div className="relative w-full">
-                <Image
-                  src="/images/projects/rudderstack-team/rudderstack-prd.webp"
-                  alt="Product requirements document showing design integration"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto rounded"
-                />
-                <figcaption className="mt-2 text-sm text-gray-500">
-                  [Fig. 3] Example of design integration in product requirements
-                </figcaption>
-              </div>
-            </figure>
-          </div>
+        <div className="prose max-w-prose">
+          <p>
+            For design to be a strategic partner, we need to bring ideas to the table. Design has to look beyond the pixels and understand how we make money and how customers use the product. We have to be in the analytics, read the support tickets, and talk to our customers. If you don't intimately understand the problem, you can't create a good solution.
+          </p>
         </div>
+        <CaseStudyImage
+          src="/images/projects/rudderstack-team/rudderstack-prd.webp"
+          alt="[Fig. 3] Example of design integration in product requirements"
+          width={1200}
+          height={800}
+        />
 
         <h3 className="text-2xl font-semibold mt-12 mb-4 font-sans">Designers Write and Groom Tickets</h3>
         <p>
@@ -50,20 +38,12 @@ export default function HowWeWork() {
           Design, this is what we know how to do. Once projects are scoped, the most impactful aspect to design is collaboration. Nothing is more important for design than feedback. My team has weekly internal design critiques, regular design reviews for each project, and company work shares. Design and Engineering need to work hand-in-hand, understanding what we&apos;re thinking, what is feasible, consistently checking each other&apos;s work.
         </p>
 
-        <figure className="w-full my-12 bg-purple-50 p-4 rounded-lg">
-          <div className="relative w-full max-w-4xl mx-auto">
-            <Image
-              src="/images/projects/rudderstack-team/rudderstack-design-qa.webp"
-              alt="RudderStack's Design and QA process"
-              width={1200}
-              height={800}
-              className="w-full h-auto rounded"
-            />
-            <figcaption className="mt-2 text-sm text-gray-500 text-center">
-              [Fig. 2] RudderStack&apos;s Design and QA process
-            </figcaption>
-          </div>
-        </figure>
+        <CaseStudyImage
+          src="/images/projects/rudderstack-team/rudderstack-design-qa.webp"
+          alt="[Fig. 2] RudderStack's Design and QA process"
+          width={1200}
+          height={800}
+        />
 
         <h3 className="text-2xl font-semibold mt-12 mb-4 font-sans">Measuring Impact</h3>
         <p>

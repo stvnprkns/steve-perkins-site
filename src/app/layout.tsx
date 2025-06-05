@@ -131,7 +131,11 @@ export default function RootLayout({
           `
         }} />
       </head>
-      <body className="antialiased bg-background text-foreground motion-reduce:transform-none motion-reduce:transition-none">
+      <body 
+        className="antialiased bg-background text-foreground motion-reduce:transform-none motion-reduce:transition-none"
+        style={{ overscrollBehaviorX: 'auto' }}
+        suppressHydrationWarning
+      >
         <RootLayoutClient>
           {children}
         </RootLayoutClient>

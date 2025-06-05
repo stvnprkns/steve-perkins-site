@@ -3,11 +3,11 @@
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion'; // Removed AnimatePresence as it's not needed
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 
 const navItems = [
   { name: 'Home', path: '/' },
-  { name: 'Side Projects', path: '/sideprojects' },
   { name: 'Notes', path: '/notes' },
   { name: 'About', path: '/about' },
 ];
@@ -78,15 +78,73 @@ export default function Nav() {
         <div className="relative flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 py-2 sm:py-3">
         <Link 
           href="/" 
-          className="font-bold text-foreground hover:opacity-80 transition-opacity"
+          className="relative group/name"
           style={{
-            fontSize: '1.25rem',
-            lineHeight: '1.75rem',
+            display: 'inline-block',
             textDecoration: 'none',
-            outline: 'none'
+            outline: 'none',
+            height: '1.75rem',
           }}
         >
-          Steve Perkins
+          <span className="sr-only">Steve Perkins</span>
+          <motion.span 
+            className="inline-flex relative"
+            aria-hidden="true"
+            initial={false}
+            whileHover="hover"
+            animate="rest"
+          >
+            {'Steve Perkins'.split('').map((letter, index) => (
+              <motion.span 
+                key={index}
+                className={`
+                  inline-block font-bold text-foreground
+                  will-change-transform
+                  ${letter === ' ' ? 'w-2' : ''}
+                `}
+                style={{
+                  fontSize: '1.25rem',
+                  lineHeight: '1.75rem',
+                  display: 'inline-block',
+                  whiteSpace: 'pre',
+                  transform: 'translateZ(0)', // Force GPU acceleration
+                  backfaceVisibility: 'hidden', // Improve performance on some devices
+                }}
+                variants={{
+                  rest: {
+                    y: 0,
+                    scaleY: 1,
+                    transition: {
+                      type: 'spring',
+                      stiffness: 400,
+                      damping: 15,
+                      delay: index * 0.01,
+                    },
+                  },
+                  hover: {
+                    y: 2, // Reduced from 4px to 2px for smoother animation
+                    scaleY: 0.95, // Reduced scaling for better performance
+                    transition: {
+                      type: 'spring',
+                      stiffness: 400,
+                      damping: 15,
+                      delay: index * 0.03, // Reduced delay for faster response
+                    },
+                  },
+                }}
+              >
+                {letter}
+              </motion.span>
+            ))}
+            <motion.div 
+              className="absolute bottom-0 left-0 w-full h-0.5 bg-foreground/20 origin-left"
+              initial={{ scaleX: 0 }}
+              whileHover={{ 
+                scaleX: 1,
+                transition: { duration: 0.3, ease: 'easeOut' }
+              }}
+            />
+          </motion.span>
         </Link>
         
         <div className="flex items-center gap-4 sm:gap-8">

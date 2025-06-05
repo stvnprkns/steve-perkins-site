@@ -3,14 +3,14 @@ import Link from 'next/link';
 
 export default function BackToProjects() {
   return (
-    <div className="w-full mb-0" style={{marginBottom: 0, paddingBottom: 0}}>
-      <div className="max-w-screen-lg mx-auto px-6 md:px-8 mb-0" style={{marginBottom: 0, paddingBottom: 0}}>
-        <div className="pt-2 pb-0 mb-0" style={{marginBottom: 0, paddingBottom: 0}}>
+    <div className="w-full mb-12">
+      <div className="max-w-screen-lg mx-auto px-6 md:px-8">
+        <div className="pt-4">
           <Link 
-            href="/projects" 
+            href="/" 
             className="text-sm text-muted hover:underline inline-block transition-colors hover:text-foreground"
           >
-            ← Back to projects
+            ← All Projects
           </Link>
         </div>
       </div>

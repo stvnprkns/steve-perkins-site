@@ -1,12 +1,18 @@
 ---
 title: "Empathy Isn’t a Moodboard"
 date: "2025-06-03"
+description: "A reflection on true empathy in design, urging designers to connect with users beyond the screen."
 category: "Design"
-summary: "A reflection on true empathy in design, urging designers to connect with users beyond the screen."
+icon: "💭"
+tags: ["Design Thinking", "User Research", "Empathy"]
+emoji: "💭"
+excerpt: "True empathy in design goes beyond surface-level understanding."
+status: "Published"
+updated: "2025-06-03"
 image: "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3ptdXowMm9qbWdyNXI5dWU2Y3FxbDJtczljY3JzdGE3NmFxOWZ4OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l5IZuiOBnZubO8tNvm/giphy.gif"
 ---
 
-### Empathy Isn’t a Moodboard
+### Empathy Isn’t a Moodboard 💭
 
 Designers love to talk about empathy.  
 About being the voice of the customer.  

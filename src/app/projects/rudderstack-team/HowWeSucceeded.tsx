@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import CaseStudyImage from '@/components/markdown/CaseStudyImage';
 
 export default function HowWeSucceeded() {
   return (
@@ -14,20 +14,12 @@ export default function HowWeSucceeded() {
           Over 3 quarters, we improved our score from 62 to 68. A 6-point increase is a big jump for SUS. It shows that every quarter we made better work and improved our product experience.
         </p>
 
-        <figure className="w-full my-12 bg-purple-50 p-4 rounded-lg">
-          <div className="relative w-full max-w-4xl mx-auto">
-            <Image
-              src="/images/projects/rudderstack-team/sus-scorecard.png"
-              alt="System Usability Score Card. Showing a 10x10 score chart based on the survey questions."
-              width={1200}
-              height={800}
-              className="w-full h-auto rounded"
-            />
-            <figcaption className="mt-2 text-sm text-gray-500 text-center">
-              [Fig. 3] System Usability Score Card. Showing a 10x10 score chart based on the survey questions.
-            </figcaption>
-          </div>
-        </figure>
+        <CaseStudyImage
+          src="/images/projects/rudderstack-team/sus-scorecard.png"
+          alt="[Fig. 3] System Usability Score Card. Showing a 10x10 score chart based on the survey questions."
+          width={1200}
+          height={800}
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-12">
           <div className="bg-gradient-to-br from-purple-50 to-white p-6 rounded-lg border border-purple-100">

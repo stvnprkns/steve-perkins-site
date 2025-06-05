@@ -1,32 +1,23 @@
-import Image from 'next/image';
+import CaseStudyImage from '@/components/markdown/CaseStudyImage';
 
 export default function HowIBuiltATeam() {
   return (
     <section id="how-i-built-a-team" className="scroll-mt-20">
-      <h2 className="text-3xl font-bold mb-8 font-sans">An opportunity to do design differently</h2>
+      <h2 className="text-4xl font-bold mb-8 font-sans">An opportunity to do design differently</h2>
       <div className="prose max-w-prose text-text-base space-y-6">
         <p>
           RudderStack was built by developers for developers. Design was an afterthought. When they did look to hire their first designer, it was in a production role. No one was expecting that design would ever be a thought leader. That&apos;s what I changed.
         </p>
       </div>
 
-      <figure className="w-full my-12 bg-purple-50 p-4 rounded-lg">
-        <div className="max-w-4xl mx-auto">
-          <div className="relative w-full">
-            <Image
-              src="/images/projects/rudderstack-team/rudderstack-team-photo.png"
-              alt="The RudderStack Design Team"
-              width={1200}
-              height={800}
-              className="w-full h-auto rounded"
-              priority
-            />
-          </div>
-          <figcaption className="mt-2 text-sm text-gray-500 text-center">
-            [Fig. 1] The RudderStack Design Team: Stephen Perkins, Edward Won, Kristin Landgraf, Lisa Collins, Suhani Harish, Anne Sommer, Julianne Vinh (Left to right in order of hire date)
-          </figcaption>
-        </div>
-      </figure>
+      <CaseStudyImage
+        src="/images/projects/rudderstack-team/rudderstack-team-photo.png"
+        alt="The RudderStack Design Team"
+        width={1200}
+        height={800}
+        containerClassName="bg-transparent"
+        className="bg-transparent"
+      />
 
       <div className="prose max-w-prose text-text-base space-y-6">
         <h3 className="text-2xl font-semibold mt-12 mb-4 font-sans">How I Built a Team</h3>
@@ -43,20 +34,12 @@ export default function HowIBuiltATeam() {
             </p>
           </div>
           <div className="w-full md:w-1/2">
-            <figure className="bg-purple-50 p-4 rounded-lg">
-              <div className="relative w-full">
-                <Image
-                  src="/images/projects/rudderstack-team/rudderstack-team-process.jpg"
-                  alt="A team process diagram showing the roles of the RudderStack Design Team"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto rounded"
-                />
-                <figcaption className="mt-2 text-sm text-gray-500">
-                  [Fig. 2] RudderStack's Design and QA process
-                </figcaption>
-              </div>
-            </figure>
+            <CaseStudyImage
+              src="/images/projects/rudderstack-team/rudderstack-team-process.jpg"
+              alt="[Fig. 2] A team process diagram showing the roles of the RudderStack Design Team"
+              width={1200}
+              height={800}
+            />
           </div>
         </div>
         

@@ -145,26 +145,34 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, className 
     
     // Use our custom MarkdownImage component for better image handling
     img: (props: React.ImgHTMLAttributes<HTMLImageElement> & { node?: any }) => {
-      const { src, alt = '', node, ...rest } = props;
+      const { src, alt = '', node, width, height, className = '', ...rest } = props;
       // Ensure src is a string before passing to MarkdownImage
       const imageSrc = typeof src === 'string' ? src : '';
       
-      // Check if this is a standalone image (not in a paragraph with other content)
-      const isStandalone = !node || 
-                         !node.parent || 
-                         node.parent.type !== 'paragraph' || 
-                         (node.parent.children && node.parent.children.length === 1);
+      // Always treat as standalone to avoid nesting issues
+      const isStandalone = true;
       
-      if (isStandalone) {
-        return (
-          <div className="my-6">
-            <MarkdownImage src={imageSrc} alt={alt} {...rest} />
-          </div>
-        );
-      }
+      // Extract width and height from className if they exist (e.g., width="300")
+      const widthMatch = className.match(/w-?(\d+)/);
+      const heightMatch = className.match(/h-?(\d+)/);
+      const imgWidth = width || (widthMatch ? widthMatch[1] : undefined);
+      const imgHeight = height || (heightMatch ? heightMatch[1] : undefined);
       
-      // For inline images, render without the wrapper div
-      return <MarkdownImage src={imageSrc} alt={alt} inline {...rest} />;
+      const imageProps = {
+        src: imageSrc,
+        alt: alt || '',
+        width: imgWidth,
+        height: imgHeight,
+        className: className.replace(/w-?\d+/g, '').replace(/h-?\d+/g, '').trim(),
+        ...rest
+      };
+      
+      // Always wrap in a div to prevent invalid HTML nesting
+      return (
+        <div className="my-6">
+          <MarkdownImage {...imageProps} />
+        </div>
+      );
     },
   };
 

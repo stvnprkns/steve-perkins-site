@@ -3,7 +3,7 @@ import Section from '@/components/layout/Section';
 import Image from 'next/image';
 
 interface PageHeroProps {
-  title: string;
+  title: ReactNode;
   subtitle?: ReactNode;
   children?: ReactNode;
   className?: string;

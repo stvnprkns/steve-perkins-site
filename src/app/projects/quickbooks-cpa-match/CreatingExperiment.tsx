@@ -1,6 +1,11 @@
-import Image from 'next/image';
 import { quickbooksData } from './quickbooksData';
 import ReactMarkdown from 'react-markdown';
+import MarkdownImage from '@/components/markdown/MarkdownImage';
+
+type ImageType = {
+  src: string;
+  alt: string;
+};
 
 const components = {
   h1: ({ node, ...props }: any) => <h3 className="text-2xl font-bold mt-8 mb-4" {...props} />,
@@ -9,32 +14,29 @@ const components = {
 };
 
 // Helper component to render content with specific image
-const ContentWithImage = ({ content, image }: { content: string; image: any }) => {
+const ContentWithImage = ({ content, image, isAdSection = false }: { content: string; image: ImageType; isAdSection?: boolean }) => {
   return (
     <div className="flex flex-col md:flex-row gap-8 items-start mb-12">
       <div className="flex-1">
+        {isAdSection ? (
+          <h2 className="text-3xl font-bold mt-16 mb-8 font-sans">The Ad</h2>
+        ) : null}
         <ReactMarkdown components={components}>
-          {content}
+          {content.replace(/^### The Ad\s*/, '')}
         </ReactMarkdown>
       </div>
       {image && (
         <div className="w-full md:w-1/2">
-          <figure className="bg-purple-50 p-6 rounded-lg my-8">
-            <div className="relative w-full">
-              <Image 
-                src={image.src} 
-                alt={image.alt}
-                width={1200}
-                height={600}
-                className="w-full h-auto rounded" 
-              />
-            </div>
-            {image.caption && (
-              <figcaption className="mt-2 text-sm text-gray-500 text-center">
-                {image.caption}
-              </figcaption>
-            )}
-          </figure>
+          <div className="my-8">
+            <MarkdownImage 
+              src={image.src} 
+              alt={image.alt}
+              width={1200}
+              height={600}
+              className="w-full h-auto rounded-lg bg-purple-50 p-6"
+            />
+
+          </div>
         </div>
       )}
     </div>
@@ -54,53 +56,122 @@ export default function CreatingExperiment() {
     const adContent = afterAdParts[0] || '';
     const afterAd = afterAdParts[1] || '';
     
-    // Find the ad image (Figure 4) and workflow image (Figure 3)
-    const adImage = images.find(img => img.caption?.includes('Fig. 4'));
-    const workflowImage = images.find(img => img.caption?.includes('Fig. 3'));
-    const otherImages = images.filter(img => 
-      !img.caption?.includes('Fig. 3') && !img.caption?.includes('Fig. 4')
-    );
+    // Find specific images by their alt text (which now includes figure numbers)
+    const workflowImage = images.find(img => img.alt.includes('Fig. 3'));
+    const matchmakerImage = images.find(img => img.alt.includes('Fig. 4'));
+    const adImage = images.find(img => img.alt.includes('Fig. 5'));
+    const chatFeedImage = images.find(img => img.alt.includes('Fig. 5'));
+    const directMessageImage = images.find(img => img.alt.includes('Fig. 7'));
+    const accessImage = images.find(img => img.alt.includes('Fig. 8'));
+    
+    // Split the afterAd content at the "### Talking Tax" section
+    const afterAdParts2 = afterAd.split('### Talking Tax');
+    const matchmakerContent = afterAdParts2[0] || '';
+    const talkingTaxContent = afterAdParts2[1] || '';
     
     return (
-      <>
-        <ReactMarkdown components={components}>
-          {beforeAd}
-        </ReactMarkdown>
+      <div className="mb-12">
+        <div className="mb-8">
+          <ReactMarkdown components={components}>
+            {beforeAd}
+          </ReactMarkdown>
+        </div>
+        {workflowImage && (
+          <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] my-8">
+            <div className="w-full max-w-screen-2xl mx-auto">
+              <div className="relative w-full bg-white px-4 py-8">
+                <div className="max-w-4xl mx-auto">
+                  <MarkdownImage 
+                    src={workflowImage.src} 
+                    alt={workflowImage.alt}
+                    width={1600}
+                    height={800}
+                    className="w-full h-auto rounded-lg"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
         
         {adImage && (
           <ContentWithImage 
-            content={`### The Ad${adContent}`} 
-            image={adImage} 
+            content={adContent} 
+            image={adImage}
+            isAdSection={true}
           />
         )}
         
-        <h3 className="text-2xl font-bold mt-12 mb-6">Playing matchmaker</h3>
-        
-        {workflowImage && (
-          <figure className="w-full my-8 bg-purple-50 p-6 rounded-lg">
-            <div className="max-w-6xl mx-auto">
-              <div className="relative w-full">
-                <Image 
-                  src={workflowImage.src} 
-                  alt={workflowImage.alt}
-                  width={1200}
-                  height={600}
-                  className="w-full h-auto rounded" 
-                />
-              </div>
-              {workflowImage.caption && (
-                <figcaption className="mt-2 text-sm text-gray-500 text-center">
-                  {workflowImage.caption}
-                </figcaption>
-              )}
-            </div>
-          </figure>
-        )}
+        <h2 className="text-3xl font-bold mt-16 mb-8 font-sans">Playing matchmaker</h2>
         
         <ReactMarkdown components={components}>
-          {afterAd}
+          {matchmakerContent}
         </ReactMarkdown>
-      </>
+        
+        {matchmakerImage && (
+          <div className="w-full my-8">
+            <MarkdownImage 
+              src={matchmakerImage.src} 
+              alt={matchmakerImage.alt}
+              width={1200}
+              height={600}
+              className="w-full h-auto rounded-lg bg-purple-50 p-6"
+            />
+
+          </div>
+        )}
+        
+
+        
+        <h2 className="text-3xl font-bold mt-16 mb-8 font-sans">Talking Tax</h2>
+        
+        <ReactMarkdown components={components}>
+          {talkingTaxContent}
+        </ReactMarkdown>
+        
+        {chatFeedImage && (
+          <div className="w-full my-8">
+            <MarkdownImage 
+              src={chatFeedImage.src} 
+              alt={chatFeedImage.alt}
+              width={1200}
+              height={600}
+              className="w-full h-auto rounded-lg bg-purple-50 p-6"
+            />
+
+          </div>
+        )}
+        
+        {directMessageImage && (
+          <div className="w-full my-12">
+            <div className="w-full">
+              <MarkdownImage 
+                src={directMessageImage.src} 
+                alt={directMessageImage.alt}
+                width={1600}
+                height={800}
+                className="w-full h-auto rounded-lg bg-purple-50 p-6"
+              />
+
+            </div>
+          </div>
+        )}
+        
+        {accessImage && (
+          <div className="w-full my-12">
+            <div className="w-full">
+              <MarkdownImage 
+                src={accessImage.src} 
+                alt={accessImage.alt}
+                width={1600}
+                height={800}
+                className="w-full h-auto rounded-lg bg-purple-50 p-6"
+              />
+
+            </div>
+          </div>
+        )}
+      </div>
     );
   };
   
@@ -115,31 +186,24 @@ export default function CreatingExperiment() {
   const shouldShowAllImages = !processContent();
   
   return (
-    <>
-      <h2 className="text-3xl font-bold mb-8 font-sans">Creating the Experiment</h2>
+    <div className="space-y-8">
+      <h2 className="text-3xl font-bold font-sans">Creating the Experiment</h2>
       <div className="prose max-w-prose text-text-base space-y-6">
         {contentElements}
         
         {/* Only render remaining images if we didn't process the content */}
         {shouldShowAllImages && images.map((image, index) => (
-          <figure key={index} className="w-full my-8 bg-purple-50 p-6 rounded-lg">
-            <div className="relative w-full">
-              <Image 
-                src={image.src} 
-                alt={image.alt}
-                width={1200}
-                height={600}
-                className="w-full h-auto rounded" 
-              />
-            </div>
-            {image.caption && (
-              <figcaption className="mt-2 text-sm text-gray-500 text-center">
-                {image.caption}
-              </figcaption>
-            )}
-          </figure>
+          <div key={index} className="w-full my-8">
+            <MarkdownImage 
+              src={image.src} 
+              alt={image.alt}
+              width={1600}
+              height={800}
+              className="w-full h-auto rounded-lg bg-purple-50 p-6"
+            />
+          </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }

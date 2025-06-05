@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Note } from '@/lib/markdown';
+import { NoteSkeleton } from './NoteSkeleton';
 
 interface CategoryCount {
   category: string;
@@ -37,7 +38,15 @@ export default function NotesList({
   }, []);
 
   if (!isClient) {
-    return <div>Loading notes...</div>;
+    return (
+      <div className="w-full">
+        <div className="max-w-[640px] mx-auto px-4 sm:px-6 space-y-8">
+          {[1, 2, 3].map((i) => (
+            <NoteSkeleton key={i} />
+          ))}
+        </div>
+      </div>
+    );
   }
 
   // Filter out any invalid notes that might be missing required fields

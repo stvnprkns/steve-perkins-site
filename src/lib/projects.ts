@@ -15,7 +15,7 @@ export const projects: Project[] = [
     slug: "rudderstack-team",
     title: "Founding a Design Team and Growing a Culture",
     role: "Head of Design",
-    timeframe: "2021–2023",
+    timeframe: "2021 - 2024",
     summary: "Brought design out of the margins and into the strategy room. I built RudderStack's first design team — not as a service org, but as a cross-functional partner that shaped product direction, improved process, and earned its seat at the table.",
     image: "/images/rudderstack-preview.webp",
     images: [
@@ -211,7 +211,7 @@ The impact of this project had ripples across the product and the business. By s
     slug: "appealio-insurance-appeals",
     title: "Revolutionizing the Insurance Appeal Process",
     role: "Lead Product Designer",
-    timeframe: "2023 - Present",
+    timeframe: "July 2019",
     summary: "Designed an AI-powered platform that streamlines the insurance appeals process for healthcare providers, reducing appeal time by 75% and increasing revenue by 26%.",
     image: "/images/projects/appealio/appealio-hero.webp",
     images: [
@@ -253,7 +253,7 @@ The tool not only saved time and reduced stress but also increased financial ret
     slug: "quickbooks-cpa-match",
     title: "Making Small Business Connections with CPAs",
     role: "Product Designer",
-    timeframe: "2018–2019",
+    timeframe: "May 2015",
     summary: "Led design for a 0→1 product at Intuit Labs that matched small businesses with CPAs, improving business success rates.",
     image: "/images/projects/quickbooks-cpa-match/qb-hero.webp",
     images: [

@@ -3,9 +3,10 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import Link from "next/link";
+import { motion } from 'framer-motion';
 import Section from "@/components/layout/Section";
 import PageHero from "@/components/PageHero";
-import NotesList from '@/components/notes/NotesList';
+import AnimatedNotesList from '@/components/notes/AnimatedNotesList';
 import { Note } from '@/lib/markdown';
 
 interface CategoryCount {
@@ -82,27 +83,77 @@ export default function NotesPageClient({ notes, categories }: NotesPageProps) {
     return matchesCategory && matchesSearch;
   });
 
+  // Animation variants
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: [0.25, 0.1, 0.25, 1]
+      }
+    }
+  };
+
   return (
     <div className="w-full">
       <PageHero
-        title="Notes"
-        subtitle={
-          "Loose threads. Early thoughts. Things I'm still figuring out.\n\nThis is where I stash the ideas that aren't ready for a case study but won't leave me alone. Some are half-right. Some are just half.\n\nNo polish, no conclusions — just trying to get a little closer to the truth by writing it down."
-            .split('\n\n')
-            .map((paragraph, index) => (
-              <p key={index} className="mb-2">
-                {paragraph}
-              </p>
-            ))
+        title={
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+            className="inline-block"
+          >
+            Notes
+          </motion.div>
         }
-        variant="narrow"
-        padding="default"
-      />
+        subtitle={
+          <motion.div
+            initial="hidden"
+            animate="show"
+            variants={container}
+            className="space-y-4"
+          >
+            {"Loose threads. Early thoughts. Things I'm still figuring out.\n\nThis is where I stash the ideas that aren't ready for a case study but won't leave me alone. Some are half-right. Some are just half.\n\nNo polish, no conclusions — just trying to get a little closer to the truth by writing it down."
+              .split('\n\n')
+              .map((paragraph, index) => (
+                <motion.p key={index} variants={item} className="mb-2">
+                  {paragraph}
+                </motion.p>
+              ))}
+            <motion.p variants={item} className="mt-4">
+              For more long-form writing, check out my{' '}
+              <a 
+                href="https://steveperk.substack.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="underline hover:text-primary transition-colors"
+              >
+                newsletter
+              </a>.
+            </motion.p>
+          </motion.div>
+        }
+      >
+        {/* Search bar and category tabs will go here */}
+      </PageHero>
 
-      <Section variant="narrow" className="space-y-16">
-        {/* Search and Filters */}
-        <div className="space-y-6">
-          <div className="relative w-full mb-4">
+      <div className="w-full py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative w-full mb-8 max-w-3xl mx-auto">
             <input
               type="text"
               placeholder="Search notes..."
@@ -117,50 +168,47 @@ export default function NotesPageClient({ notes, categories }: NotesPageProps) {
             </div>
           </div>
           
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/notes"
-              className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 no-underline ${
-                !selectedCategory
-                  ? 'bg-gray-900 text-white shadow-sm hover:bg-gray-800'
-                  : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 hover:border-gray-300'
-              }`}
-            >
-              All
-            </Link>
-            {categories.map((category) => {
-              const isActive = selectedCategory.toLowerCase() === category.category.toLowerCase();
-              return (
-                <Link
-                  key={category.category}
-                  href={`/notes?category=${encodeURIComponent(category.category)}`}
-                  className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 flex items-center space-x-1 no-underline ${
-                    isActive
-                      ? 'bg-gray-900 text-white shadow-sm hover:bg-gray-800 scale-105'
-                      : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 hover:border-gray-300 hover:scale-[1.02]'
-                  }`}
-                >
-                  <span>{category.emoji || ''}</span>
-                  <span>{category.title || category.category}</span>
-                </Link>
-              );
-            })}
+          <div className="mb-8">
+            <div className="flex flex-wrap gap-3 justify-center">
+              <Link
+                href="/notes"
+                className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 no-underline ${
+                  !selectedCategory
+                    ? 'bg-gray-900 text-white shadow-sm hover:bg-gray-800'
+                    : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 hover:border-gray-300'
+                }`}
+              >
+                All
+              </Link>
+              {categories.map((category) => {
+                const isActive = selectedCategory.toLowerCase() === category.category.toLowerCase();
+                return (
+                  <Link
+                    key={category.category}
+                    href={`/notes?category=${encodeURIComponent(category.category)}`}
+                    className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 flex items-center space-x-1 no-underline ${
+                      isActive
+                        ? 'bg-gray-900 text-white shadow-sm hover:bg-gray-800 scale-105'
+                        : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 hover:border-gray-300 hover:scale-[1.02]'
+                    }`}
+                  >
+                    <span>{category.emoji || ''}</span>
+                    <span>{category.title || category.category}</span>
+                  </Link>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </Section>
-
-      {/* Notes grid section - Full width */}
-      <section className="w-full max-w-none py-8 sm:py-10">
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <NotesList 
-            notes={filteredNotes}
+          
+          <AnimatedNotesList 
+            notes={filteredNotes} 
             selectedCategory={selectedCategory}
             categories={categories}
             searchQuery={searchQuery}
-            categoryInfo={selectedCategoryInfo}
+            categoryInfo={selectedCategory ? selectedCategoryInfo : null}
           />
         </div>
-      </section>
+      </div>
     </div>
   );
 }
