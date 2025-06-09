@@ -1,5 +1,5 @@
 import { quickbooksData } from './quickbooksData';
-import MarkdownImage from '@/components/markdown/MarkdownImage';
+import CaseStudyImage from '@/components/markdown/CaseStudyImage';
 
 export default function TalkingShop() {
   const { content, images } = quickbooksData.talkingShop;
@@ -15,12 +15,12 @@ export default function TalkingShop() {
       
       {images.map((image, index) => (
         <div key={index} className="w-full my-8">
-          <MarkdownImage 
-            src={image.src} 
+          <CaseStudyImage
+            src={image.src}
             alt={image.alt}
             width={1600}
             height={800}
-            className="w-full h-auto rounded-lg bg-purple-50 p-6"
+            withBackground={true}
           />
         </div>
       ))}

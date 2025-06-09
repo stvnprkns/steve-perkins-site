@@ -42,6 +42,7 @@ export interface RudderstackData {
     heading: string;
     content: string;
     image: Image;
+    connectionModeImage: Image;
   };
   formReduction: {
     heading: string;
@@ -53,6 +54,23 @@ export interface RudderstackData {
     content: string;
     image: Image;
   };
+  dataConfigConnect: {
+    connect: {
+      heading: string;
+      description: string;
+      image: Image;
+    };
+    success: {
+      heading: string;
+      description: string;
+      image: Image;
+    };
+    setup: {
+      heading: string;
+      description: string;
+      image: Image;
+    };
+  };
   outcomes: {
     heading: string;
     metrics: Metric[];
@@ -62,7 +80,7 @@ export interface RudderstackData {
 
 export const rudderstackData: RudderstackData = {
   title: "Connecting Data to Where it Matters Most",
-  company: { name: "RudderStack", url: "https://rudderstack.com" },
+  company: { name: "RudderStack", url: "https://www.rudderstack.com/blog/streamlined-destination-configuration-in-rudderstack/" },
   heroImage: {
     src: "/images/projects/rudderstack/rudderstack-hero.webp",
     alt: "RudderStack dashboard showing data connections"
@@ -130,6 +148,10 @@ export const rudderstackData: RudderstackData = {
     image: {
       src: "/images/projects/rudderstack/connections-connection-mode.png",
       alt: "Connection Mode close up showing the language and interaction."
+    },
+    connectionModeImage: {
+      src: "/images/projects/rudderstack/dataconfig-connectionmode.webp",
+      alt: "Connection Mode interface showing the different configuration options."
     }
   },
   formReduction: {
@@ -146,6 +168,32 @@ export const rudderstackData: RudderstackData = {
     image: {
       src: "/images/projects/rudderstack/Amplitude-Configuration.webp",
       alt: "Newly designed configuration and settings page for destinations."
+    }
+  },
+  dataConfigConnect: {
+    connect: {
+      heading: "Start with What Matters",
+      description: "We stopped asking for everything up front. The new flow gets users started with just the essentials: pick your sources, name the destination, drop in an API key, and choose a connection mode. That’s it. No clutter, no overwhelm—just a clear path to creating a destination without getting lost in the details.",
+      image: {
+        src: "/images/projects/rudderstack/dataconfig-connect.webp",
+        alt: "Data configuration connection interface showing the connection status and settings."
+      }
+    },
+    success: {
+      heading: "Created, But Not Live",
+      description: "With the new flow, creating a destination doesn’t mean doing everything up front. Now, users just handle the basics—then land on a confirmation screen that tells them it worked. The destination stays disabled by default, so no data starts flowing until they're ready. From here, users can finish setup on their own time and enable it when everything’s good to go.",
+      image: {
+        src: "/images/projects/rudderstack/dataconfig-success.webp",
+        alt: "Success message after completing the data configuration setup."
+      }
+    },
+    setup: {
+      heading: "Setup with Confidence",
+      description: "After creating the destination, users land in a focused configuration page built around clarity and context. It’s organized, readable, and adapts based on the connection mode they chose—showing only the settings that matter. Each section includes the right amount of guidance to help users make confident decisions. Once everything’s in place, they save their changes and enable the destination when they’re ready.",
+      image: {
+        src: "/images/projects/rudderstack/dataconfig-setup.webp",
+        alt: "Data configuration setup interface showing the initial setup process."
+      }
     }
   },
   outcomes: {

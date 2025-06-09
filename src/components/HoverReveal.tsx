@@ -27,6 +27,9 @@ interface HoverRevealProps {
   position?: 'left' | 'right' | 'center';
   offsetX?: number;
   offsetY?: number;
+  href?: string;
+  target?: string;
+  rel?: string;
 }
 
 export default function HoverReveal({
@@ -36,6 +39,9 @@ export default function HoverReveal({
   position = 'right',
   offsetX = 12,
   offsetY = -8,
+  href,
+  target = '_blank',
+  rel = 'noopener noreferrer'
 }: HoverRevealProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -208,6 +214,28 @@ export default function HoverReveal({
   }, [isHovered, images, isMounted]);
 
   // Use a span for inline display with position relative
+  const content = (
+    <span 
+      className="cursor-pointer hover:opacity-80 transition-opacity relative z-10"
+      style={{
+        whiteSpace: 'normal',
+        wordBreak: 'normal',
+        lineHeight: 'inherit',
+        display: 'inline',
+      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onTouchStart={handleTouchStart}
+      onFocus={handleMouseEnter}
+      onBlur={handleMouseLeave}
+      tabIndex={0}
+      aria-haspopup="true"
+      aria-expanded={isHovered}
+    >
+      {children}
+    </span>
+  );
+
   return (
     <span className="relative inline-block">
       <span 
@@ -220,25 +248,16 @@ export default function HoverReveal({
           display: 'inline',
         }}
       >
-        <span 
-          className="cursor-pointer hover:opacity-80 transition-opacity relative z-10"
-          style={{
-            whiteSpace: 'normal',
-            wordBreak: 'normal',
-            lineHeight: 'inherit',
-            display: 'inline',
-          }}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          onTouchStart={handleTouchStart}
-          onFocus={handleMouseEnter}
-          onBlur={handleMouseLeave}
-          tabIndex={0}
-          aria-haspopup="true"
-          aria-expanded={isHovered}
-        >
-          {children}
-        </span>
+        {href ? (
+          <a 
+            href={href} 
+            target={target} 
+            rel={rel}
+            className="no-underline"
+          >
+            {content}
+          </a>
+        ) : content}
         {/* Render hover content as a sibling to the trigger */}
         {hoverContent}
       </span>

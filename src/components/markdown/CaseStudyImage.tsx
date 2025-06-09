@@ -25,28 +25,36 @@ export default function CaseStudyImage({
   priority = false,
   inline = false,
   withBackground = true,
+  children,
   ...props
-}: CaseStudyImageProps) {
+}: React.PropsWithChildren<CaseStudyImageProps>) {
   return (
     <div className={cn('not-prose my-8 w-full', containerClassName)}>
       <div className={cn('w-full', { 
-        'bg-purple-50 p-4 rounded-lg': withBackground,
+        'bg-purple-50 dark:bg-gray-900 p-4 rounded-lg border border-gray-200 dark:border-gray-700': withBackground,
         'bg-transparent': !withBackground,
         'inline-block': inline 
       })}>
-        <div className={cn('w-full flex justify-center', { 'bg-transparent': !withBackground })}>
-          <MarkdownImage
-            src={src}
-            alt={alt}
-            width={width}
-            height={height}
-            className={cn('max-w-full h-auto rounded', className, {
-              'bg-transparent': !withBackground
-            })}
-            containerClassName={cn('w-full', { 'bg-transparent': !withBackground })}
-            priority={priority}
-            {...(props as any)}
-          />
+        <div className={cn('w-full', { 'bg-transparent': !withBackground })}>
+          <div className={cn('w-full flex justify-center', { 'bg-transparent': !withBackground })}>
+            <MarkdownImage
+              src={src}
+              alt={alt}
+              width={width}
+              height={height}
+              className={cn('max-w-full h-auto rounded', className, {
+                'bg-transparent': !withBackground
+              })}
+              containerClassName={cn('w-full', { 'bg-transparent': !withBackground })}
+              priority={priority}
+              {...(props as any)}
+            />
+          </div>
+          {children && (
+            <div className="mt-3">
+              {children}
+            </div>
+          )}
         </div>
       </div>
     </div>

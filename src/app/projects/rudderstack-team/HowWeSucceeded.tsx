@@ -22,24 +22,24 @@ export default function HowWeSucceeded() {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-12">
-          <div className="bg-gradient-to-br from-purple-50 to-white p-6 rounded-lg border border-purple-100">
-            <div className="text-4xl font-bold text-purple-600 mb-2">+6 point</div>
-            <p className="text-gray-700">Improvement of our System Usability Score over three quarters.</p>
+          <div className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-purple-900/30 transition-all duration-200 hover:border-purple-300 dark:hover:border-purple-900/50 hover:shadow-sm dark:hover:shadow-purple-900/10">
+            <div className="text-4xl font-bold text-purple-600 dark:text-purple-300 mb-2">+6 point</div>
+            <p className="text-gray-700 dark:text-gray-100">Improvement of our System Usability Score over three quarters.</p>
           </div>
           
-          <div className="bg-gradient-to-br from-purple-50 to-white p-6 rounded-lg border border-purple-100">
-            <div className="text-4xl font-bold text-purple-600 mb-2">20%</div>
-            <p className="text-gray-700">Reduction in design-related bugs in production.</p>
+          <div className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-purple-900/30 transition-all duration-200 hover:border-purple-300 dark:hover:border-purple-900/50 hover:shadow-sm dark:hover:shadow-purple-900/10">
+            <div className="text-4xl font-bold text-purple-600 dark:text-purple-300 mb-2">20%</div>
+            <p className="text-gray-700 dark:text-gray-100">Reduction in design-related bugs in production.</p>
           </div>
           
-          <div className="bg-gradient-to-br from-purple-50 to-white p-6 rounded-lg border border-purple-100">
-            <div className="text-4xl font-bold text-purple-600 mb-2">40%</div>
-            <p className="text-gray-700">Reduction in design cycle times, boosting productivity and quality.</p>
+          <div className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-purple-900/30 transition-all duration-200 hover:border-purple-300 dark:hover:border-purple-900/50 hover:shadow-sm dark:hover:shadow-purple-900/10">
+            <div className="text-4xl font-bold text-purple-600 dark:text-purple-300 mb-2">40%</div>
+            <p className="text-gray-700 dark:text-gray-100">Reduction in design cycle times, boosting productivity and quality.</p>
           </div>
           
-          <div className="bg-gradient-to-br from-purple-50 to-white p-6 rounded-lg border border-purple-100">
-            <div className="text-4xl font-bold text-purple-600 mb-2">60%</div>
-            <p className="text-gray-700">More time spent with customers in discovery research, interviews, and testing sessions.</p>
+          <div className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-purple-900/30 transition-all duration-200 hover:border-purple-300 dark:hover:border-purple-900/50 hover:shadow-sm dark:hover:shadow-purple-900/10">
+            <div className="text-4xl font-bold text-purple-600 dark:text-purple-300 mb-2">60%</div>
+            <p className="text-gray-700 dark:text-gray-100">More time spent with customers in discovery research, interviews, and testing sessions.</p>
           </div>
         </div>
       </div>

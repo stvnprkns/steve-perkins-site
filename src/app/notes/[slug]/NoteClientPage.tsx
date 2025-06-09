@@ -169,7 +169,7 @@ export default function NoteClientPage({ note: initialNote, slug }: NoteClientPa
         </PageTransition>
       </PageTransition>
 
-      <PageTransition delay={0.5} className="w-full bg-muted/30 mt-16 py-16">
+      <PageTransition delay={0.5} className="w-full bg-muted/30 mt-0 pt-6 pb-8">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <RelatedNotes currentSlug={slug as string} />
         </div>

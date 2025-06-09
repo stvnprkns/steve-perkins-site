@@ -1,20 +1,20 @@
 'use client';
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import ReactMarkdown, { Components } from 'react-markdown';
-
-type Node = {
-  type: string;
-  tagName?: string;
-  children?: Node[];
-  value?: string;
-  properties?: any;
-  parent?: Node;
-};
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import remarkGfm from 'remark-gfm';
 import Link from 'next/link';
+
+type Node = {
+  children?: Node[];
+  type?: string;
+  tagName?: string;
+  value?: string;
+  properties?: any;
+  parent?: Node;
+};
 
 type CodeComponentProps = {
   inline?: boolean;
@@ -42,10 +42,27 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, className 
       <h3 className="text-xl font-semibold mt-6 mb-3" {...props} />
     ),
     
-    // Paragraphs
-    p: (props) => (
-      <p className="mb-4 leading-relaxed" {...props} />
-    ),
+    // Paragraphs - handle block elements properly
+    p: (paragraph) => {
+      // Check if paragraph contains block-level elements
+      const hasBlockElements = React.Children.toArray(paragraph.children).some(
+        (child: any) => {
+          if (typeof child === 'string') return false;
+          const childType = (child as React.ReactElement)?.type;
+          return (
+            typeof childType === 'string' && 
+            ['div', 'figure', 'img', 'pre', 'ul', 'ol', 'blockquote', 'table', 'iframe', 'video', 'aside'].includes(childType)
+          );
+        }
+      );
+
+      // Don't wrap block elements in a paragraph
+      if (hasBlockElements) {
+        return <>{paragraph.children}</>;
+      }
+      
+      return <p className="mb-4 leading-relaxed" {...paragraph} />;
+    },
     
     // Links
     a: ({ href = '#', children, ...props }) => {

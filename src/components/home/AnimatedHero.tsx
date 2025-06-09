@@ -96,7 +96,7 @@ const SequenceLoader = dynamic(() => import('@/components/SequenceLoader'), {
 export function AnimatedHeroTitle() {
   return (
     <SequenceLoader>
-      {[<span key="title">Steve Perkins</span>]}
+      {[<span key="title">Good Design for Ugly Problems</span>]}
     </SequenceLoader>
   );
 }
@@ -133,14 +133,38 @@ export function AnimatedHeroContent({ onComplete }: AnimatedHeroContentProps) {
         <div key="content" className="space-y-6">
           <p>
             I'm currently the Senior Manager of Product Design at 🏗️ {' '}
-            <a 
-              href="https://www.procore.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <HoverReveal 
+              href="https://www.procore.com"
+              images={[
+                {
+                  src: '/images/hover-reveals/construct1.webp',
+                  alt: 'Construction site 1',
+                  width: 200,
+                  height: 150,
+                  initial: { x: -100, y: -60, scale: 1, rotate: -5 },
+                  animate: { x: -180, y: -40, scale: 1, rotate: -5 }
+                },
+                {
+                  src: '/images/hover-reveals/construct2.webp',
+                  alt: 'Construction site 2',
+                  width: 220,
+                  height: 160,
+                  initial: { x: 0, y: 0, scale: 1, rotate: 0 },
+                  animate: { x: 0, y: 40, scale: 1, rotate: 0 }
+                },
+                {
+                  src: '/images/hover-reveals/construct3.webp',
+                  alt: 'Construction site 3',
+                  width: 200,
+                  height: 150,
+                  initial: { x: 100, y: 60, scale: 1, rotate: 5 },
+                  animate: { x: 180, y: 40, scale: 1, rotate: 5 }
+                }
+              ]}
               className="underline hover:text-primary transition-colors inline-flex items-center"
             >
               Procore <span className='ml-1'>↗</span>
-            </a>, leading teams behind the platforms that power construction — Directory, Permissions, Ecosystem, and Authentication.
+            </HoverReveal>, leading teams behind the platforms that power construction — Directory, Permissions, Ecosystem, and Authentication.
           </p>
           <p>
             Over the years, I've helped launch more than 50 products across fintech, healthcare, developer tools, and communication. From building the first app for CPAs to file taxes on mobile to the initial concepts for Amex Pay It Plan It, to working on what would become TurboTax Live — I've done the unglamorous stuff that makes everything else work.

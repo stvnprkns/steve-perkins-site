@@ -64,8 +64,8 @@ A big insight we found was that the owners who worked with tax professionals del
 We needed a way to get QuickBooks users to use this product. We set up targeting filters, the primary one was for businesses without a CPA connected to their QuickBooks account. We presented the 'ad' on the dashboard page of QuickBooks. We ran dozens of quick tests of this ad to try and improve click-through rates.`,
     images: [
       {
-        src: "/images/projects/quickbooks-cpa-match/qb-ad.jpeg",
-        alt: "Fig. 4 - Experiment Ad on the QuickBooks dashboard. The ad promotes the CPA matching service to QuickBooks users"
+        src: "/images/projects/quickbooks-cpa-match/ad-variants.png",
+        alt: "Fig. 4 - Experiment Ad variations on the QuickBooks dashboard. Different ad designs promoting the CPA matching service to QuickBooks users"
       }
     ]
   },
@@ -77,7 +77,7 @@ We wanted the business owner to feel like we could find the perfect CPA for thei
 Contrary to what they told us, businesses didn't care as much about a perfect match as they let on.`,
     images: [
       {
-        src: "/images/projects/quickbooks-cpa-match/qb-match-cpas.jpeg",
+        src: "/images/projects/quickbooks-cpa-match/qb-cpa-connect.webp",
         alt: "Fig. 5 - Matchmaker page showing a carousel of CPAs in our beta group. The interface allows users to browse and select from available CPAs"
       }
     ]
@@ -88,7 +88,7 @@ Contrary to what they told us, businesses didn't care as much about a perfect ma
 We needed a clear way for CPAs and business owners to communicate. QuickBooks had a messaging system integrated into the tool, but it wasn't built for this matchmaking concept. So we developed a way to have an introduction conversation, a way for the CPA to request access to their books, a task manager in the tool, and a way to cancel an engagement if it didn't work out.`,
     images: [
       {
-        src: "/images/projects/quickbooks-cpa-match/qb-chat-feed.jpeg",
+        src: "/images/projects/quickbooks-cpa-match/qb-cpa-engage.webp",
         alt: "Fig. 6 - The messaging tool with the task manager. Shows the integrated communication interface between business owners and CPAs"
       }
     ]

@@ -121,7 +121,7 @@ export function AnimatedCaseStudies({ projects }: AnimatedCaseStudiesProps) {
                 projectRefs.current[index] = el;
               }
             }}
-            className="w-full group py-8"
+            className="w-full group py-3"
             initial="hidden"
             animate={shouldShow(index) ? 'visible' : 'hidden'}
             variants={{
@@ -141,7 +141,7 @@ export function AnimatedCaseStudies({ projects }: AnimatedCaseStudiesProps) {
             {/* Text Content */}
             <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-0">
               <motion.div 
-                className="max-w-[640px] mx-auto space-y-6"
+                className="max-w-[640px] mx-auto space-y-3"
                 initial="hidden"
                 animate={shouldShow(index) ? 'visible' : 'hidden'}
                 variants={{

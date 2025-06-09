@@ -12,24 +12,24 @@ export default function Outcomes() {
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-12">
-          <div className="bg-gradient-to-br from-purple-50 to-white p-6 rounded-lg border border-purple-100">
-            <div className="text-4xl font-bold text-purple-600 mb-2">+220%</div>
-            <p className="text-gray-700">Increase in new destinations being created</p>
+          <div className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-purple-900/30 transition-colors duration-200 hover:border-purple-300 dark:hover:border-purple-900/50">
+            <div className="text-4xl font-bold text-purple-600 dark:text-purple-300 mb-2">+220%</div>
+            <p className="text-gray-700 dark:text-gray-100">Increase in new destinations being created</p>
           </div>
           
-          <div className="bg-gradient-to-br from-purple-50 to-white p-6 rounded-lg border border-purple-100">
-            <div className="text-4xl font-bold text-purple-600 mb-2">70%</div>
-            <p className="text-gray-700">Reduction in destination set up time.</p>
+          <div className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-purple-900/30 transition-colors duration-200 hover:border-purple-300 dark:hover:border-purple-900/50">
+            <div className="text-4xl font-bold text-purple-600 dark:text-purple-300 mb-2">70%</div>
+            <p className="text-gray-700 dark:text-gray-100">Reduction in destination set up time.</p>
           </div>
           
-          <div className="bg-gradient-to-br from-purple-50 to-white p-6 rounded-lg border border-purple-100">
-            <div className="text-4xl font-bold text-purple-600 mb-2">20%</div>
-            <p className="text-gray-700">Boost in user retention during onboarding.</p>
+          <div className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-purple-900/30 transition-colors duration-200 hover:border-purple-300 dark:hover:border-purple-900/50">
+            <div className="text-4xl font-bold text-purple-600 dark:text-purple-300 mb-2">20%</div>
+            <p className="text-gray-700 dark:text-gray-100">Boost in user retention during onboarding.</p>
           </div>
           
-          <div className="bg-gradient-to-br from-purple-50 to-white p-6 rounded-lg border border-purple-100">
-            <div className="text-4xl font-bold text-purple-600 mb-2">15%</div>
-            <p className="text-gray-700">Increase in warehouse destinations</p>
+          <div className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-purple-900/30 transition-colors duration-200 hover:border-purple-300 dark:hover:border-purple-900/50">
+            <div className="text-4xl font-bold text-purple-600 dark:text-purple-300 mb-2">15%</div>
+            <p className="text-gray-700 dark:text-gray-100">Increase in warehouse destinations</p>
           </div>
         </div>
       </div>

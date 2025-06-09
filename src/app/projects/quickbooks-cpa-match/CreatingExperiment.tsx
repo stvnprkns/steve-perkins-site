@@ -1,6 +1,6 @@
 import { quickbooksData } from './quickbooksData';
 import ReactMarkdown from 'react-markdown';
-import MarkdownImage from '@/components/markdown/MarkdownImage';
+import CaseStudyImage from '@/components/markdown/CaseStudyImage';
 
 type ImageType = {
   src: string;
@@ -28,14 +28,14 @@ const ContentWithImage = ({ content, image, isAdSection = false }: { content: st
       {image && (
         <div className="w-full md:w-1/2">
           <div className="my-8">
-            <MarkdownImage 
-              src={image.src} 
+            <CaseStudyImage
+              src={image.src}
               alt={image.alt}
               width={1200}
               height={600}
-              className="w-full h-auto rounded-lg bg-purple-50 p-6"
+              withBackground={true}
+              containerClassName="w-full"
             />
-
           </div>
         </div>
       )}
@@ -79,14 +79,15 @@ export default function CreatingExperiment() {
         {workflowImage && (
           <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] my-8">
             <div className="w-full max-w-screen-2xl mx-auto">
-              <div className="relative w-full bg-white px-4 py-8">
+              <div className="relative w-full bg-white dark:bg-gray-900 px-4 py-8">
                 <div className="max-w-4xl mx-auto">
-                  <MarkdownImage 
+                  <CaseStudyImage 
                     src={workflowImage.src} 
                     alt={workflowImage.alt}
                     width={1600}
                     height={800}
-                    className="w-full h-auto rounded-lg"
+                    withBackground={true}
+                    containerClassName="w-full"
                   />
                 </div>
               </div>
@@ -110,14 +111,13 @@ export default function CreatingExperiment() {
         
         {matchmakerImage && (
           <div className="w-full my-8">
-            <MarkdownImage 
-              src={matchmakerImage.src} 
+            <CaseStudyImage
+              src={matchmakerImage.src}
               alt={matchmakerImage.alt}
               width={1200}
               height={600}
-              className="w-full h-auto rounded-lg bg-purple-50 p-6"
+              withBackground={true}
             />
-
           </div>
         )}
         
@@ -131,28 +131,26 @@ export default function CreatingExperiment() {
         
         {chatFeedImage && (
           <div className="w-full my-8">
-            <MarkdownImage 
-              src={chatFeedImage.src} 
+            <CaseStudyImage
+              src={chatFeedImage.src}
               alt={chatFeedImage.alt}
               width={1200}
               height={600}
-              className="w-full h-auto rounded-lg bg-purple-50 p-6"
+              withBackground={true}
             />
-
           </div>
         )}
         
         {directMessageImage && (
           <div className="w-full my-12">
             <div className="w-full">
-              <MarkdownImage 
-                src={directMessageImage.src} 
+              <CaseStudyImage
+                src={directMessageImage.src}
                 alt={directMessageImage.alt}
                 width={1600}
                 height={800}
-                className="w-full h-auto rounded-lg bg-purple-50 p-6"
+                withBackground={true}
               />
-
             </div>
           </div>
         )}
@@ -160,14 +158,13 @@ export default function CreatingExperiment() {
         {accessImage && (
           <div className="w-full my-12">
             <div className="w-full">
-              <MarkdownImage 
-                src={accessImage.src} 
+              <CaseStudyImage
+                src={accessImage.src}
                 alt={accessImage.alt}
                 width={1600}
                 height={800}
-                className="w-full h-auto rounded-lg bg-purple-50 p-6"
+                withBackground={true}
               />
-
             </div>
           </div>
         )}
@@ -194,12 +191,12 @@ export default function CreatingExperiment() {
         {/* Only render remaining images if we didn't process the content */}
         {shouldShowAllImages && images.map((image, index) => (
           <div key={index} className="w-full my-8">
-            <MarkdownImage 
-              src={image.src} 
+            <CaseStudyImage
+              src={image.src}
               alt={image.alt}
               width={1600}
               height={800}
-              className="w-full h-auto rounded-lg bg-purple-50 p-6"
+              withBackground={true}
             />
           </div>
         ))}

@@ -1,6 +1,6 @@
 import { quickbooksData } from './quickbooksData';
 import ReactMarkdown from 'react-markdown';
-import MarkdownImage from '@/components/markdown/MarkdownImage';
+import CaseStudyImage from '@/components/markdown/CaseStudyImage';
 
 const components = {
   h1: ({ node, ...props }: any) => <h3 className="text-2xl font-bold mt-8 mb-4" {...props} />,
@@ -21,12 +21,13 @@ export default function TheAd() {
       </div>
       {image && (
         <div className="w-full my-8">
-          <MarkdownImage 
-            src={image.src} 
+          <CaseStudyImage 
+            src={image.src}
             alt={image.alt}
             width={1600}
             height={800}
-            className="w-full h-auto rounded-lg bg-purple-50 p-6"
+            containerClassName="relative group"
+            withBackground={true}
           />
         </div>
       )}
