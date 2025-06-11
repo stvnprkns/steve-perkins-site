@@ -1,13 +1,16 @@
 'use client';
 
-import { ReactNode, useEffect, useState, useRef } from 'react';
+import { type ReactNode, useEffect, useState, useRef, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
+import Head from 'next/head';
+import { siteConfig } from '@/config/site';
 import PageTransition from '@/components/PageTransition';
 import { ThemeProvider } from '@/components/ThemeProvider';
-import { FloatingThemeToggle } from '@/components/FloatingThemeToggle';
 import { LightboxProvider } from '@/context/LightboxContext';
+import { Metadata } from '@/components/seo/Metadata';
+import ThemeScript from '@/components/ThemeScript';
 
 // Dynamically import the Nav component with SSR disabled
 const Nav = dynamic(() => import('@/components/Nav'), { 
@@ -26,26 +29,29 @@ export default function RootLayout({ children }: RootLayoutProps) {
   const isInitialRender = useRef(true);
 
   // Handle initial mount and first render state
-  useEffect(() => {
-    // Only run this effect once on mount
-    if (isInitialRender.current) {
-      isInitialRender.current = false;
+  const initializeApp = useCallback((): (() => void) => {
+    if (!isInitialRender.current) return () => {};
+    
+    isInitialRender.current = false;
+    
+    // Mark first render as complete after a short delay
+    const timer = setTimeout(() => {
+      setIsFirstRender(false);
       
-      // Mark first render as complete after a short delay
-      const timer = setTimeout(() => {
-        setIsFirstRender(false);
-        
-        // Add a small delay before marking as ready to ensure all styles are loaded
-        const readyTimer = setTimeout(() => {
-          setIsReady(true);
-        }, 50);
-        
-        return () => clearTimeout(readyTimer);
-      }, 100);
+      // Add a small delay before marking as ready to ensure all styles are loaded
+      const readyTimer = setTimeout(() => {
+        setIsReady(true);
+      }, 50);
       
-      return () => clearTimeout(timer);
-    }
+      return () => clearTimeout(readyTimer);
+    }, 100);
+    
+    return () => clearTimeout(timer);
   }, []);
+  
+  useEffect(() => {
+    return initializeApp();
+  }, [initializeApp]);
 
   // Don't render anything until we're ready to avoid hydration issues
   if (!isReady) {
@@ -57,9 +63,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
   }
 
   return (
-    <ThemeProvider>
+    <>
+      <ThemeScript />
+      <ThemeProvider>
+      <Metadata />
       <LightboxProvider>
-      <div className="min-h-screen flex flex-col bg-background dark:bg-gray-900">
+      <div className="min-h-screen flex flex-col bg-[#fbf8fd] dark:bg-gray-900">
       <AnimatePresence mode="wait">
         <motion.div
           key="nav-wrapper"
@@ -79,7 +88,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         </motion.div>
       </AnimatePresence>
       
-      <main className="flex-1 w-full pt-28">
+      <main className="flex-1 w-full pt-28 pb-20">
         <PageTransition 
           className="w-full"
           isFirstRender={isFirstRender}
@@ -90,5 +99,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
       </div>
       </LightboxProvider>
     </ThemeProvider>
+    </>
   );
 }

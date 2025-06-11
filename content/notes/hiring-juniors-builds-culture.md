@@ -3,11 +3,9 @@ title: "Hire More Juniors"
 date: 2023-12-21
 category: "Leadership"
 icon: "👥"
-tags: ["Hiring", "Culture", "Leadership"]
+tags: ["Hiring", "Culture"]
 emoji: "👥"
 excerpt: "Why bringing in junior talent accelerates your team's growth and clarifies your culture."
-status: "Published"
-updated: "2023-12-21"
 description: "Why bringing in junior talent accelerates your team's growth and clarifies your culture."
 ---
 

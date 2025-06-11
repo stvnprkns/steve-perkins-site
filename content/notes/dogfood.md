@@ -2,9 +2,10 @@
 title: "Dogfood or Don’t Ship"
 date: "2025-06-03"
 category: "Product"
-tags: ["product management", "user experience", "software development", "dogfooding"]
-status: "published"
+tags: ["product management", "dogfooding"]
 emoji: "🌭"
+icon: "🌭"
+excerpt: "Why using your own product is non-negotiable for building great software."
 description: "Why using your own product is non-negotiable for building great software."
 ---
 

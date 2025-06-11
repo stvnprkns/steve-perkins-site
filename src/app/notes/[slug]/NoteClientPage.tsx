@@ -94,7 +94,7 @@ export default function NoteClientPage({ note: initialNote, slug }: NoteClientPa
 
         <PageTransition delay={0.2}>
           <header className="mb-12">
-            <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-8">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-left mb-8">
               {note.title}
             </h1>
             
@@ -161,15 +161,32 @@ export default function NoteClientPage({ note: initialNote, slug }: NoteClientPa
 
         <PageTransition delay={0.4}>
           <div className="mt-12 pt-8 border-t border-border">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted text-muted-foreground text-sm">
-              <span>{emoji}</span>
-              <span className="capitalize">{status}</span>
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <div className="text-sm text-gray-500">
+                Steve Perkins • {formatDate(date)}
+              </div>
+              <button 
+                onClick={() => {
+                  const url = window.location.href;
+                  navigator.clipboard.writeText(url).then(() => {
+                    // Optional: Show a toast or tooltip here
+                    alert('Link copied to clipboard!');
+                  });
+                }}
+                className="text-sm text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors flex items-center gap-1 px-2 py-1 rounded-md"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1m-6-4l6-6m0 0l-6-6m6 6H8" />
+                </svg>
+                Copy Link
+              </button>
             </div>
+
           </div>
         </PageTransition>
       </PageTransition>
 
-      <PageTransition delay={0.5} className="w-full bg-muted/30 mt-0 pt-6 pb-8">
+      <PageTransition delay={0.5} className="w-full bg-muted/30 pt-2 pb-6 -mt-4">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <RelatedNotes currentSlug={slug as string} />
         </div>

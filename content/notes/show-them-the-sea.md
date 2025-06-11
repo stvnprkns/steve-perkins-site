@@ -3,8 +3,11 @@ title: "Show Them the Sea"
 date: 2023-09-06
 emoji: ⛵
 category: Leadership
-tags: [leadership, design, teams, inspiration]
+tags: ["Leadership", "Teams"]
 description: "Inspiring leadership through vision and purpose, not just tasks and processes."
+icon: "⛵"
+excerpt: "Inspiring leadership through vision and purpose, not just tasks and processes."
+
 ---
 
 > _"If you want to build a ship, don't drum up the men to gather wood, divide the work and give orders.  

@@ -3,7 +3,7 @@ interface SiteConfig {
   title: string;
   description: string;
   url: string;
-  defaultImage: string;
+  defaultImage: string; // Must be a relative path (e.g., '/images/og-image.jpg')
   twitterHandle: string;
   googleSiteVerification: string;
   keywords: string[];

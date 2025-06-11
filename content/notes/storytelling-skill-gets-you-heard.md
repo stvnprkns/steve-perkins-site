@@ -1,7 +1,12 @@
 ---
 title: "Storytelling Is the Skill That Gets You Heard"
 date: 2025-03-15
-description: "Why storytelling is the most powerful tool in a designer's toolbox and how to master it."
+icon: "🕮"
+tags: ["Storytelling", "Design"]
+category: "Design"
+emoji: "🕮"
+excerpt: "Storytelling is the skill that gets you heard."
+description: "Storytelling is the skill that gets you heard."
 ---
 
 ![Storytelling in action](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmpkNHp0cTU4ejE0M2NpZml2Nzc5d2VrZ2xyb2N1c201aGNlY28wYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/p6z2lHvl4Da4U/giphy.gif)

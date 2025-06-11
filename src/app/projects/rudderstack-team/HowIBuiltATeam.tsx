@@ -27,20 +27,16 @@ export default function HowIBuiltATeam() {
         </p>
         
         <h4 className="text-xl font-semibold mt-8 mb-4 font-sans">Collaboration at the Core</h4>
-        <div className="flex flex-col md:flex-row gap-6 items-start">
-          <div className="flex-1">
-            <p>
-              I didn't want designers to work alone in siloed pods. That's no fun, and when you're already outnumbered, it makes it even harder for creatives to have a voice. I built a cross-discipline team that tackled the problems of the product together. Each member owned a domain, and they all worked side by side throughout the project's lifecycle.
-            </p>
-          </div>
-          <div className="w-full md:w-1/2">
-            <CaseStudyImage
-              src="/images/projects/rudderstack-team/rudderstack-team-process.jpg"
-              alt="[Fig. 2] A team process diagram showing the roles of the RudderStack Design Team"
-              width={1200}
-              height={800}
-            />
-          </div>
+        <p>
+          I didn't want designers to work alone in siloed pods. That's no fun, and when you're already outnumbered, it makes it even harder for creatives to have a voice. I built a cross-discipline team that tackled the problems of the product together. Each member owned a domain, and they all worked side by side throughout the project's lifecycle.
+        </p>
+        <div className="w-full mt-6">
+          <CaseStudyImage
+            src="/images/projects/rudderstack-team/rudderstack-team-process.jpg"
+            alt="[Fig. 2] A team process diagram showing the roles of the RudderStack Design Team"
+            width={1200}
+            height={800}
+          />
         </div>
         
         <h4 className="text-xl font-semibold mt-8 mb-4 font-sans">Being an Advocate</h4>

@@ -3,12 +3,11 @@ title: "Kill Your Darlings"
 date: 2024-11-04
 description: "The importance of letting go of beloved design elements when they don't serve the product's purpose." 
 icon: "✂️"
-tags: ["Design Process", "Editing", "Product Development"]
+tags: ["Design Process", "Editing"]
 category: "Design"
 emoji: "✂️"
 excerpt: "You'll have ideas you love. Kill them anyway."
-status: "Published"
-updated: "2024-11-04"
+
 ---
 
 You'll have ideas you love.  

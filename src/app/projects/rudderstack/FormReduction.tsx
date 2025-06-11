@@ -1,10 +1,49 @@
-import * as React from "react";
+import React from 'react';
 import { rudderstackData } from "./rudderstackData";
 import Paragraphs from "@/components/ui/Paragraphs";
 import CaseStudyImage from "@/components/markdown/CaseStudyImage";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
+
+interface ImageData {
+  src: StaticImageData;
+  alt: string;
+  caption?: string;
+}
+
+interface RudderstackData {
+  formReduction: {
+    heading: string;
+    content: string;
+    image?: ImageData;
+  };
+  configDesign: {
+    heading: string;
+    content: string;
+    image?: ImageData;
+  };
+  dataConfigConnect: {
+    connect: {
+      heading: string;
+      content: string;
+    };
+    success: {
+      heading: string;
+      content: string;
+    };
+    setup: {
+      heading: string;
+      content: string;
+    };
+  };
+  connectionMode: {
+    connectionModeImage?: ImageData;
+  };
+}
 
 export default function FormReduction() {
+  // Memoize the component to prevent unnecessary re-renders
+  const MemoizedCaseStudyImage = React.memo(CaseStudyImage) as typeof CaseStudyImage;
+  const MemoizedParagraphs = React.memo(Paragraphs) as typeof Paragraphs;
   const { heading, content, image } = rudderstackData.formReduction;
   const { heading: configHeading, content: configContent, image: configImage } = rudderstackData.configDesign;
   const { 
@@ -33,7 +72,7 @@ export default function FormReduction() {
         </div>
         {connectionModeImage && (
           <div className="mt-8">
-            <CaseStudyImage
+            <MemoizedCaseStudyImage
               src={connectionModeImage.src}
               alt={connectionModeImage.alt}
               width={1200}
@@ -46,7 +85,7 @@ export default function FormReduction() {
       {/* First part: From 27 fields to 2 steps */}
       <h2 className="text-3xl font-bold mb-6 font-sans">{heading}</h2>
       <div className="prose max-w-prose text-text-base">
-        <Paragraphs text={content} className="text-base leading-loose" />
+        <MemoizedParagraphs text={content} className="text-base leading-loose" />
       </div>
       {image && (
         <CaseStudyImage

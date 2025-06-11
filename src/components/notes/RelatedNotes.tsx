@@ -51,16 +51,16 @@ export default function RelatedNotes({ currentSlug }: RelatedNotesProps) {
   if (related.length === 0) return null;
 
   return (
-    <div className="w-full -mx-4 sm:-mx-6">
+    <div className="w-full">
       <motion.section 
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
         variants={fadeInUp}
-        className="mt-16 relative px-4 sm:px-6"
+        className="mt-16 relative px-2 sm:px-4"
       >
-        <div className="absolute inset-0 -inset-x-3 -inset-y-2 bg-purple-50 dark:bg-gray-800/50 border border-purple-200 dark:border-gray-700/70 rounded-lg z-0" />
-        <div className="relative max-w-3xl mx-auto py-6 z-10">
+        <div className="absolute inset-0 -inset-x-2 -inset-y-2 bg-purple-50 dark:bg-gray-800/50 border border-purple-200 dark:border-gray-700/70 rounded-lg z-0" />
+        <div className="relative w-full py-6 px-3 sm:px-4 z-10">
           <motion.div 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}

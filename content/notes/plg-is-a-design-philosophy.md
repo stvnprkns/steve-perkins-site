@@ -7,8 +7,6 @@ tags: ["Design", "Product"]
 category: "Design"
 emoji: "🚀"
 excerpt: "Product-led growth isn't just a go-to-market strategy. It's a design mindset."
-status: "Published"
-updated: "2023-06-04"
 ---
 
 Product-led growth isn't just a go-to-market strategy.  

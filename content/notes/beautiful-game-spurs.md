@@ -2,9 +2,10 @@
 title: "The Beautiful Team"
 date: "2025-06-03"
 category: "Team Building"
-tags: ["team building", "leadership", "collaboration", "basketball", "spurs"]
-status: "published"
+tags: ["team building", "leadership"]
 emoji: "🏀"
+icon: "🏀"
+excerpt: "Building teams that work like the 2014 San Antonio Spurs – with chemistry, unselfishness, and a focus on the best outcome."
 description: "Building teams that work like the 2014 San Antonio Spurs – with chemistry, unselfishness, and a focus on the best outcome."
 ---
 

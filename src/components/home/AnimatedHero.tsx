@@ -96,7 +96,7 @@ const SequenceLoader = dynamic(() => import('@/components/SequenceLoader'), {
 export function AnimatedHeroTitle() {
   return (
     <SequenceLoader>
-      {[<span key="title">Good Design for Ugly Problems</span>]}
+      {[<span key="title">Good design where it's needed most.</span>]}
     </SequenceLoader>
   );
 }

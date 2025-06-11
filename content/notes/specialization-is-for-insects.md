@@ -1,14 +1,12 @@
 ---
 title: "Specialization Is for Insects"
-date: 2025-10-15
+date: 2025-04-15
 description: "Challenging the pressure to niche down and celebrating the value of being a generalist in a specialized world."
 icon: "🦗"
 tags: ["Mindset", "Career"]
 category: "Leadership"
 emoji: "🦗"
 excerpt: "Why being a generalist in a specialized world is more valuable than ever."
-status: "Published"
-updated: "2025-10-15"
 ---
 
 > "Specialization is for insects.  

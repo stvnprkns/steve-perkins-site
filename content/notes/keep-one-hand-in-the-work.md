@@ -3,11 +3,9 @@ title: "Keep One Hand in the Work"
 date: 2024-07-16
 category: "Leadership"
 icon: "🖐️"
-tags: ["Leadership", "Management", "Craft"]
+tags: ["Leadership", "Craft"]
 emoji: "🖐️"
 excerpt: "Why staying hands-on makes you a better leader, not a distracted one."
-status: "Published"
-updated: "2024-07-16"
 description: "Why staying hands-on makes you a better leader, not a distracted one."
 ---
 

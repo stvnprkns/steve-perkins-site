@@ -5,7 +5,7 @@ import { useState, useCallback } from 'react';
 import { useLightbox } from '@/context/LightboxContext';
 import { cn } from '@/lib/utils';
 
-interface MarkdownImageProps extends Omit<ImageProps, 'src' | 'alt' | 'width' | 'height'> {
+interface MarkdownImageBaseProps {
   src?: string | null;
   alt?: string;
   width?: string | number;
@@ -14,6 +14,8 @@ interface MarkdownImageProps extends Omit<ImageProps, 'src' | 'alt' | 'width' | 
   className?: string;
   containerClassName?: string;
 }
+
+type MarkdownImageProps = MarkdownImageBaseProps & Omit<ImageProps, keyof MarkdownImageBaseProps | 'src' | 'alt' | 'width' | 'height'>;
 
 // Custom loader for external images
 const customLoader = ({ src }: { src: string }) => src;
@@ -25,20 +27,24 @@ export default function MarkdownImage({
   containerClassName = '',
   width = 800,
   height = 600,
+  inline = false,
   ...props 
 }: MarkdownImageProps) {
   const [isImageError, setIsImageError] = useState(false);
   const { openLightbox } = useLightbox();
   
-  if (!src) return null;
+  const handleError = useCallback(() => {
+    setIsImageError(true);
+  }, []);
   
-  const handleError = () => setIsImageError(true);
   const handleImageClick = useCallback((e: React.MouseEvent) => {
-    if (!src || props.inline) return;
+    if (!src || inline) return;
     e.stopPropagation();
     const lightboxAlt = alt && !alt.includes('\n') ? alt : '';
     openLightbox(src, lightboxAlt);
-  }, [src, alt, openLightbox, props.inline]);
+  }, [src, inline, alt, openLightbox]);
+  
+  if (!src) return null;
 
   if (isImageError) {
     return (
@@ -53,34 +59,37 @@ export default function MarkdownImage({
   const numericWidth = typeof width === 'string' ? parseInt(width, 10) : width;
   const numericHeight = typeof height === 'string' ? parseInt(height, 10) : height;
 
+  const imageProps: ImageProps = {
+    src,
+    alt,
+    width: Number(width) || 800,
+    height: Number(height) || 600,
+    className: cn(
+      'mx-auto my-0 block w-full h-auto',
+      { 'inline-block': inline },
+      className
+    ),
+    style: {
+      borderRadius: '0.25rem',
+      maxWidth: '100%',
+    },
+    loader: isExternal ? customLoader : undefined,
+    unoptimized: isExternal,
+    onError: handleError,
+    sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw",
+    onClick: !inline ? handleImageClick : undefined,
+    ...props
+  };
+
   return (
     <div className={cn('not-prose my-2 flex flex-col items-center', containerClassName)}>
       <div 
-        className={cn('relative w-full bg-transparent', { 'cursor-zoom-in': !props.inline })}
-        onClick={handleImageClick}
+        className={cn('relative w-full bg-transparent', { 'cursor-zoom-in': !inline })}
+        onClick={!inline ? handleImageClick : undefined}
       >
-        <Image
-          src={src}
-          alt={alt}
-          width={numericWidth}
-          height={numericHeight}
-          className={cn(
-            'mx-auto my-0 block w-full h-auto',
-            { 'inline-block': props.inline },
-            className
-          )}
-          style={{
-            borderRadius: '0.25rem',
-            maxWidth: '100%',
-          }}
-          loader={isExternal ? customLoader : undefined}
-          unoptimized={isExternal}
-          onError={handleError}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
-          {...props}
-        />
+        <Image {...imageProps} />
       </div>
-      {showCaption && !props.inline && (
+      {showCaption && !inline && (
         <figcaption className="mt-2 text-sm text-gray-500 text-center">
           {alt}
         </figcaption>

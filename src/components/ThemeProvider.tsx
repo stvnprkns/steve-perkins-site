@@ -27,25 +27,46 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const storedTheme = localStorage.getItem('theme') as Theme | null;
     const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    if (storedTheme) {
-      setTheme(storedTheme);
-      document.documentElement.classList.toggle('dark', storedTheme === 'dark');
-    } else {
+    // Only update if we don't have a stored theme preference
+    if (!storedTheme) {
       const initialTheme: Theme = systemDark ? 'dark' : 'light';
       setTheme(initialTheme);
-      document.documentElement.classList.toggle('dark', initialTheme === 'dark');
       localStorage.setItem('theme', initialTheme);
+    } else {
+      setTheme(storedTheme);
     }
     
     setMounted(true);
+
+    // Listen for system theme changes when no explicit preference is set
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = () => {
+      if (!storedTheme) {
+        const newTheme = mediaQuery.matches ? 'dark' : 'light';
+        setTheme(newTheme);
+        localStorage.setItem('theme', newTheme);
+      }
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
   // Update document class when theme changes
   useEffect(() => {
     if (!mounted) return;
     
-    console.log('Theme changed to:', theme);
-    document.documentElement.classList.toggle('dark', theme === 'dark');
+    // Update the class on the html element
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    
+    // Update the data-theme attribute
+    document.documentElement.setAttribute('data-theme', theme);
+    
+    // Save to localStorage
     localStorage.setItem('theme', theme);
   }, [theme, mounted]);
 

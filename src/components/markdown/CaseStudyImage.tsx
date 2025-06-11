@@ -29,12 +29,11 @@ export default function CaseStudyImage({
   ...props
 }: React.PropsWithChildren<CaseStudyImageProps>) {
   return (
-    <div className={cn('not-prose my-8 w-full', containerClassName)}>
-      <div className={cn('w-full', { 
+    <div className={cn('not-prose my-8 w-full', containerClassName)} style={{ gridColumn: '1 / -1' }}>
+      <div className={cn('w-full block', { 
         'bg-purple-50 dark:bg-gray-900 p-4 rounded-lg border border-gray-200 dark:border-gray-700': withBackground,
-        'bg-transparent': !withBackground,
-        'inline-block': inline 
-      })}>
+        'bg-transparent': !withBackground
+      })} style={{ width: '100%' }}>
         <div className={cn('w-full', { 'bg-transparent': !withBackground })}>
           <div className={cn('w-full flex justify-center', { 'bg-transparent': !withBackground })}>
             <MarkdownImage

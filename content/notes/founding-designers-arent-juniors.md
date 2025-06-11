@@ -2,12 +2,10 @@
 title: "Founding Designers Aren’t Juniors"
 date: 2024-12-08
 icon: "🏗️"
-tags: ["Startups", "Founding", "Design"]
+tags: ["Startups", "Founding"]
 category: "Startups"
 emoji: "🏗️"
 excerpt: "It’s common to see startups hire junior or mid-level designers into founding roles."
-status: "Budding"
-updated: "2025-06-04"
 description: "A true founding designer is more than just a set of hands in Figma. They’re a strategic partner."
 ---
 

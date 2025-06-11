@@ -1,14 +1,12 @@
 ---
 title: "Talk Before You Draw"
 date: 2023-07-03
-description: "The importance of conversations before design - why great products start with dialogue, not mockups." 
 icon: "💬"
-tags: ["Product Design", "User Research", "Process"]
+tags: ["Product Design", "User Research"]
 category: "Design"
 emoji: "💬"
 excerpt: "Great products don't start in Figma. They start in conversation."
-status: "Published"
-updated: "2023-07-03"
+description: "Great products don't start in Figma. They start in conversation."
 ---
 
 Great products don't start in Figma.  

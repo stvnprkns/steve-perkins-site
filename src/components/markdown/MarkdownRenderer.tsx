@@ -44,8 +44,14 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, className 
     
     // Paragraphs - handle block elements properly
     p: (paragraph) => {
+      // Check if paragraph contains only an image
+      const children = React.Children.toArray(paragraph.children);
+      const hasOnlyImage = children.length === 1 && 
+        React.isValidElement(children[0]) && 
+        children[0].type === 'img';
+      
       // Check if paragraph contains block-level elements
-      const hasBlockElements = React.Children.toArray(paragraph.children).some(
+      const hasBlockElements = children.some(
         (child: any) => {
           if (typeof child === 'string') return false;
           const childType = (child as React.ReactElement)?.type;
@@ -56,8 +62,8 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, className 
         }
       );
 
-      // Don't wrap block elements in a paragraph
-      if (hasBlockElements) {
+      // Don't wrap block elements or standalone images in a paragraph
+      if (hasBlockElements || hasOnlyImage) {
         return <>{paragraph.children}</>;
       }
       
@@ -153,11 +159,26 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, className 
     ),
     
     // Blockquotes with enhanced styling
-    blockquote: (props) => (
+    blockquote: ({ children, ...props }) => (
       <blockquote 
-        className="border-l-4 border-primary pl-6 py-2 my-6 bg-muted/10 dark:bg-muted/20 italic text-muted-foreground/90"
+        className="border-l-4 border-purple-300 dark:border-purple-500/70 pl-6 py-4 my-8 
+                 bg-muted/10 dark:bg-muted/30 text-lg 
+                 text-muted-foreground/90 dark:text-muted-foreground/80 
+                 relative hover:bg-muted/15 dark:hover:bg-muted/40 transition-colors duration-200"
         {...props}
-      />
+      >
+        <div className="space-y-4">
+          {React.Children.map(children, (child) => {
+            if (React.isValidElement<React.HTMLAttributes<HTMLElement>>(child) && child.type === 'footer') {
+              return React.cloneElement(child, {
+                ...child.props,
+                className: 'not-italic text-base font-medium text-purple-700 dark:text-purple-300 mt-3',
+              });
+            }
+            return child;
+          })}
+        </div>
+      </blockquote>
     ),
     
     // Use our custom MarkdownImage component for better image handling
@@ -172,22 +193,18 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, className 
       // Extract width and height from className if they exist (e.g., width="300")
       const widthMatch = className.match(/w-?(\d+)/);
       const heightMatch = className.match(/h-?(\d+)/);
-      const imgWidth = width || (widthMatch ? widthMatch[1] : undefined);
-      const imgHeight = height || (heightMatch ? heightMatch[1] : undefined);
+      const imgWidth = width || (widthMatch ? widthMatch[1] : 800);
+      const imgHeight = height || (heightMatch ? heightMatch[1] : 600);
       
-      const imageProps = {
-        src: imageSrc,
-        alt: alt || '',
-        width: imgWidth,
-        height: imgHeight,
-        className: className.replace(/w-?\d+/g, '').replace(/h-?\d+/g, '').trim(),
-        ...rest
-      };
-      
-      // Always wrap in a div to prevent invalid HTML nesting
       return (
         <div className="my-6">
-          <MarkdownImage {...imageProps} />
+          <MarkdownImage 
+            src={imageSrc}
+            alt={alt}
+            width={imgWidth}
+            height={imgHeight}
+            className={className.replace(/w-?\d+/g, '').replace(/h-?\d+/g, '').trim()}
+          />
         </div>
       );
     },

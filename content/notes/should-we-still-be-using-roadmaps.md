@@ -7,8 +7,7 @@ tags: ["Product Management", "Strategy"]
 category: "Product"
 emoji: "🗺️"
 excerpt: "How I think about planning in a fast-moving environment"
-status: "Published"
-updated: "2024-10-19"
+
 ---
 
 ### How I Think About Planning in a Fast-Moving Environment  

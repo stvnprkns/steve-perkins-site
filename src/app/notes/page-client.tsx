@@ -174,8 +174,8 @@ export default function NotesPageClient({ notes, categories }: NotesPageProps) {
                 href="/notes"
                 className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 no-underline ${
                   !selectedCategory
-                    ? 'bg-gray-900 text-white shadow-sm hover:bg-gray-800'
-                    : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 hover:border-gray-300'
+                    ? 'bg-gray-900 dark:bg-purple-900 text-white shadow-sm hover:bg-gray-800 dark:hover:bg-purple-800'
+                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-600'
                 }`}
               >
                 All
@@ -188,8 +188,8 @@ export default function NotesPageClient({ notes, categories }: NotesPageProps) {
                     href={`/notes?category=${encodeURIComponent(category.category)}`}
                     className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 flex items-center space-x-1 no-underline ${
                       isActive
-                        ? 'bg-gray-900 text-white shadow-sm hover:bg-gray-800 scale-105'
-                        : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 hover:border-gray-300 hover:scale-[1.02]'
+                        ? 'bg-gray-900 dark:bg-purple-900 text-white shadow-sm hover:bg-gray-800 dark:hover:bg-purple-800 scale-105'
+                        : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-600 hover:scale-[1.02]'
                     }`}
                   >
                     <span>{category.emoji || ''}</span>

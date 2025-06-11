@@ -54,7 +54,7 @@ export function AnimatedAboutSections({
         <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-0">
           <div className="max-w-[640px] mx-auto prose text-base leading-relaxed space-y-6">
             {introContent.map((paragraph, index) => (
-              <p key={index} className="m-0">{paragraph}</p>
+              <p key={index} className="m-0 mb-4 last:mb-0">{paragraph}</p>
             ))}
           </div>
         </div>
@@ -101,7 +101,7 @@ export function AnimatedAboutSections({
         <div className="w-full py-16">
           <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-0">
             <div className="max-w-[640px] mx-auto space-y-8">
-              <h2 className="text-2xl font-medium">Get in Touch</h2>
+              <h2 className="text-2xl font-medium mb-4">Get in Touch</h2>
               <p className="text-muted-foreground max-w-2xl m-0">
                 I'm always open to discussing product design, leadership, or potential opportunities. 
                 Feel free to reach out through any of these channels:

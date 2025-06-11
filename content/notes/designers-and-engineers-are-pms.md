@@ -2,12 +2,10 @@
 title: "Designers and Engineers Are PMs"
 date: 2024-11-21
 icon: "🎯"
-tags: ["Product Management", "Team Dynamics", "Ownership"]
+tags: ["Product Management", "Ownership"]
 category: "Product"
 emoji: "🎯"
 excerpt: "PM is a function, not just a title. The best teams share product thinking as a responsibility."
-status: "Seedling"
-updated: "2025-06-04"
 description: "How design and engineering can take ownership of product outcomes"
 ---
 

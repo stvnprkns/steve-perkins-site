@@ -3,12 +3,10 @@ title: "Designer Mode"
 date: 2024-10-23
 description: "Exploring the essence of true design thinking beyond aesthetics, focusing on problem-solving and product direction." 
 icon: "🎯"
-tags: ["Design Thinking", "Product Strategy", "Leadership"]
+tags: ["Design Thinking", "Leadership"]
 category: "Design"
 emoji: "🎯"
 excerpt: "Design isn't about pixels. It's about focus."
-status: "Published"
-updated: "2024-10-23"
 ---
 
 Design isn't about pixels.  

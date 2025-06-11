@@ -93,21 +93,32 @@ export default function RootLayout({
       lang="en" 
       className={`${inter.variable} font-sans`} 
       suppressHydrationWarning
-      data-theme="light"
     >
       <head>
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              try {
-                if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                  document.documentElement.classList.add('dark')
-                } else {
-                  document.documentElement.classList.remove('dark')
+              (function() {
+                try {
+                  const theme = localStorage.theme;
+                  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  const isDark = theme === 'dark' || (!theme && prefersDark);
+                  
+                  if (isDark) {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.setAttribute('data-theme', 'light');
+                  }
+                } catch (e) {
+                  // If there's an error, default to light theme
+                  document.documentElement.setAttribute('data-theme', 'light');
                 }
-              } catch (_) {}
+              })();
             `,
           }}
+          suppressHydrationWarning
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
