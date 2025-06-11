@@ -9,8 +9,12 @@ export const metadata: Metadata = {
 
 const introContent = [
   "I was halfway to becoming a cosmetic dentist when I realized I didn't want to memorize the right answer — I wanted to ask better questions. So I switched majors, studied New Media Art, and ended up somewhere between art, design, code, and systems thinking.",
+  "",
   "That was over 13 years ago. Since then, I've led design orgs, launched products from zero, cleaned up the messes others left behind, and built teams that like building together.",
-  "I've worked in just about every industry, fintech, healthcare, dev tools, and construction — usually on the hard stuff that has more edge cases than glamour shots. I've designed HIPAA-compliant messengers, built data platforms, overhauled design systems, and reimagined how customer info flows across tools. The unsexy problems that quietly power everything."
+  "",
+  "I've worked in just about every industry, fintech, healthcare, dev tools, and construction — usually on the hard stuff that has more edge cases than glamour shots. I've designed HIPAA-compliant messengers, built data platforms, overhauled design systems, and reimagined how customer info flows across tools.", 
+  "",
+  "The unsexy problems that power the business world."
 ];
 
 const experienceItems = [
