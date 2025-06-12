@@ -30,7 +30,7 @@ export default function Section({
   return (
     <div className="w-full">
       <Component 
-        className={`py-0 w-full min-h-0 ${className}`}
+        className={`w-full min-h-0 ${className}`}
         id={id}
         style={{
           scrollMarginTop: '96px', // 6rem for sticky header offset

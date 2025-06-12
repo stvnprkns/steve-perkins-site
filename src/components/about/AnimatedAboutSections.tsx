@@ -51,8 +51,8 @@ export function AnimatedAboutSections({
         <div className="h-6" />
 
         {/* Intro Content */}
-        <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-0">
-          <div className="max-w-[640px] mx-auto prose text-base leading-relaxed space-y-6">
+        <div className="w-full max-w-[640px] mx-auto">
+          <div className="prose text-base leading-relaxed space-y-6">
             {introContent.map((paragraph, index) => (
               <p key={index} className="m-0 mb-4 last:mb-0">{paragraph}</p>
             ))}
@@ -68,9 +68,10 @@ export function AnimatedAboutSections({
                 {experienceItems.map((item, index) => (
                   <li 
                     key={`${item.company}-${index}`}
-                    className="flex flex-1 items-center space-x-4 pl-0"
+                    className="flex flex-wrap items-center gap-x-2 gap-y-1 pl-0 text-xs sm:text-sm"
+                    style={{ minWidth: 0 }}
                   >
-                    <div>
+                    <div className="truncate min-w-0 max-w-full">
                       {item.companyUrl ? (
                         <UnderlineLink href={item.companyUrl}>
                           {item.company}
@@ -79,15 +80,13 @@ export function AnimatedAboutSections({
                         item.company
                       )}
                     </div>
-                    <span className="w-full border-t border-gray-500/30 border-dashed min-w-4" style={{ flexShrink: 999999 }} />
-                    <div className="text-right">
-                      <div className="flex items-center">
-                        <div className="font-normal text-gray-600 dark:text-gray-300">
-                          {item.role}
-                        </div>
-                        <div className="ml-4 w-[6em] text-right tabular-nums text-gray-400 dark:text-gray-500">
-                          {item.years}
-                        </div>
+                    <span className="flex-grow border-t border-gray-500/30 border-dashed min-w-4 mx-2 align-middle" style={{ flexBasis: 0, flexShrink: 999999 }} />
+                    <div className="flex flex-wrap items-center justify-end min-w-0 max-w-full text-right">
+                      <div className="font-normal text-gray-600 dark:text-gray-300 truncate min-w-0 max-w-full">
+                        {item.role}
+                      </div>
+                      <div className="ml-2 w-auto text-right tabular-nums text-gray-400 dark:text-gray-500 whitespace-nowrap">
+                        {item.years}
                       </div>
                     </div>
                   </li>

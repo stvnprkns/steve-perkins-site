@@ -28,9 +28,9 @@ export default function PageHero({
   heroImage,
 }: PageHeroProps) {
   const paddingClasses = {
-    default: 'pt-0 pb-8', // Match nav padding-bottom (py-8)
-    lg: 'pt-0 pb-12',
-    xl: 'pt-0 pb-16',
+    default: 'pb-8', // Only bottom padding
+    lg: 'pb-12',
+    xl: 'pb-16',
   };
 
   const backgroundClasses = {
@@ -46,29 +46,21 @@ export default function PageHero({
       noDivider
     >
       <div className="w-full">
-        <div className="w-full">
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
-            {title}
-          </h1>
-          {subtitle && (
-            <div className="text-muted-foreground mt-8">
-              {typeof subtitle === 'string' ? (
-                <div className="prose prose-lg">
-                  {subtitle.split('\n').map((paragraph, index) => (
-                    <p key={index} className={index > 0 ? 'mt-4' : ''}>
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  {subtitle}
-                </div>
-              )}
-            </div>
-          )}
-          {children}
-        </div>
+        <h1 className="text-5xl md:text-6xl font-bold tracking-tight">
+          {title}
+        </h1>
+        {subtitle && (
+          <div className="prose prose-lg text-muted-foreground mt-8">
+            {typeof subtitle === 'string'
+              ? subtitle.split('\n').map((paragraph, index) => (
+                  <p key={index} className={index > 0 ? 'mt-4' : ''}>
+                    {paragraph}
+                  </p>
+                ))
+              : subtitle}
+          </div>
+        )}
+        {children}
         {heroImage && (
           <div className={`mt-12 w-full max-w-4xl mx-auto rounded-lg overflow-hidden ${heroImage.className || ''}`}>
             <Image

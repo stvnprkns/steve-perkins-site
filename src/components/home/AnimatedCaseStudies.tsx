@@ -139,9 +139,9 @@ export function AnimatedCaseStudies({ projects }: AnimatedCaseStudiesProps) {
             }}
           >
             {/* Text Content */}
-            <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-0">
+            <div className="w-full">
               <motion.div 
-                className="max-w-[640px] mx-auto space-y-3"
+                className="space-y-3"
                 initial="hidden"
                 animate={shouldShow(index) ? 'visible' : 'hidden'}
                 variants={{
@@ -176,7 +176,7 @@ export function AnimatedCaseStudies({ projects }: AnimatedCaseStudiesProps) {
             
             {/* Project Images */}
             <motion.div 
-              className="w-full mt-12 relative mx-auto max-w-[1200px] px-4 sm:px-6 md:px-0"
+              className="w-full mt-12 relative"
               initial="hidden"
               animate={shouldShow(index) ? 'visible' : 'hidden'}
               variants={{
@@ -185,7 +185,7 @@ export function AnimatedCaseStudies({ projects }: AnimatedCaseStudiesProps) {
                 }
               }}
             >
-              <div className="max-w-[640px] mx-auto">
+              <div className="w-full">
                 <UnderlineLink href={`/projects/${project.slug}`}>
                   <div className="block w-full relative left-0 right-0">
                     {project.images && project.images.length > 0 ? (

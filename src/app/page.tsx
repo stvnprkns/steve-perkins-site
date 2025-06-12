@@ -21,17 +21,19 @@ export default function Home() {
   };
 
   return (
-    <div className="mx-auto max-w-3xl px-4 sm:px-6">
+    <div className="w-full">
       <PageHero
         title={<AnimatedHeroTitle />}
         subtitle={<AnimatedHeroContent onComplete={handleHeroVisible} />}
+        variant="narrow"
+        padding="xl"
       >
         {/* Hero content is passed as children */}
       </PageHero>
 
       {/* Case Studies Section - Only render after hero is visible */}
       {isHeroVisible && (
-        <Section variant="narrow" className="py-16" noDivider>
+        <Section variant="narrow" className="pt-0 pb-16" noDivider>
           <AnimatedCaseStudies projects={featuredProjects} />
         </Section>
       )}

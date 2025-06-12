@@ -67,15 +67,17 @@ export default function Nav() {
   }, [scrollY]);
   
   return (
-    <nav className="w-full fixed top-4 left-0 right-0 z-50">
+    <nav className="w-full fixed top-0 sm:top-4 left-0 right-0 z-50">
       <div className="relative max-w-[640px] mx-auto w-full px-4">
         <div className={`absolute inset-0 -mx-4 ${
-          isScrolled ? 'bg-background/95 dark:bg-background/95 backdrop-blur-md border border-border/20' : ''
+          isScrolled ? 'bg-background/95 dark:bg-background/95 backdrop-blur-md' : ''
+        } ${
+          isScrolled ? 'sm:border border-border/20' : ''
         } transition-all duration-200 rounded-full`} style={{
           left: 'calc(50% - 320px - 16px)',
           right: 'calc(50% - 320px - 16px)'
         }} />
-        <div className="relative flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 py-2 sm:py-3">
+        <div className="relative flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 pt-3 pb-2 sm:py-3">
         <Link 
           href="/" 
           className="relative group/name"
