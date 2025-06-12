@@ -136,24 +136,12 @@ export default function AnimatedNotesList({
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">
                       {note.title}
                     </h3>
-                    
-                    {note.excerpt && (
-                      <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">
-                        {note.excerpt}
-                      </p>
-                    )}
                   </div>
                   
                   <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center">
                       <span className="text-xs text-gray-500 dark:text-gray-400">
                         {formattedDate}
-                      </span>
-                      <span className="inline-flex items-center text-sm font-medium text-purple-600 dark:text-purple-400 group-hover:text-purple-700 dark:group-hover:text-purple-300 transition-colors">
-                        Read more
-                        <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
                       </span>
                     </div>
                   </div>

@@ -57,16 +57,23 @@ const imageVariants = {
    * @returns A JSX element containing the list of animated case studies.
    */
 export function AnimatedCaseStudies({ projects }: AnimatedCaseStudiesProps) {
-  const [visibleProjects, setVisibleProjects] = useState<number[]>([0]); // Start with first project visible
+  // Start with only the first project visible
+  const [visibleProjects, setVisibleProjects] = useState<number[]>([0]);
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
   const hasAnimated = useRef<boolean[]>([]);
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    // Mark as ready after initial render
+    setIsReady(true);
+    // Initialize hasAnimated with first project already animated
+    hasAnimated.current = projects.map((_, i) => i === 0);
+  }, [projects]);
 
   useEffect(() => {
     const currentRefs = projectRefs.current;
     
-    // Initialize hasAnimated for all projects
-    hasAnimated.current = projects.map((_, i) => i === 0); // First project has animated
-
+    // Set up intersection observer for lazy loading
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -85,14 +92,14 @@ export function AnimatedCaseStudies({ projects }: AnimatedCaseStudiesProps) {
       },
       {
         root: null,
-        rootMargin: '0px',
+        rootMargin: '100px 0px', // Start loading slightly before element is in view
         threshold: 0.1,
       }
     );
 
     // Observe all projects except the first one (already visible)
     currentRefs.forEach((ref, index) => {
-      if (ref && index > 0) {
+      if (ref && index > 0) { // Skip first project
         ref.setAttribute('data-index', index.toString());
         observer.observe(ref);
       }
@@ -105,9 +112,9 @@ export function AnimatedCaseStudies({ projects }: AnimatedCaseStudiesProps) {
     };
   }, [projects]);
 
-  // Always show the first project, others only if they've been scrolled to
+  // Show projects if they're in visibleProjects
   const shouldShow = (index: number) => {
-    return index === 0 || visibleProjects.includes(index);
+    return visibleProjects.includes(index);
   };
 
   return (
@@ -142,7 +149,7 @@ export function AnimatedCaseStudies({ projects }: AnimatedCaseStudiesProps) {
             <div className="w-full">
               <motion.div 
                 className="space-y-3"
-                initial="hidden"
+                initial="visible"
                 animate={shouldShow(index) ? 'visible' : 'hidden'}
                 variants={{
                   visible: {
