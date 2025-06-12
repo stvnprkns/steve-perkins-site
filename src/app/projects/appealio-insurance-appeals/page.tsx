@@ -62,7 +62,8 @@ export default function AppealioPage() {
                     fill
                     className="object-cover w-full h-full rounded"
                     priority
-                    sizes="100vw"
+                    sizes="(max-width: 768px) 100vw, 80vw"
+                    quality={85}
                   />
                 </div>
               </div>

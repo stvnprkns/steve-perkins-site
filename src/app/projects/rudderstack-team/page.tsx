@@ -54,18 +54,17 @@ export default function RudderstackTeamPage() {
             </div>
           </div>
           {rudderstackTeamData.heroImage && (
-            <div className="w-[110%] relative -left-[5%] my-8 md:my-12">
-              <div className="max-w-screen-2xl mx-auto">
-                <div className="relative w-full aspect-video">
-                  <Image
-                    src={rudderstackTeamData.heroImage.src}
-                    alt={rudderstackTeamData.heroImage.alt}
-                    fill
-                    className="object-cover w-full h-full rounded"
-                    priority
-                    sizes="100vw"
-                  />
-                </div>
+            <div className="w-full my-8 md:my-12">
+              <div className="relative w-full aspect-video rounded-lg overflow-hidden">
+                <Image
+                  src={rudderstackTeamData.heroImage.src}
+                  alt={rudderstackTeamData.heroImage.alt}
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 768px) 100vw, 80vw"
+                  quality={85}
+                />
               </div>
             </div>
           )}

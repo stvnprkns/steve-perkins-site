@@ -1,8 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const PageHero = dynamic(() => import("@/components/PageHero"), { ssr: false });
 
@@ -110,135 +111,170 @@ const Section = ({ children, className = '' }: { children: React.ReactNode, clas
 );
 
 export default function AboutPage() {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [showExperience, setShowExperience] = useState(false);
+
+  // Trigger initial load
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  // Show experience section after intro animation completes
+  useEffect(() => {
+    if (isLoaded) {
+      const timer = setTimeout(() => {
+        setShowExperience(true);
+      }, 1000); // Delay to ensure intro is fully visible
+      return () => clearTimeout(timer);
+    }
+  }, [isLoaded]);
+
   return (
     <div className="w-full">
-      <PageHero
-        title={
-          <motion.div 
+      <AnimatePresence>
+        <PageHero
+          title={
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+              className="inline-block"
+            >
+              About Me
+            </motion.div>
+          }
+          subtitle={
+            <div className="prose prose-lg text-muted-foreground mt-8">
+              {introContent.map((paragraph, index) => (
+                <motion.p 
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: 0.1 * index,
+                    ease: [0.25, 0.1, 0.25, 1]
+                  }}
+                  className={index > 0 ? 'mt-4' : ''}
+                >
+                  {paragraph}
+                </motion.p>
+              ))}
+            </div>
+          }
+        />
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showExperience && (
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-            className="inline-block"
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
-            About Me
-          </motion.div>
-        }
-        subtitle={
-          <div className="prose prose-lg text-muted-foreground mt-8">
-            {introContent.map((paragraph, index) => (
-              <motion.p 
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
-                className={index > 0 ? 'mt-4' : ''}
-              >
-                {paragraph}
-              </motion.p>
-            ))}
-          </div>
-        }
-      />
-
-      <Section>
-        <motion.h2 
-          className="text-2xl font-medium mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-        >
-          Experience
-        </motion.h2>
-        <motion.ul 
-          className="space-y-4 m-0 p-0 list-none"
-          initial="hidden"
-          animate="show"
-          variants={{
-            hidden: { opacity: 0 },
-            show: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.05
-              }
-            }
-          }}
-        >
-          {experienceItems.map((item, index) => (
-            <motion.li 
-              key={index}
-              className="flex flex-wrap items-center gap-x-2 gap-y-1 pl-0 text-xs sm:text-sm"
-              variants={{
-                hidden: { opacity: 0, y: 10 },
-                show: { 
-                  opacity: 1, 
-                  y: 0,
-                  transition: { duration: 0.3 }
-                }
-              }}
-            >
-              <div className="truncate min-w-0 max-w-full">
-                {item.companyUrl ? (
-                  <a 
-                    href={item.companyUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                  >
-                    {item.company}
-                  </a>
-                ) : item.company}
-              </div>
-              <span className="flex-grow border-t border-gray-500/30 border-dashed min-w-4 mx-2 align-middle" />
-              <div className="flex flex-wrap items-center justify-end min-w-0 max-w-full text-right">
-                <div className="font-normal text-muted-foreground truncate min-w-0 max-w-full">
-                  {item.role}
-                </div>
-                <div className="ml-2 w-auto text-right tabular-nums text-muted-foreground/70 whitespace-nowrap">
-                  {item.years}
-                </div>
-              </div>
-            </motion.li>
-          ))}
-        </motion.ul>
-      </Section>
-
-      <Section className="border-t border-gray-200 dark:border-gray-800">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-2xl font-medium mb-6">Get in Touch</h2>
-          <p className="text-muted-foreground mb-6">
-            I'm always open to interesting conversations and new opportunities. 
-            Feel free to reach out through any of these channels:
-          </p>
-          <div className="flex flex-wrap gap-x-8 gap-y-2 text-base">
-            {socialLinks.map((link, index) => (
-              <motion.div
-                key={link.name}
+            <Section>
+              <motion.h2 
+                className="text-2xl font-medium mb-8"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * index, duration: 0.3 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
               >
-                <a
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 hover:text-foreground transition-colors"
-                >
-                  <span className="text-lg">{link.icon}</span>
-                  <span className="border-b border-transparent group-hover:border-foreground transition-colors">
-                    {link.name}
-                  </span>
-                </a>
+                Experience
+              </motion.h2>
+              <motion.ul 
+                className="space-y-4 m-0 p-0 list-none"
+                initial="hidden"
+                animate="show"
+                variants={{
+                  hidden: { opacity: 0 },
+                  show: {
+                    opacity: 1,
+                    transition: {
+                      staggerChildren: 0.05
+                    }
+                  }
+                }}
+              >
+                {experienceItems.map((item, index) => (
+                  <motion.li 
+                    key={index}
+                    className="flex flex-wrap items-center gap-x-2 gap-y-1 pl-0 text-xs sm:text-sm"
+                    variants={{
+                      hidden: { opacity: 0, y: 10 },
+                      show: { 
+                        opacity: 1, 
+                        y: 0,
+                        transition: { duration: 0.3 }
+                      }
+                    }}
+                  >
+                    <div className="truncate min-w-0 max-w-full">
+                      {item.companyUrl ? (
+                        <a 
+                          href={item.companyUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="hover:underline"
+                        >
+                          {item.company}
+                        </a>
+                      ) : item.company}
+                    </div>
+                    <span className="flex-grow border-t border-gray-500/30 border-dashed min-w-4 mx-2 align-middle" />
+                    <div className="flex flex-wrap items-center justify-end min-w-0 max-w-full text-right">
+                      <div className="font-normal text-muted-foreground truncate min-w-0 max-w-full">
+                        {item.role}
+                      </div>
+                      <div className="ml-2 w-auto text-right tabular-nums text-muted-foreground/70 whitespace-nowrap">
+                        {item.years}
+                      </div>
+                    </div>
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </Section>
+
+            <Section className="border-t border-gray-200 dark:border-gray-800">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
+                <h2 className="text-2xl font-medium mb-6">Get in Touch</h2>
+                <p className="text-muted-foreground mb-6">
+                  I'm always open to interesting conversations and new opportunities. 
+                  Feel free to reach out through any of these channels:
+                </p>
+                <div className="flex flex-wrap gap-x-8 gap-y-2 text-base">
+                  {socialLinks.map((link, index) => (
+                    <motion.div
+                      key={link.name}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1 * index, duration: 0.3 }}
+                    >
+                      <a
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group inline-flex items-center gap-2 hover:text-foreground transition-colors"
+                      >
+                        <span className="text-lg">{link.icon}</span>
+                        <span className="border-b border-transparent group-hover:border-foreground transition-colors">
+                          {link.name}
+                        </span>
+                      </a>
+                    </motion.div>
+                  ))}
+                </div>
               </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </Section>
+            </Section>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

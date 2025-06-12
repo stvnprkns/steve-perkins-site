@@ -36,9 +36,9 @@ export default function CaseStudyNavigation({ currentSlug, projects, className }
           <div className="bg-card border border-purple-200 dark:border-purple-800/50 rounded-lg p-6 transition-colors hover:bg-purple-50 dark:hover:bg-purple-900/30">
             <div className="relative h-full">
               <p className="text-sm text-muted-foreground mb-1">Up Next</p>
-              <div className="flex items-center">
-                <h3 className="text-lg font-medium text-foreground flex-1">{firstProject.title}</h3>
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 h-8 w-8 flex items-center justify-center">
+              <div className="flex items-center pr-10">
+                <h3 className="text-lg font-medium text-foreground flex-1 pr-4 sm:pr-0">{firstProject.title}</h3>
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 h-8 w-8 flex items-center justify-center">
                   <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-foreground transition-all duration-200 ease-in-out group-hover:translate-x-1" />
                 </div>
               </div>
@@ -61,9 +61,9 @@ export default function CaseStudyNavigation({ currentSlug, projects, className }
           <div className="bg-card border border-purple-200 dark:border-purple-800/50 rounded-lg p-6 transition-colors hover:bg-purple-50 dark:hover:bg-purple-900/30">
             <div className="relative h-full">
               <p className="text-sm text-muted-foreground mb-1">Up Next</p>
-              <div className="flex items-center">
-                <h3 className="text-lg font-medium text-foreground flex-1">{nextProject.title}</h3>
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 h-8 w-8 flex items-center justify-center">
+              <div className="flex items-center pr-10">
+                <h3 className="text-lg font-medium text-foreground flex-1 pr-4 sm:pr-0">{nextProject.title}</h3>
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 h-8 w-8 flex items-center justify-center">
                   <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-foreground transition-all duration-200 ease-in-out group-hover:translate-x-1" />
                 </div>
               </div>

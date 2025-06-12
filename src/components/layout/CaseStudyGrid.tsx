@@ -19,8 +19,8 @@ export default function CaseStudyGrid({ sidebar, children }: CaseStudyGridProps)
           </aside>
         </div>
         
-        {/* Main content - centered with max-width */}
-        <div className="max-w-[640px] mx-auto">
+        {/* Main content - full width on mobile, centered with max-width on larger screens */}
+        <div className="w-full lg:max-w-[640px] lg:mx-auto">
           <main className="w-full">
             {children}
           </main>
