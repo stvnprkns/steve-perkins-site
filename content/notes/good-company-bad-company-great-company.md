@@ -1,5 +1,5 @@
 ---
-title: "Good Company, Bad Company, Great Company"
+title: "Good, Bad, and Great Companies"
 date: 2025-06-10
 category: "Leadership"
 tags: ["Culture", "Leadership"]
