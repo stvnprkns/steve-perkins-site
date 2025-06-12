@@ -28,6 +28,36 @@ export const metadata: Metadata = {
   keywords: siteConfig.keywords,
   creator: siteConfig.author.name,
   publisher: siteConfig.author.name,
+  icons: [
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '16x16',
+      url: '/images/favicon/fav-16.png',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '32x32',
+      url: '/images/favicon/fav-32.png',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '48x48',
+      url: '/images/favicon/fav-48.png',
+    },
+    {
+      rel: 'apple-touch-icon',
+      sizes: '192x192',
+      url: '/images/favicon/fav-192.png',
+    },
+    {
+      rel: 'apple-touch-icon',
+      sizes: '512x512',
+      url: '/images/favicon/fav-512.png',
+    },
+  ],
   formatDetection: {
     email: false,
     address: false,

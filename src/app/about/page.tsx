@@ -185,7 +185,7 @@ export default function AboutPage() {
                 Experience
               </motion.h2>
               <motion.ul 
-                className="space-y-4 m-0 p-0 list-none"
+                className="space-y-6 m-0 p-0 list-none"
                 initial="hidden"
                 animate="show"
                 variants={{
@@ -201,7 +201,7 @@ export default function AboutPage() {
                 {experienceItems.map((item, index) => (
                   <motion.li 
                     key={index}
-                    className="flex flex-wrap items-center gap-x-2 gap-y-1 pl-0 text-xs sm:text-sm"
+                    className="pl-0"
                     variants={{
                       hidden: { opacity: 0, y: 10 },
                       show: { 
@@ -211,26 +211,26 @@ export default function AboutPage() {
                       }
                     }}
                   >
-                    <div className="truncate min-w-0 max-w-full">
-                      {item.companyUrl ? (
-                        <a 
-                          href={item.companyUrl} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="hover:underline"
-                        >
-                          {item.company}
-                        </a>
-                      ) : item.company}
-                    </div>
-                    <span className="flex-grow border-t border-gray-500/30 border-dashed min-w-4 mx-2 align-middle" />
-                    <div className="flex flex-wrap items-center justify-end min-w-0 max-w-full text-right">
-                      <div className="font-normal text-muted-foreground truncate min-w-0 max-w-full">
-                        {item.role}
+                    <div className="flex items-center w-full">
+                      <div className="font-medium">
+                        {item.companyUrl ? (
+                          <a 
+                            href={item.companyUrl} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="hover:underline"
+                          >
+                            {item.company}
+                          </a>
+                        ) : item.company}
                       </div>
-                      <div className="ml-2 w-auto text-right tabular-nums text-muted-foreground/70 whitespace-nowrap">
+                      <span className="flex-grow border-t border-gray-500/30 border-dashed mx-2 align-middle" />
+                      <div className="tabular-nums text-gray-500 dark:text-gray-400 whitespace-nowrap">
                         {item.years}
                       </div>
+                    </div>
+                    <div className="text-base text-gray-500 dark:text-gray-400 mt-1">
+                      {item.role}
                     </div>
                   </motion.li>
                 ))}
