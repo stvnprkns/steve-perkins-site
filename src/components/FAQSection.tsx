@@ -4,28 +4,28 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
   {
-    category: "How I think about design",
-    question: "I build systems, not just screens",
+    category: "Do you still design, or just manage?",
+    question: "I design when it matters and manage like a partner, not a proxy.",
     answer:
-      "I lean strategic, but I still ship. I've built design orgs from scratch, led zero-to-one products, scaled messy enterprise tools, and made 'boring' software feel like magic. I design like a founder thinks — with stakes, speed, and sharpness.",
+      "I don’t believe in managing from the sidelines — I stay close to the craft so I can support, unblock, and set the tone. I still design, especially in early explorations, high-stakes flows, or moments that need storytelling. Leading design means caring about quality *and* momentum.",
   },
   {
-    category: "Designing, leading, shipping",
-    question: "Both designer and manager, always both",
+    category: "How do you build and lead design teams?",
+    question: "I give people context, trust, and just enough friction to grow.",
     answer:
-      "I believe managers should stay close to the craft, not to control it, but to stay credible. I design when it's the right way to move things forward — early explorations, high-stakes flows, or moments that need taste.",
+      "I give people context, not tasks. I hire for taste and judgment, then get out of their way — unless they want a sparring partner. I build teams like agencies inside product orgs: scoped, proud, and accountable. Good leadership is about removing friction, creating alignment, and knowing when to step in or step back.",
   },
   {
-    category: "Building teams and working with humans",
-    question: "Unblock, amplify, and protect",
+    category: "What’s your design philosophy?",
+    question: "Design is decision-making at scale — systems, not just surfaces.",
     answer:
-      "I give people context, not tasks. I hire for taste and judgment, then get out of their way — unless they want a sparring partner. I believe in running a team like an agency inside a product org: scoped, accountable, and proud of the work.",
+      "Design isn’t decoration. It’s structure, clarity, and decision-making. I think like a founder — shaping outcomes, not just interfaces. I’ve led zero-to-one products, cleaned up messy enterprise UX, and built design orgs from scratch. Systems thinking isn’t just how I design. It’s how I operate.",
   },
   {
-    category: "What I let the robots do",
-    question: "Accelerating clarity, not replacing thinking",
+    category: "How do you use AI in your design work?",
+    question: "I use AI to clear the noise, move faster, and make thinking visible.",
     answer:
-      "I've built AI-powered design tools, prototyped GPT-backed workflows for legal and healthcare, and I'm always experimenting with how LLMs can make design ops and documentation smarter. AI's great at the first 80% — the last 20% is still judgment, taste, and knowing what matters.",
+      "I use AI to move faster, think clearer, and document smarter. I’ve built GPT-powered design tools, prototyped LLM workflows in healthcare and legal, and automated parts of research ops and design systems. AI handles the bulk — the last 20% still belongs to taste, judgment, and knowing what matters.",
   },
 ];
 
