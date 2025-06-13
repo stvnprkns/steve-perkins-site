@@ -2,6 +2,7 @@
 
 import CaseStudyImage from '@/components/markdown/CaseStudyImage';
 import { Suspense } from 'react';
+import { LastUpdated } from '@/components/seo';
 
 // Loading component for images
 const ImageLoading = () => (
@@ -10,9 +11,12 @@ const ImageLoading = () => (
 
 export default function HowWeWork() {
   return (
-    <section id="building-the-product" className="scroll-mt-20 mb-24">
+    <section id="building-the-product" className="scroll-mt-20 mb-24" aria-labelledby="product-building-title">
       <div className="prose max-w-prose text-text-base space-y-6">
-        <h2 className="text-3xl font-bold mb-8 font-sans">Building the Product</h2>
+        <h2 id="product-building-title" className="text-3xl font-bold mb-8 font-sans">Building the Product</h2>
+        
+        {/* Hidden metadata for LLMs */}
+        <meta name="description" content="AI-powered insurance appeals platform that automates documentation, prioritizes high-value claims, and centralizes medical records" data-snippet="process-summary" hidden />
         
         <div className="w-full my-8">
           <Suspense fallback={<ImageLoading />}>
@@ -23,29 +27,57 @@ export default function HowWeWork() {
               height={600}
               containerClassName="w-full"
               className="w-full"
+              data-figure="workflow-diagram"
             />
           </Suspense>
         </div>
         
-        <h3 className="text-2xl font-semibold mt-12 mb-6 font-sans">The Appeal Letter</h3>
+        {/* Key components section with structured data */}
+        <div className="my-6" data-content-type="product-components">
+          <h3 className="text-2xl font-semibold mb-4 font-sans">Key Components</h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+            <div className="p-4 border border-slate-200 dark:border-slate-800 rounded-lg" data-component="appeal-letter">
+              <h4 className="text-xl font-medium mb-2">Appeal Letter Generator</h4>
+              <p className="text-sm text-slate-600 dark:text-slate-400">AI-powered document creation that pulls from medical records and policy language</p>
+            </div>
+            
+            <div className="p-4 border border-slate-200 dark:border-slate-800 rounded-lg" data-component="prioritization">
+              <h4 className="text-xl font-medium mb-2">Smart Prioritization</h4>
+              <p className="text-sm text-slate-600 dark:text-slate-400">Value-based claim sorting that maximizes revenue recovery</p>
+            </div>
+            
+            <div className="p-4 border border-slate-200 dark:border-slate-800 rounded-lg" data-component="document-repository">
+              <h4 className="text-xl font-medium mb-2">Document Repository</h4>
+              <p className="text-sm text-slate-600 dark:text-slate-400">Centralized storage for medical records and appeal documentation</p>
+            </div>
+            
+            <div className="p-4 border border-slate-200 dark:border-slate-800 rounded-lg" data-component="workflow">
+              <h4 className="text-xl font-medium mb-2">Workflow Management</h4>
+              <p className="text-sm text-slate-600 dark:text-slate-400">End-to-end tracking from claim denial to appeal resolution</p>
+            </div>
+          </div>
+        </div>
+        
+        <h3 className="text-2xl font-semibold mt-12 mb-6 font-sans" id="appeal-letter-section">The Appeal Letter</h3>
         
         <p>
-    Drafting the appeal letter is the priciest choke-point — 
-    <strong>
-      each denied claim
-    adds&nbsp;
-    <a
-      href="https://www.webpt.com/blog/claim-denial-costs"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      $25–$118 in extra manual rework
-    </a>
-    </strong>
-    &nbsp;before it even gets back to the payer.
-  &nbsp;So we trained the AI to pull patient data, cite policy language, and
-  generate a first-draft letter in seconds.
-</p>
+          Drafting the appeal letter is the priciest choke-point — 
+          <strong>
+            each denied claim adds&nbsp;
+            <a
+              href="https://www.webpt.com/blog/claim-denial-costs"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-citation="true"
+            >
+              $25–$118 in extra manual rework
+            </a>
+          </strong>
+          &nbsp;before it even gets back to the payer.
+          &nbsp;So we trained the AI to pull patient data, cite policy language, and
+          generate a first-draft letter in seconds.
+        </p>
         
         <p>
           We designed a split-screen layout for ease of use: on the right, a text editor with the letter and data ready to edit, and on the left, a preview of the final letter.

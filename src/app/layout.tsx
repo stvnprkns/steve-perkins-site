@@ -1,8 +1,11 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import RootLayoutClient from './RootLayout';
 import { siteConfig } from '@/config/site';
+import { JsonLdSchema } from '@/components/JsonLdSchema';
+import { GA_MEASUREMENT_ID } from '@/lib/analytics';
 
 // Initialize the Inter font with optimized settings
 const inter = Inter({
@@ -24,7 +27,7 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
   applicationName: siteConfig.name,
-  authors: [{ name: siteConfig.author.name }],
+  authors: [{ name: siteConfig.author.name, url: siteConfig.author.url }],
   keywords: siteConfig.keywords,
   creator: siteConfig.author.name,
   publisher: siteConfig.author.name,
@@ -121,10 +124,30 @@ export default function RootLayout({
   return (
     <html 
       lang="en" 
-      className={`${inter.variable} font-sans`} 
+      className={`${inter.variable} font-sans scroll-smooth`} 
       suppressHydrationWarning
     >
       <head>
+        <JsonLdSchema type="person" />
+        {/* Google Analytics */}
+        {GA_MEASUREMENT_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_MEASUREMENT_ID}', {
+                  page_path: window.location.pathname,
+                });
+              `}
+            </Script>
+          </>
+        )}
         <script
           dangerouslySetInnerHTML={{
             __html: `

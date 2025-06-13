@@ -10,6 +10,8 @@ import UnderlineLink from '@/components/UnderlineLink';
 import { projects, Project } from '@/lib/projects';
 import { AnimatedHeroTitle, AnimatedHeroContent } from '@/components/home/AnimatedHero';
 import { AnimatedCaseStudies } from '@/components/home/AnimatedCaseStudies';
+import { LastUpdated } from '@/components/LastUpdated';
+import { JsonLdSchema } from '@/components/JsonLdSchema';
 
 export default function Home() {
   // Get all projects for the home page
@@ -31,6 +33,7 @@ export default function Home() {
 
   return (
     <div className="w-full">
+      <JsonLdSchema type="person" />
       <AnimatePresence>
         <PageHero
           title={
@@ -76,6 +79,10 @@ export default function Home() {
             transition={{ duration: 0.5 }}
           >
             <Section variant="narrow" className="pt-0 pb-16" noDivider>
+              <div className="flex items-center justify-between mb-8">
+                <h2 className="text-2xl font-bold">Featured Projects</h2>
+                <LastUpdated date="2025-06-13" />
+              </div>
               <AnimatedCaseStudies projects={featuredProjects} />
             </Section>
           </motion.div>

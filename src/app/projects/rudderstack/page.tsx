@@ -7,6 +7,7 @@ import Outcomes from './Outcomes';
 import CaseStudyNavigation from '@/components/case-study/CaseStudyNavigation';
 import { projects } from '@/lib/projects';
 import { generateProjectMetadata } from '@/components/ProjectMetadata';
+import { JsonLdSchema } from '@/components/JsonLdSchema';
 
 export const metadata = generateProjectMetadata({
   title: 'RudderStack - Redesigning the Developer Experience',
@@ -31,6 +32,16 @@ const sidebarItems = [
   { id: 'outcomes', label: 'Outcomes' },
 ];
 
+const projectMetadata = {
+  title: 'RudderStack - Redesigning the Developer Experience',
+  description: 'How we improved the developer experience and reduced configuration time by 60%',
+  path: '/projects/rudderstack',
+  coverImage: '/images/rudderstack-preview.png',
+  publishedTime: '2024-01-18',
+  modifiedTime: '2025-06-12',
+  tags: ['Developer Experience', 'UX Design', 'RudderStack', 'Form Design', 'Data Engineering', 'Customer Data Platform']
+};
+
 export default function RudderstackPage() {
   return (
     <CaseStudyGrid
@@ -40,6 +51,7 @@ export default function RudderstackPage() {
         </div>
       }
     >
+      <JsonLdSchema type="project" data={projectMetadata} />
       <div>
         <BackToProjects />
         <Section variant="wide">

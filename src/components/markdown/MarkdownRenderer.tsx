@@ -44,29 +44,37 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, className 
     
     // Paragraphs - handle block elements properly
     p: (paragraph) => {
-      // Check if paragraph contains only an image
+      // Check if the paragraph contains any block elements or only an image
       const children = React.Children.toArray(paragraph.children);
-      const hasOnlyImage = children.length === 1 && 
-        React.isValidElement(children[0]) && 
-        children[0].type === 'img';
       
-      // Check if paragraph contains block-level elements
+      // Check if this is a paragraph that only contains an image
+      const hasOnlyImage = children.length === 1 && 
+        React.Children.toArray(paragraph.children).some(
+          (child: any) => child.props?.node?.tagName === 'img' || child.type === 'img'
+        );
+        
+      // Check for block elements
       const hasBlockElements = children.some(
         (child: any) => {
-          if (typeof child === 'string') return false;
-          const childType = (child as React.ReactElement)?.type;
+          if (!child || !child.props) return false;
+          const childType = child.type;
+          if (typeof childType === 'string') return false;
+          
+          // Check if the child is a block-level element
           return (
-            typeof childType === 'string' && 
-            ['div', 'figure', 'img', 'pre', 'ul', 'ol', 'blockquote', 'table', 'iframe', 'video', 'aside'].includes(childType)
+            ['div', 'figure', 'pre', 'ul', 'ol', 'blockquote', 'table', 'iframe', 'video', 'aside'].includes(childType) ||
+            child.props?.node?.tagName === 'img' ||
+            child.type?.name === 'MarkdownImage'
           );
         }
       );
 
-      // Don't wrap block elements or standalone images in a paragraph
+      // Don't wrap block elements in a paragraph
       if (hasBlockElements || hasOnlyImage) {
         return <>{paragraph.children}</>;
       }
       
+      // Only wrap in <p> if it's a regular paragraph
       return <p className="mb-4 leading-relaxed" {...paragraph} />;
     },
     

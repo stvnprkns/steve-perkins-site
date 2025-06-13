@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { JsonLdSchema } from "./JsonLdSchema";
 
 const faqs = [
   {
@@ -29,12 +30,22 @@ const faqs = [
   },
 ];
 
-export default function FAQSection() {
+interface FAQSectionProps {
+  lastUpdated?: string;
+}
+
+export default function FAQSection({ lastUpdated = '2025-06-13' }: FAQSectionProps) {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
     <section aria-labelledby="faq-heading">
-      <h2 id="faq-heading" className="text-3xl font-bold mb-12 font-sans">FAQ</h2>
+      <JsonLdSchema type="faq" data={{ faqs }} />
+      <div className="flex justify-between items-center mb-12">
+        <h2 id="faq-heading" className="text-3xl font-bold font-sans">FAQ</h2>
+        <time dateTime={lastUpdated} className="text-sm text-gray-500 dark:text-gray-400">
+          Last updated: {new Date(lastUpdated).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+      </div>
       <div className="space-y-6">
         {faqs.map((faq, idx) => (
           <div 

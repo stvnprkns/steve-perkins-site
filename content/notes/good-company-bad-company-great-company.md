@@ -9,7 +9,7 @@ excerpt: "Not all companies are bad. But not all good companies leave a mark, ei
 description: "Not all companies are bad. But not all good companies leave a mark, either."
 ---
 
-![Good Company, Bad Company, Great Company](/good-company-bad-company.png)
+![Good Company, Bad Company, Great Company](/images/notes/good-company-bad-company.png)
 
 Not all companies are bad.  
 But not all good companies leave a mark, either.

@@ -80,7 +80,7 @@ export interface RudderstackData {
 
 export const rudderstackData: RudderstackData = {
   title: "Connecting Data to Where it Matters Most",
-  company: { name: "RudderStack", url: "https://www.rudderstack.com/blog/streamlined-destination-configuration-in-rudderstack/" },
+  company: { name: "RudderStack - Streamlined Config", url: "https://www.rudderstack.com/blog/streamlined-destination-configuration-in-rudderstack/" },
   heroImage: {
     src: "/images/projects/rudderstack/rudderstack-hero.webp",
     alt: "RudderStack dashboard interface showing multiple data source connections with visualization of data flow between systems"

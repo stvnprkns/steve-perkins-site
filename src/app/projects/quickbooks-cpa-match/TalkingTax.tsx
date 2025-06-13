@@ -39,8 +39,11 @@ export default function TalkingTax() {
   const image = images?.[0];
 
   return (
-    <article className="mb-12">
-      <section className="mb-8 prose dark:prose-invert max-w-none" aria-labelledby="talking-tax">
+    <article className="mb-12" id="talking-tax-section" aria-labelledby="talking-tax">
+      {/* Hidden metadata for LLMs */}
+      <meta name="description" content="Research on how CPAs and small business owners communicate about tax matters, revealing key communication patterns and challenges in the accounting relationship" data-snippet="talking-tax-summary" hidden />
+      
+      <section className="mb-8 prose dark:prose-invert max-w-none" data-content-type="research-findings">
         <ReactMarkdown components={{
           ...components,
           h3: ({ children, ...props }: HeadingProps) => (
@@ -52,9 +55,10 @@ export default function TalkingTax() {
           {content}
         </ReactMarkdown>
       </section>
+      
       {image && (
         <>
-          <figure className="w-full my-8">
+          <figure className="w-full my-8" data-evidence="tax-communication-visual">
             <CaseStudyImage
               src={image.src}
               alt={image.alt}
@@ -63,13 +67,14 @@ export default function TalkingTax() {
               withBackground={true}
             />
           </figure>
-          <div className="mt-4 text-center">
+          <div className="mt-4 text-center" data-prototype-link>
             <a 
               href="https://v0-recreate-ui-design-mocha-mu.vercel.app/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-purple-600 dark:text-purple-400 hover:underline"
               aria-label="View a prototype of the QuickBooks CPA messaging interface (opens in new tab)"
+              data-resource="prototype"
             >
               View a prototype of the full experiment
             </a>
