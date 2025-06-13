@@ -2,68 +2,72 @@ import CaseStudyImage from '@/components/markdown/CaseStudyImage';
 
 export default function HowWeWork() {
   return (
-    <section id="how-we-work" className="scroll-mt-20">
-      <h2 className="text-3xl font-bold mb-8 font-sans">How We Work</h2>
+    <section id="how-we-work" className="scroll-mt-20" aria-labelledby="how-we-work-title">
+      <header>
+        <h2 id="how-we-work-title" className="text-3xl font-bold mb-8 font-sans">How We Work</h2>
+      </header>
       
-      <div className="flex flex-col items-center">
+      <article className="flex flex-col items-center">
         <div className="prose max-w-prose text-text-base space-y-6 w-full">
           <p>
             None of the following is revolutionary. The processes I put in place helped cross-functional teams work more collaboratively and elevated Design to become a strategic business partner.
           </p>
 
-          <h3 className="text-2xl font-semibold mt-12 mb-4 font-sans">What we Build</h3>
-          <p>
-            We never build without evidence. Everything on the roadmap needs to have data (qualitative and/or quantitative) to assess the business value and the customer pain. We shouldn&apos;t do work that doesn&apos;t improve the customer experience or build the business.
-          </p>
-
-          <h3 className="text-2xl font-semibold mt-12 mb-4 font-sans">Be a Part of the Backlog</h3>
-          <div className="prose max-w-prose">
+          <section aria-labelledby="what-we-build-heading">
+            <h3 id="what-we-build-heading" className="text-2xl font-semibold mt-12 mb-4 font-sans">What we Build</h3>
             <p>
-              For design to be a strategic partner, we need to bring ideas to the table. Design has to look beyond the pixels and understand how we make money and how customers use the product. We have to be in the analytics, read the support tickets, and talk to our customers. If you don't intimately understand the problem, you can't create a good solution.
+              We never build without evidence. Everything on the roadmap needs to have data (qualitative and/or quantitative) to assess the business value and the customer pain. We shouldn&apos;t do work that doesn&apos;t improve the customer experience or build the business.
             </p>
-          </div>
+          </section>
+
+          <section aria-labelledby="backlog-heading">
+            <h3 id="backlog-heading" className="text-2xl font-semibold mt-12 mb-4 font-sans">Be a Part of the Backlog</h3>
+            <div className="prose max-w-prose">
+              <p>
+                For design to be a strategic partner, we need to bring ideas to the table. Design has to look beyond the pixels and understand how we make money and how customers use the product. We have to be in the analytics, read the support tickets, and talk to our customers. If you don't intimately understand the problem, you can't create a good solution.
+              </p>
+            </div>
+          </section>
         </div>
-        <div className="w-full max-w-4xl mt-6">
+        <figure className="w-full max-w-4xl mt-6">
           <CaseStudyImage
             src="/images/projects/rudderstack-team/rudderstack-prd.webp"
-            alt="[Fig. 3] Example of design integration in product requirements"
+            alt="Screenshot of RudderStack's product requirements document showing design integration with annotated sections for user flows, wireframes, and design specifications embedded directly in the planning process"
             width={1200}
             height={800}
           />
-        </div>
+        </figure>
+      </article>
 
-        </div>
+      <section aria-labelledby="tickets-heading" className="w-full max-w-prose">
+        <h3 id="tickets-heading" className="text-2xl font-semibold mt-12 mb-4 font-sans">Designers Write and Groom Tickets</h3>
+        <p>
+          Design knows better than anyone the information needed for design. By writing and scoping our own tickets, Design is involved in strategic conversations earlier. We can shape the solution from the start, set more accurate—and reasonable—timelines so that we can make better work.
+        </p>
+      </section>
 
-        <div className="w-full max-w-prose">
-          <h3 className="text-2xl font-semibold mt-12 mb-4 font-sans">Designers Write and Groom Tickets</h3>
-          <p>
-            Design knows better than anyone the information needed for design. By writing and scoping our own tickets, Design is involved in strategic conversations earlier. We can shape the solution from the start, set more accurate—and reasonable—timelines so that we can make better work.
-          </p>
-        </div>
+      <section aria-labelledby="designing-product-heading" className="w-full max-w-prose">
+        <h3 id="designing-product-heading" className="text-2xl font-semibold mt-12 mb-4 font-sans">Designing the Product</h3>
+        <p>
+          Design, this is what we know how to do. Once projects are scoped, the most impactful aspect to design is collaboration. Nothing is more important for design than feedback. My team has weekly internal design critiques, regular design reviews for each project, and company work shares. Design and Engineering need to work hand-in-hand, understanding what we&apos;re thinking, what is feasible, consistently checking each other&apos;s work.
+        </p>
+      </section>
 
-        <div className="w-full max-w-prose">
-          <h3 className="text-2xl font-semibold mt-12 mb-4 font-sans">Designing the Product</h3>
-          <p>
-            Design, this is what we know how to do. Once projects are scoped, the most impactful aspect to design is collaboration. Nothing is more important for design than feedback. My team has weekly internal design critiques, regular design reviews for each project, and company work shares. Design and Engineering need to work hand-in-hand, understanding what we&apos;re thinking, what is feasible, consistently checking each other&apos;s work.
-          </p>
-        </div>
-
-        <div className="w-full max-w-4xl mt-6">
+        <figure className="w-full max-w-4xl mt-6">
           <CaseStudyImage
             src="/images/projects/rudderstack-team/rudderstack-design-qa.webp"
-            alt="[Fig. 2] RudderStack's Design and QA process"
+            alt="Visualization of RudderStack's collaborative Design and QA workflow showing the iterative feedback loop between designers, engineers, and quality assurance with specific checkpoints and handoff procedures"
             width={1200}
             height={800}
           />
-        </div>
+        </figure>
 
-        <div className="w-full max-w-prose">
-
-        <h3 className="text-2xl font-semibold mt-12 mb-4 font-sans">Measuring Impact</h3>
-        <p>
-          Once a project is wrapped, we need to validate that our solution solved the problem. We set up tracking metrics on product launches and measure the impact.
-        </p>
-      </div>
+        <section aria-labelledby="measuring-impact-heading" className="w-full max-w-prose">
+          <h3 id="measuring-impact-heading" className="text-2xl font-semibold mt-12 mb-4 font-sans">Measuring Impact</h3>
+          <p>
+            Once a project is wrapped, we need to validate that our solution solved the problem. We set up tracking metrics on product launches and measure the impact.
+          </p>
+        </section>
     </section>
   );
 }

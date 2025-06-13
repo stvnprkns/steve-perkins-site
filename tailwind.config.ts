@@ -14,6 +14,10 @@ const config: Config = {
         sans: ['Inter', 'ui-sans-serif', 'system-ui'],
       },
       colors: {
+        border: {
+          DEFAULT: 'rgba(0, 0, 0, 0.2)',
+          dark: 'rgba(255, 255, 255, 0.2)'
+        },
         text: {
           base: '#111111',
           muted: '#666666',

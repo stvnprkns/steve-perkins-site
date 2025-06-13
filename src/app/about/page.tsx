@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import FAQSection from "@/components/FAQSection";
 
 const PageHero = dynamic(() => import("@/components/PageHero"), { ssr: false });
 
@@ -236,6 +237,18 @@ export default function AboutPage() {
                 ))}
               </motion.ul>
             </Section>
+
+            <section className="border-t border-gray-200 dark:border-gray-800 py-16">
+              <div className="mx-auto w-full max-w-[640px] px-4 sm:px-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                >
+                  <FAQSection />
+                </motion.div>
+              </div>
+            </section>
 
             <Section className="border-t border-gray-200 dark:border-gray-800">
               <motion.div

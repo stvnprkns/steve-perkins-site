@@ -1,4 +1,51 @@
-export const quickbooksData = {
+// Define types for the data structure
+type StatItem = {
+  value: string;
+  label: string;
+};
+
+type ImageItem = {
+  src: string;
+  alt: string;
+};
+
+type ContentSection = {
+  content: string;
+  images: ImageItem[];
+};
+
+type TeamMember = {
+  name: string;
+  role: string;
+  image: string;
+  linkedin: string;
+};
+
+type QuickbooksData = {
+  title: string;
+  summary: string;
+  company: {
+    name: string;
+    url: string;
+  };
+  team: TeamMember[];
+  heroImage: ImageItem;
+  intro?: {
+    content: string;
+  };
+  talkingShop: ContentSection;
+  creatingExperiment: ContentSection;
+  theAd: ContentSection;
+  playingMatchmaker: ContentSection;
+  talkingTax: ContentSection;
+  whatWeLearned: {
+    content: string;
+    images: ImageItem[];
+    stats: StatItem[];
+  };
+};
+
+export const quickbooksData: QuickbooksData = {
   title: "Making Small Business Connections with CPAs",
   summary: "", // Summary is used for metadata but not displayed in the UI
   company: {
@@ -27,7 +74,7 @@ export const quickbooksData = {
   ],
   heroImage: {
     src: "/images/projects/quickbooks-cpa-match/qb-hero.webp",
-    alt: "QuickBooks CPA Match - Connecting small business owners with trusted CPAs"
+    alt: "QuickBooks CPA Match interface showing the connection platform between small business owners and trusted CPAs"
   },
   intro: {
     content: `## Running a business is a team sport
@@ -45,7 +92,7 @@ A big insight we found was that the owners who worked with tax professionals del
     images: [
       {
         src: "/images/projects/quickbooks-cpa-match/qb-businesses.jpeg",
-        alt: "Fig. 1 - Photos featuring various small business owners we talked to across Dallas"
+        alt: "Collage of small business owners in Dallas storefronts during customer research interviews about their accounting needs and CPA relationships"
       }
     ]
   },
@@ -54,7 +101,7 @@ A big insight we found was that the owners who worked with tax professionals del
     images: [
       {
         src: "/images/projects/quickbooks-cpa-match/qb-workflow.webp",
-        alt: "Fig. 3 - User flow for CPA matching. A workflow of how users enter the experiment, select a CPA, and engage with them"
+        alt: "User flow diagram showing the complete CPA matching process in QuickBooks - from initial entry point through CPA selection to engagement and payment steps"
       }
     ]
   },
@@ -65,7 +112,7 @@ We needed a way to get QuickBooks users to use this product. We set up targeting
     images: [
       {
         src: "/images/projects/quickbooks-cpa-match/ad-variants.png",
-        alt: "Fig. 4 - Experiment Ad variations on the QuickBooks dashboard. Different ad designs promoting the CPA matching service to QuickBooks users"
+        alt: "Multiple design variations of the QuickBooks dashboard advertisement promoting CPA matching services, showing different visual layouts and messaging tested to improve click-through rates"
       }
     ]
   },
@@ -78,7 +125,7 @@ Contrary to what they told us, businesses didn't care as much about a perfect ma
     images: [
       {
         src: "/images/projects/quickbooks-cpa-match/qb-cpa-connect.webp",
-        alt: "Fig. 5 - Matchmaker page showing a carousel of CPAs in our beta group. The interface allows users to browse and select from available CPAs"
+        alt: "QuickBooks CPA matchmaker interface displaying a carousel of available tax professionals with their photos, credentials, and specialties for small business owners to browse and select"
       }
     ]
   },
@@ -89,7 +136,7 @@ We needed a clear way for CPAs and business owners to communicate. QuickBooks ha
     images: [
       {
         src: "/images/projects/quickbooks-cpa-match/qb-cpa-engage.webp",
-        alt: "Fig. 6 - The messaging tool with the task manager. Shows the integrated communication interface between business owners and CPAs"
+        alt: "QuickBooks integrated messaging and task management interface showing the communication system between business owners and CPAs with conversation history and action items"
       }
     ]
   },
@@ -98,13 +145,11 @@ We needed a clear way for CPAs and business owners to communicate. QuickBooks ha
 
 Customer feedback highlighted immediate benefits: they were saving money on their taxes, finding more time and energy to devote to their businesses, and realizing how valuable tax professionals were in making daily financial decisions.
 
-Over the course of a year, we connected 2000 businesses to CPAs`,
-    images: [
-      {
-        src: "/images/projects/quickbooks-cpa-match/Matching_V4.007-p-800.jpeg",
-        alt: "Fig. 9 - Impact metrics from the CPA matching program. Data visualization showing improved business metrics after CPA matching"
-      }
-    ],
+Over the course of a year, we connected 2000 businesses to CPAs
+
+The pilot's success convinced Intuit to graduate the flow into the left-nav **My Accountant tab**—now live in every QuickBooks region. Today that tab sits in front of **6.5 million+ QuickBooks Online subscribers** worldwide, multiplying our original impact by three orders of magnitude.`,
+
+    images: [],
     stats: [
       {
         value: "2000+",

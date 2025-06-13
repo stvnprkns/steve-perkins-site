@@ -1,4 +1,3 @@
-import { Metadata } from 'next';
 import Image from 'next/image';
 import { SidebarNav, CaseStudyGrid, Section, BackToProjects } from '@/components';
 import { ExternalLink } from '@/components/ExternalLink';
@@ -10,14 +9,18 @@ import { appealioData } from './appealioData';
 import { TeamList } from '@/components/TeamMember';
 import { projects } from '@/lib/projects';
 import CaseStudyNavigation from '@/components/case-study/CaseStudyNavigation';
+import { generateProjectMetadata } from '@/components/ProjectMetadata';
 
-export const metadata: Metadata = {
+// Enhanced metadata with structured data for better SEO and LLM understanding
+export const metadata = generateProjectMetadata({
   title: appealioData.title,
   description: 'How we designed an intuitive platform to simplify the insurance appeals process for healthcare providers',
-  openGraph: {
-    images: ['/images/appealio-preview.png'],
-  },
-};
+  path: '/projects/appealio-insurance-appeals',
+  coverImage: '/images/appealio-preview.png',
+  publishedTime: '2023-05-15',
+  modifiedTime: '2025-06-12',
+  tags: ['Healthcare Tech', 'Insurance Appeals', 'UX Design', 'Product Strategy', 'AppealIO']
+});
 
 const sidebarItems = [
   { id: 'project-overview', label: 'Project Overview' },

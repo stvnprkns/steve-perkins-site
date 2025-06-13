@@ -5,16 +5,19 @@ export default function TalkingShop() {
   const { content, images } = quickbooksData.talkingShop;
   
   return (
-    <div className="mb-12">
-      <h2 className="text-3xl font-bold mb-8 font-sans">Talking Shop</h2>
-      <div className="prose max-w-prose text-text-base space-y-6">
+    <article className="mb-12">
+      <header>
+        <h2 id="talking-shop" className="text-3xl font-bold mb-8 font-sans">Talking Shop</h2>
+      </header>
+      
+      <section className="prose max-w-prose text-text-base space-y-6" aria-labelledby="talking-shop">
         {content.split('\n\n').map((paragraph, index) => (
           <p key={index}>{paragraph}</p>
         ))}
-      </div>
+      </section>
       
       {images.map((image, index) => (
-        <div key={index} className="w-full my-8">
+        <figure key={index} className="w-full my-8">
           <CaseStudyImage
             src={image.src}
             alt={image.alt}
@@ -22,8 +25,8 @@ export default function TalkingShop() {
             height={800}
             withBackground={true}
           />
-        </div>
+        </figure>
       ))}
-    </div>
+    </article>
   );
 }

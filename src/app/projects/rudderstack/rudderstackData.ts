@@ -83,7 +83,7 @@ export const rudderstackData: RudderstackData = {
   company: { name: "RudderStack", url: "https://www.rudderstack.com/blog/streamlined-destination-configuration-in-rudderstack/" },
   heroImage: {
     src: "/images/projects/rudderstack/rudderstack-hero.webp",
-    alt: "RudderStack dashboard showing data connections"
+    alt: "RudderStack dashboard interface showing multiple data source connections with visualization of data flow between systems"
   },
   team: [
     {
@@ -121,7 +121,7 @@ export const rudderstackData: RudderstackData = {
         description: `Up to this point the company didn't do a good job of validating before building. So the team began with an exhaustive exploration of how users setup destinations — looking at behavior data, support tickets, and community feedback. We identified common stumbling blocks and opportunities for simplification.`,
         image: {
           src: "/images/projects/rudderstack/mixpanel-data.png",
-          alt: "Mixpanel flow graph showing 50% dropoff rate at each step of the flow."
+          alt: "Mixpanel analytics funnel visualization showing 50% user dropoff rate at each step of the destination configuration flow, highlighting significant user abandonment"
         }
       },
       {
@@ -137,7 +137,7 @@ export const rudderstackData: RudderstackData = {
         description: `CDPs are complicated, and even the people who make them (us) didn't completely understand some of the fields. So the PM and I sat down with engineering and went field by field figuring out what each did, where the data connected, what the implications were, and what destinations shared that field. We mapped the web of settings and created an enormous and beautiful spreadsheet.\n\nOut of 27 fields only 2 of them were required: Name and API Key. Most importantly we learned that one of the last settings on the list 'Connection Mode' was easily the most important setting and nobody knew it.`,
         image: {
           src: "/images/projects/rudderstack/connections-spreadsheet.png",
-          alt: "Our massive spreadsheet mapping all of the configuration settings their impacts, relations, and information."
+          alt: "Detailed spreadsheet analysis mapping 27 configuration settings showing their relationships, dependencies, and impact on data flow, with only 2 fields marked as required"
         }
       }
     ]
@@ -147,11 +147,11 @@ export const rudderstackData: RudderstackData = {
     content: `Connection Mode turned into a mini project all on its own. This little switch, hidden away, had zero helper text, and there was nothing in the docs about it. Only 1 in 5 customers we talked to actually knew what it did. But this little setting was the single most important choice when configuring a destination.\n\nOur biggest problem it seemed was communication. Our UX Writer played a pivotal role in demystifying what exactly this did and why it matters, so customers could make the right choice for them.\n\nThe writing defined the final design.`,
     image: {
       src: "/images/projects/rudderstack/connections-connection-mode.png",
-      alt: "Connection Mode close up showing the language and interaction."
+      alt: "Close-up of the Connection Mode toggle interface with explanatory text describing how this critical setting affects data processing"
     },
     connectionModeImage: {
       src: "/images/projects/rudderstack/dataconfig-connectionmode.webp",
-      alt: "Connection Mode interface showing the different configuration options."
+      alt: "Connection Mode selection interface showing Cloud Mode and Device Mode options with detailed explanations of how each affects data routing and privacy"
     }
   },
   formReduction: {
@@ -159,7 +159,7 @@ export const rudderstackData: RudderstackData = {
     content: `We wanted to get customers to create the destination with as little friction as possible, asking only what was required. With this new workflow, once the destination is created it is disabled by default and the user goes straight to configuration so they can manage all of their settings in their own time and enable it once it’s ready.`,
     image: {
       src: "/images/projects/rudderstack/configuration-workflow.webp",
-      alt: "RudderStack Destination create and configure flowchart."
+      alt: "Streamlined workflow diagram showing the new two-step destination creation process, reducing 27 fields to just 2 required inputs before configuration"
     }
   },
   configDesign: {
@@ -167,7 +167,7 @@ export const rudderstackData: RudderstackData = {
     content: `We completely redesigned our settings forms to be organized and created plenty of room for helper text, and definitions of each field. We organized the form structure into categories and provided critical information about the categories themselves.`,
     image: {
       src: "/images/projects/rudderstack/Amplitude-Configuration.webp",
-      alt: "Newly designed configuration and settings page for destinations."
+      alt: "Redesigned Amplitude destination configuration interface with organized categories, clear helper text, and contextual information for each setting"
     }
   },
   dataConfigConnect: {
@@ -176,7 +176,7 @@ export const rudderstackData: RudderstackData = {
       description: "We stopped asking for everything up front. The new flow gets users started with just the essentials: pick your sources, name the destination, drop in an API key, and choose a connection mode. That’s it. No clutter, no overwhelm—just a clear path to creating a destination without getting lost in the details.",
       image: {
         src: "/images/projects/rudderstack/dataconfig-connect.webp",
-        alt: "Data configuration connection interface showing the connection status and settings."
+        alt: "Simplified data connection interface showing only essential fields: source selection, destination name, API key input, and connection mode toggle"
       }
     },
     success: {
@@ -184,7 +184,7 @@ export const rudderstackData: RudderstackData = {
       description: "With the new flow, creating a destination doesn’t mean doing everything up front. Now, users just handle the basics—then land on a confirmation screen that tells them it worked. The destination stays disabled by default, so no data starts flowing until they're ready. From here, users can finish setup on their own time and enable it when everything’s good to go.",
       image: {
         src: "/images/projects/rudderstack/dataconfig-success.webp",
-        alt: "Success message after completing the data configuration setup."
+        alt: "Success confirmation screen showing destination created but disabled by default, with clear next steps for configuration and enabling data flow"
       }
     },
     setup: {
@@ -192,7 +192,7 @@ export const rudderstackData: RudderstackData = {
       description: "After creating the destination, users land in a focused configuration page built around clarity and context. It’s organized, readable, and adapts based on the connection mode they chose—showing only the settings that matter. Each section includes the right amount of guidance to help users make confident decisions. Once everything’s in place, they save their changes and enable the destination when they’re ready.",
       image: {
         src: "/images/projects/rudderstack/dataconfig-setup.webp",
-        alt: "Data configuration setup interface showing the initial setup process."
+        alt: "Focused configuration interface with organized settings categories, contextual guidance, and adaptive fields based on the selected connection mode"
       }
     }
   },

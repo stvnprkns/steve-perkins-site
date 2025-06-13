@@ -1,33 +1,47 @@
-# https://www.robotstxt.org/robotstxt.html
+# robots.txt for steveperkins.dev
+# Last updated: 2025-06-12
+
+# Default rules for standard web crawlers
 User-agent: *
 Allow: /
-
-# Sitemap location
-Sitemap: https://steveperkins.dev/sitemap.xml
-
-# Crawl-delay: 10
-# 10 second delay between requests to be nice to the server
-
-# Disallow crawling of admin and API endpoints
 Disallow: /admin/
 Disallow: /api/
+Disallow: /private/
 
-# Allow all other paths
-Allow: /*
+# Important resources
+Sitemap: https://steveperkins.dev/sitemap.xml
+Allow: /llms.txt
 
-# Crawl-delay for specific bots
+# Standard search engine crawlers - with crawl rate limits
 User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
 Crawl-delay: 10
 
 User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
 Crawl-delay: 10
 
-# Block AI bots that might be scraping content
+# AI/LLM crawlers - completely blocked
 User-agent: GPTBot
 Disallow: /
 
 User-agent: ChatGPT-User
 Disallow: /
 
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
 User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
 Disallow: /

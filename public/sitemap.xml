@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    <!-- Created with Cascade AI, Updated 2025-06-12 -->
+    
+    <!-- Homepage -->
+    <url>
+        <loc>https://steveperkins.dev/</loc>
+        <lastmod>2025-06-12</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <!-- About Page -->
+    <url>
+        <loc>https://steveperkins.dev/about</loc>
+        <lastmod>2025-06-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Projects Hub Page -->
+    <url>
+        <loc>https://steveperkins.dev/projects</loc>
+        <lastmod>2025-06-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Individual Project Pages -->
+    <url>
+        <loc>https://steveperkins.dev/projects/appealio-insurance-appeals</loc>
+        <lastmod>2025-06-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://steveperkins.dev/projects/quickbooks-cpa-match</loc>
+        <lastmod>2025-06-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://steveperkins.dev/projects/rudderstack</loc>
+        <lastmod>2025-06-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://steveperkins.dev/projects/rudderstack-team</loc>
+        <lastmod>2025-06-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Notes/Blog Section -->
+    <url>
+        <loc>https://steveperkins.dev/notes</loc>
+        <lastmod>2025-06-12</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Contact Page -->
+    <url>
+        <loc>https://steveperkins.dev/contact</loc>
+        <lastmod>2025-06-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <!-- Side Projects -->
+    <url>
+        <loc>https://steveperkins.dev/sideprojects</loc>
+        <lastmod>2025-06-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+</urlset>

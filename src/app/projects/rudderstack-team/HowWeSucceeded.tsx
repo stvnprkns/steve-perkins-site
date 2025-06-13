@@ -2,47 +2,55 @@ import CaseStudyImage from '@/components/markdown/CaseStudyImage';
 
 export default function HowWeSucceeded() {
   return (
-    <section id="how-we-succeeded" className="scroll-mt-20">
-      <h2 className="text-3xl font-bold mb-8 font-sans">How We Succeeded</h2>
+    <section id="how-we-succeeded" className="scroll-mt-20" aria-labelledby="how-we-succeeded-title">
+      <header>
+        <h2 id="how-we-succeeded-title" className="text-3xl font-bold mb-8 font-sans">How We Succeeded</h2>
+      </header>
       
-      <div className="prose max-w-prose text-text-base space-y-6">
-        <p>
-          We use a lot of methods to track our effectiveness as a Design team. The System Usability Score (SUS) is how we measure whether the product we&apos;ve designed is intuitive. It uses a set of 10 questions to gauge our customers&apos; experience with our product.
-        </p>
+      <article className="prose max-w-prose text-text-base space-y-6">
+        <div className="introduction">
+          <p>
+            We use a lot of methods to track our effectiveness as a Design team. The System Usability Score (SUS) is how we measure whether the product we&apos;ve designed is intuitive. It uses a set of 10 questions to gauge our customers&apos; experience with our product.
+          </p>
 
-        <p>
-          Over 3 quarters, we improved our score from 62 to 68. A 6-point increase is a big jump for SUS. It shows that every quarter we made better work and improved our product experience.
-        </p>
-
-        <CaseStudyImage
-          src="/images/projects/rudderstack-team/sus-scorecard.png"
-          alt="[Fig. 3] System Usability Score Card. Showing a 10x10 score chart based on the survey questions."
-          width={1200}
-          height={800}
-        />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-12">
-          <div className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-purple-900/30 transition-all duration-200 hover:border-purple-300 dark:hover:border-purple-900/50 hover:shadow-sm dark:hover:shadow-purple-900/10">
-            <div className="text-4xl font-bold text-purple-600 dark:text-purple-300 mb-2">+6 point</div>
-            <p className="text-gray-700 dark:text-gray-100">Improvement of our System Usability Score over three quarters.</p>
-          </div>
-          
-          <div className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-purple-900/30 transition-all duration-200 hover:border-purple-300 dark:hover:border-purple-900/50 hover:shadow-sm dark:hover:shadow-purple-900/10">
-            <div className="text-4xl font-bold text-purple-600 dark:text-purple-300 mb-2">20%</div>
-            <p className="text-gray-700 dark:text-gray-100">Reduction in design-related bugs in production.</p>
-          </div>
-          
-          <div className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-purple-900/30 transition-all duration-200 hover:border-purple-300 dark:hover:border-purple-900/50 hover:shadow-sm dark:hover:shadow-purple-900/10">
-            <div className="text-4xl font-bold text-purple-600 dark:text-purple-300 mb-2">40%</div>
-            <p className="text-gray-700 dark:text-gray-100">Reduction in design cycle times, boosting productivity and quality.</p>
-          </div>
-          
-          <div className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-purple-900/30 transition-all duration-200 hover:border-purple-300 dark:hover:border-purple-900/50 hover:shadow-sm dark:hover:shadow-purple-900/10">
-            <div className="text-4xl font-bold text-purple-600 dark:text-purple-300 mb-2">60%</div>
-            <p className="text-gray-700 dark:text-gray-100">More time spent with customers in discovery research, interviews, and testing sessions.</p>
-          </div>
+          <p>
+            Over 3 quarters, we improved our score from 62 to 68. A 6-point increase is a big jump for SUS. It shows that every quarter we made better work and improved our product experience.
+          </p>
         </div>
-      </div>
+
+        <figure>
+          <CaseStudyImage
+            src="/images/projects/rudderstack-team/sus-scorecard.png"
+            alt="System Usability Score (SUS) measurement chart showing RudderStack's improvement from 62 to 68 points over three quarters, with a detailed breakdown of the 10-question survey results and comparative industry benchmarks"
+            width={1200}
+            height={800}
+          />
+        </figure>
+
+        <section aria-label="Key metrics and improvements" className="metrics-grid">
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 my-12 list-none pl-0">
+            <li className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-purple-900/30 transition-all duration-200 hover:border-purple-300 dark:hover:border-purple-900/50 hover:shadow-sm dark:hover:shadow-purple-900/10">
+              <div className="text-4xl font-bold text-purple-600 dark:text-purple-300 mb-2" aria-label="Six point improvement">+6 point</div>
+              <p className="text-gray-700 dark:text-gray-100">Improvement of our System Usability Score over three quarters.</p>
+            </li>
+            
+            <li className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-purple-900/30 transition-all duration-200 hover:border-purple-300 dark:hover:border-purple-900/50 hover:shadow-sm dark:hover:shadow-purple-900/10">
+              <div className="text-4xl font-bold text-purple-600 dark:text-purple-300 mb-2" aria-label="Twenty percent">20%</div>
+              <p className="text-gray-700 dark:text-gray-100">Reduction in design-related bugs in production.</p>
+            </li>
+            
+            <li className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-purple-900/30 transition-all duration-200 hover:border-purple-300 dark:hover:border-purple-900/50 hover:shadow-sm dark:hover:shadow-purple-900/10">
+              <div className="text-4xl font-bold text-purple-600 dark:text-purple-300 mb-2" aria-label="Forty percent">40%</div>
+              <p className="text-gray-700 dark:text-gray-100">Reduction in design cycle times, boosting productivity and quality.</p>
+            </li>
+            
+            <li className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-purple-900/30 transition-all duration-200 hover:border-purple-300 dark:hover:border-purple-900/50 hover:shadow-sm dark:hover:shadow-purple-900/10">
+              <div className="text-4xl font-bold text-purple-600 dark:text-purple-300 mb-2" aria-label="Sixty percent">60%</div>
+              <p className="text-gray-700 dark:text-gray-100">More time spent with customers in discovery research, interviews, and testing sessions.</p>
+            </li>
+          </ul>
+        </section>
+      </article>
     </section>
   );
 }

@@ -28,19 +28,25 @@ export default function Section({
   const paddingClass = noPadding ? '' : 'px-4 sm:px-8';
 
   return (
-    <div className="w-full">
-      <Component 
-        className={`w-full min-h-0 ${className}`}
-        id={id}
-        style={{
-          scrollMarginTop: '96px', // 6rem for sticky header offset
-        }}
-      >
-        <div className={`mx-auto w-full ${widthClass} ${paddingClass} h-full`}>
-          {children}
+    <Component 
+      className={`w-full min-h-0 ${className}`}
+      id={id}
+      style={{
+        scrollMarginTop: '96px', // 6rem for sticky header offset
+      }}
+    >
+      <div className={`mx-auto w-full ${widthClass} ${paddingClass} h-full`}>
+        {children}
+      </div>
+      {!noDivider && (
+        <div className="w-full max-w-4xl mx-auto my-16">
+          <div 
+            className="h-px w-full bg-black/20 dark:bg-white/20" 
+            aria-hidden="true" 
+          />
         </div>
-      </Component>
-    </div>
+      )}
+    </Component>
   );
 }
 

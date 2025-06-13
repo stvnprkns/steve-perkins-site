@@ -28,8 +28,11 @@ export default function CaseStudyImage({
   children,
   ...props
 }: React.PropsWithChildren<CaseStudyImageProps>) {
+  // Check if alt text starts with [Fig.] to determine if it's a labeled figure
+  const isLabeledFigure = alt.includes('[Fig.') || alt.includes('Figure');
+  
   return (
-    <div className={cn('not-prose my-8 w-full', containerClassName)} style={{ gridColumn: '1 / -1' }}>
+    <figure className={cn('not-prose my-8 w-full', containerClassName)} style={{ gridColumn: '1 / -1' }}>
       <div className={cn('w-full block', { 
         'bg-purple-50 dark:bg-gray-900 p-4 rounded-lg border border-gray-200 dark:border-gray-700': withBackground,
         'bg-transparent': !withBackground
@@ -50,12 +53,12 @@ export default function CaseStudyImage({
             />
           </div>
           {children && (
-            <div className="mt-3">
+            <figcaption className="mt-3 text-sm text-muted-foreground text-center">
               {children}
-            </div>
+            </figcaption>
           )}
         </div>
       </div>
-    </div>
+    </figure>
   );
 }

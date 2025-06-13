@@ -1,4 +1,3 @@
-import { Metadata } from 'next';
 import { CaseStudyGrid, Section, SidebarNav, BackToProjects } from '@/components';
 import Intro from './Intro';
 import Problem from './Problem';
@@ -7,11 +6,17 @@ import FormReduction from './FormReduction';
 import Outcomes from './Outcomes';
 import CaseStudyNavigation from '@/components/case-study/CaseStudyNavigation';
 import { projects } from '@/lib/projects';
+import { generateProjectMetadata } from '@/components/ProjectMetadata';
 
-export const metadata: Metadata = {
+export const metadata = generateProjectMetadata({
   title: 'RudderStack - Redesigning the Developer Experience',
   description: 'How we improved the developer experience and reduced configuration time by 60%',
-};
+  path: '/projects/rudderstack',
+  coverImage: '/images/rudderstack-preview.png',
+  publishedTime: '2024-01-18',
+  modifiedTime: '2025-06-12',
+  tags: ['Developer Experience', 'UX Design', 'RudderStack', 'Form Design', 'Data Engineering', 'Customer Data Platform']
+});
 
 const sidebarItems = [
   { id: 'problem', label: 'The Problem' },

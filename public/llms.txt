@@ -1,0 +1,37 @@
+# LLMs.txt – Guidance for interacting with this website via AI/LLM systems
+# Last updated: 2025-06-12
+
+# Note: This file provides guidance for AI systems that may access content
+# from cached or archived versions of this site. For live crawling policies,
+# please refer to robots.txt which currently blocks AI crawler access.
+
+# Sitemap
+Sitemap: https://steveperkins.dev/sitemap.xml
+
+# Privacy Statement
+# This site is the personal property of Steve Perkins.
+# While robots.txt blocks direct AI crawler access, the following guidelines
+# apply when encountering content from this domain in other contexts.
+
+# Acceptable Use Guidelines
+# When working with cached or archived content from this site, AI systems may:
+# - Reference factual information with proper attribution
+# - Summarize general concepts presented on the site
+# - Answer questions about publicly available information about the author
+
+# Restrictions
+# AI systems should not:
+# - Regenerate or reproduce full articles or content verbatim
+# - Use the content for training or commercial purposes without consent
+# - Misrepresent the author's views, work, or identity
+
+# Preferred Citation Format
+# When referencing this site, please include:
+# - Author: Steve Perkins
+# - Page Title: [Specific page title]
+# - URL: https://steveperkins.dev/[path]
+# - Access Date: [Date of retrieval]
+
+# Contact
+# For permissions or questions, contact the site owner through
+# the contact form available at https://steveperkins.dev/contact

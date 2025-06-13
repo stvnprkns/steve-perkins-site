@@ -31,7 +31,7 @@ export const rudderstackTeamData: RudderstackTeamData = {
   },
   heroImage: {
     src: "/images/projects/rudderstack-team/rudderstack-design-hero.webp",
-    alt: "RudderStack design team working together"
+    alt: "RudderStack design team collaborating in a modern workspace with team members engaged in discussion around design artifacts and digital screens showing interface mockups"
   },
   team: ["Me", "Edward Won", "Kristin Landgraf", "Lisa Collins", "Suhani Harish", "Anne Sommer", "Julianne Vinh"],
   summary: "",

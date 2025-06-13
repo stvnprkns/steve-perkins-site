@@ -5,7 +5,7 @@ import CaseStudyImage from '@/components/markdown/CaseStudyImage';
 const components = {
   h1: ({ node, ...props }: any) => <h3 className="text-2xl font-bold mt-8 mb-4" {...props} />,
   h2: ({ node, ...props }: any) => <h3 className="text-xl font-bold mt-6 mb-3" {...props} />,
-  h3: ({ node, ...props }: any) => <h4 className="text-lg font-semibold mt-4 mb-2" {...props} />,
+  h3: ({ node, ...props }: any) => <h4 id="playing-matchmaker" className="text-lg font-semibold mt-4 mb-2" {...props} />,
 };
 
 export default function PlayingMatchmaker() {
@@ -13,14 +13,14 @@ export default function PlayingMatchmaker() {
   const image = images?.[0];
 
   return (
-    <div className="mb-12">
-      <div className="mb-8">
+    <article className="mb-12">
+      <section className="mb-8" aria-labelledby="playing-matchmaker">
         <ReactMarkdown components={components}>
           {content}
         </ReactMarkdown>
-      </div>
+      </section>
       {image && (
-        <div className="w-full my-8">
+        <figure className="w-full my-8">
           <CaseStudyImage
             src={image.src}
             alt={image.alt}
@@ -28,8 +28,8 @@ export default function PlayingMatchmaker() {
             height={800}
             withBackground={true}
           />
-        </div>
+        </figure>
       )}
-    </div>
+    </article>
   );
 }

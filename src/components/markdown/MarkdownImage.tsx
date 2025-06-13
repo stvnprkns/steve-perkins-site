@@ -81,19 +81,30 @@ export default function MarkdownImage({
     ...props
   };
 
+  // Only use figure/figcaption for non-inline images
+  if (inline) {
+    return (
+      <span className={cn('not-prose inline-block', containerClassName)}>
+        <Image {...imageProps} />
+      </span>
+    );
+  }
+  
   return (
-    <div className={cn('not-prose my-2 flex flex-col items-center', containerClassName)}>
+    <figure className={cn('not-prose my-2 flex flex-col items-center', containerClassName)}>
       <div 
         className={cn('relative w-full bg-transparent', { 'cursor-zoom-in': !inline })}
         onClick={!inline ? handleImageClick : undefined}
+        role="img"
+        aria-label={alt || 'Image with no description'}
       >
         <Image {...imageProps} />
       </div>
-      {showCaption && !inline && (
+      {showCaption && (
         <figcaption className="mt-2 text-sm text-gray-500 text-center">
           {alt}
         </figcaption>
       )}
-    </div>
+    </figure>
   );
 }

@@ -1,4 +1,3 @@
-import { Metadata } from 'next';
 import Image from 'next/image';
 import { SidebarNav, CaseStudyGrid, Section, BackToProjects } from '@/components';
 import MarkdownImage from '@/components/markdown/MarkdownImage';
@@ -12,14 +11,17 @@ import { TeamList } from '@/components/TeamMember';
 import { rudderstackTeam } from '@/types/team';
 import { projects } from '@/lib/projects';
 import CaseStudyNavigation from '@/components/case-study/CaseStudyNavigation';
+import { generateProjectMetadata } from '@/components/ProjectMetadata';
 
-export const metadata: Metadata = {
+export const metadata = generateProjectMetadata({
   title: 'Founding a Design Team and Growing a Culture',
   description: 'How I built a collaborative, high-output design team at RudderStack and helped design become a strategic business partner.',
-  openGraph: {
-    images: ['/images/rudderstack-team-preview.png'],
-  },
-};
+  path: '/projects/rudderstack-team',
+  coverImage: '/images/rudderstack-team-preview.png',
+  publishedTime: '2024-02-20',
+  modifiedTime: '2025-06-12',
+  tags: ['Design Leadership', 'Team Building', 'RudderStack', 'Design Culture', 'Design Operations', 'Remote Teams']
+});
 
 const sidebarItems = [
   { id: 'how-i-built-a-team', label: 'How I Built a Team' },

@@ -33,7 +33,7 @@ export default function Solution() {
             <div className="w-full h-64 overflow-hidden rounded-lg">
               <CaseStudyImage
                 src="/images/projects/appealio/appealio-creation-interface.png"
-                alt="Appeal creation interface mockup"
+                alt="Appealio's step-by-step appeal creation interface with smart form fields, contextual help tooltips, and progress indicators guiding users through the insurance appeal submission process"
                 width={800}
                 height={400}
                 containerClassName="h-full"
@@ -62,7 +62,7 @@ export default function Solution() {
             <div className="w-full h-64 overflow-hidden rounded-lg">
               <CaseStudyImage
                 src="/images/projects/appealio/appealio-document-management.png"
-                alt="Document management interface"
+                alt="Appealio's document management system showing categorized medical files with drag-and-drop upload functionality, document preview capabilities, and secure sharing options for insurance appeals"
                 width={800}
                 height={400}
                 containerClassName="h-full"
@@ -88,7 +88,14 @@ export default function Solution() {
               </ul>
             </div>
             <div className="rounded-lg border bg-muted/50 p-4 flex items-center justify-center h-64">
-              <p className="text-muted-foreground">Analytics dashboard mockup</p>
+              <CaseStudyImage
+                src="/images/projects/appealio/appealio-analytics.png"
+                alt="Appealio's analytics dashboard displaying appeal success rates, processing times, and financial impact metrics with interactive charts and exportable reports"
+                width={800}
+                height={400}
+                containerClassName="h-full"
+                className="object-cover w-full h-full"
+              />
             </div>
           </div>
         </div>

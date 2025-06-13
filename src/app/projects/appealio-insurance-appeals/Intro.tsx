@@ -20,11 +20,11 @@ export default function Intro() {
         </p>
       </div>
       
-      <div className="w-full">
+      <figure className="w-full" aria-label="Appealio platform interface">
         <div className="relative w-full aspect-video">
           <CaseStudyImage
             src="/images/projects/appealio/appealio-hero.png"
-            alt="Appealio dashboard showing insurance appeal management interface"
+            alt="Appealio's comprehensive dashboard interface showing a healthcare provider's insurance appeal management system with color-coded status indicators, prioritized appeal listings, and financial impact metrics for tracking claim resolutions"
             width={1600}
             height={900}
             priority={true}
@@ -32,7 +32,7 @@ export default function Intro() {
             containerClassName="h-full"
           />
         </div>
-      </div>
+      </figure>
       
       <div className="grid md:grid-cols-3 gap-8 pt-4">
         <div className="space-y-2">

@@ -44,34 +44,37 @@ export default function PageHero({
       variant={variant}
       className={`${paddingClasses[padding]} ${backgroundClasses[background]} ${className}`}
       noDivider
+      as="header"
     >
       <div className="w-full">
-        <h1 className="text-5xl md:text-6xl font-bold tracking-tight">
-          {title}
-        </h1>
-        {subtitle && (
-          <div className="prose prose-lg text-muted-foreground mt-8">
-            {typeof subtitle === 'string'
-              ? subtitle.split('\n').map((paragraph, index) => (
-                  <p key={index} className={index > 0 ? 'mt-4' : ''}>
-                    {paragraph}
-                  </p>
-                ))
-              : subtitle}
-          </div>
-        )}
+        <header>
+          <h1 className="text-5xl md:text-6xl font-bold tracking-tight">
+            {title}
+          </h1>
+          {subtitle && (
+            <div className="prose prose-lg text-muted-foreground mt-8" role="doc-subtitle">
+              {typeof subtitle === 'string'
+                ? subtitle.split('\n').map((paragraph, index) => (
+                    <p key={index} className={index > 0 ? 'mt-4' : ''}>
+                      {paragraph}
+                    </p>
+                  ))
+                : subtitle}
+            </div>
+          )}
+        </header>
         {children}
         {heroImage && (
-          <div className={`mt-12 w-full max-w-4xl mx-auto rounded-lg overflow-hidden ${heroImage.className || ''}`}>
+          <figure className={`mt-12 w-full max-w-4xl mx-auto rounded-lg overflow-hidden ${heroImage.className || ''}`}>
             <Image
               src={heroImage.src}
-              alt={heroImage.alt}
+              alt={heroImage.alt || 'Hero image for this page'}
               width={1200}
               height={630}
               className="w-full h-auto object-cover rounded-lg"
               priority
             />
-          </div>
+          </figure>
         )}
       </div>
     </Section>

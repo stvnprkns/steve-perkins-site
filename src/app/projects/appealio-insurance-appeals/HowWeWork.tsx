@@ -18,7 +18,7 @@ export default function HowWeWork() {
           <Suspense fallback={<ImageLoading />}>
             <CaseStudyImage
               src="/images/projects/appealio/appealio-workflow.webp"
-              alt="[Fig. 1] Flowchart of the insurance claim process by Appealio"
+              alt="Detailed flowchart showing the end-to-end insurance appeal process with Appealio, illustrating how claims move from submission through review to resolution"
               width={1200}
               height={600}
               containerClassName="w-full"
@@ -30,8 +30,22 @@ export default function HowWeWork() {
         <h3 className="text-2xl font-semibold mt-12 mb-6 font-sans">The Appeal Letter</h3>
         
         <p>
-          Drafting this letter was the most time-consuming part of the process. We addressed this by programming the AI to gather data about the patient, the appeal, the insurance, and the procedure. It then used templates to draft the letter.
-        </p>
+    Drafting the appeal letter is the priciest choke-point — 
+    <strong>
+      each denied claim
+    adds&nbsp;
+    <a
+      href="https://www.webpt.com/blog/claim-denial-costs"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      $25–$118 in extra manual rework
+    </a>
+    </strong>
+    &nbsp;before it even gets back to the payer.
+  &nbsp;So we trained the AI to pull patient data, cite policy language, and
+  generate a first-draft letter in seconds.
+</p>
         
         <p>
           We designed a split-screen layout for ease of use: on the right, a text editor with the letter and data ready to edit, and on the left, a preview of the final letter.
@@ -41,7 +55,7 @@ export default function HowWeWork() {
           <Suspense fallback={<ImageLoading />}>
             <CaseStudyImage
               src="/images/projects/appealio/appealio-letter.png"
-              alt="[Fig. 2] Split-screen appeal letter with text editor and preview"
+              alt="Appealio's split-screen interface showing an editable appeal letter template on the left with form fields for patient data and a formatted preview of the final letter on the right"
               width={1200}
               height={600}
               containerClassName="w-full"
@@ -53,14 +67,29 @@ export default function HowWeWork() {
         <h3 className="text-2xl font-semibold mt-16 mb-6 font-sans">Prioritization</h3>
         
         <p>
-          Working on appeals from oldest to newest led to missed deadlines and lost revenue. So, we created a better way to prioritize appeals. We developed an algorithm based on deadline, monetary value, appeal round, and chance of success to determine the most high-impact appeals. This helped medical providers generate more money from these appeals with a much higher success rate.
+          Working on appeals from oldest to newest led to missed deadlines and lost revenue. So, we created a better way to prioritize appeals. We developed an algorithm based on deadline, monetary value, appeal round, and chance of success to determine the most high-impact appeals. </p>
+          <p>
+  <strong>
+    <a
+      href="https://journal.ahima.org/denial-resubmission-gap"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Up to&nbsp;60&nbsp;% of denied claims are never resubmitted
+    </a>
+    </strong>
+    —so choosing the right appeals first isn’t busywork; it’s rescued revenue.
+  Our algorithm weighs deadline, dollar value, appeal round, and win-probability
+  to surface the highest-impact cases at the top of the queue.
+</p>
+<p>This helped medical providers generate more money from these appeals with a much higher success rate.
         </p>
         
         <div className="w-full my-8">
           <Suspense fallback={<ImageLoading />}>
             <CaseStudyImage
               src="/images/projects/appealio/appealio-appeals.png"
-              alt="[Fig. 3] Appeals table showing the list of appeals and the ability to sort and filter them"
+              alt="Appealio's appeals management dashboard displaying a prioritized list of insurance appeals with sorting options, monetary values, deadlines, and success probability indicators"
               width={1200}
               height={400}
               containerClassName="w-full"
@@ -79,7 +108,7 @@ export default function HowWeWork() {
           <Suspense fallback={<ImageLoading />}>
             <CaseStudyImage
               src="/images/projects/appealio/appealio-appeal-details.jpeg"
-              alt="[Fig. 4] An appeal flyout showing data stored in the appeal (images, letters, past appeal information)"
+              alt="HIPAA-compliant document storage interface showing an appeal detail panel with securely stored medical records, correspondence history, and attached supporting documentation"
               width={1200}
               height={600}
               containerClassName="w-full"

@@ -39,33 +39,43 @@ export default function TalkingTax() {
   const image = images?.[0];
 
   return (
-    <div className="mb-12">
-      <article className="mb-8 prose dark:prose-invert max-w-none">
-        <ReactMarkdown components={components}>
+    <article className="mb-12">
+      <section className="mb-8 prose dark:prose-invert max-w-none" aria-labelledby="talking-tax">
+        <ReactMarkdown components={{
+          ...components,
+          h3: ({ children, ...props }: HeadingProps) => (
+            <h4 id="talking-tax" className="text-lg font-semibold mt-4 mb-2" {...props}>
+              {children}
+            </h4>
+          ),
+        }}>
           {content}
         </ReactMarkdown>
-      </article>
+      </section>
       {image && (
-        <div className="w-full my-8">
-          <CaseStudyImage
-            src={image.src}
-            alt={image.alt}
-            width={1600}
-            height={800}
-            withBackground={true}
-          />
+        <>
+          <figure className="w-full my-8">
+            <CaseStudyImage
+              src={image.src}
+              alt={image.alt}
+              width={1600}
+              height={800}
+              withBackground={true}
+            />
+          </figure>
           <div className="mt-4 text-center">
             <a 
               href="https://v0-recreate-ui-design-mocha-mu.vercel.app/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-purple-600 dark:text-purple-400 hover:underline"
+              aria-label="View a prototype of the QuickBooks CPA messaging interface (opens in new tab)"
             >
               View a prototype of the full experiment
             </a>
           </div>
-        </div>
+        </>
       )}
-    </div>
+    </article>
   );
 }

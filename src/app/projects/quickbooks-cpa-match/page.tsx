@@ -1,4 +1,3 @@
-import { Metadata } from 'next';
 import { CaseStudyGrid, Section, SidebarNav, BackToProjects } from '@/components';
 import Intro from './Intro';
 import CaseStudyIntro from './CaseStudyIntro';
@@ -10,15 +9,17 @@ import TalkingTax from './TalkingTax';
 import WhatWeLearned from './WhatWeLearned';
 import CaseStudyNavigation from '@/components/case-study/CaseStudyNavigation';
 import { projects } from '@/lib/projects';
+import { generateProjectMetadata } from '@/components/ProjectMetadata';
 
-export const metadata: Metadata = {
+export const metadata = generateProjectMetadata({
   title: 'Making Small Business Connections with CPAs',
   description: 'How Intuit QuickBooks matched small businesses with CPAs to improve survival rates.',
-  openGraph: {
-    title: 'Making Small Business Connections with CPAs',
-    images: ['/images/qb-cpa-preview.png'],
-  },
-};
+  path: '/projects/quickbooks-cpa-match',
+  coverImage: '/images/qb-cpa-preview.png',
+  publishedTime: '2022-09-23',
+  modifiedTime: '2025-06-12',
+  tags: ['Intuit', 'QuickBooks', 'CPA', 'Small Business', 'Matchmaking', 'Product Strategy']
+});
 
 const sidebarItems = [
   { id: 'talking-shop', label: 'Talking Shop' },
@@ -31,12 +32,12 @@ export default function QuickBooksCPAMatch() {
     <>
       <CaseStudyGrid
         sidebar={
-          <div className="sticky top-0">
+          <nav className="sticky top-0" aria-label="Case study navigation">
             <SidebarNav items={sidebarItems} className="lg:pr-4" />
-          </div>
+          </nav>
         }
       >
-        <div className="space-y-24">
+        <main className="space-y-24" role="main" aria-labelledby="project-title">
           <BackToProjects />
           <Section variant="wide">
             <div className="space-y-12">
@@ -67,11 +68,13 @@ export default function QuickBooksCPAMatch() {
 
           <Section id="what-we-learned" variant="wide">
             <WhatWeLearned />
-            <div className="mt-16">
-              <CaseStudyNavigation currentSlug="quickbooks-cpa-match" projects={projects} />
-            </div>
+            <footer className="mt-16">
+              <nav aria-label="More case studies">
+                <CaseStudyNavigation currentSlug="quickbooks-cpa-match" projects={projects} />
+              </nav>
+            </footer>
           </Section>
-        </div>
+        </main>
       </CaseStudyGrid>
     </>
   );

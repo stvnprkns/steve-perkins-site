@@ -67,7 +67,7 @@ export default function Nav() {
   }, [scrollY]);
   
   return (
-    <nav className="w-full fixed top-0 sm:top-4 left-0 right-0 z-50">
+    <nav className="w-full fixed top-0 sm:top-4 left-0 right-0 z-50" aria-label="Main navigation">
       <div className="relative max-w-[640px] mx-auto w-full px-4">
         <div className={`absolute inset-0 -mx-4 ${
           isScrolled ? 'bg-background/95 dark:bg-background/95 backdrop-blur-md' : ''
@@ -76,7 +76,7 @@ export default function Nav() {
         } transition-all duration-200 rounded-full`} style={{
           left: 'calc(50% - 320px - 16px)',
           right: 'calc(50% - 320px - 16px)'
-        }} />
+        }} aria-hidden="true" />
         <div className="relative flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 pt-3 pb-2 sm:py-3">
         <Link 
           href="/" 
@@ -150,7 +150,7 @@ export default function Nav() {
         </Link>
         
         <div className="flex items-center gap-4 sm:gap-8">
-          <div className="flex flex-wrap gap-4 sm:gap-8">
+          <ul className="flex flex-wrap gap-4 sm:gap-8 list-none p-0 m-0" role="menubar">
             {navItems.map((item) => {
               const isActive = Boolean(
                 pathname === item.path || 
@@ -158,16 +158,17 @@ export default function Nav() {
               );
               
               return (
-                <NavLink 
-                  key={item.path}
-                  href={item.path}
-                  isActive={isActive}
-                >
-                  {item.name}
-                </NavLink>
+                <li key={item.path} role="none">
+                  <NavLink 
+                    href={item.path}
+                    isActive={isActive}
+                  >
+                    {item.name}
+                  </NavLink>
+                </li>
               );
             })}
-          </div>
+          </ul>
         </div>
       </div>
     </div>

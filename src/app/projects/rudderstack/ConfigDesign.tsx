@@ -22,11 +22,6 @@ export default function ConfigDesign() {
               />
             </div>
           </div>
-          {image.alt && (
-            <figcaption className="max-w-6xl mx-auto mt-2 text-sm text-gray-500 text-left px-4">
-              {image.alt}
-            </figcaption>
-          )}
         </figure>
       )}
     </section>

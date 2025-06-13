@@ -14,8 +14,22 @@ export default function HowIBuiltATeam() {
           <h2 className="text-3xl font-bold mt-12 mb-6 font-sans">Project Overview</h2>
           
           <p>
-            When DocVocate hired my team at Kunai, all they had was an idea and an AI model. They needed us to create an entire product. The idea was to use AI to speed up the time it takes to write and submit an appeal and to improve the approval rate.
-          </p>
+    When DocVocate hired my team at Kunai, all they had was an idea and an AI
+    model.&nbsp;
+    <strong>
+      <a
+        href="https://www.changehealthcare.com/insights/denials-index"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Private insurers deny nearly&nbsp;15&nbsp;% of first-time claims
+      </a>
+      —stalling cash flow and forcing providers into costly appeals.
+    </strong>
+    &nbsp;We set out to build an end-to-end product that would use&nbsp;
+    <strong>AI</strong> to slash appeal prep time and push those dollars back
+    into clinicians’ hands.
+  </p>
         </div>
       </section>
       

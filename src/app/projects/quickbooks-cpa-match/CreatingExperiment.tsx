@@ -16,18 +16,20 @@ const components = {
 // Helper component to render content with specific image
 const ContentWithImage = ({ content, image, isAdSection = false }: { content: string; image: ImageType; isAdSection?: boolean }) => {
   return (
-    <div className="flex flex-col md:flex-row gap-8 items-start mb-12">
+    <section className="flex flex-col md:flex-row gap-8 items-start mb-12">
       <div className="flex-1">
         {isAdSection ? (
-          <h2 className="text-3xl font-bold mt-16 mb-8 font-sans">The Ad</h2>
+          <h2 id="the-ad-section" className="text-3xl font-bold mt-16 mb-8 font-sans">The Ad</h2>
         ) : null}
-        <ReactMarkdown components={components}>
-          {content.replace(/^### The Ad\s*/, '')}
-        </ReactMarkdown>
+        <div className="prose">
+          <ReactMarkdown components={components}>
+            {content.replace(/^### The Ad\s*/, '')}
+          </ReactMarkdown>
+        </div>
       </div>
       {image && (
-        <div className="w-full md:w-1/2">
-          <div className="my-8">
+        <aside className="w-full md:w-1/2" aria-labelledby={isAdSection ? "the-ad-section" : undefined}>
+          <figure className="my-8">
             <CaseStudyImage
               src={image.src}
               alt={image.alt}
@@ -36,10 +38,10 @@ const ContentWithImage = ({ content, image, isAdSection = false }: { content: st
               withBackground={true}
               containerClassName="w-full"
             />
-          </div>
-        </div>
+          </figure>
+        </aside>
       )}
-    </div>
+    </section>
   );
 };
 
@@ -70,14 +72,16 @@ export default function CreatingExperiment() {
     const talkingTaxContent = afterAdParts2[1] || '';
     
     return (
-      <div className="mb-12">
-        <div className="mb-8">
-          <ReactMarkdown components={components}>
-            {beforeAd}
-          </ReactMarkdown>
-        </div>
+      <article className="mb-12">
+        <section className="mb-8" aria-label="Introduction">
+          <div className="prose">
+            <ReactMarkdown components={components}>
+              {beforeAd}
+            </ReactMarkdown>
+          </div>
+        </section>
         {workflowImage && (
-          <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] my-8">
+          <figure className="w-screen relative left-1/2 right-1/2 -mx-[50vw] my-8">
             <div className="w-full max-w-screen-2xl mx-auto">
               <div className="relative w-full bg-white dark:bg-gray-900 px-4 py-8">
                 <div className="max-w-4xl mx-auto">
@@ -92,7 +96,7 @@ export default function CreatingExperiment() {
                 </div>
               </div>
             </div>
-          </div>
+          </figure>
         )}
         
         {adImage && (
@@ -103,14 +107,18 @@ export default function CreatingExperiment() {
           />
         )}
         
-        <h2 className="text-3xl font-bold mt-16 mb-8 font-sans">Playing matchmaker</h2>
-        
-        <ReactMarkdown components={components}>
-          {matchmakerContent}
-        </ReactMarkdown>
+        <section aria-labelledby="playing-matchmaker-heading">
+          <h2 id="playing-matchmaker-heading" className="text-3xl font-bold mt-16 mb-8 font-sans">Playing matchmaker</h2>
+          
+          <div className="prose">
+            <ReactMarkdown components={components}>
+              {matchmakerContent}
+            </ReactMarkdown>
+          </div>
+        </section>
         
         {matchmakerImage && (
-          <div className="w-full my-8">
+          <figure className="w-full my-8">
             <CaseStudyImage
               src={matchmakerImage.src}
               alt={matchmakerImage.alt}
@@ -118,19 +126,22 @@ export default function CreatingExperiment() {
               height={600}
               withBackground={true}
             />
-          </div>
+          </figure>
         )}
         
 
-        
-        <h2 className="text-3xl font-bold mt-16 mb-8 font-sans">Talking Tax</h2>
-        
-        <ReactMarkdown components={components}>
-          {talkingTaxContent}
-        </ReactMarkdown>
+        <section aria-labelledby="talking-tax-heading">
+          <h2 id="talking-tax-heading" className="text-3xl font-bold mt-16 mb-8 font-sans">Talking Tax</h2>
+          
+          <div className="prose">
+            <ReactMarkdown components={components}>
+              {talkingTaxContent}
+            </ReactMarkdown>
+          </div>
+        </section>
         
         {chatFeedImage && (
-          <div className="w-full my-8">
+          <figure className="w-full my-8">
             <CaseStudyImage
               src={chatFeedImage.src}
               alt={chatFeedImage.alt}
@@ -138,37 +149,33 @@ export default function CreatingExperiment() {
               height={600}
               withBackground={true}
             />
-          </div>
+          </figure>
         )}
         
         {directMessageImage && (
-          <div className="w-full my-12">
-            <div className="w-full">
-              <CaseStudyImage
-                src={directMessageImage.src}
-                alt={directMessageImage.alt}
-                width={1600}
-                height={800}
-                withBackground={true}
-              />
-            </div>
-          </div>
+          <figure className="w-full my-12">
+            <CaseStudyImage
+              src={directMessageImage.src}
+              alt={directMessageImage.alt}
+              width={1600}
+              height={800}
+              withBackground={true}
+            />
+          </figure>
         )}
         
         {accessImage && (
-          <div className="w-full my-12">
-            <div className="w-full">
-              <CaseStudyImage
-                src={accessImage.src}
-                alt={accessImage.alt}
-                width={1600}
-                height={800}
-                withBackground={true}
-              />
-            </div>
-          </div>
+          <figure className="w-full my-12">
+            <CaseStudyImage
+              src={accessImage.src}
+              alt={accessImage.alt}
+              width={1600}
+              height={800}
+              withBackground={true}
+            />
+          </figure>
         )}
-      </div>
+      </article>
     );
   };
   
@@ -183,14 +190,14 @@ export default function CreatingExperiment() {
   const shouldShowAllImages = !processContent();
   
   return (
-    <div className="space-y-8">
-      <h2 className="text-3xl font-bold font-sans">Creating the Experiment</h2>
+    <section className="space-y-8" aria-labelledby="creating-experiment-heading">
+      <h2 id="creating-experiment-heading" className="text-3xl font-bold font-sans">Creating the Experiment</h2>
       <div className="prose max-w-prose text-text-base space-y-6">
         {contentElements}
         
         {/* Only render remaining images if we didn't process the content */}
         {shouldShowAllImages && images.map((image, index) => (
-          <div key={index} className="w-full my-8">
+          <figure key={index} className="w-full my-8">
             <CaseStudyImage
               src={image.src}
               alt={image.alt}
@@ -198,9 +205,9 @@ export default function CreatingExperiment() {
               height={800}
               withBackground={true}
             />
-          </div>
+          </figure>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
