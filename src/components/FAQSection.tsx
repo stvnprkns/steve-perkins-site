@@ -4,25 +4,25 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
   {
-    category: "DESIGN PHILOSOPHY",
+    category: "How I think about design",
     question: "I build systems, not just screens",
     answer:
       "I lean strategic, but I still ship. I've built design orgs from scratch, led zero-to-one products, scaled messy enterprise tools, and made 'boring' software feel like magic. I design like a founder thinks — with stakes, speed, and sharpness.",
   },
   {
-    category: "CRAFT & LEADERSHIP",
+    category: "Designing, leading, shipping",
     question: "Both designer and manager, always both",
     answer:
       "I believe managers should stay close to the craft, not to control it, but to stay credible. I design when it's the right way to move things forward — early explorations, high-stakes flows, or moments that need taste.",
   },
   {
-    category: "TEAM DYNAMICS",
+    category: "Building teams and working with humans",
     question: "Unblock, amplify, and protect",
     answer:
       "I give people context, not tasks. I hire for taste and judgment, then get out of their way — unless they want a sparring partner. I believe in running a team like an agency inside a product org: scoped, accountable, and proud of the work.",
   },
   {
-    category: "AI & HUMAN CREATIVITY",
+    category: "What I let the robots do",
     question: "Accelerating clarity, not replacing thinking",
     answer:
       "I've built AI-powered design tools, prototyped GPT-backed workflows for legal and healthcare, and I'm always experimenting with how LLMs can make design ops and documentation smarter. AI's great at the first 80% — the last 20% is still judgment, taste, and knowing what matters.",
